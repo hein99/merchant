@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 26, 2020 at 11:33 AM
+-- Generation Time: May 26, 2020 at 11:42 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -114,6 +114,7 @@ CREATE TABLE `users` (
   `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `address` text COLLATE utf8_unicode_ci NOT NULL,
   `activate_status` tinyint(1) NOT NULL,
+  `point` int(11) NOT NULL,
   `membership_id` int(11) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -123,8 +124,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `password`, `user_status`, `phone`, `address`, `activate_status`, `membership_id`, `created_date`, `modified_date`) VALUES
-(1, 'David', 'david', 1, '0999999', 'mayangone', 1, 1, '2020-05-26 09:22:12', '2020-05-26 09:22:12');
+INSERT INTO `users` (`id`, `name`, `password`, `user_status`, `phone`, `address`, `activate_status`, `point`, `membership_id`, `created_date`, `modified_date`) VALUES
+(1, 'David', 'david', 1, '0999999', 'mayangone', 1, 0, 1, '2020-05-26 09:22:12', '2020-05-26 09:22:12');
 
 --
 -- Indexes for dumped tables

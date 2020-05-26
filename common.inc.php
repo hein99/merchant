@@ -11,12 +11,12 @@ $id = isset($_GET['id']) ? $_GET['id'] : '';
 
 function checkAuthentication()
 {
-  if(!isset($_SESSION['admin_account']) or !$_SESSION['admin_account'] or !$_SESSION['admin_account']->getValueEncoded('id') or !$_SESSION['admin_account'] = UsersAccount::getAdminAccountById($_SESSION['admin_account']->getValue('id')))
+  if(!isset($_SESSION['merchant_admin_account']) or !$_SESSION['merchant_admin_account'] or !$_SESSION['merchant_admin_account']->getValueEncoded('id') or !$_SESSION['merchant_admin_account'] = UsersAccount::getAdminAccountById($_SESSION['merchant_admin_account']->getValue('id')))
   {
-    $_SESSION['admin_account'] = '';
+    $_SESSION['merchant_admin_account'] = '';
     header('location: '.URL. '/views/login.php');
+    exit();
   }
-  exit();
 }
 
 #Loading model

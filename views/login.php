@@ -65,7 +65,7 @@ function displayLoginFrom($error_messages, $admin_account)
       displayLoginFrom($error_messages, $admin_account);
     }
     else {
-      $_SESSION['admin_account'] = $loggedin_account;
+      $_SESSION['merchant_admin_account'] = $loggedin_account;
       header('location: ' .URL. '/dashboard/');
     }
   }
