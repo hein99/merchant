@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 26, 2020 at 09:28 AM
+-- Generation Time: May 26, 2020 at 11:33 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -114,10 +114,17 @@ CREATE TABLE `users` (
   `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `address` text COLLATE utf8_unicode_ci NOT NULL,
   `activate_status` tinyint(1) NOT NULL,
-  `membership_id` point NOT NULL,
+  `membership_id` int(11) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `modified_date` int(11) NOT NULL
+  `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `password`, `user_status`, `phone`, `address`, `activate_status`, `membership_id`, `created_date`, `modified_date`) VALUES
+(1, 'David', 'david', 1, '0999999', 'mayangone', 1, 1, '2020-05-26 09:22:12', '2020-05-26 09:22:12');
 
 --
 -- Indexes for dumped tables
@@ -185,7 +192,7 @@ ALTER TABLE `membership`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

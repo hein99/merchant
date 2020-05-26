@@ -16,28 +16,58 @@ class UsersAccount extends DataObject
     'modified_date' => ''
   );
 
+  public static function getAdminAccount(){
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE user_status = :user_status';
 
-  // public static function getAllAdmin()
-  // {
-  //   $conn = parent::connect();
-  //   $sql = 'SELECT * FROM ' . TBL_ADMIN;
-  //   try{
-  //     $st = $conn->query($sql);
-  //
-  //     $admin_accounts = array();
-  //     foreach ( $st->fetchAll() as $row ) {
-  //       $admin_accounts[] = new Admin( $row );
-  //     }
-  //     parent::disconnect($conn);
-  //     return $admin_accounts;
-  //   } catch (PDOException $e) {
-  //     parent::disconnect($conn);
-  //     die('Query failed: ' . $e->getMessage());
-  //   }
-  //
-  // }
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':user_status','1', PDO::PARAM_INT);
+      $st->execute();
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new UsersAccount($row);
+    } catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessae());
+    }
+  }
 
+  public static function getAdminAccountById($id)
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE id = :id AND user_status = :user_status';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $id, PDO::PARAM_STR);
+      $st->bindValue(':user_status','1', PDO::PARAM_INT);
+      $st->execute();
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new UsersAccount($row);
+    } catch (PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
 
+  public function authenticateAdminAccount()
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE name = :username AND password = :password AND user_status = :user_status';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':username', $this->data['username'], PDO::PARAM_STR);
+      $st->bindValue(':password', $this->data['password'], PDO::PARAM_STR);
+      $st->bindValue(':user_status','1', PDO::PARAM_INT);
+      $st->execute();
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new UsersAccount($row);
+    }catch(PDOException $e){
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
 }
-
- ?>
+?>
