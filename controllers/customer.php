@@ -1,12 +1,13 @@
 <?php
-switch()
+switch($action)
 {
   case '':
-  case 'customer':
+  case 'display':
+  require('./views/customer/display.php');
   break;
 
   default:
-    $ERR_STATUS = 2;
+    $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
     exit();
 

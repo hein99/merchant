@@ -20,7 +20,7 @@ define('TBL_LOGIN_RECORD', 'login_record');
 define('TBL_MESSAGE_RECORD', 'message_record');
 
 #Error status
-global $ERR_STATUS = null;
+$ERR_STATUS = null;
 
 #Error status code
 define('ERR_CONTROLLER', 1);

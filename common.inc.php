@@ -31,15 +31,18 @@ switch ($controller)
   case 'order':
     checkAuthentication();
     break;
+  case 'membership':
+    checkAuthentication();
+    break;
   case 'conversation':
     checkAuthentication();
     break;
-  case 'setting':
+  case 'settings':
     checkAuthentication();
-    require('./controllers/settings.php');
     break;
 
   default:
+    $ERR_STATUS = ERR_CONTROLLER;
     header('location: ' . URL . '/views/error_display.php');
     exit("UnExcepted model file call -> ${controller}");
 }

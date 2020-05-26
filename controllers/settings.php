@@ -7,7 +7,7 @@ switch($action)
   break;
 
   default:
-    $ERR_STATUS = 2;
+    $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
     exit();
 }
