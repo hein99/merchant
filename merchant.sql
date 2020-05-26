@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 26, 2020 at 11:42 AM
+-- Generation Time: May 26, 2020 at 07:21 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -108,8 +109,8 @@ CREATE TABLE `message_record` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(41) COLLATE utf8_unicode_ci NOT NULL,
   `user_status` tinyint(1) NOT NULL,
   `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `address` text COLLATE utf8_unicode_ci NOT NULL,
@@ -124,8 +125,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `password`, `user_status`, `phone`, `address`, `activate_status`, `point`, `membership_id`, `created_date`, `modified_date`) VALUES
-(1, 'David', 'david', 1, '0999999', 'mayangone', 1, 0, 1, '2020-05-26 09:22:12', '2020-05-26 09:22:12');
+INSERT INTO `users` (`id`, `username`, `password`, `user_status`, `phone`, `address`, `activate_status`, `point`, `membership_id`, `created_date`, `modified_date`) VALUES
+(1, 'David', '*8201E0C1BD05201452E12ECFD5B8AFE4AEFBD053', 1, '0999999', 'mayangone', 1, 0, 1, '2020-05-26 17:20:19', '2020-05-26 09:22:12');
 
 --
 -- Indexes for dumped tables

@@ -11,4 +11,5 @@ switch($action)
     require('./views/error_display.php');
     exit();
 }
+
  ?>
