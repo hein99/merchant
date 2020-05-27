@@ -28,7 +28,7 @@ class UsersAccount extends DataObject
       if($row) return new UsersAccount($row);
     } catch(PDOException $e) {
       parent::disconnect($conn);
-      die('Query failed: ' . $e->getMessae());
+      die('Query failed: ' . $e->getMessage());
     }
   }
 
@@ -52,7 +52,7 @@ class UsersAccount extends DataObject
   public function authenticateAdminAccount()
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND password = :password AND user_status = 1';
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND password = PASSWORD(:password) AND user_status = 1';
     try {
       $st = $conn->prepare($sql);
       $st->bindValue(':username', $this->data['username'], PDO::PARAM_STR);
@@ -84,7 +84,7 @@ class UsersAccount extends DataObject
       return $customer;
     } catch(PDOException $e) {
       parent::disconnect($conn);
-      die('Query failed: ' . $e->getMessae());
+      die('Query failed: ' . $e->getMessage());
     }
   }
 
