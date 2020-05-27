@@ -67,6 +67,23 @@ class UsersAccount extends DataObject
     }
   }
 
+  public function updateAdminAccount($id)
+  {
+    $conn = parent::connect();
+    $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET username = :username, password = password(:password) WHERE id = :id';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $id, PDO::PARAM_INT);
+      $st->bindValue(':username', $this->data['username'], PDO::PARAM_STR);
+      $st->bindValue(':password', $this->data['password'], PDO::PARAM_STR);
+      $st->execute();
+      parent::disconnect($conn);
+    } catch (PDOException $e) {
+      parent::disconnect($conn);
+      die("Query failed: ".$e->getMessage());
+    }
+
+  }
 
 #Customer Account Function
   public static function getAllCustomerAccount()
