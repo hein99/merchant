@@ -21,10 +21,15 @@ function displayPageHeader($page_title, $dir_level=false)
 
 function displayMainNavigation($active_page='')
 {?>
-  <section>
+  <header>
     <div class="">
       <a href="<?php echo URL ?>/">Logo</a>
     </div>
+    <div class="">
+      <span><?php echo $_SESSION['merchant_admin_account']->getValueEncoded('username') ?> - </span><a href="<?php echo URL ?>/settings/logout"> Log Out</a>
+    </div>
+  </header>
+  <section>
     <div class="">
       <ul>
         <li class="<?php echo ($active_page == 'dashboard') ? "active" : "" ?>"><a <?php echo ($active_page == 'dashboard') ? '' : 'href="' . URL . '/dashboard/"' ?>>Dashboard</a></li>
@@ -35,11 +40,7 @@ function displayMainNavigation($active_page='')
         <li class="<?php echo ($active_page == 'settings') ? "active" : "" ?>"><a <?php echo ($active_page == 'settings') ? '' : 'href="' . URL . '/settings/"' ?>>Settings</a></li>
       </ul>
     </div>
-    <div class="">
-      <a href="<?php echo URL ?>/settings/logout">Log Out</a>
-    </div>
   </section>
-
   <?php
 }
 
