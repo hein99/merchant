@@ -29,7 +29,7 @@ class LoginRecord extends DataObject
   {
     $conn = parent::connect();
     $sql = 'INSERT INTO '.TBL_LOGIN_RECORD.' (user_id, active_activity, is_type)
-            VALUES (:user_id, NOW(), no)';
+            VALUES (:user_id, NOW(), 'no')';
     $st->bindValue(':user_id', $this->data['user_id'], PDO::PARAM_INT);
     $st->execute();
     parent::disconnect($conn);
