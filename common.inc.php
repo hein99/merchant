@@ -29,6 +29,7 @@ switch ($controller)
     checkAuthentication();
     break;
   case 'order':
+    require('./models/CustomerOrder.class.php');
     checkAuthentication();
     break;
   case 'membership':
