@@ -85,8 +85,8 @@ function updateOrderInfo()
   }
   else
   {
-    $order->insert();
-    header('location: ' . URL . '/category/');
+    $order->updateInformation();
+    header('location: ' . URL . '/customer/');
   }
 }
 
