@@ -122,6 +122,23 @@ class UsersAccount extends DataObject
     }
   }
 
+  public static function getCustomerAccountByUsername($username)
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND user_status = 0';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':username', $username, PDO::PARAM_STR);
+      $st->execute();
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new UsersAccount($row);
+    } catch (PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+
   public function authenticateCustomerAccount()
   {
     $conn = parent::connect();
@@ -144,7 +161,7 @@ class UsersAccount extends DataObject
   public function createCustomerAccount()
   {
     $conn = parent::connect();
-    $sql = 'INSERT INTO ' .TBL_USERS_ACCOUNT . ' (username, password, user_status, phone, addres, activate_status, point, membership_id, created_date, modified_date)
+    $sql = 'INSERT INTO ' .TBL_USERS_ACCOUNT . ' (username, password, user_status, phone, address, activate_status, point, membership_id, created_date, modified_date)
     VALUES (:username, PASSWORD(:password), 0, :phone, :address, 0, 0, 0, NOW(), NOW())';
 
     try{
