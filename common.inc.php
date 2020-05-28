@@ -19,33 +19,28 @@ function checkAuthentication()
   }
 }
 
+checkAuthentication();
 #Loading model
 switch ($controller)
 {
   case 'dashboard':
-    checkAuthentication();
     break;
   case 'customer':
-    checkAuthentication();
     break;
   case 'order':
     require('./models/CustomerOrder.class.php');
-    checkAuthentication();
     break;
   case 'membership':
-    checkAuthentication();
     break;
   case 'conversation':
-    checkAuthentication();
     break;
   case 'settings':
-    checkAuthentication();
     break;
 
   default:
     $ERR_STATUS = ERR_CONTROLLER;
-    header('location: ' . URL . '/views/error_display.php');
-    exit("UnExcepted model file call -> ${controller}");
+    require('./views/error_display.php');
+    exit();
 }
 
 #Loading controller
