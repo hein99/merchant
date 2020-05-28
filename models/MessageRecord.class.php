@@ -1,6 +1,6 @@
 <?php
 
-  class MessageRecord extends AnotherClass
+  class MessageRecord extends DataObject
   {
     protected $data = array(
       'id' => '',
@@ -11,6 +11,23 @@
       'arrived_time' => '',
       'status' => ''
     );
+
+    public static function getNewMessagesCount($id){
+      $conn = parent::connect();
+      $sql = 'SELECT COUNT(*) FROM ' . TBL_MESSAGE_RECORD . ' WHERE to_user_id = :id AND status = 0';
+
+      try {
+        $st = $conn->prepare($sql);
+        $st->bindValue(':id', $id, PDO::PARAM_INT);
+        $st->execute();
+        $row = $st->fetch();
+        parent::disconnect($conn);
+        return $row[0];
+      } catch(PDOException $e) {
+        parent::disconnect($conn);
+        die('Query failed: ' . $e->getMessage());
+      }
+    }
     public static function getAllMessage($from_user_id, $to_user_id, $row)
     {
       $conn = parent::connect();
@@ -64,6 +81,9 @@
         $row = $st->fetchAll();
         $count = $row->rowCount();
         if($count > 0) return $count;
+      }catch (PDOException $e) {
+        parent::disconnect($conn);
+        die('Query failed: ' . $e->getMessage());
       }
     }
   }

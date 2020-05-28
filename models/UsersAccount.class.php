@@ -86,6 +86,22 @@ class UsersAccount extends DataObject
   }
 
 #Customer Account Function
+  public static function getTotalCustomersCount()
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT COUNT(*) FROM ' . TBL_USERS_ACCOUNT .' WHERE user_status = 0';
+
+    try {
+      $st = $conn->query($sql);
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      return $row[0];
+    } catch (PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+
+  }
   public static function getAllCustomerAccount()
   {
     $conn = parent::connect();

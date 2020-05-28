@@ -33,6 +33,7 @@ switch ($controller)
   case 'membership':
     break;
   case 'conversation':
+    require('./models/MessageRecord.class.php');
     break;
   case 'settings':
     break;

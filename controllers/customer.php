@@ -24,7 +24,12 @@ switch($action)
 function getAllCustomers()
 {
   $customers = UsersAccount::getAllCustomerAccount();
-  return $customers;
+  echo $customers;
+}
+function getCustomersCount()
+{
+  $total = UsersAccount::getTotalCustomersCount();
+  echo $total;
 }
 function addCustomerAccount()
 {

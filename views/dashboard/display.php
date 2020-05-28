@@ -4,8 +4,28 @@ displayMainNavigation('dashboard');
  ?>
  <section>
    <div class="">
-     
+      <a href="<?php echo URL ?>/customer/display/" class="">
+      <span id="customers_count"></span>
+      <span>Customers</span>
+    </a>
    </div>
+   <div class="">
+     <a href="<?php echo URL ?>/order/display/" class="">
+       <span id="orders_count"></span>
+       <span>New Orders</span>
+     </a>
+   </div>
+   <div class="">
+     <a href="<?php echo URL ?>/conversation/display/" class="">
+       <span id="messages_count"></span>
+       <span>New Messages</span>
+     </a>
+   </div>
+   <div class="">
+     <a href="<?php echo URL ?>/membership/display/">
+       <span>Memberships</span>
+     </a>
+   </div> 
  </section>
  <section>
    <h1>Add New Customer</h1>
@@ -30,6 +50,8 @@ displayMainNavigation('dashboard');
      </div>
    </form>
  </section>
+<script src="<?php echo URL ?>/scripts/dashboard.js"></script>
+
 <?php
 displayPageFooter();
 ?>
