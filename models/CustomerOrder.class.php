@@ -18,26 +18,45 @@ class CustomerOrder extends DataObject
     'created_date' => ''
   );
 
-  public static function getAllCustomerOrder()
+  public static function getTotalOrdersCount()
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_CUSTOMER_ORDER;
+    $sql = 'SELECT COUNT(*) FROM ' . TBL_CUSTOMER_ORDER;
 
     try {
       $st = $conn->query($sql);
-      $order = array();
-      foreach ( $st->fetchAll() as $row ) {
-        $order[] = new CustomerOrder( $row );
-      }
+      $row = $st->fetch();
       parent::disconnect($conn);
-      return $order;
+      return $row[0];
     } catch(PDOException $e) {
       parent::disconnect($conn);
       die('Query failed: ' . $e->getMessage());
     }
   }
 
-  public static function getNewOrderCount()
+  public static function getCustomerOrderArrayByOrderStatus($order_status)
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM ' . TBL_CUSTOMER_ORDER . ' WHERE order_status = :order_status';
+
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':order_status', $order_status, PDO::PARAM_INT);
+      $st->execute();
+      $orders = array();
+      $result = $st->setFetchMode(PDO::FETCH_NAMED);
+      foreach ( $st->fetchAll() as $row ) {
+        $orders[] = $row;
+      }
+      parent::disconnect($conn);
+      return $orders;
+    } catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+
+  public static function getNewOrdersCount()
   {
     $conn = parent::connect();
     $sql = 'SELECT COUNT(*) FROM ' . TBL_CUSTOMER_ORDER . ' WHERE is_view = 0';
@@ -91,6 +110,7 @@ class CustomerOrder extends DataObject
       die('Query failed: ' . $e->getMessage());
     }
   }
+
 #update for product_shipping_status
   public function updateProductShippingStatus()
   {

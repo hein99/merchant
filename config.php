@@ -20,10 +20,12 @@ define('TBL_LOGIN_RECORD', 'login_record');
 define('TBL_MESSAGE_RECORD', 'message_record');
 
 #Error status
-$ERR_STATUS = null;
+$ERR_STATUS = 0;
 
 #Error status code
 define('ERR_CONTROLLER', 1);
 define('ERR_ACTION', 2);
+define('ERR_FORM', 3);
+define('ERR_URL', 4);
 
  ?>
