@@ -3,8 +3,8 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 340px;
-	height: 544px;
+	width: 300px;
+	height: 480px;
 	font-family: sans-serif;
 	background-color: white;
 	border-radius: 25px;
@@ -14,7 +14,7 @@
 
 .login-header{
 	width: 100%;
-	height: 272px;
+	height: 230px;
 	border-radius: 25px 25px 0 0;
 	display: flex;
 	flex-direction: column;
@@ -25,8 +25,8 @@
 
 .login-header::before{
 	content: '';
-	width: 136px;
-	height: 136px;
+	width: 120px;
+	height: 120px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -38,8 +38,8 @@
 
 .login-header::after{
 	content: '';
-	width: 68px;
-	height: 68px;
+	width: 60px;
+	height: 60px;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -51,23 +51,23 @@
 
 #user-icon{
 	width: 100%;
-	height: 184px;
+	height: 160px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 #user-icon i{
-	font-size: 136px;
+	font-size: 120px;
 	color: rgba(0,0,0,0.5);
 }
 
 #welcome{
 	display: block;
 	width: calc(100% - 50px);
-	height: 53px;
+	height: 40px;
 	padding: 5px 25px;
-	line-height: 1.6em;
+	line-height: 1.3em;
 	letter-spacing: 0.5px;
 	text-align: center;
 	display: flex;
@@ -82,7 +82,7 @@
 
 .login-body{
 	width: 100%;
-	height: 272px;
+	height: 240px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -91,8 +91,8 @@
 
 .login-body::before{
 	content: '';
-	width: 204px;
-	height: 204px;
+	width: 180px;
+	height: 180px;
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -104,15 +104,15 @@
 
 #username, #login, .login-pass{
 	display: block;
-	width: 250px;
-	height: 45px;
+	width: 220px;
+	height: 40px;
 	border: none;
 	background-color: #efefef;
 	color: black;
 	letter-spacing: 1.2px;
 	text-align: center;
 	border-radius: 25px;
-	margin: 11.5px 0;
+	margin: 10px 0;
 	padding: 0 9px;
 	box-sizing: border-box;
 }
@@ -144,8 +144,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 45px;
-	height: 45px;
+	width: 40px;
+	height: 40px;
 	background-color: #efefef;
 	border-radius: 0 25px 25px 0;
 	cursor: pointer;
@@ -246,7 +246,6 @@
 	background-image: linear-gradient(135deg, #2EC5FF, #42F0E7, #2EC5FF);
 	color: white;
 	font-weight: bold;
-	font-size: 18px;
 	letter-spacing: 0.5px;
 	transition: 0.5s ease;
 }
