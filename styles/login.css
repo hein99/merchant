@@ -1,0 +1,255 @@
+.login-container{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 300px;
+	height: 480px;
+	font-family: sans-serif;
+	background-color: white;
+	border-radius: 25px;
+	box-shadow: 0 0 30px #ddd;
+	overflow: hidden;
+}
+
+.login-header{
+	width: 100%;
+	height: 230px;
+	border-radius: 25px 25px 0 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	overflow: hidden;
+}
+
+.login-header::before{
+	content: '';
+	width: 120px;
+	height: 120px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translate(-45%, -45%);
+	background-color: #2EC5FF;
+	opacity: 0.7;
+	border-radius: 50%;
+}
+
+.login-header::after{
+	content: '';
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: translate(40%, -40%);
+	background-color: #42F0E7;
+	opacity: 0.9;
+	border-radius: 50%;
+}
+
+#user-icon{
+	width: 100%;
+	height: 160px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#user-icon i{
+	font-size: 120px;
+	color: rgba(0,0,0,0.5);
+}
+
+#welcome{
+	display: block;
+	width: calc(100% - 20px);
+	height: 40px;
+	padding: 5px 10px;
+	line-height: 1.3em;
+	letter-spacing: 0.5px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #2D3436;
+}
+
+.error{
+	color: #EA2027;
+}
+
+.login-body{
+	width: 100%;
+	height: 250px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	border-radius: 0 0 25px 25px;
+}
+
+.login-body::before{
+	content: '';
+	width: 180px;
+	height: 180px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	transform: translate(50%, 63%);
+	background-color: #2EC5FF;
+	opacity: 0.8;
+	border-radius: 50%;
+}
+
+#username, #login, .login-pass{
+	display: block;
+	width: 220px;
+	height: 40px;
+	border: none;
+	background-color: #efefef;
+	color: black;
+	letter-spacing: 1.2px;
+	text-align: center;
+	border-radius: 25px;
+	margin: 10px 0;
+	padding: 0 9px;
+	box-sizing: border-box;
+}
+
+#username:focus, #password:focus, #password:focus + .login-eye, .login-eye:active, .login-pass:active{
+	background-color: #dfdfdf;
+}
+
+.login-pass{
+	display: flex;
+	justify-content: flex-end;
+	padding: 0;
+}
+
+#password{
+	width: 100%;
+	text-align: center;
+	letter-spacing: 1.2px;
+	border-radius: 25px;
+	border: none;
+	background-color: transparent;
+	color: black;
+	padding: 0 9px;
+	clip-path: polygon(0 0, 205px 0, 205px 100%, 0 100%);
+}
+
+.login-eye{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	background-color: #efefef;
+	border-radius: 0 25px 25px 0;
+	cursor: pointer;
+}
+
+.login-eye .close-eye{
+	font-size: 18px;
+	color: black;
+}
+
+.open-eye, .outer{
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	pointer-events: none;
+}
+
+.login-eye{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.open-eye svg{
+	display: none;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.inner{
+	display: none;
+	position: absolute;
+	width: 7px;
+	height: 7px;
+	background-color: black;
+	border-radius: 50%;
+	overflow: hidden;
+	pointer-events: none;
+	animation: eye 5s infinite alternate;
+}
+
+.open-eye svg.show, .inner.show{
+	display: block;
+}
+
+.inner::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 3px;
+	height: 3px;
+	background-color: #efefef;
+	border-radius: 50%;
+}
+
+@keyframes eye{
+	0%{
+		transform: translate(0);
+	}
+	15%{
+		transform: translate(-1px, -1px);
+	}
+	20%{
+		transform: translate(-1px, -1px);
+	}
+	35%{
+		transform: translate(-2px, 1px);
+	}
+	45%{
+		transform: translate(-2px, 1px);
+	}
+	60%{
+		transform: translate(2px, -2px);
+	}
+	65%{
+		transform: translate(2px, -2px);
+	}
+	80%{
+		transform: translate(2px, 1px);
+	}
+	85%{
+		transform: translate(2px, 1px);
+	}
+	100%{
+		transform: translate(0);
+	}
+}
+
+#login{
+	background-size: 200%;
+	background-image: linear-gradient(135deg, #2EC5FF, #42F0E7, #2EC5FF);
+	color: white;
+	font-weight: bold;
+	letter-spacing: 0.5px;
+	transition: 0.5s ease;
+}
+
+#login:hover{
+	background-position: right;
+}

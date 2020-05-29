@@ -1,7 +1,9 @@
 $(document).ready(function(){
+
   getTotalCustomersCount();
   getNewOrdersCount();
   getNewMessagesCount();
+
   setInterval(function(){
     getTotalCustomersCount();
     getNewOrdersCount();

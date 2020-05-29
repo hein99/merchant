@@ -102,16 +102,17 @@ class UsersAccount extends DataObject
     }
 
   }
-  public static function getAllCustomerAccount()
+  public static function getActivateCustomerAccount()
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE user_status = 0';
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE user_status = 0 AND activate_status = 1';
 
     try {
       $st = $conn->query($sql);
       $customer = array();
+      $result = $st->setFetchMode(PDO::FETCH_NAMED);
       foreach ( $st->fetchAll() as $row ) {
-        $customer[] = new UsersAccount( $row );
+        $customer[] = $row;
       }
       parent::disconnect($conn);
       return $customer;
@@ -120,7 +121,25 @@ class UsersAccount extends DataObject
       die('Query failed: ' . $e->getMessage());
     }
   }
+  public static function getDeactivateCustomerAccount()
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE user_status = 0 AND activate_status = 0';
 
+    try {
+      $st = $conn->query($sql);
+      $customer = array();
+      $result = $st->setFetchMode(PDO::FETCH_NAMED);
+      foreach ( $st->fetchAll() as $row ) {
+        $customer[] = $row;
+      }
+      parent::disconnect($conn);
+      return $customer;
+    } catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
   public static function getCustomerAccountByID()
   {
     $conn = parent::connect();
