@@ -5,8 +5,11 @@ switch($action)
   case 'display':
     require('./views/customer/display.php');
     break;
-  case 'get_all_customers':
-    getAllCustomers();
+  case 'get_activate_customers':
+    getActivateCustomers();
+    break;
+  case 'get_deactivate_customers':
+    getDeactivateCustomers();
     break;
   case 'get_customers_count':
     getCustomersCount();
@@ -21,10 +24,15 @@ switch($action)
     exit();
 
 }
-function getAllCustomers()
+function getActivateCustomers()
 {
-  $customers = UsersAccount::getAllCustomerAccount();
-  echo $customers;
+  $activate_customers = UsersAccount::getActivateCustomerAccount();
+  echo json_encode($activate_customers);
+}
+function getDeactivateCustomers()
+{
+  $deactivate_customers = UsersAccount::getDeactivateCustomerAccount();
+  echo json_encode($deactivate_customers);
 }
 function getCustomersCount()
 {
