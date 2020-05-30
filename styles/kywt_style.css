@@ -47,6 +47,7 @@ nav {
 .ky-user-container{
   width: auto;
   position: relative;
+  z-index: 99;
 }
 
 .ky-user-content, .ky-logo-name-container a{
