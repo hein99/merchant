@@ -16,9 +16,9 @@ displayMainNavigation('customer');
  </section>
 
 <?php
- echo "<pre>";
- print_r($customer);
- print_r($customer_statement);
- echo "</pre>";
+ // echo "<pre>";
+ // print_r($customer);
+ // print_r($customer_statement);
+ // echo "</pre>";
 displayPageFooter();
 ?>
