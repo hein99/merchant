@@ -2,14 +2,19 @@
 displayPageHeader('Dashboard | ' . WEB_NAME);
 displayMainNavigation('dashboard');
  ?>
- <section>
-   <div class="">
-      <a href="<?php echo URL ?>/customer/display/" class="">
-      <span id="customers_count"></span>
-      <span>Customers</span>
-    </a>
-   </div>
-   <div class="">
+ <section class="dashboard-top-part">
+  <a href="<?php echo URL ?>/customer/display/" class="">
+    <div class="dashboard-customer-container">
+      <div id="dashboard-customer-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="dashboard-customer">
+        <span id="customers_count"></span>
+        <span>Customers</span>
+      </div>
+    </div>
+  </a>
+   <!-- <div class="">
      <a href="<?php echo URL ?>/order/display/" class="">
        <span id="orders_count"></span>
        <span>New Orders</span>
@@ -25,7 +30,7 @@ displayMainNavigation('dashboard');
      <a href="<?php echo URL ?>/membership/display/">
        <span>Memberships</span>
      </a>
-   </div> 
+   </div>  -->
  </section>
  <section>
    <h1>Add New Customer</h1>
