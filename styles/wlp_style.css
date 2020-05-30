@@ -1,0 +1,95 @@
+/*ERROR PAGE*/
+	.error-page-content{
+		font-family: sans-serif;
+		width: 100vw;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.error-page-container{
+		width: 720px;
+		height: 450px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+
+	.error-page-header{
+		width: 100%;
+		height: 240px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.error-page-header span{
+		margin: 10px 0;
+		color: #2d3436;
+	}
+
+	.tired{
+		font-size: 90px;
+	}
+
+	#main-error-message{
+		text-align: center;
+		font-size: 32px;
+	}
+
+	.error-page-body{
+		width: 100%;
+		height: 210px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	.error-page-message{
+		text-align: center;
+		line-height: 1.6em;
+		color: #2d3436;
+	}
+
+	.error-page-buttons{
+		margin-top: 30px;
+	}
+
+	.error-page-buttons a{
+		text-decoration: none;
+		color: white;
+		font-weight: bold;
+		margin: 0 7.5px;
+	}
+
+	.error-page-buttons a span{
+		padding: 10px 15px;
+		letter-spacing: 0.5px;
+		border-radius: 3px;
+	}
+
+	.error-page-buttons a span i{
+		margin-right: 5px;
+	}
+
+	#error-back-button{
+		background-color: #42CAFF;
+		transition: 0.1s ease;
+	}
+
+	#error-back-button:hover{
+		background-color: #2EC5FF;
+	}
+
+	#error-dashboard-button{
+		background-color: #999;
+		transition: 0.1s ease;
+	}
+
+	#error-dashboard-button:hover{
+		background-color: #888;
+	}
+/*-------------------------------------- END OF ERROR PAGE -------------------------------------*/

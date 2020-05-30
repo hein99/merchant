@@ -21,8 +21,34 @@ switch($ERR_STATUS)
 }
   displayPageHeader('Error | ' . WEB_NAME);
 ?>
- <section>
-   <h1><?php echo $text ?></h1>
- </section>
+<header>
+  <div class="ky-logo-name-container">
+    <a href="<?php echo URL ?>/"><img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/></a>
+    <span>The Best Shop</span>
+  </div>
+  
+  <div class="ky-user-container">
+    <i class="fas fa-user-circle"></i>
+      <span>Swe Swe Nyein</span>
+  <div>
+</header>
+
+<section class="error-page-content">
+  <div class="error-page-container">
+    <div class="error-page-header">
+      <span><i class="far fa-tired tired"></i></span>
+      <span id="main-error-message">Missing Fields</span>
+    </div>
+    <div class="error-page-body">
+      <div class="error-page-message">
+        There were some missing fields!<br/>Please make sure you entered your password correctly in both fields!
+      </div>
+      <div class="error-page-buttons">
+        <a href="#"><span id="error-back-button"><i class="fas fa-arrow-left"></i>Back</span></a>
+        <a href="#"><span id="error-dashboard-button"><i class="fas fa-th-large"></i>Dashboard</span></a>
+      </div>
+    </div>
+  </div>
+</section>
 
  <?php displayPageFooter(); ?>
