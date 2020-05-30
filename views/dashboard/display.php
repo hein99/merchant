@@ -2,32 +2,36 @@
 displayPageHeader('Dashboard | ' . WEB_NAME);
 displayMainNavigation('dashboard');
  ?>
- <section>
-   <section>
-     <div class="">
-        <a href="<?php echo URL ?>/customer/display/" class="">
+ <section class="dashboard-top-part">
+  <a href="<?php echo URL ?>/customer/display/" class="">
+    <div class="dashboard-customer-container">
+      <div id="dashboard-customer-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="dashboard-customer">
         <span id="customers_count"></span>
         <span>Customers</span>
-      </a>
-     </div>
-     <div class="">
-       <a href="<?php echo URL ?>/order/display/" class="">
-         <span id="orders_count"></span>
-         <span>New Orders</span>
-       </a>
-     </div>
-     <div class="">
-       <a href="<?php echo URL ?>/conversation/display/" class="">
-         <span id="messages_count"></span>
-         <span>New Messages</span>
-       </a>
-     </div>
-     <div class="">
-       <a href="<?php echo URL ?>/membership/display/">
-         <span>Memberships</span>
-       </a>
-     </div>
-   </section>
+      </div>
+    </div>
+  </a>
+   <div class="">
+     <a href="<?php echo URL ?>/order/display/" class="">
+       <span id="orders_count"></span>
+       <span>New Orders</span>
+     </a>
+   </div>
+   <div class="">
+     <a href="<?php echo URL ?>/conversation/display/" class="">
+       <span id="messages_count"></span>
+       <span>New Messages</span>
+     </a>
+   </div>
+   <div class="">
+     <a href="<?php echo URL ?>/membership/display/">
+       <span>Memberships</span>
+     </a>
+   </div> 
+
    <section>
      <h1>Add New Customer</h1>
      <form class="" action="<?php echo URL ?>/customer/create/" method="post">
