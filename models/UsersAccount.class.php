@@ -181,7 +181,7 @@ class UsersAccount extends DataObject
   public function authenticateCustomerAccount()
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND password = :password AND id = :id';
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND password = PASSWORD(:password) AND id = :id';
     try {
       $st = $conn->prepare($sql);
       $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
