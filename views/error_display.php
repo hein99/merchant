@@ -20,11 +20,13 @@ switch($ERR_STATUS)
     $text = 'Unknown Error';
 }
   displayPageHeader('Error | ' . WEB_NAME);
-?>
+?>  
 <header>
   <div class="ky-logo-name-container">
-    <a href="<?php echo URL ?>/"><img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/></a>
-    <span>The Best Shop</span>
+    <a href="<?php echo URL ?>/">
+      <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/>
+      <span>The Best Shop</span>
+    </a>
   </div>
   
   <div class="ky-user-container">
