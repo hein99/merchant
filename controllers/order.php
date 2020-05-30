@@ -18,11 +18,11 @@ switch($action)
     getOrders();
     break;
 
-  case 'update_order_info':
-    updateOrderInfo();
+  case 'change_order_info':
+    changeOrderInfo();
 
-  case 'update_product_status':
-    updateProductStatus();
+  case 'change_product_status':
+    changeProductStatus();
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -55,7 +55,7 @@ function getOrders()
   echo json_encode($orders);
 }
 
-function updateOrderInfo()
+function changeOrderInfo()
 {
   $required_fields = array('id', 'us_tax', 'mm_tax', 'commission', 'weight_cost', 'order_status');
   $missing_fields = array();
@@ -93,7 +93,7 @@ function updateOrderInfo()
   }
 }
 
-function updateProductStatus()
+function changeProductStatus()
 {
   $required_fields = array('id', 'product_shipping_status');
   $missing_fields = array();
