@@ -3,7 +3,6 @@ displayPageHeader('Dashboard | ' . WEB_NAME);
 displayMainNavigation('dashboard');
  ?>
  <section>
-
    <section>
      <div class="">
         <a href="<?php echo URL ?>/customer/display/" class="">
