@@ -21,7 +21,7 @@ switch($action)
     addCustomerAccount();
     break;
   case 'change_password':
-    changeCustomerPassword();
+    changeCustomerPassword($id);
     break;
 
   default:
@@ -92,8 +92,32 @@ function addCustomerAccount()
     header('location: ' . URL . '/dashboard/');
   }
 }
-function changeCustomerPassword()
+function changeCustomerPassword($id)
 {
-  
+  $request_account = new UsersAccount(array(
+    'id' => $id,
+    'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
+    'password' => isset($_POST['current_password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['current_password']) : ''
+  ));
+  $current_account = $request_account->authenticateCustomerAccount();
+  if($current_account)
+  {
+    $required_fields = array('password');
+    $missing_fields = array();
+    $error_messages = array();
+
+    $new_account = new UsersAccount(array(
+      'id' => $id,
+      'password' => ( isset($_POST['new_password1']) and isset($_POST['new_password2']) and $_POST['new_password1'] == $_POST['new_password2']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['new_password1']) : ''
+    ));
+    foreach ($required_fields as $required_field) {
+      if(!$new_account->getValue($required_field))
+        $missing_fields[] = $required_field;
+    }
+    if($missing_fields)
+    {
+      $error_messages[] = 'Some missing in field. Make sure that and submit again!';
+    }
+  }
 }
  ?>
