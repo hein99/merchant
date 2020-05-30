@@ -26,6 +26,7 @@ switch ($controller)
   case 'dashboard':
     break;
   case 'customer':
+  require('./models/CustomerStatement.class.php');
     break;
   case 'order':
     require('./models/CustomerOrder.class.php');

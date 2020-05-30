@@ -17,7 +17,8 @@ class UsersAccount extends DataObject
   );
 
 #Admin Account Fuction
-  public static function getAdminAccount(){
+  public static function getAdminAccount()
+  {
     $conn = parent::connect();
     $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE user_status = 1';
 
@@ -102,6 +103,7 @@ class UsersAccount extends DataObject
     }
 
   }
+
   public static function getActivateCustomerAccount()
   {
     $conn = parent::connect();
@@ -121,6 +123,7 @@ class UsersAccount extends DataObject
       die('Query failed: ' . $e->getMessage());
     }
   }
+
   public static function getDeactivateCustomerAccount()
   {
     $conn = parent::connect();
@@ -140,7 +143,8 @@ class UsersAccount extends DataObject
       die('Query failed: ' . $e->getMessage());
     }
   }
-  public static function getCustomerAccountByID()
+
+  public static function getCustomerAccountByID($id)
   {
     $conn = parent::connect();
     $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE id = :id AND user_status = 0';
