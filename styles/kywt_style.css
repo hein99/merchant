@@ -19,7 +19,9 @@ header{
 }
 
 nav {
+  position: relative;
   border-right: 2px solid #DDDDDD;
+  overflow: hidden;
 }
 
 .ky-logo-name-container {
@@ -94,9 +96,6 @@ nav {
   margin-left: 5px;
   font-size: 10px;
 }
-.ky-sidemenu-list{
-  overflow: hidden;
-}
 .ky-sidemenu-list li{
   display: flex;
   align-items: center;
@@ -128,7 +127,7 @@ nav {
   padding-left: 35px;
 }
 
-.ky-sidemenu-list::before{
+nav::before{
   content: "";
   width: 250px;
   height: 250px;
@@ -138,5 +137,5 @@ nav {
   transform: translate(-50%, 50%);
   background-color: #2EC5FF;
   opacity: 0.9;
-  border-radius: 50%;
+  border-radius: 50%;z-index: -1;
 }
