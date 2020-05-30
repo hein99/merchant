@@ -7,6 +7,7 @@ function displayPageHeader($page_title, $dir_level=false)
       <meta charset="utf-8">
       <title><?php echo $page_title ?></title>
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/reset.css">
+      <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.13.0/css/all.css'>
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/<?php echo $dir_level ? 'login.css' : 'config.css'?>">
       <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -38,6 +39,7 @@ function displayMainNavigation($active_page='')
   </header>
   <nav>
     <div class="ky-sidemenu-list">
+
       <ul>
         <li class="<?php echo ($active_page == 'dashboard') ? "active" : "" ?>"><span><a <?php echo ($active_page == 'dashboard') ? '' : 'href="' . URL . '/dashboard/"' ?>><i class="fas fa-th-large"></i>Dashboard</a></span></li>
         <li class="<?php echo ($active_page == 'customer') ? "active" : "" ?>"><span><a <?php echo ($active_page == 'customer') ? '' : 'href="' . URL . '/customer/"' ?>><i class="fas fa-users"></i>Customers</a></span></li>

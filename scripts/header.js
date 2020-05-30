@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.ky-sidemenu-list li').on('click', function() {
+  $('.ky-sidemenu-list li').on('click', function(e) {
     $(this).addClass("active").siblings().removeClass("active");
   });
 
