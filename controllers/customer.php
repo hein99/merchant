@@ -5,6 +5,9 @@ switch($action)
   case 'display':
     require('./views/customer/display.php');
     break;
+  case 'detail':
+    detail($id);
+    break;
   case 'get_activate_customers':
     getActivateCustomers();
     break;
@@ -17,6 +20,9 @@ switch($action)
   case 'create':
     addCustomerAccount();
     break;
+  case 'change_password':
+    changeCustomerPassword();
+    break;
 
   default:
     $ERR_STATUS = ERR_ACTION;
@@ -24,6 +30,13 @@ switch($action)
     exit();
 
 }
+function detail($id)
+{
+  $customer = UsersAccount::getCustomerAccountByID($id);
+  $customer_statement = CustomerStatement::getCustomerStatement($id);
+  require('./views/customer/customer_detail.php');
+}
+
 function getActivateCustomers()
 {
   $activate_customers = UsersAccount::getActivateCustomerAccount();
@@ -71,11 +84,16 @@ function addCustomerAccount()
   }
   if($error_messages)
   {
+    $ERR_STATUS = ERR_FORM;
     require('./views/error_display.php');
   }
   else {
     $customer_account->createCustomerAccount();
     header('location: ' . URL . '/dashboard/');
   }
+}
+function changeCustomerPassword()
+{
+  
 }
  ?>
