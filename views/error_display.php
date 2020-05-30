@@ -29,10 +29,10 @@ switch($ERR_STATUS)
     </a>
   </div>
   
-  <div class="ky-user-container">
+  <div class="ky-user-content" style="cursor: auto;">
     <i class="fas fa-user-circle"></i>
       <span>Swe Swe Nyein</span>
-  <div>
+  </div>
 </header>
 
 <section class="error-page-content">
