@@ -84,7 +84,6 @@ function addCustomerAccount()
   }
   if($error_messages)
   {
-    $ERR_STATUS = ERR_FORM;
     require('./views/error_display.php');
   }
   else {
@@ -94,6 +93,48 @@ function addCustomerAccount()
 }
 function changeCustomerPassword()
 {
-  
+  $request_account = new UsersAccount(array(
+    'id' => isset($_POST['id']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['id']) : '',
+    'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
+    'password' => isset($_POST['current_password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['current_password']) : ''
+  ));
+  $current_account = $request_account->authenticateCustomerAccount();
+  if($current_account)
+  {
+    $required_fields = array('password');
+    $missing_fields = array();
+    $error_messages = array();
+
+    $new_account = new UsersAccount(array(
+      'id' => isset($_POST['id']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['id']) : '',
+      'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
+      'password' => ( isset($_POST['new_password1']) and isset($_POST['new_password2']) and $_POST['new_password1'] == $_POST['new_password2']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['new_password1']) : ''
+    ));
+    foreach ($required_fields as $required_field) {
+      if(!$new_account->getValue($required_field))
+        $missing_fields[] = $required_field;
+    }
+    if($missing_fields)
+    {
+      $error_messages[] = 'Some missing in field. Make sure that and submit again!';
+    }
+    if(!isset($_POST['new_password1']) or !isset($_POST['new_password2']) or !$_POST['new_password1'] or !$_POST['new_password2'] or $_POST['new_password1'] != $_POST['new_password2'])
+    {
+      $error_messages[] = 'Make sure you enter your password correctly in both password fields';
+    }
+    if($error_messages)
+    {
+      require('./views/error_display.php');
+    }else {
+      $new_account->editCustomerPassword();
+      header('location: ' . URL . '/customer/detail/' . $_POST['id']);
+    }
+  }
+  else {
+    $error_messages = array();
+    $error_messages[] = 'Current password are not correct.';
+    $error_messages[] = 'Please make sure and submit again';
+    require('./views/error_display.php');
+  }
 }
  ?>

@@ -26,6 +26,6 @@ $ERR_STATUS = 0;
 define('ERR_CONTROLLER', 1);
 define('ERR_ACTION', 2);
 define('ERR_FORM', 3);
-define('ERR_URL', 4);
+define('ERR_URL', 4); // for URL query (i.e. http://localhost/merchat/order/get_orders?order_status=5) order_status does not contain 5.
 
  ?>
