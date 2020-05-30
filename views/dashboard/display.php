@@ -25,7 +25,7 @@ displayMainNavigation('dashboard');
      <a href="<?php echo URL ?>/membership/display/">
        <span>Memberships</span>
      </a>
-   </div> 
+   </div>
  </section>
  <section>
    <h1>Add New Customer</h1>
