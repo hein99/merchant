@@ -58,9 +58,9 @@ displayMainNavigation('customer');
 <!-- end of silver icon -->
 
 <!-- diamond icon -->
-  <div class="wp-membership-logo">
+  <!-- <div class="wp-membership-logo">
     <i class="fas fa-gem"></i>
-  </div>
+  </div> -->
 <!-- end of diamond icon -->
 
 </div>
