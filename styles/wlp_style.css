@@ -98,10 +98,15 @@
 		display: none;
 	}
 
+	.dataTables_wrapper .dataTables_paginate .paginate_button{
+		padding: 6px 12px !important;
+	}
+
 	.dataTables_wrapper{
+		display: flex;
 		position: absolute !important;
 		width: calc(100% - 144px);
-		height: calc(100% - 32px);
+		height: calc(100% - 24px);
 		background-color: white;
 		border: 1px solid #ddd;
 	}
@@ -110,13 +115,14 @@
 		position: absolute;
 		right: 0;
 		top: 0;
-		transform: translateY(-60px);
+		transform: translateY(-57px);
 	}
 
 	.dataTables_filter input{
 		border-radius: 5px;
 		width: 159px;
 		height: 32px;
+		letter-spacing: 0.5px;
 		color: #2D3436;
 		padding: 0 10px;
 		border: 1px solid #ddd;
@@ -128,8 +134,9 @@
 
 	.dataTables_wrapper .dataTables_info{
 		position: absolute;
-		bottom: 10px;
+		bottom: 8px;
 		left: 10px;
+		font-size: 14px;
 		padding: 10px !important;
 	}
 
@@ -146,37 +153,37 @@
 	}
 
 	table.dataTable thead th{
-		padding: 22px 10px !important;
+		padding: 18px 10px !important;
 		border-bottom: 1px solid #ddd !important;
 		box-sizing: border-box;
 	}
 
 	table.dataTable thead th:nth-child(1){
-		min-width: 120px;
+		max-width: 120px !important;
 	}
 
 	table.dataTable thead th:nth-child(2){
-		min-width: 112px;
+		min-width: 110px;
 	}
 
 	table.dataTable thead th:nth-child(3){
-		min-width: 136px;
+		min-width: 132px;
 	}
 
 	table.dataTable thead th:nth-child(4){
-		min-width: 112px;
+		min-width: 110px;
 	}
 
 	table.dataTable thead th:nth-child(5){
-		min-width: 136px;
+		min-width: 132px;
 	}
 
 	table.dataTable thead th:nth-child(6){
-		min-width: 151px;
+		min-width: 147px;
 	}
 
 	table.dataTable thead th:nth-child(7){
-		min-width: 143px;
+		min-width: 139px;
 	}
 
 	table.dataTable tbody td{
@@ -232,7 +239,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 24px 72px;
+		padding: 21px 72px;
 		box-sizing: border-box;
 	}
 
@@ -320,7 +327,7 @@
 		position: relative !important;
 		width: 100%;
 		height: 100%;
-		padding: 0 72px 32px;
+		padding: 0 72px 24px;
 		box-sizing: border-box;
 	}
 
@@ -371,8 +378,8 @@
 
 	.wp-membership-logo #membership-level{
 		position: absolute;
-		left: calc(50% - 0.7px);
-		top: 15px;
+		left: calc(50% - 0.3px);
+		top: 12px;
 		transform: translateX(-50%);
 		font-size: 11px;
 		font-weight: bold;
