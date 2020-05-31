@@ -11,6 +11,7 @@ class UsersAccount extends DataObject
     'address' => '',
     'activate_status' => '',
     'point' => '',
+    'balance' => '',
     'membership_id' => '',
     'created_date' => '',
     'modified_date' => ''
@@ -200,8 +201,8 @@ class UsersAccount extends DataObject
   public function createCustomerAccount()
   {
     $conn = parent::connect();
-    $sql = 'INSERT INTO ' .TBL_USERS_ACCOUNT . ' (username, password, user_status, phone, address, activate_status, point, membership_id, created_date, modified_date)
-    VALUES (:username, PASSWORD(:password), 0, :phone, :address, 0, 0, 1, NOW(), NOW())';
+    $sql = 'INSERT INTO ' .TBL_USERS_ACCOUNT . ' (username, password, user_status, phone, address, activate_status, point, balance, membership_id, created_date, modified_date)
+    VALUES (:username, PASSWORD(:password), 0, :phone, :address, 0, 0, 0, 1, NOW(), NOW())';
 
     try{
       $st = $conn->prepare($sql);
@@ -252,7 +253,7 @@ class UsersAccount extends DataObject
   public function editCustomerInfo()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET username = :username, phone = :phone, address = :address, activate_status = !activate_status, point = :point, membership_id = :membership_id, modified_date = NOW() WHERE id = :id';
+    $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET username = :username, phone = :phone, address = :address, activate_status = !activate_status, point = :point, balance = :balance, membership_id = :membership_id, modified_date = NOW() WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
@@ -261,6 +262,7 @@ class UsersAccount extends DataObject
       $st->bindValue(':phone', $this->data['phone'], PDO::PARAM_STR);
       $st->bindValue(':address', $this->data['address'], PDO::PARAM_STR);
       $st->bindValue(':point', $this->data['point'], PDO::PARAM_INT);
+      $st->bindValue(':balance', $this->data['balance'], PDO::PARAM_INT);
       $st->bindValue(':membership_id', $this->data['membership_id'], PDO::PARAM_INT);
       $st->execute();
       parent::disconnect($conn);
@@ -279,6 +281,39 @@ class UsersAccount extends DataObject
       $st = $conn->prepare($sql);
       $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
       $st->bindValue(':password', $this->data['password'], PDO::PARAM_STR);
+      $st->execute();
+      parent::disconnect($conn);
+    } catch (PDOException $e) {
+      parent::disconnect($conn);
+      die("Query failed: ". $e->getMessage());
+    }
+  }
+  public static function getCustomerBalance($id)
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM ' . TBL_USERS_ACCOUNT . ' WHERE id = :id AND user_status = 0';
+
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue('id', $id, PDO::PARAM_INT);
+      $st->execute();
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new UsersAccount($row);
+    } catch (PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+  public static function updateCustomerBalance($id, $balance)
+  {
+    $conn = parent::connect();
+    $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET balance = :balance WHERE id = :id';
+
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $id, PDO::PARAM_INT);
+      $st->bindValue(':balance', $balance, PDO::PARAM_INT);
       $st->execute();
       parent::disconnect($conn);
     } catch (PDOException $e) {
