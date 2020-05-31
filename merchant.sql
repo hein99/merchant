@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 28, 2020 at 04:54 PM
+-- Generation Time: May 31, 2020 at 09:23 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -129,6 +129,7 @@ CREATE TABLE `users` (
   `address` text COLLATE utf8_unicode_ci NOT NULL,
   `activate_status` tinyint(1) NOT NULL,
   `point` int(11) NOT NULL,
+  `balance` float NOT NULL,
   `membership_id` int(11) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -138,9 +139,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `user_status`, `phone`, `address`, `activate_status`, `point`, `membership_id`, `created_date`, `modified_date`) VALUES
-(1, 'David', '*8201E0C1BD05201452E12ECFD5B8AFE4AEFBD053', 1, '0999999', 'mayangone', 1, 0, 1, '2020-05-27 14:22:34', '2020-05-26 09:22:12'),
-(2, 'Alice', '*4F5CCA657BD61D1C1127E5C4EA3B0EE4A9841B85', 1, '09798467816', 'ma thi', 1, 0, 0, '2020-05-27 14:22:34', '0000-00-00 00:00:00');
+INSERT INTO `users` (`id`, `username`, `password`, `user_status`, `phone`, `address`, `activate_status`, `point`, `balance`, `membership_id`, `created_date`, `modified_date`) VALUES
+(1, 'David', '*8201E0C1BD05201452E12ECFD5B8AFE4AEFBD053', 1, '0999999', 'mayangone', 1, 0, 0, 1, '2020-05-27 14:22:34', '2020-05-26 09:22:12'),
+(2, 'Alice', '*4F5CCA657BD61D1C1127E5C4EA3B0EE4A9841B85', 1, '09798467816', 'ma thi', 1, 0, 0, 3, '2020-05-31 04:53:23', '0000-00-00 00:00:00'),
+(5, 'Joe', '*60D178145669A4D1569FE820852BB3425CB2D4A7', 0, '09798467816', 'nth', 1, 0, 0, 1, '2020-05-30 15:37:53', '0000-00-00 00:00:00'),
+(6, 'Jack', '*9BCDC990E611B8D852EFAF1E3919AB6AC8C8A9F0', 0, '09965353564', 'nth', 0, 0, 0, 2, '2020-05-30 15:37:53', '0000-00-00 00:00:00'),
+(7, 'john', '*DACDE7F5744D3CB439B40D938673B8240B824853', 0, '09260968600', 'sth', 1, 0, 0, 1, '2020-05-31 04:39:33', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -208,7 +212,7 @@ ALTER TABLE `membership`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
