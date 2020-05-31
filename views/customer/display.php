@@ -30,7 +30,7 @@ displayMainNavigation('customer');
           <th>Phone no.</th>
           <th>Balance</th>
           <th>Created Date</th>
-          <th>Activate/Deactivate</th>
+          <th>Activation status</th>
         </tr>
       </thead>
     </table>
@@ -44,7 +44,7 @@ displayMainNavigation('customer');
           <th>Phone no.</th>
           <th>Balance</th>
           <th>Created Date</th>
-          <th>Activate/Deactivate</th>
+          <th>Activation status</th>
         </tr>
       </thead>
     </table>
