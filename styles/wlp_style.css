@@ -213,20 +213,21 @@
 		position: relative;
 		width: 95px;
 		height: 95px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
-	.wp-membership-logo svg{
-		position: absolute;
-		width: 100%;
-		height: 100%;
+	.wp-membership-logo i{
+		font-size: 52px;
+		color: #C0BFDF;
 	}
 
 	.wp-membership-logo #membership-level{
 		position: absolute;
 		left: 50%;
-		top: 14px;
+		top: 18px;
 		transform: translateX(-50%);
-		font-size: 18px;
 		font-weight: bold;
 		color: #C0BFDF;
 	}
