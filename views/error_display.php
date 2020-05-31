@@ -9,7 +9,6 @@ switch($ERR_STATUS)
     $text = 'Not Found Any Action';
     break;
   case 3:
-    $text = 'Missing Fields';
     foreach($error_messages as $error_message)
       $text .= $error_message;
     break;

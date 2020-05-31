@@ -201,7 +201,7 @@ class UsersAccount extends DataObject
   {
     $conn = parent::connect();
     $sql = 'INSERT INTO ' .TBL_USERS_ACCOUNT . ' (username, password, user_status, phone, address, activate_status, point, membership_id, created_date, modified_date)
-    VALUES (:username, PASSWORD(:password), 0, :phone, :address, 0, 0, 0, NOW(), NOW())';
+    VALUES (:username, PASSWORD(:password), 0, :phone, :address, 0, 0, 1, NOW(), NOW())';
 
     try{
       $st = $conn->prepare($sql);
@@ -232,8 +232,24 @@ class UsersAccount extends DataObject
       die("Query failed: ". $e->getMessage());
     }
   }
-
-  public function editCustomerIfo()
+  public static function getCustomerNameCheck($username, $id)
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND id != :id AND user_status = 0';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':username', $username, PDO::PARAM_STR);
+      $st->bindValue(':id', $id, PDO::PARAM_INT);
+      $st->execute();
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new UsersAccount($row);
+    } catch (PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+  public function editCustomerInfo()
   {
     $conn = parent::connect();
     $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET username = :username, phone = :phone, address = :address, activate_status = !activate_status, point = :point, membership_id = :membership_id, modified_date = NOW() WHERE id = :id';
