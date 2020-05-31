@@ -93,3 +93,142 @@
 		background-color: #888;
 	}
 /*-------------------------------------- END OF ERROR PAGE -------------------------------------*/
+/*CUSTOMER PAGE*/
+	.dataTables_length{
+		display: none;
+	}
+
+	.dataTables_wrapper{
+		width: 100%;
+		min-height: 100% !important;
+	}
+
+	.dataTables_filter{
+		position: absolute;
+		right: 0;
+		top: 0;
+		transform: translateY(-74px);
+	}
+
+	#tb-activate-js-wrapper{
+		
+	}
+
+	table.dataTable.no-footer{
+		border: 1px solid #ddd !important;min-height: 100% !important;
+		background-color: white !important;
+		
+	}
+
+	table.dataTable thead th{
+		border-bottom: 1px solid #ddd !important;
+	}
+
+	table.dataTable tbody tr{
+
+	}
+
+	table.dataTable{
+		width: 100% !important;
+	}
+
+	#extra{
+		width: 272px;
+	}
+
+	.wp-customer-page-container{
+		width: 100%;
+		height: 100%;
+		background-color: #efefef;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.wp-customer-page-header{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 42px;
+		box-sizing: border-box;
+	}
+
+	.wp-customer-count-container{
+		display: flex;
+		align-items: center;
+	}
+
+	.wp-customer-count-container span:first-child{
+		font-size: 28px;
+		color: #2D3436;
+		font-weight: bold;
+		margin-right: 32px;
+	}
+
+	#wp-customer-count{
+		vertical-align: baseline;
+		color: #555555;
+		margin-right: 16px;
+	}
+
+	#user-plus-icon{
+		position: relative;
+		background-color: white;
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		cursor: pointer;
+		box-shadow: 0 0 10px #ddd;
+		transition: 0.3s ease;
+	}
+
+	#user-plus-icon:hover{
+		background-color: #2EC5FF;
+	}
+
+	#user-plus-icon i{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: #2EC5FF;
+		transition: 0.3s ease;
+	}
+
+	#user-plus-icon:hover i{
+		color: white;
+	}
+
+	.wp-customer-table{
+		position: relative;
+		width: calc(100% - 5px);
+		height: 100%;
+		padding: 0 42px 15px;
+		box-sizing: border-box;
+	}
+
+/*MEMBERSHIP LOGO*/
+	.wp-membership-logo{
+		position: relative;
+		width: 95px;
+		height: 95px;
+	}
+
+	.wp-membership-logo svg{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+	.wp-membership-logo #membership-level{
+		position: absolute;
+		left: 50%;
+		top: 14px;
+		transform: translateX(-50%);
+		font-size: 18px;
+		font-weight: bold;
+		color: #C0BFDF;
+	}
+/*END OF MEMBERSHIP LOGO*/
+/*-------------------------------------- END OF CUSTOMER PAGE ----------------------------------*/
