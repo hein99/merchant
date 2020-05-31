@@ -146,7 +146,7 @@
 	}
 
 	table.dataTable thead th{
-		padding: 22px 16px !important;
+		padding: 22px 10px !important;
 		border-bottom: 1px solid #ddd !important;
 		box-sizing: border-box;
 	}
@@ -156,34 +156,34 @@
 	}
 
 	table.dataTable thead th:nth-child(2){
-		min-width: 128px;
+		min-width: 124px;
 	}
 
 	table.dataTable thead th:nth-child(3){
-		min-width: 159px;
+		min-width: 152px;
 	}
 
 	table.dataTable thead th:nth-child(4){
-		min-width: 128px;
+		min-width: 124px;
 	}
 
 	table.dataTable thead th:nth-child(5){
-		min-width: 144px;
+		min-width: 152px;
 	}
 
 	table.dataTable thead th:nth-child(6){
-		min-width: 167px;
+		min-width: 179px;
 	}
 
 	table.dataTable thead th:nth-child(7){
-		min-width: 159px;
+		min-width: 167px;
 	}
 
 	table.dataTable tbody td{
 		position: relative;
 		text-align: center;
 		font-size: 15px;
-		padding: 18px 16px !important;
+		padding: 18px 10px !important;
 	}
 
 	table.dataTable tbody td:nth-child(3){
