@@ -39,12 +39,6 @@ $(document).ready(function(){
   $('.wp-customer-ac-de-buttons button').on('click', function(){
     $(this).addClass('active').siblings().removeClass('active');
   });
-
-  /*$('.wp-membership-logo i').hover(function(){
-    $('.wp-membership-logo::before').css('display', 'block');
-  }, function(){
-
-  });*/
 /*customer page*/
 
 });
