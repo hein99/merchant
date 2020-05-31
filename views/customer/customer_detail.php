@@ -41,9 +41,9 @@ displayMainNavigation('customer');
         <span><i class="fas fa-award silver <?php echo $membership_icon; ?>"></i> <?php echo $membership_name; ?></span> / <span><?php echo $customer->getValueEncoded('point') ?> points</span>
       </div>
       <div class="">
-        <span><?php echo $customer->getValueEncoded('point') ?> Ks</span>
-        <span><?php echo $customer->getValueEncoded('phone') ?></span>
-        <span><?php echo $customer->getValueEncoded('address') ?></span>
+        <span><i class="fas fa-wallet"></i><?php echo $customer->getValueEncoded('point') ?> Ks</span>
+        <span><i class="fas fa-phone-alt"></i><?php echo $customer->getValueEncoded('phone') ?></span>
+        <span><i class="fas fa-map-marker-alt"></i><?php echo $customer->getValueEncoded('address') ?></span>
       </div>
     </div>
     <div class="">
