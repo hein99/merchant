@@ -47,6 +47,19 @@ $(document).on('click', '#btn-deactivate-js', function(){
   $('#tb-deactivate-js_wrapper').show();
 });
 
+$(document).on('click', '.activate-toggle-js', function(){
+  var id = $(this).data('id');
+  changeActivateStatus(id);
+});
+
+function changeActivateStatus(id)
+{
+  $.ajax({
+    url: PAGE_URL+'/customer/change_activate_status/',
+    data: "id="+id,
+    method:"POST",
+  })
+}
 
 function getTotalCustomersCount()
 {
