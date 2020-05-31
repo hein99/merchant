@@ -17,9 +17,13 @@ class CustomerStatement extends DataObject
       $st = $conn->prepare($sql);
       $st->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
       $st->execute();
-      $row = $st->fetch();
+      $statements = array();
+      foreach($st->fetchAll() as $row)
+      {
+        $statements[] =  new CustomerStatement($row);
+      }
       parent::disconnect($conn);
-      if($row) return new CustomerStatement($row);
+      return $statements;
     } catch (PDOException $e) {
       parent::disconnect($conn);
       die('Query failed: ' . $e->getMessage());

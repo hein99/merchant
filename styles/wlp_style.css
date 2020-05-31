@@ -115,7 +115,7 @@
 
 	.dataTables_filter input{
 		border-radius: 5px;
-		width: 159px;
+		width: 175px;
 		height: 36px;
 		color: #2D3436;
 		padding: 0 10px;
@@ -128,9 +128,9 @@
 
 	.dataTables_wrapper .dataTables_info{
 		position: absolute;
-		bottom: 0;
-		left: 0;
-		padding: 15px !important;
+		bottom: 10px;
+		left: 10px;
+		padding: 10px !important;
 	}
 
 	.dataTables_wrapper .dataTables_paginate{
@@ -141,7 +141,7 @@
 	}
 
 	table.dataTable.no-footer{
-		border-collapse: collapse !important;
+		border-collapse: separate !important;
 		border-bottom: 0 !important;
 	}
 
@@ -151,9 +151,26 @@
 		box-sizing: border-box;
 	}
 
-	table.dataTable tbody th, table.dataTable tbody td{
+	table.dataTable thead th:nth-child(1){
+		max-width: 127px;
+	}
+
+	table.dataTable tbody{
+		overflow-y: auto;
+	}
+
+	table.dataTable tbody td{
+		position: relative;
 		text-align: center;
 		padding: 18px 16px !important;
+	}
+
+	table.dataTable tbody td:nth-child(3){
+		text-align: left;
+	}
+
+	table.dataTable tbody td:nth-child(5){
+		text-align: right;
 	}
 
 	table.dataTable tbody tr{
@@ -172,8 +189,16 @@
 		width: 100% !important;
 	}
 
+	.dataTables_empty{
+		position: absolute !important;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
 	#extra{
-		width: 272px;
+		width: 278px;
+		pointer-events: none;
 	}
 
 	.wp-customer-page-container{
@@ -283,24 +308,32 @@
 /*MEMBERSHIP LOGO*/
 	.wp-membership-logo{
 		position: absolute;
-		bottom: 0;
-		width: 95px;
-		height: 95px;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 
-	.wp-membership-logo i{
-		font-size: 52px;
+	.wp-membership-logo i.fa-gem{
+		font-size: 22px;
 		color: #2EC5FF;
+	}
+
+	.wp-membership-logo i.fa-award{
+		font-size: 32px;
+		color: #C0BFDF;
 	}
 
 	.wp-membership-logo #membership-level{
 		position: absolute;
-		left: 50%;
-		top: 18px;
+		left: calc(50% - 1px);
+		top: 15px;
 		transform: translateX(-50%);
+		font-size: 11px;
 		font-weight: bold;
 		color: #C0BFDF;
 	}

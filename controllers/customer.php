@@ -17,17 +17,27 @@ switch($action)
   case 'get_customers_count':
     getCustomersCount();
     break;
+  case 'get_customer_balance':
+    getCustomerBalance();
+    break;
   case 'create':
     addCustomerAccount();
+    break;
+  case 'edit_customer_info':
+    editCustomerInfo();
     break;
   case 'change_password':
     changeCustomerPassword();
     break;
-
+  case 'add_amount':
+    addAmount();
+    break;
+  case 'sub_amount':
+    subAmount();
+    break;
   case 'change_activate_status':
     changeActivateStatus();
     break;
-
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -37,10 +47,9 @@ switch($action)
 function detail($id)
 {
   $customer = UsersAccount::getCustomerAccountByID($id);
-  $customer_statement = CustomerStatement::getCustomerStatement($id);
+  $customer_statements = CustomerStatement::getCustomerStatement($id);
   require('./views/customer/customer_detail.php');
 }
-
 function getActivateCustomers()
 {
   $activate_customers = UsersAccount::getActivateCustomerAccount();
@@ -156,7 +165,11 @@ function getCustomersCount()
   $total = UsersAccount::getTotalCustomersCount();
   echo $total;
 }
-
+function getCustomerBalance()
+{
+  $customer_amount = UsersAccount::getCustomerBalance($_POST['customer_id']);
+  echo $customer_amount->getValue('balance');
+}
 function addCustomerAccount()
 {
   $required_fields = array('username', 'password', 'phone', 'address');
@@ -189,6 +202,7 @@ function addCustomerAccount()
   }
   if($error_messages)
   {
+    $ERR_STATUS = ERR_FORM;
     require('./views/error_display.php');
   }
   else {
@@ -196,7 +210,42 @@ function addCustomerAccount()
     header('location: ' . URL . '/dashboard/');
   }
 }
+function editCustomerInfo()
+{
+  $required_fields = array('username', 'phone', 'address', 'point','balance', 'membership_id');
+  $missing_fields = array();
+  $error_messages = array();
 
+  $customer_info = new UsersAccount(array(
+    'id' => isset($_POST['id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['id']) : '',
+    'username' => isset($_POST['username']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
+    'phone' => isset($_POST['phone']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['phone']) : '',
+    'address' => isset($_POST['address']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['address']) : '',
+    'point' => isset($_POST['point']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['point']) : '',
+    'balance' => isset($_POST['balance']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['balance']) : '',
+    'membership_id' => isset($_POST['membership_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['membership_id']) : ''
+  ));
+  foreach ($required_fields as $required_field) {
+    if(!$customer_info->getValue($required_field))
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'There were some missing fields!';
+  }
+  if(UsersAccount::getCustomerNameCheck($customer_info->getValue('username'), $customer_info->getValue('id')))
+  {
+    $error_messages[] = 'A member with that username already exists in the database. Please choose an another username.';
+  }
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }else {
+    $customer_info->editCustomerInfo();
+    header('location: '. URL . '/customer/detail/' . $_POST['id']);
+  }
+}
 function changeCustomerPassword()
 {
   $request_account = new UsersAccount(array(
@@ -230,6 +279,7 @@ function changeCustomerPassword()
     }
     if($error_messages)
     {
+      $ERR_STATUS = ERR_FORM;
       require('./views/error_display.php');
     }else {
       $new_account->editCustomerPassword();
@@ -238,9 +288,82 @@ function changeCustomerPassword()
   }
   else {
     $error_messages = array();
-    $error_messages[] = 'Current password are not correct.';
+    $error_messages[] = 'Current password is not correct.';
     $error_messages[] = 'Please make sure and submit again';
+    $ERR_STATUS = ERR_FORM;
     require('./views/error_display.php');
+  }
+}
+function addAmount()
+{
+  $required_fields = array('amount', 'about');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $customer_statement = new CustomerStatement(array(
+    'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['customer_id']) : '',
+    'amount' => isset($_POST['amount']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['amount']) : '',
+    'about' => isset($_POST['about']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['about']) : ''
+  ));
+
+  foreach($required_fields as $required_field)
+  {
+    if(!$customer_statement->getValue($required_field))
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'There were some missing fields!';
+  }
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else {
+    $customer_amount = UsersAccount::getCustomerBalance($customer_statement->getValue('customer_id'));
+    $customer_total_amount = $customer_amount->getValue('balance') + $customer_statement->getValue('amount');
+    UsersAccount::updateCustomerBalance($customer_statement->getValue('customer_id'), $customer_total_amount);
+    $customer_statement->addCustomerStatement();
+  }
+}
+function subAmount()
+{
+  $required_fields = array('amount', 'about');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $customer_statement = new CustomerStatement(array(
+    'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['customer_id']) : '',
+    'amount' => isset($_POST['amount']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['amount']) : '',
+    'about' => isset($_POST['about']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['about']) : ''
+  ));
+
+  foreach($required_fields as $required_field)
+  {
+    if(!$customer_statement->getValue($required_field))
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'There were some missing fields!';
+  }
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else {
+    $customer_amount = UsersAccount::getCustomerBalance($customer_statement->getValue('customer_id'));
+    if($customer_amount->getValue('balance') < $customer_statement->getValue('amount'))
+    {
+      $ERR_STATUS = ERR_FORM;
+      require('./views/error_display.php');
+    }else{
+      $customer_total_amount = $customer_amount->getValue('balance') - $customer_statement->getValue('amount');
+      UsersAccount::updateCustomerBalance($customer_statement->getValue('customer_id'), $customer_total_amount);
+      $customer_statement->addCustomerStatement();
+    }
   }
 }
 
