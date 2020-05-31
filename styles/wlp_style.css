@@ -100,7 +100,7 @@
 
 	.dataTables_wrapper{
 		position: absolute !important;
-		width: calc(100% - 96px);
+		width: calc(100% - 144px);
 		height: calc(100% - 24px);
 		background-color: white;
 		border: 1px solid #ddd;
@@ -110,13 +110,13 @@
 		position: absolute;
 		right: 0;
 		top: 0;
-		transform: translateY(-75px);
+		transform: translateY(-65px);
 	}
 
 	.dataTables_filter input{
 		border-radius: 5px;
-		width: 175px;
-		height: 36px;
+		width: 159px;
+		height: 32px;
 		color: #2D3436;
 		padding: 0 10px;
 		border: 1px solid #ddd;
@@ -146,22 +146,43 @@
 	}
 
 	table.dataTable thead th{
-		padding: 24px 16px !important;
+		padding: 22px 16px !important;
 		border-bottom: 1px solid #ddd !important;
 		box-sizing: border-box;
 	}
 
 	table.dataTable thead th:nth-child(1){
-		max-width: 127px;
+		min-width: 128px;
 	}
 
-	table.dataTable tbody{
-		overflow-y: auto;
+	table.dataTable thead th:nth-child(2){
+		min-width: 128px;
+	}
+
+	table.dataTable thead th:nth-child(3){
+		min-width: 159px;
+	}
+
+	table.dataTable thead th:nth-child(4){
+		min-width: 128px;
+	}
+
+	table.dataTable thead th:nth-child(5){
+		min-width: 144px;
+	}
+
+	table.dataTable thead th:nth-child(6){
+		min-width: 167px;
+	}
+
+	table.dataTable thead th:nth-child(7){
+		min-width: 159px;
 	}
 
 	table.dataTable tbody td{
 		position: relative;
 		text-align: center;
+		font-size: 15px;
 		padding: 18px 16px !important;
 	}
 
@@ -177,12 +198,8 @@
 		border-bottom: 1px solid #ddd !important;
 	}
 
-	table.dataTable tbody tr:nth-child(even){
-		background-color: #f5f5f5 !important;
-	}
-
 	table.dataTable tbody tr:hover{
-		background-color: #ECF0F1 !important;
+		background-color: #f5f5f5 !important;
 	}
 
 	table.dataTable{
@@ -197,7 +214,7 @@
 	}
 
 	#extra{
-		width: 278px;
+		width: 262px;
 		pointer-events: none;
 	}
 
@@ -215,7 +232,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 36px 48px;
+		padding: 28px 72px;
 		box-sizing: border-box;
 	}
 
@@ -225,7 +242,7 @@
 	}
 
 	.wp-customer-count-container span:first-child{
-		font-size: 28px;
+		font-size: 26px;
 		color: #2D3436;
 		font-weight: bold;
 		margin-right: 32px;
@@ -234,6 +251,7 @@
 	#wp-customer-count{
 		position: relative;
 		top: 3px;
+		font-size: 15px;
 		color: #555555;
 		margin-right: 16px;
 	}
@@ -241,12 +259,12 @@
 	#user-plus-icon{
 		position: relative;
 		background-color: white;
-		width: 38px;
-		height: 38px;
+		width: 36px;
+		height: 36px;
 		border-radius: 50%;
 		cursor: pointer;
 		box-shadow: 0 0 10px #ddd;
-		transition: 0.3s ease;
+		transition: 0.1s ease;
 	}
 
 	#user-plus-icon:hover{
@@ -259,7 +277,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: #2EC5FF;
-		transition: 0.3s ease;
+		transition: 0.1s ease;
 	}
 
 	#user-plus-icon:hover i{
@@ -275,8 +293,9 @@
 	.wp-customer-ac-de-buttons button{
 		font-family: inter;
 		border: none;
-		width: 104px;
-		height: 36px;
+		width: 95px;
+		height: 32px;
+		font-size: 14px;
 		margin: 0 1.5px;
 		font-weight: bolder;
 		letter-spacing: 0.5px;
@@ -301,7 +320,7 @@
 		position: relative !important;
 		width: 100%;
 		height: 100%;
-		padding: 0 48px 24px;
+		padding: 0 72px 24px;
 		box-sizing: border-box;
 	}
 
@@ -316,6 +335,30 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		overflow: hidden;
+	}
+
+	.wp-membership-logo::before{
+		content: attr(dataholder);
+		position: absolute;
+		width: calc(100% - 2px);
+		height: 100%;
+		left: 50%;
+		transform: translateX(-155%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #ECF0F1;
+		color: white;
+		font-weight: bold;
+		letter-spacing: 0.5px;
+		z-index: 3;
+		pointer-events: none;	
+		transition: transform 0.3s ease;
+	}
+
+	.wp-membership-logo:hover::before{
+		transform: translateX(-50%);
 	}
 
 	.wp-membership-logo i.fa-gem{
@@ -325,17 +368,52 @@
 
 	.wp-membership-logo i.fa-award{
 		font-size: 32px;
-		color: #C0BFDF;
 	}
 
 	.wp-membership-logo #membership-level{
 		position: absolute;
-		left: calc(50% - 1px);
+		left: calc(50% - 0.7px);
 		top: 15px;
 		transform: translateX(-50%);
 		font-size: 11px;
 		font-weight: bold;
-		color: #C0BFDF;
+	}
+
+	.wp-membership-logo.sliver-status i.fa-award, 
+	.wp-membership-logo.sliver-status #membership-level{
+		color: #AEAEEF;
+	}
+
+	.sliver-status.wp-membership-logo::before{
+		background-color: #AEAEEF;
+	}
+
+	.wp-membership-logo.gold-status i.fa-award,
+	.wp-membership-logo.gold-status #membership-level{
+		color: #FDD600;
+	}
+
+	.gold-status.wp-membership-logo::before{
+		background-color: #FDD600;
+	}
+
+	.wp-membership-logo.platinum-status i.fa-award,
+	.wp-membership-logo.platinum-status #membership-level{
+		color: #B9BBBC;
+	}
+
+	.platinum-status.wp-membership-logo::before{
+		background-color: #B9BBBC;
+	}
+
+	.diamond-status.wp-membership-logo::before{
+		background-color: #2EC5FF;
+	}
+
+	.customer-detail{
+		color: #222;
+		text-decoration: none;
+		border-bottom: 1px dotted #555;
 	}
 /*END OF MEMBERSHIP LOGO*/
 /*-------------------------------------- END OF CUSTOMER PAGE ----------------------------------*/
