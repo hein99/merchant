@@ -17,13 +17,27 @@ switch($action)
   case 'get_customers_count':
     getCustomersCount();
     break;
+  case 'get_customer_balance':
+    getCustomerBalance();
+    break;
   case 'create':
     addCustomerAccount();
+    break;
+  case 'edit_customer_info':
+    editCustomerInfo();
     break;
   case 'change_password':
     changeCustomerPassword();
     break;
-
+  case 'add_amount':
+    addAmount();
+    break;
+  case 'sub_amount':
+    subAmount();
+    break;
+  case 'change_activate_status':
+    changeActivateStatus();
+    break;
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -33,10 +47,15 @@ switch($action)
 function detail($id)
 {
   $customer = UsersAccount::getCustomerAccountByID($id);
-  $customer_statement = CustomerStatement::getCustomerStatement($id);
-  require('./views/customer/customer_detail.php');
+  $customer_statements = CustomerStatement::getCustomerStatement($id);
+  if(!$customer)
+  {
+    $ERR_STATUS = ERR_URL;
+    require('./views/error_display.php');
+  }else{
+    require('./views/customer/customer_detail.php');
+  }
 }
-
 function getActivateCustomers()
 {
   $activate_customers = UsersAccount::getActivateCustomerAccount();
@@ -48,19 +67,30 @@ function getActivateCustomers()
     switch($activate_customer['membership_id'])
     {
       case 1:
-        $membership_name = 'Silver';
+        $membership_name = '<div class="wp-membership-logo sliver-status" dataholder="Silver">
+          <i class="fas fa-award"></i>
+          <span id="membership-level">S</span>
+        </div>';
         break;
 
       case 2:
-        $membership_name = 'Gold';
+        $membership_name = '<div class="wp-membership-logo gold-status" dataholder="Gold">
+          <i class="fas fa-award"></i>
+          <span id="membership-level">G</span>
+        </div>';
         break;
 
       case 3:
-        $membership_name = 'Platinum';
+        $membership_name = '<div class="wp-membership-logo platinum-status" dataholder="Platinum">
+          <i class="fas fa-award"></i>
+          <span id="membership-level">P</span>
+        </div>';
         break;
 
       case 4:
-        $membership_name = 'Diamond';
+        $membership_name = '<div class="wp-membership-logo diamond-status" dataholder="Diamond">
+          <i class="fas fa-gem"></i>
+        </div>';
         break;
 
       default:
@@ -69,12 +99,12 @@ function getActivateCustomers()
 
     $new_customer = (object)array(
       'customer_id' => str_pad( $activate_customer['id'], 7, 0, STR_PAD_LEFT ),
-      'customer_name' => $activate_customer['username'],
+      'customer_name' => '<a href="'.URL.'/customer/detail/'.$activate_customer['id'].'" class ="customer-detail">'.$activate_customer['username'].'</a>',
       'membership_name' => $membership_name,
       'phone' => $activate_customer['phone'],
-      'balance' => str_pad( $activate_customer['id'], 7, 0, STR_PAD_LEFT ),
+      'balance' => number_format($activate_customer['balance'], 2) . 'Ks',
       'created_date' => $activate_customer['created_date'],
-      'activate_status' => $activate_customer['activate_status'] ? '<input type="radio" name="activate'. $activate_customer['id'] . '" checked>':'<input type="radio" name="activate' . $activate_customer['id'] . '" checked>'
+      'activate_status' => '<input type="checkbox" class="activate-toggle-js" data-id="'. $activate_customer['id'] .'" checked>'
     );
     $new_customers[] = $new_customer;
   }
@@ -91,19 +121,30 @@ function getDeactivateCustomers()
     switch($deactivate_customer['membership_id'])
     {
       case 1:
-        $membership_name = 'Silver';
+        $membership_name = '<div class="wp-membership-logo sliver-status" dataholder="Silver">
+          <i class="fas fa-award"></i>
+          <span id="membership-level">S</span>
+        </div>';
         break;
 
       case 2:
-        $membership_name = 'Gold';
+        $membership_name = '<div class="wp-membership-logo gold-status" dataholder="Gold">
+          <i class="fas fa-award"></i>
+          <span id="membership-level">G</span>
+        </div>';
         break;
 
       case 3:
-        $membership_name = 'Platinum';
+        $membership_name = '<div class="wp-membership-logo platinum-status" dataholder="Platinum">
+          <i class="fas fa-award"></i>
+          <span id="membership-level">P</span>
+        </div>';
         break;
 
       case 4:
-        $membership_name = 'Diamond';
+        $membership_name = '<div class="wp-membership-logo diamond-status" dataholder="Diamond">
+          <i class="fas fa-gem"></i>
+        </div>';
         break;
 
       default:
@@ -115,9 +156,9 @@ function getDeactivateCustomers()
       'customer_name' => $deactivate_customer['username'],
       'membership_name' => $membership_name,
       'phone' => $deactivate_customer['phone'],
-      'balance' => str_pad( $deactivate_customer['id'], 7, 0, STR_PAD_LEFT ),
+      'balance' => number_format($deactivate_customer['balance'], 2) . 'Ks',
       'created_date' => $deactivate_customer['created_date'],
-      'activate_status' => $deactivate_customer['activate_status'] ? '<input type="radio" name="deactivate'. $deactivate_customer['id'] . '" checked>':'<input type="radio" name="deactivate' . $deactivate_customer['id'] . '" checked>'
+      'activate_status' => '<input type="checkbox" class="activate-toggle-js" data-id="'. $deactivate_customer['id'] .'">'
     );
     $new_customers[] = $new_customer;
   }
@@ -128,6 +169,11 @@ function getCustomersCount()
 {
   $total = UsersAccount::getTotalCustomersCount();
   echo $total;
+}
+function getCustomerBalance()
+{
+  $customer_amount = UsersAccount::getCustomerBalance($_POST['customer_id']);
+  echo $customer_amount->getValue('balance');
 }
 function addCustomerAccount()
 {
@@ -161,11 +207,48 @@ function addCustomerAccount()
   }
   if($error_messages)
   {
+    $ERR_STATUS = ERR_FORM;
     require('./views/error_display.php');
   }
   else {
     $customer_account->createCustomerAccount();
     header('location: ' . URL . '/dashboard/');
+  }
+}
+function editCustomerInfo()
+{
+  $required_fields = array('username', 'phone', 'address', 'point','balance', 'membership_id');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $customer_info = new UsersAccount(array(
+    'id' => isset($_POST['id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['id']) : '',
+    'username' => isset($_POST['username']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
+    'phone' => isset($_POST['phone']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['phone']) : '',
+    'address' => isset($_POST['address']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['address']) : '',
+    'point' => isset($_POST['point']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['point']) : '',
+    'balance' => isset($_POST['balance']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['balance']) : '',
+    'membership_id' => isset($_POST['membership_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['membership_id']) : ''
+  ));
+  foreach ($required_fields as $required_field) {
+    if(!$customer_info->getValue($required_field))
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'There were some missing fields!';
+  }
+  if(UsersAccount::getCustomerNameCheck($customer_info->getValue('username'), $customer_info->getValue('id')))
+  {
+    $error_messages[] = 'A member with that username already exists in the database. Please choose an another username.';
+  }
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }else {
+    $customer_info->editCustomerInfo();
+    header('location: '. URL . '/customer/detail/' . $_POST['id']);
   }
 }
 function changeCustomerPassword()
@@ -201,6 +284,7 @@ function changeCustomerPassword()
     }
     if($error_messages)
     {
+      $ERR_STATUS = ERR_FORM;
       require('./views/error_display.php');
     }else {
       $new_account->editCustomerPassword();
@@ -209,9 +293,114 @@ function changeCustomerPassword()
   }
   else {
     $error_messages = array();
-    $error_messages[] = 'Current password are not correct.';
+    $error_messages[] = 'Current password is not correct.';
     $error_messages[] = 'Please make sure and submit again';
+    $ERR_STATUS = ERR_FORM;
     require('./views/error_display.php');
+  }
+}
+function addAmount()
+{
+  $required_fields = array('amount', 'about');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $customer_statement = new CustomerStatement(array(
+    'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['customer_id']) : '',
+    'amount' => isset($_POST['amount']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['amount']) : '',
+    'about' => isset($_POST['about']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['about']) : ''
+  ));
+
+  foreach($required_fields as $required_field)
+  {
+    if(!$customer_statement->getValue($required_field))
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'There were some missing fields!';
+  }
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else {
+    $customer_amount = UsersAccount::getCustomerBalance($customer_statement->getValue('customer_id'));
+    $customer_total_amount = $customer_amount->getValue('balance') + $customer_statement->getValue('amount');
+    UsersAccount::updateCustomerBalance($customer_statement->getValue('customer_id'), $customer_total_amount);
+    $customer_statement->addCustomerStatement();
+  }
+}
+function subAmount()
+{
+  $required_fields = array('amount', 'about');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $customer_statement = new CustomerStatement(array(
+    'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['customer_id']) : '',
+    'amount' => isset($_POST['amount']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['amount']) : '',
+    'about' => isset($_POST['about']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['about']) : ''
+  ));
+
+  foreach($required_fields as $required_field)
+  {
+    if(!$customer_statement->getValue($required_field))
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'There were some missing fields!';
+  }
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else {
+    $customer_amount = UsersAccount::getCustomerBalance($customer_statement->getValue('customer_id'));
+    if($customer_amount->getValue('balance') < $customer_statement->getValue('amount'))
+    {
+      $ERR_STATUS = ERR_FORM;
+      require('./views/error_display.php');
+    }else{
+      $customer_total_amount = $customer_amount->getValue('balance') - $customer_statement->getValue('amount');
+      UsersAccount::updateCustomerBalance($customer_statement->getValue('customer_id'), $customer_total_amount);
+      $customer_statement->addCustomerStatement();
+    }
+  }
+}
+
+function changeActivateStatus()
+{
+  $required_fields = array('id');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $customer = new UsersAccount(array(
+    'id' => isset($_POST['id']) ? preg_replace('/[^0-9]/', '', $_POST['id']) : ''
+  ));
+
+  foreach($required_fields as $required_field)
+  {
+    if(!$customer->getValue($required_field))
+      $missing_fields[] = $required_field;
+  }
+
+  if($missing_fields)
+  {
+    $error_messages[] = 'ID Not Included';
+  }
+
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else
+  {
+    $customer->editCustomerActivateStatus();
   }
 }
  ?>

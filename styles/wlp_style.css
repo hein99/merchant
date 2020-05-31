@@ -93,3 +93,325 @@
 		background-color: #888;
 	}
 /*-------------------------------------- END OF ERROR PAGE -------------------------------------*/
+/*CUSTOMER PAGE*/
+	.dataTables_length{
+		display: none;
+	}
+
+	.dataTables_wrapper{
+		position: absolute !important;
+		width: calc(100% - 144px);
+		height: calc(100% - 32px);
+		background-color: white;
+		border: 1px solid #ddd;
+	}
+
+	.dataTables_filter{
+		position: absolute;
+		right: 0;
+		top: 0;
+		transform: translateY(-60px);
+	}
+
+	.dataTables_filter input{
+		border-radius: 5px;
+		width: 159px;
+		height: 32px;
+		color: #2D3436;
+		padding: 0 10px;
+		border: 1px solid #ddd;
+	}
+
+	.dataTables_filter input:focus{
+		border-color: #2EC5FF;
+	}
+
+	.dataTables_wrapper .dataTables_info{
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		padding: 10px !important;
+	}
+
+	.dataTables_wrapper .dataTables_paginate{
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		padding: 10px !important;
+	}
+
+	table.dataTable.no-footer{
+		border-collapse: separate !important;
+		border-bottom: 0 !important;
+	}
+
+	table.dataTable thead th{
+		padding: 22px 10px !important;
+		border-bottom: 1px solid #ddd !important;
+		box-sizing: border-box;
+	}
+
+	table.dataTable thead th:nth-child(1){
+		min-width: 128px;
+	}
+
+	table.dataTable thead th:nth-child(2){
+		min-width: 124px;
+	}
+
+	table.dataTable thead th:nth-child(3){
+		min-width: 152px;
+	}
+
+	table.dataTable thead th:nth-child(4){
+		min-width: 124px;
+	}
+
+	table.dataTable thead th:nth-child(5){
+		min-width: 152px;
+	}
+
+	table.dataTable thead th:nth-child(6){
+		min-width: 179px;
+	}
+
+	table.dataTable thead th:nth-child(7){
+		min-width: 167px;
+	}
+
+	table.dataTable tbody td{
+		position: relative;
+		text-align: center;
+		font-size: 15px;
+		padding: 18px 10px !important;
+	}
+
+	table.dataTable tbody td:nth-child(3){
+		text-align: left;
+	}
+
+	table.dataTable tbody td:nth-child(5){
+		text-align: right;
+	}
+
+	table.dataTable tbody tr{
+		border-bottom: 1px solid #ddd !important;
+	}
+
+	table.dataTable tbody tr:hover{
+		background-color: #f5f5f5 !important;
+	}
+
+	table.dataTable{
+		width: 100% !important;
+	}
+
+	.dataTables_empty{
+		position: absolute !important;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#extra{
+		width: 262px;
+		pointer-events: none;
+	}
+
+	.wp-customer-page-container{
+		width: 100%;
+		height: 100%;
+		background-color: #efefef;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.wp-customer-page-header{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 24px 72px;
+		box-sizing: border-box;
+	}
+
+	.wp-customer-count-container{
+		display: flex;
+		align-items: center;
+	}
+
+	.wp-customer-count-container span:first-child{
+		font-size: 26px;
+		color: #2D3436;
+		font-weight: bold;
+		margin-right: 32px;
+	}
+
+	#wp-customer-count{
+		position: relative;
+		top: 3px;
+		font-size: 15px;
+		color: #555555;
+		margin-right: 16px;
+	}
+
+	#user-plus-icon{
+		position: relative;
+		background-color: white;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		cursor: pointer;
+		box-shadow: 0 0 10px #ddd;
+		transition: 0.1s ease;
+	}
+
+	#user-plus-icon:hover{
+		background-color: #2EC5FF;
+	}
+
+	#user-plus-icon i{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: #2EC5FF;
+		transition: 0.1s ease;
+	}
+
+	#user-plus-icon:hover i{
+		color: white;
+	}
+
+	.wp-customer-ac-de-buttons{
+		display: flex;
+		align-items: center;
+		box-sizing: border-box;
+	}
+
+	.wp-customer-ac-de-buttons button{
+		font-family: inter;
+		border: none;
+		width: 95px;
+		height: 32px;
+		font-size: 14px;
+		margin: 0 1.5px;
+		font-weight: bolder;
+		letter-spacing: 0.5px;
+		color: #999;
+		background-color: white;
+	}
+
+	.wp-customer-ac-de-buttons button:first-child{
+		border-radius: 10px 0 0 10px;
+	}
+
+	.wp-customer-ac-de-buttons button:last-child{
+		border-radius: 0 10px 10px 0;
+	}
+
+	.wp-customer-ac-de-buttons .active{
+		background-color: #2EC5FF;
+		color: white;
+	}
+
+	.wp-customer-table{
+		position: relative !important;
+		width: 100%;
+		height: 100%;
+		padding: 0 72px 32px;
+		box-sizing: border-box;
+	}
+
+	.wp-membership-logo{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+	}
+
+	.wp-membership-logo::before{
+		content: attr(dataholder);
+		position: absolute;
+		width: calc(100% - 2px);
+		height: 100%;
+		left: 50%;
+		transform: translateX(-155%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #ECF0F1;
+		color: white;
+		font-weight: bold;
+		letter-spacing: 0.5px;
+		z-index: 3;
+		pointer-events: none;	
+		transition: transform 0.3s ease;
+	}
+
+	.wp-membership-logo:hover::before{
+		transform: translateX(-50%);
+	}
+
+	.wp-membership-logo i.fa-gem{
+		font-size: 22px;
+		color: #2EC5FF;
+	}
+
+	.wp-membership-logo i.fa-award{
+		font-size: 32px;
+	}
+
+	.wp-membership-logo #membership-level{
+		position: absolute;
+		left: calc(50% - 0.7px);
+		top: 15px;
+		transform: translateX(-50%);
+		font-size: 11px;
+		font-weight: bold;
+	}
+
+	.wp-membership-logo.sliver-status i.fa-award, 
+	.wp-membership-logo.sliver-status #membership-level{
+		color: #AEAEEF;
+	}
+
+	.sliver-status.wp-membership-logo::before{
+		background-color: #AEAEEF;
+	}
+
+	.wp-membership-logo.gold-status i.fa-award,
+	.wp-membership-logo.gold-status #membership-level{
+		color: #FDD600;
+	}
+
+	.gold-status.wp-membership-logo::before{
+		background-color: #FDD600;
+	}
+
+	.wp-membership-logo.platinum-status i.fa-award,
+	.wp-membership-logo.platinum-status #membership-level{
+		color: #B9BBBC;
+	}
+
+	.platinum-status.wp-membership-logo::before{
+		background-color: #B9BBBC;
+	}
+
+	.diamond-status.wp-membership-logo::before{
+		background-color: #2EC5FF;
+	}
+
+	.customer-detail{
+		color: #222;
+		text-decoration: none;
+		border-bottom: 1px dotted #555;
+	}
+/*-------------------------------------- END OF CUSTOMER PAGE ----------------------------------*/

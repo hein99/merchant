@@ -9,7 +9,6 @@ switch($ERR_STATUS)
     $text = 'Not Found Any Action';
     break;
   case 3:
-    $text = 'Missing Fields';
     foreach($error_messages as $error_message)
       $text .= $error_message;
     break;
@@ -20,7 +19,7 @@ switch($ERR_STATUS)
     $text = 'Unknown Error';
 }
   displayPageHeader('Error | ' . WEB_NAME);
-?>  
+?>
 <header>
   <div class="ky-logo-name-container">
     <a href="<?php echo URL ?>/">
@@ -28,7 +27,7 @@ switch($ERR_STATUS)
       <span>The Best Shop</span>
     </a>
   </div>
-  
+
   <div class="ky-user-content" style="cursor: auto;">
     <i class="fas fa-user-circle"></i>
       <span>Swe Swe Nyein</span>
