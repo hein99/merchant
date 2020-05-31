@@ -40,12 +40,89 @@ function detail($id)
 function getActivateCustomers()
 {
   $activate_customers = UsersAccount::getActivateCustomerAccount();
-  echo json_encode($activate_customers);
+
+  $new_customers = array(); //Array Variable for json return
+  foreach ($activate_customers as $activate_customer) {
+    $membership_name = '';
+    // change from membership id to membership name
+    switch($activate_customer['membership_id'])
+    {
+      case 1:
+        $membership_name = 'Silver';
+        break;
+
+      case 2:
+        $membership_name = 'Gold';
+        break;
+
+      case 3:
+        $membership_name = 'Platinum';
+        break;
+
+      case 4:
+        $membership_name = 'Diamond';
+        break;
+
+      default:
+        exit();
+    }
+
+    $new_customer = (object)array(
+      'customer_id' => str_pad( $activate_customer['id'], 7, 0, STR_PAD_LEFT ),
+      'customer_name' => $activate_customer['username'],
+      'membership_name' => $membership_name,
+      'phone' => $activate_customer['phone'],
+      'balance' => str_pad( $activate_customer['id'], 7, 0, STR_PAD_LEFT ),
+      'created_date' => $activate_customer['created_date'],
+      'activate_status' => $activate_customer['activate_status'] ? '<input type="radio" name="activate'. $activate_customer['id'] . '" checked>':'<input type="radio" name="activate' . $activate_customer['id'] . '" checked>'
+    );
+    $new_customers[] = $new_customer;
+  }
+
+  echo json_encode($new_customers);
 }
 function getDeactivateCustomers()
 {
   $deactivate_customers = UsersAccount::getDeactivateCustomerAccount();
-  echo json_encode($deactivate_customers);
+  $new_customers = array(); //Array Variable for json return
+  foreach ($deactivate_customers as $deactivate_customer) {
+    $membership_name = '';
+    // change from membership id to membership name
+    switch($deactivate_customer['membership_id'])
+    {
+      case 1:
+        $membership_name = 'Silver';
+        break;
+
+      case 2:
+        $membership_name = 'Gold';
+        break;
+
+      case 3:
+        $membership_name = 'Platinum';
+        break;
+
+      case 4:
+        $membership_name = 'Diamond';
+        break;
+
+      default:
+        exit();
+    }
+
+    $new_customer = (object)array(
+      'customer_id' => str_pad( $deactivate_customer['id'], 7, 0, STR_PAD_LEFT ),
+      'customer_name' => $deactivate_customer['username'],
+      'membership_name' => $membership_name,
+      'phone' => $deactivate_customer['phone'],
+      'balance' => str_pad( $deactivate_customer['id'], 7, 0, STR_PAD_LEFT ),
+      'created_date' => $deactivate_customer['created_date'],
+      'activate_status' => $deactivate_customer['activate_status'] ? '<input type="radio" name="deactivate'. $deactivate_customer['id'] . '" checked>':'<input type="radio" name="deactivate' . $deactivate_customer['id'] . '" checked>'
+    );
+    $new_customers[] = $new_customer;
+  }
+
+  echo json_encode($new_customers);
 }
 function getCustomersCount()
 {
