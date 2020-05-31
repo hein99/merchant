@@ -1,4 +1,4 @@
-/*ERROR PAGE*/
+ERROR PAGE*/
 	.error-page-content{
 		font-family: sans-serif;
 		width: 100vw;
@@ -159,7 +159,7 @@
 	}
 
 	table.dataTable thead th:nth-child(1){
-		max-width: 120px !important;
+		max-width: 128px !important;
 	}
 
 	table.dataTable thead th:nth-child(2){
@@ -378,7 +378,7 @@
 
 	.wp-membership-logo #membership-level{
 		position: absolute;
-		left: calc(50% - 0.3px);
+		left: calc(50% - 0.5px);
 		top: 12px;
 		transform: translateX(-50%);
 		font-size: 11px;
@@ -421,4 +421,4 @@
 		text-decoration: none;
 		border-bottom: 1px dotted #555;
 	}
-/*-------------------------------------- END OF CUSTOMER PAGE ----------------------------------*/
+/*-------------------------------------- END OF CUSTOMER PAGE ----------------------------------
