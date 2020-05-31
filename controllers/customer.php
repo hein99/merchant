@@ -48,7 +48,13 @@ function detail($id)
 {
   $customer = UsersAccount::getCustomerAccountByID($id);
   $customer_statements = CustomerStatement::getCustomerStatement($id);
-  require('./views/customer/customer_detail.php');
+  if(!$customer)
+  {
+    $ERR_STATUS = ERR_URL;
+    require('./views/error_display.php');
+  }else{
+    require('./views/customer/customer_detail.php');
+  }
 }
 function getActivateCustomers()
 {
