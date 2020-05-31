@@ -14,12 +14,12 @@ displayMainNavigation('customer');
           $membership_icon = 'silver';
           break;
         case '2':
-          $membership_name = 'Platinum';
-          $membership_icon = 'platinum';
-          break;
-        case '3':
           $membership_name = 'Gold';
           $membership_icon = 'gold';
+          break;
+        case '3':
+          $membership_name = 'Platinum';
+          $membership_icon = 'platinum';
           break;
         case '4':
           $membership_name = 'Diamond';
@@ -29,12 +29,21 @@ displayMainNavigation('customer');
           // code...
           break;
       }
+
+
     ?>
+  <div class="">
+    <a href="<?php echo URL ?>/customer/">Back</a>
+  </div>
   <div class="">
     <span id="user-icon"><i class="fas fa-user-circle"></i></span>
     <h2><?php echo $customer->getValueEncoded('username') ?></h2>
-    <button type="button" name="button" id="btn-activate-js">Activate</button>
-    <button type="button" name="button" id="btn-deactivate-js">Deactivate</button>
+    <?php
+    // echo $customer->getValueEncoded('activate_status') ? '<button type="button" name="button" class="activate-toggle-js" id="btn-activate-js" data-id="'.$customer->getValueEncoded('id').'">Activate</button>' :
+    //   '<button type="button" name="button" class="activate-toggle-js" id="btn-deactivate-js" data-id="'.$customer->getValueEncoded('id').'">Deactivate</button>';
+     ?>
+    <button type="button" name="button" class="activate-toggle-js <?php echo $customer->getValueEncoded('activate_status') ? '':'hide' ?>" id="btn-activate-js" data-id="<?php echo $customer->getValueEncoded('id') ?>">Activate</button>
+    <button type="button" name="button" class="activate-toggle-js <?php echo $customer->getValueEncoded('activate_status') ? 'hide':'' ?>" id="btn-deactivate-js" data-id="<?php echo $customer->getValueEncoded('id') ?>">Deactivate</button>
     <div class="">
       <span><i class="fas fa-award silver <?php echo $membership_icon; ?>"></i> <?php echo $membership_name; ?></span> / <span><?php echo $customer->getValueEncoded('point') ?> points</span>
     </div>
@@ -73,8 +82,8 @@ displayMainNavigation('customer');
         <span>Membership</span>
         <select name="membership_id">
           <option value="1" <?php echo $membership_id == 1 ? 'selected': '' ?>>Silver</option>
-          <option value="2" <?php echo $membership_id == 2 ? 'selected': '' ?>>Platinum</option>
-          <option value="3" <?php echo $membership_id == 3 ? 'selected': '' ?>>Gold</option>
+          <option value="2" <?php echo $membership_id == 2 ? 'selected': '' ?>>Gold</option>
+          <option value="3" <?php echo $membership_id == 3 ? 'selected': '' ?>>Platinum</option>
           <option value="4" <?php echo $membership_id == 4 ? 'selected': '' ?>>Diamond</option>
         </select>
       </div>
