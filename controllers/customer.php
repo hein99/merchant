@@ -159,7 +159,6 @@ function getDeactivateCustomers()
 
   echo json_encode($new_customers);
 }
-
 function getCustomersCount()
 {
   $total = UsersAccount::getTotalCustomersCount();

@@ -1,5 +1,13 @@
 $(document).ready(function(){
 
+  $(document).on('click', '#btn-activate-js', function(){
+    $('#btn-deactivate-js').show();
+    $('#btn-activate-js').hide();
+  });
+  $(document).on('click', '#btn-deactivate-js', function(){
+    $('#btn-deactivate-js').hide();
+    $('#btn-activate-js').show();
+  });
   $(document).on('click', 'form #sn-add-amount', function(){
     var customer_id = $('#customer_id').val();
     var amount = $('#amount').val();
