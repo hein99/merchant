@@ -35,6 +35,12 @@ $(document).ready(function(){
   $('#tb-activate-js_wrapper').show();
   $('#tb-deactivate-js_wrapper').hide();
 
+/*customer page*/
+  $('.wp-customer-ac-de-buttons button').on('click', function(){
+    $(this).addClass('active').siblings().removeClass('active');
+  });
+/*customer page*/
+
 });
 
 $(document).on('click', '#btn-activate-js', function(){
