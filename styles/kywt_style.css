@@ -187,7 +187,7 @@ nav::before{
 
 #ky-settings-content i.fa-user-circle{
   font-size: 4.5em;
-  color: #42F0E7;
+  color: rgba(0, 0, 0, 0.5);
   margin-bottom: 10px;
 }
 
@@ -244,6 +244,7 @@ nav::before{
 	margin-bottom: 20px;
 	padding: 0 9px;
 	box-sizing: border-box;
+  border: none;
 }
 
 #ky-new-account-container input:last-child{
@@ -258,6 +259,7 @@ nav::before{
   font-weight: 500;
   border-radius: 5px;
   background-image: linear-gradient(to right, #2EC5FF, #42F0E7);
+  border: none;
 }
 
 #ky-current-account-container::before,
