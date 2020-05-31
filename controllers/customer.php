@@ -95,15 +95,24 @@ function getDeactivateCustomers()
     switch($deactivate_customer['membership_id'])
     {
       case 1:
-        $membership_name = 'Silver';
+        $membership_name = '<div class="wp-membership-logo" dataholder="Silver">
+          <i class="fas fa-award"></i>
+          <span id="membership-level">S</span>
+        </div>';
         break;
 
       case 2:
-        $membership_name = 'Gold';
+        $membership_name = '<div class="wp-membership-logo" dataholder="Gold">
+          <i class="fas fa-award"></i>
+          <span id="membership-level">S</span>
+        </div>';
         break;
 
       case 3:
-        $membership_name = 'Platinum';
+        $membership_name = '<div class="wp-membership-logo" dataholder="Platinum">
+          <i class="fas fa-award"></i>
+          <span id="membership-level">S</span>
+        </div>';
         break;
 
       case 4:
