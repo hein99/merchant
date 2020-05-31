@@ -11,7 +11,7 @@ displayMainNavigation('customer');
     </div>
 
     <div class="wp-customer-ac-de-buttons">
-      <button type="button" name="button" id="btn-activate-js">Activate</button>
+      <button type="button" name="button" id="btn-activate-js" class="active">Activate</button>
       <button type="button" name="button" id="btn-deactivate-js">Deactivate</button>
     </div>
 
@@ -50,12 +50,18 @@ displayMainNavigation('customer');
     </table>
   </div>
 
-  <!-- silver icon -->
-  <div class="wp-membership-logo">
+<!-- silver icon -->
+  <!-- <div class="wp-membership-logo">
     <i class="fas fa-award"></i>
     <span id="membership-level">S</span>
+  </div> -->
+<!-- end of silver icon -->
+
+<!-- diamond icon -->
+  <div class="wp-membership-logo">
+    <i class="fas fa-gem"></i>
   </div>
-  <!-- end of silver icon -->
+<!-- end of diamond icon -->
 
 </div>
 
