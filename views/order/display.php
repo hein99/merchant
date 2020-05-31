@@ -15,24 +15,36 @@ displayMainNavigation('order');
    <table id="tb-request-js">
      <thead>
        <tr>
-         <th>Request Membership</th>
-         <th>Customer ID</th>
-         <th>Customer Name</th>
-         <th>Phone no.</th>
-         <th>Balance</th>
-         <th>Created Date</th>
-         <th>Activate/Deactivate</th>
+         <th>Order ID</th>
+         <th>Product_link</th>
+         <th>Remark</th>
+         <th>Quantity</th>
+         <th>Price</th>
+         <th>Amount</th>
+         <th>MM Tax[%]</th>
+         <th>US Tax[%]</th>
+         <th>Commission</th>
+         <th>Weight Cost</th>
+         <th>Net Weight Cost</th>
+         <th>Order Status</th>
+         <th>Product Shipping Status</th>
        </tr>
      </thead>
      <tfoot>
        <tr>
-         <th>Membership</th>
-         <th>Customer ID</th>
-         <th>Customer Name</th>
-         <th>Phone no.</th>
-         <th>Balance</th>
-         <th>Created Date</th>
-         <th>Activate/Deactivate</th>
+         <th>Order ID</th>
+         <th>Product_link</th>
+         <th>Remark</th>
+         <th>Quantity</th>
+         <th>Price</th>
+         <th>Amount</th>
+         <th>MM Tax[%]</th>
+         <th>US Tax[%]</th>
+         <th>Commission</th>
+         <th>Weight Cost</th>
+         <th>Net Weight Cost</th>
+         <th>Order Status</th>
+         <th>Product Shipping Status</th>
        </tr>
      </tfoot>
    </table>
@@ -40,24 +52,36 @@ displayMainNavigation('order');
    <table id="tb-pending-js">
      <thead>
        <tr>
-         <th>Pending Membership</th>
-         <th>Customer ID</th>
-         <th>Customer Name</th>
-         <th>Phone no.</th>
-         <th>Balance</th>
-         <th>Created Date</th>
-         <th>Activate/Deactivate</th>
+         <th>Order ID</th>
+         <th>Product_link</th>
+         <th>Remark</th>
+         <th>Quantity</th>
+         <th>Price</th>
+         <th>Amount</th>
+         <th>MM Tax[%]</th>
+         <th>US Tax[%]</th>
+         <th>Commission</th>
+         <th>Weight Cost</th>
+         <th>Net Weight Cost</th>
+         <th>Order Status</th>
+         <th>Product Shipping Status</th>
        </tr>
      </thead>
      <tfoot>
        <tr>
-         <th>Membership</th>
-         <th>Customer ID</th>
-         <th>Customer Name</th>
-         <th>Phone no.</th>
-         <th>Balance</th>
-         <th>Created Date</th>
-         <th>Activate/Deactivate</th>
+         <th>Order ID</th>
+         <th>Product_link</th>
+         <th>Remark</th>
+         <th>Quantity</th>
+         <th>Price</th>
+         <th>Amount</th>
+         <th>MM Tax[%]</th>
+         <th>US Tax[%]</th>
+         <th>Commission</th>
+         <th>Weight Cost</th>
+         <th>Net Weight Cost</th>
+         <th>Order Status</th>
+         <th>Product Shipping Status</th>
        </tr>
      </tfoot>
    </table>
@@ -65,24 +89,36 @@ displayMainNavigation('order');
    <table id="tb-confirm-js">
      <thead>
        <tr>
-         <th>Confirm Membership</th>
-         <th>Customer ID</th>
-         <th>Customer Name</th>
-         <th>Phone no.</th>
-         <th>Balance</th>
-         <th>Created Date</th>
-         <th>Activate/Deactivate</th>
+         <th>Order ID</th>
+         <th>Product_link</th>
+         <th>Remark</th>
+         <th>Quantity</th>
+         <th>Price</th>
+         <th>Amount</th>
+         <th>MM Tax[%]</th>
+         <th>US Tax[%]</th>
+         <th>Commission</th>
+         <th>Weight Cost</th>
+         <th>Net Weight Cost</th>
+         <th>Order Status</th>
+         <th>Product Shipping Status</th>
        </tr>
      </thead>
      <tfoot>
        <tr>
-         <th>Membership</th>
-         <th>Customer ID</th>
-         <th>Customer Name</th>
-         <th>Phone no.</th>
-         <th>Balance</th>
-         <th>Created Date</th>
-         <th>Activate/Deactivate</th>
+         <th>Order ID</th>
+         <th>Product_link</th>
+         <th>Remark</th>
+         <th>Quantity</th>
+         <th>Price</th>
+         <th>Amount</th>
+         <th>MM Tax[%]</th>
+         <th>US Tax[%]</th>
+         <th>Commission</th>
+         <th>Weight Cost</th>
+         <th>Net Weight Cost</th>
+         <th>Order Status</th>
+         <th>Product Shipping Status</th>
        </tr>
      </tfoot>
    </table>
@@ -90,24 +126,36 @@ displayMainNavigation('order');
    <table id="tb-cancel-js">
      <thead>
        <tr>
-         <th>Cancel Membership</th>
-         <th>Customer ID</th>
-         <th>Customer Name</th>
-         <th>Phone no.</th>
-         <th>Balance</th>
-         <th>Created Date</th>
-         <th>Activate/Deactivate</th>
+         <th>Order ID</th>
+         <th>Product_link</th>
+         <th>Remark</th>
+         <th>Quantity</th>
+         <th>Price</th>
+         <th>Amount</th>
+         <th>MM Tax[%]</th>
+         <th>US Tax[%]</th>
+         <th>Commission</th>
+         <th>Weight Cost</th>
+         <th>Net Weight Cost</th>
+         <th>Order Status</th>
+         <th>Product Shipping Status</th>
        </tr>
      </thead>
      <tfoot>
        <tr>
-         <th>Membership</th>
-         <th>Customer ID</th>
-         <th>Customer Name</th>
-         <th>Phone no.</th>
-         <th>Balance</th>
-         <th>Created Date</th>
-         <th>Activate/Deactivate</th>
+         <th>Order ID</th>
+         <th>Product_link</th>
+         <th>Remark</th>
+         <th>Quantity</th>
+         <th>Price</th>
+         <th>Amount</th>
+         <th>MM Tax[%]</th>
+         <th>US Tax[%]</th>
+         <th>Commission</th>
+         <th>Weight Cost</th>
+         <th>Net Weight Cost</th>
+         <th>Order Status</th>
+         <th>Product Shipping Status</th>
        </tr>
      </tfoot>
    </table>

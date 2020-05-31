@@ -37,7 +37,7 @@ class CustomerOrder extends DataObject
   public static function getCustomerOrderArrayByOrderStatus($order_status)
   {
     $conn = parent::connect();
-    $sql = 'SELECT '. TBL_CUSTOMER_ORDER .'.*, ' .TBL_USERS_ACCOUNT. '.username '.TBL_USERS_ACCOUNT.'.membership_id FROM ' . TBL_CUSTOMER_ORDER . ' LEFT JOIN '.TBL_USERS_ACCOUNT.' ON ' .TBL_CUSTOMER_ORDER. '.customer_id = '.TBL_USERS_ACCOUNT.'.id WHERE order_status = :order_status';
+    $sql = 'SELECT '. TBL_CUSTOMER_ORDER .'.*, ' .TBL_USERS_ACCOUNT. '.username, '.TBL_USERS_ACCOUNT.'.membership_id FROM ' . TBL_CUSTOMER_ORDER . ' LEFT JOIN '.TBL_USERS_ACCOUNT.' ON ' .TBL_CUSTOMER_ORDER. '.customer_id = '.TBL_USERS_ACCOUNT.'.id WHERE order_status = :order_status';
     try {
       $st = $conn->prepare($sql);
       $st->bindValue(':order_status', $order_status, PDO::PARAM_INT);

@@ -64,8 +64,8 @@ function getOrders()
           'product_link' => $order['product_link'],
           'remark' => $order['remark'],
           'quantity' => $order['quantity'],
-          'price' => number_format($order['price'], 2) . 'Ks',
-          'amount' => number_format($order['price']*$order['quantity'], 2) . 'Ks',
+          'price' => number_format($order['price'], 2) . '$',
+          'amount' => number_format($order['price']*$order['quantity'], 2) . '$',
           'mm_tax' => '<input type="text" value="'.$order['mm_tax'].'" class="mm-tax-js" >',
           'us_tax' => '<input type="text" value="'.$order['us_tax'].'" class="us-tax-js" >',
           'commission' => '<input type="text" value="'.$commission['percentage'].'" class="commission-js" >',
@@ -88,8 +88,8 @@ function getOrders()
           'product_link' => $order['product_link'],
           'remark' => $order['remark'],
           'quantity' => $order['quantity'],
-          'price' => number_format($order['price'], 2) . 'Ks',
-          'amount' => number_format($order['price']*$order['quantity'], 2) . 'Ks',
+          'price' => number_format($order['price'], 2) . '$',
+          'amount' => number_format($order['price']*$order['quantity'], 2) . '$',
           'mm_tax' => '<input type="text" value="'.$order['mm_tax'].'" class="mm-tax-js" >',
           'us_tax' => '<input type="text" value="'.$order['us_tax'].'" class="us-tax-js" >',
           'commission' => '<input type="text" value="'.$order['commission'].'" class="commission-js" >',
@@ -105,13 +105,58 @@ function getOrders()
       }
       break;
     case 3:
+      foreach ($orders as $order) {
+        $new_customer = (object)array(
+          'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
+          'product_link' => $order['product_link'],
+          'remark' => $order['remark'],
+          'quantity' => $order['quantity'],
+          'price' => number_format($order['price'], 2) . '$',
+          'amount' => number_format($order['price']*$order['quantity'], 2) . '$',
+          'mm_tax' => $order['mm_tax'].'%',
+          'us_tax' => $order['us_tax'].'%',
+          'commission' => $order['commission'].'%',
+          'weight' => $order['weight_cost'].'$',
+          'net_weight' => $order['weight_cost']*$order['quantity'].'$',
+          'order_status' => '<select class="order-status-js" name="order_status">
+            <option value="pending">Pending</option>
+            <option value="confirm" selected disabled>Confirm</option>
+            <option value="cancel">Cancel</option>
+          </select>',
+          'product_shipping_status' => 'undefined'
+        );
+        $new_orders[] = $new_customer;
+      }
       break;
     case 4:
+      foreach ($orders as $order) {
+        $new_customer = (object)array(
+          'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
+          'product_link' => $order['product_link'],
+          'remark' => $order['remark'],
+          'quantity' => $order['quantity'],
+          'price' => number_format($order['price'], 2) . '$',
+          'amount' => number_format($order['price']*$order['quantity'], 2) . '$',
+          'mm_tax' => $order['mm_tax'].'%',
+          'us_tax' => $order['us_tax'].'%',
+          'commission' => $order['commission'].'%',
+          'weight' => $order['weight_cost'].'$',
+          'net_weight' => $order['weight_cost']*$order['quantity'].'$',
+          'order_status' => '<select class="order-status-js" name="order_status">
+            <option value="pending">Pending</option>
+            <option value="cancel" selected disabled>Cancel</option>
+          </select>',
+          'product_shipping_status' => '<select class="product-shipping-status-js" name="product_shipping_status">
+            <option value="us_warehouse">US Warehouse</option>
+            <option value="transit" selected disabled>Transit</option>
+            <option value="arrived" selected disabled>Arrived</option>
+            <option value="delivered" selected disabled>Delivered</option>
+          </select>'
+        );
+        $new_orders[] = $new_customer;
+      }
       break;
   }
-
-
-
   echo json_encode($new_orders);
 }
 

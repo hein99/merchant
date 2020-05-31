@@ -2,35 +2,41 @@ $(document).ready(function(){
   getTotalOrdersCount();
   $('#tb-request-js').DataTable( {
       "ajax": {
-          "url": PAGE_URL + "/order/get_orders",
+          "url": PAGE_URL + "/order/get_orders/?order_status=1",
           "dataSrc": ""
       },
       "columns": [
-          { "data": "membership_name" },
-          { "data": "customer_id" },
-          { "data": "customer_name" },
-          { "data": "phone" },
-          { "data": "balance" },
-          { "data": "created_date" },
-          { "data": "activate_status" }
+          { "data": "order_id" },
+          { "data": "product_link" },
+          { "data": "remark" },
+          { "data": "quantity" },
+          { "data": "price" },
+          { "data": "amount" },
+          { "data": "mm_tax" },
+          { "data": "us_tax" },
+          { "data": "commission" },
+          { "data": "weight" },
+          { "data": "net_weight" },
+          { "data": "order_status" },
+          { "data": "product_shipping_status" }
       ]
   } );
 
-  $('#tb-deactivate-js').DataTable( {
-      "ajax": {
-          "url": PAGE_URL + "/customer/get_deactivate_customers",
-          "dataSrc": ""
-      },
-      "columns": [
-          { "data": "membership_name" },
-          { "data": "customer_id" },
-          { "data": "customer_name" },
-          { "data": "phone" },
-          { "data": "balance" },
-          { "data": "created_date" },
-          { "data": "activate_status" }
-      ]
-  } );
+  // $('#tb-deactivate-js').DataTable( {
+  //     "ajax": {
+  //         "url": PAGE_URL + "/customer/get_deactivate_customers",
+  //         "dataSrc": ""
+  //     },
+  //     "columns": [
+  //         { "data": "membership_name" },
+  //         { "data": "customer_id" },
+  //         { "data": "customer_name" },
+  //         { "data": "phone" },
+  //         { "data": "balance" },
+  //         { "data": "created_date" },
+  //         { "data": "activate_status" }
+  //     ]
+  // } );
 
   $('#tb-request-js_wrapper').show();
   $('#tb-pending-js_wrapper').hide();

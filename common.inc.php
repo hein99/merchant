@@ -29,6 +29,7 @@ switch ($controller)
   require('./models/CustomerStatement.class.php');
     break;
   case 'order':
+    require('./models/Membership.class.php');
     require('./models/CustomerOrder.class.php');
     break;
   case 'membership':
