@@ -50,6 +50,7 @@ displayMainNavigation('customer');
     </table>
   </div>
 
+  <!-- silver icon -->
   <div class="wp-membership-logo">
     <svg width="159" height="202" viewBox="0 0 159 202" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0)">
@@ -63,6 +64,7 @@ displayMainNavigation('customer');
     </svg>
     <span id="membership-level">S</span>
   </div>
+  <!-- end of silver icon -->
 
 </div>
 
