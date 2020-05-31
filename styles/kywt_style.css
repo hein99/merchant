@@ -177,6 +177,11 @@ nav::before{
 
 /*********beginning of settings**********/
 #ky-settings-section{
+  position: relative;
+  overflow: hidden;
+}
+
+.ky-settings-container{
   padding: 3% 25% 0 25%;
   display: flex;
   flex-direction: column;
@@ -185,13 +190,13 @@ nav::before{
   overflow: hidden;
 }
 
-#ky-settings-section i.fa-user-circle{
+.ky-settings-container i.fa-user-circle{
   font-size: 4.5em;
   color: rgba(0, 0, 0, 0.5);
   margin-bottom: 10px;
 }
 
-#ky-settings-section > span{
+.ky-settings-container > span{
   font-size: 1.3em;
   font-weight: 600;
   margin-bottom: 50px;
@@ -262,6 +267,12 @@ nav::before{
   border: none;
 }
 
+.ky-change-button-container button:hover,
+.ky-create-customer-form input[type=submit]:hover{
+  background-image: linear-gradient(to right, #2EC5FF, #2EC5FF);
+  transition: all ease 500ms;
+}
+
 .ky-current-account-container::before,
 .ky-new-account-container::before {
   content: '';
@@ -277,8 +288,11 @@ nav::before{
   background-color: #ffffff;
 }
 
-.ky-account-configure-form input:focus{
+.ky-account-configure-form input:focus,
+.dashboard-form-conatainer input:focus,
+.dashboard-form-conatainer textarea:focus{
   box-shadow: 0 0 4px rgba(0,0,0,0.8);
+  border: none;
 }
 
 .ky-onfocus{
@@ -299,12 +313,58 @@ nav::before{
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+#ky-settings-section > div:nth-child(2){
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #2EC5FF;
+  left: 0;
+  top: 20%;
+  transform: translateX(-50%);
+  opacity: 0.6;
+}
+
+#ky-settings-section > div:nth-child(3){
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #42F0E7;
+  right: 2%;
+  top: 0;
+  transform: translateY(-60%);
+  opacity: 0.6;
+}
+
+#ky-settings-section > div:nth-child(4){
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #2EC5FF;
+  right: 8%;
+  bottom: 16%;
+  opacity: 0.6;
+}
+
+#ky-settings-section > div:nth-child(5){
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #2EC5FF;
+  right: 8%;
+  bottom: 30%;
+  opacity: 0.6;
+}
 /**********end of settings**********/
 
 
 /**********beginning of dashboard**********/
 #ky-dashboard-section{
-  padding: 4%;
+  padding: 4% 4% 0 4%;
   background-color: #EFEFEF;
   position: relative;
 }
@@ -327,6 +387,13 @@ nav::before{
   background-color: #ffffff;
   border-radius: 14px;
   padding: 0 1.5em;
+  box-shadow: 0 0 10px 0 #dddddd;
+}
+
+.ky-dashboard-container a:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 15px 0 #847d7d54;
+  transition: all ease 300ms;
 }
 
 .dashboard-small-container{
@@ -460,6 +527,7 @@ nav::before{
 }
 
 .dashboard-form-part{
+  position: relative;
   padding: 3% 0 3% 0;
   display: flex;
   flex-wrap: nowrap;
@@ -467,7 +535,9 @@ nav::before{
   align-items: center;
   background-color: #ffffff;
   border-radius: 10px;
-  height: 83%;
+  height: 80%;
+  box-shadow: 0 0 15px 0 #dddddd;
+  overflow: hidden;
 }
 
 .dashboard-form-conatainer{
@@ -489,9 +559,9 @@ nav::before{
 .ky-create-customer-form{
   display: flex;
   flex-direction: column;
-}/* all fine*/
+}
 
-.ky-create-customer-form input{
+.ky-create-customer-form input, textarea{
   display: block;
   width: 210px;
   height: 38px;
@@ -505,8 +575,14 @@ nav::before{
   border: none;
 }
 
-.ky-create-customer-form input:nth-child(5){
-  height: 48px;
+.ky-create-customer-form textarea{
+  vertical-align: middle;
+  height: 60px;
+  max-height: 60px;
+  padding: 4px;
+  letter-spacing: 0.1px;
+  font-size: 14px;
+  padding: 4px 9px;
 }
 
 .ky-create-customer-form input[type=submit]{
@@ -516,3 +592,40 @@ nav::before{
   border: none;
   font-weight: 600;
 }
+
+.dashboard-form-part div:nth-child(2){
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #2EC5FF;
+  left: 16%;
+  top: 0;
+  transform: translateY(-55%);
+  opacity: 0.6;
+}
+
+.dashboard-form-part div:nth-child(3){
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: #42F0E7;
+  left: 0;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  opacity: 0.9;
+}
+
+.dashboard-form-part div:nth-child(4){
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: #2EC5FF;
+  right: 0;
+  bottom: 0;
+  transform: translate(50%, 50%);
+  opacity: 0.6;
+}
+/**********end of dashboard**********/

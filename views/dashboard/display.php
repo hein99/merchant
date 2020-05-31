@@ -68,11 +68,14 @@ displayMainNavigation('dashboard');
             <input type="password" name="password1" placeholder="Password">
             <input type="password" name="password2" placeholder="Confirm Password">
             <input type="number" name="phone" placeholder="Phone Number">
-            <input type="text" name="address" placeholder="Address">
+            <textarea name="address" placeholder="Address"></textarea>
             <input type="submit" value="Create">
           </div>
         </form>
       </div>
+      <div class=""></div>
+      <div class=""></div>
+      <div class=""></div>
     </section>
   </div>
 </section>
