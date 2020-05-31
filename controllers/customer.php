@@ -52,28 +52,28 @@ function getActivateCustomers()
     switch($activate_customer['membership_id'])
     {
       case 1:
-        $membership_name = '<div class="wp-membership-logo" dataholder="Silver">
+        $membership_name = '<div class="wp-membership-logo sliver-status" dataholder="Silver">
           <i class="fas fa-award"></i>
           <span id="membership-level">S</span>
         </div>';
         break;
 
       case 2:
-        $membership_name = '<div class="wp-membership-logo" dataholder="Gold">
+        $membership_name = '<div class="wp-membership-logo gold-status" dataholder="Gold">
           <i class="fas fa-award"></i>
-          <span id="membership-level">S</span>
+          <span id="membership-level">G</span>
         </div>';
         break;
 
       case 3:
-        $membership_name = '<div class="wp-membership-logo" dataholder="Platinum">
+        $membership_name = '<div class="wp-membership-logo platinum-status" dataholder="Platinum">
           <i class="fas fa-award"></i>
-          <span id="membership-level">S</span>
+          <span id="membership-level">P</span>
         </div>';
         break;
 
       case 4:
-        $membership_name = '<div class="wp-membership-logo" dataholder="Diamond">
+        $membership_name = '<div class="wp-membership-logo diamond-status" dataholder="Diamond">
           <i class="fas fa-gem"></i>
         </div>';
         break;
@@ -106,28 +106,28 @@ function getDeactivateCustomers()
     switch($deactivate_customer['membership_id'])
     {
       case 1:
-        $membership_name = '<div class="wp-membership-logo" dataholder="Silver">
+        $membership_name = '<div class="wp-membership-logo sliver-status" dataholder="Silver">
           <i class="fas fa-award"></i>
           <span id="membership-level">S</span>
         </div>';
         break;
 
       case 2:
-        $membership_name = '<div class="wp-membership-logo" dataholder="Gold">
+        $membership_name = '<div class="wp-membership-logo gold-status" dataholder="Gold">
           <i class="fas fa-award"></i>
-          <span id="membership-level">S</span>
+          <span id="membership-level">G</span>
         </div>';
         break;
 
       case 3:
-        $membership_name = '<div class="wp-membership-logo" dataholder="Platinum">
+        $membership_name = '<div class="wp-membership-logo platinum-status" dataholder="Platinum">
           <i class="fas fa-award"></i>
-          <span id="membership-level">S</span>
+          <span id="membership-level">P</span>
         </div>';
         break;
 
       case 4:
-        $membership_name = '<div class="wp-membership-logo" dataholder="Diamond">
+        $membership_name = '<div class="wp-membership-logo diamond-status" dataholder="Diamond">
           <i class="fas fa-gem"></i>
         </div>';
         break;
@@ -276,5 +276,20 @@ function changeActivateStatus()
   }
 }
 
+echo $customer['activate_status'] ? '<button id="activate-toggle-js" class="activate">Activate</button>' :
+'<button id="activate-toggle-js" class="deactivate">Dectivate</button>';
 
+$(document).on('click', '.activate-toggle-js', function(){
+  var id = $(this).data('id');
+  changeActivateStatus(id);
+});
+
+function changeActivateStatus(id)
+{
+  $.ajax({
+    url: PAGE_URL+'/customer/change_activate_status/',
+    data: "id="+id,
+    method:"POST",
+  })
+}
  ?>

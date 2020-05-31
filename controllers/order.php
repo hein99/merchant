@@ -54,24 +54,63 @@ function getOrders()
   }
 
   $new_orders = array(); //Array Variable for json return
-  foreach ($orders as $order) {
-    $new_customer = (object)array(
-      'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-      'product_link' => $order['product_link'],
-      'remark' => $order['remark'],
-      'quantity' => $order['quantity'],
-      'price' => number_format($order['price'], 2) . 'Ks',
-      'amount' => number_format($order['price']*$order['quantity'], 2) . 'Ks',
-      'mm_tax' => $order['mm_tax'],
-      'us_tax' => $order['quantity'],
-      'commission' => str_pad( $orders['id'], 7, 0, STR_PAD_LEFT ),
-      'weight' => str_pad( $orders['id'], 7, 0, STR_PAD_LEFT ),
-      'net_weight' => str_pad( $orders['id'], 7, 0, STR_PAD_LEFT ),
-      'order_status' => str_pad( $orders['id'], 7, 0, STR_PAD_LEFT ),
-      'product_shipping_status' => str_pad( $orders['id'], 7, 0, STR_PAD_LEFT )
-    );
-    $new_orders[] = $new_customer;
+  switch($order_status)
+  {
+    case 1:
+      foreach ($orders as $order) {
+        $commission = Membership::getMembershipByID($order['membership_id']); // get commission percentage from Membership table
+        $new_customer = (object)array(
+          'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
+          'product_link' => $order['product_link'],
+          'remark' => $order['remark'],
+          'quantity' => $order['quantity'],
+          'price' => number_format($order['price'], 2) . 'Ks',
+          'amount' => number_format($order['price']*$order['quantity'], 2) . 'Ks',
+          'mm_tax' => '<input type="text" value="'.$order['mm_tax'].'" class="mm-tax-js" >',
+          'us_tax' => '<input type="text" value="'.$order['us_tax'].'" class="us-tax-js" >',
+          'commission' => '<input type="text" value="'.$commission['percentage'].'" class="commission-js" >',
+          'weight' => '<input type="text" value="'.$order['weight_cost'].'" class="weight-js" >',
+          'net_weight' => '<span class="net-weight-js>'.$order['weight_cost']*$order['quantity'].'</span>"',
+          'order_status' => '<select class="order-status-js" name="order_status">
+            <option value="request" selected disabled>Request</option>
+            <option value="pending">Pending</option>
+            <option value="cancel">Cancel</option>
+          </select>',
+          'product_shipping_status' => 'undefined'
+        );
+        $new_orders[] = $new_customer;
+      }
+      break;
+    case 2:
+      foreach ($orders as $order) {
+        $new_customer = (object)array(
+          'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
+          'product_link' => $order['product_link'],
+          'remark' => $order['remark'],
+          'quantity' => $order['quantity'],
+          'price' => number_format($order['price'], 2) . 'Ks',
+          'amount' => number_format($order['price']*$order['quantity'], 2) . 'Ks',
+          'mm_tax' => '<input type="text" value="'.$order['mm_tax'].'" class="mm-tax-js" >',
+          'us_tax' => '<input type="text" value="'.$order['us_tax'].'" class="us-tax-js" >',
+          'commission' => '<input type="text" value="'.$order['commission'].'" class="commission-js" >',
+          'weight' => '<input type="text" value="'.$order['weight_cost'].'" class="weight-js" >',
+          'net_weight' => '<span class="net-weight-js>'.$order['weight_cost']*$order['quantity'].'</span>"',
+          'order_status' => '<select class="order-status-js" name="order_status">
+            <option value="pending" selected disabled>Pending</option>
+            <option value="cancel">Cancel</option>
+          </select>',
+          'product_shipping_status' => 'undefined'
+        );
+        $new_orders[] = $new_customer;
+      }
+      break;
+    case 3:
+      break;
+    case 4:
+      break;
   }
+
+
 
   echo json_encode($new_orders);
 }
