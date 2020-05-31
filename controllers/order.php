@@ -38,7 +38,7 @@ function getNewOrdersCount()
 function getTotalOrdersCount()
 {
   $total = CustomerOrder::getTotalOrdersCount();
-  echo json_encode($total);
+  echo number_format($total);
 }
 
 function getOrders()
@@ -52,7 +52,28 @@ function getOrders()
     require('./views/error_display.php');
     exit();
   }
-  echo json_encode($orders);
+
+  $new_orders = array(); //Array Variable for json return
+  foreach ($orders as $order) {
+    $new_customer = (object)array(
+      'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
+      'product_link' => $order['product_link'],
+      'remark' => $order['remark'],
+      'quantity' => $order['quantity'],
+      'price' => number_format($order['price'], 2) . 'Ks',
+      'amount' => number_format($order['price']*$order['quantity'], 2) . 'Ks',
+      'mm_tax' => $order['mm_tax'],
+      'us_tax' => $order['quantity'],
+      'commission' => str_pad( $orders['id'], 7, 0, STR_PAD_LEFT ),
+      'weight' => str_pad( $orders['id'], 7, 0, STR_PAD_LEFT ),
+      'net_weight' => str_pad( $orders['id'], 7, 0, STR_PAD_LEFT ),
+      'order_status' => str_pad( $orders['id'], 7, 0, STR_PAD_LEFT ),
+      'product_shipping_status' => str_pad( $orders['id'], 7, 0, STR_PAD_LEFT )
+    );
+    $new_orders[] = $new_customer;
+  }
+
+  echo json_encode($new_orders);
 }
 
 function changeOrderInfo()

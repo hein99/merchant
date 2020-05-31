@@ -35,6 +35,12 @@ $(document).ready(function(){
   $('#tb-activate-js_wrapper').show();
   $('#tb-deactivate-js_wrapper').hide();
 
+/*customer page*/
+  $('.wp-customer-ac-de-buttons button').on('click', function(){
+    $(this).addClass('active').siblings().removeClass('active');
+  });
+/*customer page*/
+
 });
 
 $(document).on('click', '#btn-activate-js', function(){
@@ -47,6 +53,19 @@ $(document).on('click', '#btn-deactivate-js', function(){
   $('#tb-deactivate-js_wrapper').show();
 });
 
+$(document).on('click', '.activate-toggle-js', function(){
+  var id = $(this).data('id');
+  changeActivateStatus(id);
+});
+
+function changeActivateStatus(id)
+{
+  $.ajax({
+    url: PAGE_URL+'/customer/change_activate_status/',
+    data: "id="+id,
+    method:"POST",
+  })
+}
 
 function getTotalCustomersCount()
 {
