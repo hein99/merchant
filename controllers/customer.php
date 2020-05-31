@@ -84,7 +84,7 @@ function getActivateCustomers()
 
     $new_customer = (object)array(
       'customer_id' => str_pad( $activate_customer['id'], 7, 0, STR_PAD_LEFT ),
-      'customer_name' => $activate_customer['username'],
+      'customer_name' => '<a href="'.URL.'/customer/detail/'.$activate_customer['id'].'" class ="customer-detail">'.$activate_customer['username'].'</a>',
       'membership_name' => $membership_name,
       'phone' => $activate_customer['phone'],
       'balance' => number_format($activate_customer['balance'], 2) . 'Ks',
@@ -274,22 +274,5 @@ function changeActivateStatus()
   {
     $customer->editCustomerActivateStatus();
   }
-}
-
-echo $customer['activate_status'] ? '<button id="activate-toggle-js" class="activate">Activate</button>' :
-'<button id="activate-toggle-js" class="deactivate">Dectivate</button>';
-
-$(document).on('click', '.activate-toggle-js', function(){
-  var id = $(this).data('id');
-  changeActivateStatus(id);
-});
-
-function changeActivateStatus(id)
-{
-  $.ajax({
-    url: PAGE_URL+'/customer/change_activate_status/',
-    data: "id="+id,
-    method:"POST",
-  })
 }
  ?>
