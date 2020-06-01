@@ -45,7 +45,7 @@ function customersJsonReturn($customers, $activate)
       'phone' => $customer['phone'],
       'balance' => number_format($customer['balance'], 2) . 'Ks',
       'created_date' => $customer['created_date'],
-      'activate_status' => $activate ? '<input type="checkbox" class="activate-toggle-js" data-id="'. $customer['id'] .'" checked><span class="activate-icon"></span>' : '<input type="checkbox" class="activate-toggle-js" data-id="'. $customer['id'] .'"><span class="deactivate-icon"></span>'
+      'activate_status' => $activate ? '<input type="checkbox" class="activate-toggle-js" data-id="'. $customer['id'] .'" checked><span class="activate-icon"></span>' : '<input type="checkbox" class="activate-toggle-js" data-id="'. $customer['id'] .'"><span class="activate-icon"></span>'
     );
     $new_customers[] = $new_customer;
   }

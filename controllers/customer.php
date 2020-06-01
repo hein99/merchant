@@ -148,7 +148,7 @@ function editCustomerInfo()
   }
   if($missing_fields)
   {
-    $error_messages[] = 'There were some missing fields!';
+    $error_messages[] = 'There were some missing fields. Please make sure and submit again!';
   }
   if(UsersAccount::getCustomerNameCheck($customer_info->getValue('username'), $customer_info->getValue('id')))
   {
@@ -188,7 +188,7 @@ function changeCustomerPassword()
     }
     if($missing_fields)
     {
-      $error_messages[] = 'Some missing in field. Make sure that and submit again!';
+      $error_messages[] = 'There were some missing fields. Please make sure and submit again!';
     }
     if(!isset($_POST['new_password1']) or !isset($_POST['new_password2']) or !$_POST['new_password1'] or !$_POST['new_password2'] or $_POST['new_password1'] != $_POST['new_password2'])
     {
@@ -205,8 +205,8 @@ function changeCustomerPassword()
   }
   else {
     $error_messages = array();
-    $error_messages[] = 'Current password is not correct.';
-    $error_messages[] = 'Please make sure and submit again';
+    $error_messages[] = 'There were some missing fields. ';
+    $error_messages[] = 'Please make sure and submit again!';
     $ERR_STATUS = ERR_FORM;
     require('./views/error_display.php');
   }

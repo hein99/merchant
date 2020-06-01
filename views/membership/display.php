@@ -2,7 +2,7 @@
 displayPageHeader('Membership | ' . WEB_NAME);
 displayMainNavigation('membership');
  ?>
- <div class=""> <!-- cover all membership sessions -->
+ <session class=""> <!-- cover all membership sessions -->
    <?php foreach($memberships as $membership) : ?>
      <div class=""> <!-- cover each membership session  -->
        <div class=""> <!-- header -->
@@ -29,7 +29,7 @@ displayMainNavigation('membership');
        </div>
      </div>
    <?php endforeach; ?>
- </div>
+ </session>
  <script src="<?php echo FILE_URL ?>/scripts/membership.js" charset="utf-8"></script>
 <?php
 displayPageFooter();
