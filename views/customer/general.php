@@ -65,4 +65,3 @@ function updateHistoryTable($customer_statements){
   return $table_output;
 }
 ?>
- ?>
