@@ -5,7 +5,7 @@ displayMainNavigation('settings');
  <section id="ky-settings-section">
    <div class="ky-settings-container">
      <i class="fas fa-user-circle"></i>
-     <span>Swe Swe Nyein</span>
+     <span><?php $admin_account = UsersAccount::getAdminAccount(); echo $admin_account->getValue('username')?></span>
      <form class="ky-account-configure-form" action="<?php echo URL ?>/settings/change_account/" method="post">
        <div class="">
          <span id="current-text">CURRENT</span>

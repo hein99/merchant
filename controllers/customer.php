@@ -62,111 +62,14 @@ function detail($id)
 function getActivateCustomers()
 {
   $activate_customers = UsersAccount::getActivateCustomerAccount();
-
-  $new_customers = array(); //Array Variable for json return
-  foreach ($activate_customers as $activate_customer) {
-    $membership_name = '';
-    // change from membership id to membership name
-    switch($activate_customer['membership_id'])
-    {
-      case 1:
-        $membership_name = '<div class="wp-membership-logo sliver-status" dataholder="Silver">
-          <i class="fas fa-award"></i>
-          <span id="membership-level">S</span>
-        </div>';
-        break;
-
-      case 2:
-        $membership_name = '<div class="wp-membership-logo gold-status" dataholder="Gold">
-          <i class="fas fa-award"></i>
-          <span id="membership-level">G</span>
-        </div>';
-        break;
-
-      case 3:
-        $membership_name = '<div class="wp-membership-logo platinum-status" dataholder="Platinum">
-          <i class="fas fa-award"></i>
-          <span id="membership-level">P</span>
-        </div>';
-        break;
-
-      case 4:
-        $membership_name = '<div class="wp-membership-logo diamond-status" dataholder="Diamond">
-          <i class="fas fa-gem"></i>
-        </div>';
-        break;
-
-      default:
-        exit();
-    }
-
-    $new_customer = (object)array(
-      'customer_id' => str_pad( $activate_customer['id'], 7, 0, STR_PAD_LEFT ),
-      'customer_name' => '<a href="'.URL.'/customer/detail/'.$activate_customer['id'].'" class ="customer-detail">'.$activate_customer['username'].'</a>',
-      'membership_name' => $membership_name,
-      'phone' => $activate_customer['phone'],
-      'balance' => number_format($activate_customer['balance'], 2) . 'Ks',
-      'created_date' => $activate_customer['created_date'],
-      'activate_status' => '<input type="checkbox" class="activate-toggle-js" data-id="'. $activate_customer['id'] .'" checked>'
-    );
-    $new_customers[] = $new_customer;
-  }
-
-  echo json_encode($new_customers);
+  require('./views/customer/general.php');
+  customersJsonReturn($activate_customers, true);
 }
 function getDeactivateCustomers()
 {
   $deactivate_customers = UsersAccount::getDeactivateCustomerAccount();
-  $new_customers = array(); //Array Variable for json return
-  foreach ($deactivate_customers as $deactivate_customer) {
-    $membership_name = '';
-    // change from membership id to membership name
-    switch($deactivate_customer['membership_id'])
-    {
-      case 1:
-        $membership_name = '<div class="wp-membership-logo sliver-status" dataholder="Silver">
-          <i class="fas fa-award"></i>
-          <span id="membership-level">S</span>
-        </div>';
-        break;
-
-      case 2:
-        $membership_name = '<div class="wp-membership-logo gold-status" dataholder="Gold">
-          <i class="fas fa-award"></i>
-          <span id="membership-level">G</span>
-        </div>';
-        break;
-
-      case 3:
-        $membership_name = '<div class="wp-membership-logo platinum-status" dataholder="Platinum">
-          <i class="fas fa-award"></i>
-          <span id="membership-level">P</span>
-        </div>';
-        break;
-
-      case 4:
-        $membership_name = '<div class="wp-membership-logo diamond-status" dataholder="Diamond">
-          <i class="fas fa-gem"></i>
-        </div>';
-        break;
-
-      default:
-        exit();
-    }
-
-    $new_customer = (object)array(
-      'customer_id' => str_pad( $deactivate_customer['id'], 7, 0, STR_PAD_LEFT ),
-      'customer_name' => $deactivate_customer['username'],
-      'membership_name' => $membership_name,
-      'phone' => $deactivate_customer['phone'],
-      'balance' => number_format($deactivate_customer['balance'], 2) . 'Ks',
-      'created_date' => $deactivate_customer['created_date'],
-      'activate_status' => '<input type="checkbox" class="activate-toggle-js" data-id="'. $deactivate_customer['id'] .'">'
-    );
-    $new_customers[] = $new_customer;
-  }
-
-  echo json_encode($new_customers);
+  require('./views/customer/general.php');
+  customersJsonReturn($deactivate_customers, false);
 }
 function getCustomersCount()
 {
@@ -245,7 +148,7 @@ function editCustomerInfo()
   }
   if($missing_fields)
   {
-    $error_messages[] = 'There were some missing fields!';
+    $error_messages[] = 'There were some missing fields. Please make sure and submit again!';
   }
   if(UsersAccount::getCustomerNameCheck($customer_info->getValue('username'), $customer_info->getValue('id')))
   {
@@ -285,7 +188,7 @@ function changeCustomerPassword()
     }
     if($missing_fields)
     {
-      $error_messages[] = 'Some missing in field. Make sure that and submit again!';
+      $error_messages[] = 'There were some missing fields. Please make sure and submit again!';
     }
     if(!isset($_POST['new_password1']) or !isset($_POST['new_password2']) or !$_POST['new_password1'] or !$_POST['new_password2'] or $_POST['new_password1'] != $_POST['new_password2'])
     {
@@ -302,8 +205,8 @@ function changeCustomerPassword()
   }
   else {
     $error_messages = array();
-    $error_messages[] = 'Current password is not correct.';
-    $error_messages[] = 'Please make sure and submit again';
+    $error_messages[] = 'There were some missing fields. ';
+    $error_messages[] = 'Please make sure and submit again!';
     $ERR_STATUS = ERR_FORM;
     require('./views/error_display.php');
   }
@@ -382,7 +285,6 @@ function subAmount()
     }
   }
 }
-
 function changeActivateStatus()
 {
   $required_fields = array('id');

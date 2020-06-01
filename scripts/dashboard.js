@@ -8,7 +8,7 @@ $(document).ready(function(){
     getTotalCustomersCount();
     getNewOrdersCount();
     getNewMessagesCount();
-  }, 2000);
+  }, 3000);
 
   function getTotalCustomersCount()
   {

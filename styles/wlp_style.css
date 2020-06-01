@@ -99,10 +99,9 @@
 	}
 
 	.dataTables_wrapper{
-		display: flex;
-		position: absolute !important;
-		width: calc(100% - 88px);
-		height: calc(100% - 24px);
+		position: relative !important;
+		width: 100%;
+		height: 100%;
 		background-color: white;
 		border: 1px solid #ddd;
 	}
@@ -187,17 +186,25 @@
 	}
 
 	table.dataTable.no-footer{
+		width: 100% !important;
 		border-collapse: collapse !important;
 		border-bottom: 0 !important;
+		box-sizing: border-box;
+	}
+
+	table.dataTable thead tr{
+		position: sticky;
+		top: 0;
+		background-color: white !important;
+		box-shadow: 0 1px 1px #efefef;
+		z-index: 1;
 	}
 
 	table.dataTable thead th{
 		font-size: 16px;
 		font-weight: bold;
-		cursor: pointer;
+		cursor: pointer;	
 		padding: 16px 5px !important;
-		border-bottom: 1px solid #ddd !important;
-		box-sizing: border-box;
 	}
 
 	table.dataTable thead th:nth-child(6){
@@ -220,6 +227,7 @@
 	}
 
 	table.dataTable tbody tr{
+		background-color: white;
 		border-bottom: 1px solid #efefef !important;
 	}
 
@@ -250,6 +258,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		box-sizing: border-box;
 	}
 
 	.wp-customer-page-header{
@@ -439,4 +448,19 @@
 		text-decoration: none;
 		border-bottom: 1px dotted #555;
 	}
+
+	.table-wrapper{
+		display: flex;
+		position: relative;
+		width: 100%;
+		height: calc(100% - 64px);
+		background-color: transparent;
+		overflow-y: auto;
+	}
+
+@media(max-height: 41em){
+	.wp-customer-table{
+		height: 486px;
+	}
+}
 /*-------------------------------------- END OF CUSTOMER PAGE ----------------------------------
