@@ -60,8 +60,8 @@ function changeAccount()
   }
   else {
     $error_messages = array();
-    $error_messages[] = 'Current username and/or password are not correct.';
-    $error_messages[] = 'Please make sure and submit again';
+    $error_messages[] = 'Some missing in field.';
+    $error_messages[] = 'Please make sure and submit again!';
     $ERR_STATUS = ERR_FORM;
     require('./views/error_display.php');
   }

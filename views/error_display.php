@@ -38,15 +38,15 @@ switch($ERR_STATUS)
   <div class="error-page-container">
     <div class="error-page-header">
       <span><i class="far fa-tired tired"></i></span>
-      <span id="main-error-message">Missing Fields</span>
+      <span id="main-error-message">Something Wrong!!</span>
     </div>
     <div class="error-page-body">
       <div class="error-page-message">
-        There were some missing fields!<br/>Please make sure you entered your password correctly in both fields!
+        <?php echo $text; ?>
       </div>
       <div class="error-page-buttons">
-        <a href="#"><span id="error-back-button"><i class="fas fa-arrow-left"></i>Back</span></a>
-        <a href="#"><span id="error-dashboard-button"><i class="fas fa-th-large"></i>Dashboard</span></a>
+        <a href="javascript:history.go(-1)"><span id="error-back-button"><i class="fas fa-arrow-left"></i>Back</span></a>
+        <a href="<?php echo URL ?>/dashboard/"><span id="error-dashboard-button"><i class="fas fa-th-large"></i>Dashboard</span></a>
       </div>
     </div>
   </div>
