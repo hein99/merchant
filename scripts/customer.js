@@ -39,6 +39,8 @@ $(document).ready(function(){
   $('.wp-customer-ac-de-buttons button').on('click', function(){
     $(this).addClass('active').siblings().removeClass('active');
   });
+
+  $('.dataTable').wrap('<div class="customer-table-wrapper"></div>');
 /*customer page*/
 
   $(document).on('click', '#btn-activate-js', function(){
