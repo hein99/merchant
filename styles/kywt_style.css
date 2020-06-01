@@ -566,7 +566,7 @@ nav::before{
 }
 
 .ky-create-customer-form input, textarea{
-  display: block;
+  display: inline-block;
   width: 210px;
   height: 38px;
   color: #000000;
@@ -577,6 +577,7 @@ nav::before{
 	padding: 0 9px;
 	box-sizing: border-box;
   border: none;
+  vertical-align: middle;
 }
 
 .ky-create-customer-form textarea{
