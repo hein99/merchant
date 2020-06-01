@@ -146,7 +146,7 @@ displayMainNavigation('customer');
         <tr>
           <td><?php echo $customer_statement->getValueEncoded('created_date'); ?></td>
           <td><?php echo $customer_statement->getValueEncoded('about'); ?></td>
-          <td><?php echo $customer_statement->getValueEncoded('amount'); ?></td>
+          <td class="<?php echo $customer_statement->getValue('amount_status') ? 'plus' : 'minus'?>"><span><?php echo $customer_statement->getValue('amount_status') ? '+' : '-'?></span><?php echo $customer_statement->getValueEncoded('amount'); ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>

@@ -241,8 +241,8 @@ function addAmount()
     $customer_amount = UsersAccount::getCustomerBalance($customer_statement->getValue('customer_id'));
     $customer_total_amount = $customer_amount->getValue('balance') + $customer_statement->getValue('amount');
     UsersAccount::updateCustomerBalance($customer_statement->getValue('customer_id'), $customer_total_amount);
-    $add_amount = '+' . $customer_statement->getValue('amount');
-    $customer_statement->addCustomerStatement($add_amount);
+    $amount_status = 1;
+    $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), $amount_status);
   }
 }
 function subAmount()
@@ -280,8 +280,8 @@ function subAmount()
     }else{
       $customer_total_amount = $customer_amount->getValue('balance') - $customer_statement->getValue('amount');
       UsersAccount::updateCustomerBalance($customer_statement->getValue('customer_id'), $customer_total_amount);
-      $sub_amount = '-' . $customer_statement->getValue('amount');
-      $customer_statement->addCustomerStatement($sub_amount);
+      $amount_status = 0;
+      $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), $amount_status);
     }
   }
 }
