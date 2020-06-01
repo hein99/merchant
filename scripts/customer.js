@@ -40,7 +40,7 @@ $(document).ready(function(){
     $(this).addClass('active').siblings().removeClass('active');
   });
 
-  $('.dataTable').wrap('<div class="table-wrapper"></div>');
+  $('.dataTable').wrap('<div class="customer-table-wrapper"></div>');
 /*customer page*/
 
   $(document).on('click', '#btn-activate-js', function(){

@@ -152,6 +152,7 @@
 		right: 0;
 		top: 0;
 		transform: translateY(-55px);
+		color: #555;
 	}
 
 	.dataTables_filter input{
@@ -449,7 +450,7 @@
 		border-bottom: 1px dotted #555;
 	}
 
-	.table-wrapper{
+	.customer-table-wrapper{
 		display: flex;
 		position: relative;
 		width: 100%;
