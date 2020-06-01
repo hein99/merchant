@@ -176,7 +176,12 @@ nav::before{
 /**********end of header and sidebar**********/
 
 /*********beginning of settings**********/
-#ky-settings-content{
+#ky-settings-section{
+  position: relative;
+  overflow: hidden;
+}
+
+.ky-settings-container{
   padding: 3% 25% 0 25%;
   display: flex;
   flex-direction: column;
@@ -185,47 +190,47 @@ nav::before{
   overflow: hidden;
 }
 
-#ky-settings-content i.fa-user-circle{
+.ky-settings-container i.fa-user-circle{
   font-size: 4.5em;
   color: rgba(0, 0, 0, 0.5);
   margin-bottom: 10px;
 }
 
-#ky-settings-content > span{
+.ky-settings-container > span{
   font-size: 1.3em;
   font-weight: 600;
   margin-bottom: 50px;
 }
 
-#ky-account-configure-form > div{
+.ky-account-configure-form > div{
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-#ky-account-configure-form > div span{
+.ky-account-configure-form > div span{
   text-align: center;
   font-size: 0.9em;
   margin-bottom: 15px; // left to reconfigure
 }
 
-#ky-current-account-container,
-#ky-new-account-container{
+.ky-current-account-container,
+.ky-new-account-container{
   position: relative;
   border: 2px solid #dddddd;
   border-bottom: none;
   padding: 25px;
 }
 
-#ky-current-account-container{
+.ky-current-account-container{
   border-radius: 6px 0px 0px 0px;
 }
 
-#ky-new-account-container{
+.ky-new-account-container{
   border-left: none;
   border-radius: 0px 6px 0px 0px;
 }
 
-#ky-change-button-container{
+.ky-change-button-container{
   grid-column: 1/3;
   border: 2px solid #DDDDDD;
   padding: 25px;
@@ -233,7 +238,7 @@ nav::before{
   border-radius: 0px 0px 6px 6px;
 }
 
-#ky-account-configure-form input{
+.ky-account-configure-form input{
   display: block;
   width: 180px;
   height: 35px;
@@ -247,11 +252,11 @@ nav::before{
   border: none;
 }
 
-#ky-new-account-container input:last-child{
+.ky-new-account-container input:last-child{
   margin-bottom: 0;
 }
 
-#ky-change-button-container button{
+.ky-change-button-container button{
   display: inline-block;
   width: 180px;
   height: 35px;
@@ -262,8 +267,14 @@ nav::before{
   border: none;
 }
 
-#ky-current-account-container::before,
-#ky-new-account-container::before {
+.ky-change-button-container button:hover,
+.ky-create-customer-form input[type=submit]:hover{
+  background-image: linear-gradient(to right, #2EC5FF, #2EC5FF);
+  transition: all ease 500ms;
+}
+
+.ky-current-account-container::before,
+.ky-new-account-container::before {
   content: '';
   position: absolute;
   width: 15px;
@@ -277,8 +288,11 @@ nav::before{
   background-color: #ffffff;
 }
 
-#ky-account-configure-form input:focus{
+.ky-account-configure-form input:focus,
+.dashboard-form-conatainer input:focus,
+.dashboard-form-conatainer textarea:focus{
   box-shadow: 0 0 4px rgba(0,0,0,0.8);
+  border: none;
 }
 
 .ky-onfocus{
@@ -299,4 +313,319 @@ nav::before{
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+#ky-settings-section > div:nth-child(2){
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #2EC5FF;
+  left: 0;
+  top: 20%;
+  transform: translateX(-50%);
+  opacity: 0.6;
+}
+
+#ky-settings-section > div:nth-child(3){
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #42F0E7;
+  right: 2%;
+  top: 0;
+  transform: translateY(-60%);
+  opacity: 0.6;
+}
+
+#ky-settings-section > div:nth-child(4){
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #2EC5FF;
+  right: 8%;
+  bottom: 16%;
+  opacity: 0.6;
+}
+
+#ky-settings-section > div:nth-child(5){
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #2EC5FF;
+  right: 8%;
+  bottom: 30%;
+  opacity: 0.6;
+}
 /**********end of settings**********/
+
+
+/**********beginning of dashboard**********/
+#ky-dashboard-section{
+  padding: 4% 4% 0 4%;
+  background-color: #EFEFEF;
+  position: relative;
+}
+
+.ky-dashboard-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 4%;
+}
+
+.dashboard-form-part{
+  grid-column: 1/5;
+  margin-top: 3%;
+}
+
+.ky-dashboard-container a{
+  display: inline-block;
+  height: 4.9em;
+  text-decoration: none;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 0 1.5em;
+  box-shadow: 0 0 10px 0 #dddddd;
+}
+
+.ky-dashboard-container a:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 15px 0 #847d7d54;
+  transition: all ease 300ms;
+}
+
+.dashboard-small-container{
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ky-icon-container{
+  display: inline-flex;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin-right: 1.5em;
+}
+
+.ky-icon-container i{
+  font-size: 2em;
+}
+
+.ky-icon-container.ky-customer-icon{
+  background-color: #3498DB;
+}
+
+.ky-info-container.ky-customer-info > span:first-child{
+  color: #3498DB;
+}
+
+.ky-icon-container.ky-order-icon{
+  background-color: #27AE60;
+}
+
+.ky-info-container.ky-order-info > span:first-child{
+  color: #27AE60;
+}
+
+.ky-icon-container.ky-conversation-icon{
+  background-color: #E74C3C;
+}
+
+.ky-info-container.ky-conversation-info > span:first-child{
+  color: #E74C3C;
+}
+
+.ky-info-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: start;
+}
+
+.ky-info-container > span:first-child{
+  font-size: 1.1em;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.ky-info-container > span:last-child{
+  font-size: 0.8em;
+  color: #807878;
+}
+
+.dashboard-small-container.memberships{
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 0px;
+  box-sizing: border-box;
+}
+
+.dashboard-small-container.memberships > span{
+  font-size: 0.97em;
+  font-weight: 600;
+  color: #636E72;
+}
+
+.ky-membership-icons-container{
+  display: inline-flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ky-membership-icons-container > div{
+  position: relative;
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.ky-membership-icons-container i{
+  font-size: 1.7em;
+}
+
+.ky-letter-inside-icon{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: white;
+  font-weight: 800;
+}
+
+.ky-silver-icon{
+  background-color: #C0BFDF;
+}
+
+.ky-gold-icon{
+  background-color: #FDD600
+}
+
+.ky-platinum-icon{
+  background-color: #B9BBBC;
+}
+
+.ky-diamond-icon{
+  background-color: #2EC5FF;
+}
+
+.dashboard-form-part{
+  position: relative;
+  padding: 3% 0 3% 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  height: 80%;
+  box-shadow: 0 0 15px 0 #dddddd;
+  overflow: hidden;
+}
+
+.dashboard-form-conatainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-form-conatainer > span{
+  display: inline-block;
+  width: 230px;
+  text-align: center;
+  font-size: 20px;
+  color: #2D3436;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.ky-create-customer-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.ky-create-customer-form input, textarea{
+  display: block;
+  width: 210px;
+  height: 38px;
+  color: #000000;
+  background-color: #EFEFEF;
+  text-align: center;
+	border-radius: 7px;
+	margin-bottom: 18px;
+	padding: 0 9px;
+	box-sizing: border-box;
+  border: none;
+}
+
+.ky-create-customer-form textarea{
+  vertical-align: middle;
+  height: 60px;
+  max-height: 60px;
+  padding: 4px;
+  letter-spacing: 0.1px;
+  font-size: 14px;
+  padding: 4px 9px;
+}
+
+.ky-create-customer-form input[type=submit]{
+  margin-bottom: none;
+  color: #ffffff;
+  background-image: linear-gradient(to right, #2EC5FF, #42F0E7);
+  border: none;
+  font-weight: 600;
+}
+
+.dashboard-form-part div:nth-child(2){
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #2EC5FF;
+  left: 16%;
+  top: 0;
+  transform: translateY(-55%);
+  opacity: 0.6;
+}
+
+.dashboard-form-part div:nth-child(3){
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: #42F0E7;
+  left: 0;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  opacity: 0.9;
+}
+
+.dashboard-form-part div:nth-child(4){
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: #2EC5FF;
+  right: 0;
+  bottom: 0;
+  transform: translate(50%, 50%);
+  opacity: 0.6;
+}
+/**********end of dashboard**********/

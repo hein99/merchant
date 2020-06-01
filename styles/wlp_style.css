@@ -1,4 +1,4 @@
-/*ERROR PAGE*/
+ERROR PAGE*/
 	.error-page-content{
 		font-family: sans-serif;
 		width: 100vw;
@@ -98,9 +98,14 @@
 		display: none;
 	}
 
+	.dataTables_wrapper .dataTables_paginate .paginate_button{
+		padding: 6px 12px !important;
+	}
+
 	.dataTables_wrapper{
+		display: flex;
 		position: absolute !important;
-		width: calc(100% - 96px);
+		width: calc(100% - 144px);
 		height: calc(100% - 24px);
 		background-color: white;
 		border: 1px solid #ddd;
@@ -110,13 +115,14 @@
 		position: absolute;
 		right: 0;
 		top: 0;
-		transform: translateY(-75px);
+		transform: translateY(-57px);
 	}
 
 	.dataTables_filter input{
 		border-radius: 5px;
-		width: 175px;
-		height: 36px;
+		width: 159px;
+		height: 32px;
+		letter-spacing: 0.5px;
 		color: #2D3436;
 		padding: 0 10px;
 		border: 1px solid #ddd;
@@ -128,8 +134,9 @@
 
 	.dataTables_wrapper .dataTables_info{
 		position: absolute;
-		bottom: 10px;
+		bottom: 8px;
 		left: 10px;
+		font-size: 14px;
 		padding: 10px !important;
 	}
 
@@ -141,28 +148,49 @@
 	}
 
 	table.dataTable.no-footer{
-		border-collapse: separate !important;
+		border-collapse: collapse !important;
 		border-bottom: 0 !important;
 	}
 
 	table.dataTable thead th{
-		padding: 24px 16px !important;
+		padding: 18px 10px !important;
 		border-bottom: 1px solid #ddd !important;
 		box-sizing: border-box;
 	}
 
 	table.dataTable thead th:nth-child(1){
-		max-width: 127px;
+		max-width: 128px !important;
 	}
 
-	table.dataTable tbody{
-		overflow-y: auto;
+	table.dataTable thead th:nth-child(2){
+		min-width: 110px;
+	}
+
+	table.dataTable thead th:nth-child(3){
+		min-width: 132px;
+	}
+
+	table.dataTable thead th:nth-child(4){
+		min-width: 110px;
+	}
+
+	table.dataTable thead th:nth-child(5){
+		min-width: 132px;
+	}
+
+	table.dataTable thead th:nth-child(6){
+		min-width: 147px;
+	}
+
+	table.dataTable thead th:nth-child(7){
+		min-width: 139px;
 	}
 
 	table.dataTable tbody td{
 		position: relative;
 		text-align: center;
-		padding: 18px 16px !important;
+		font-size: 14px;
+		padding: 16px 10px !important;
 	}
 
 	table.dataTable tbody td:nth-child(3){
@@ -174,15 +202,11 @@
 	}
 
 	table.dataTable tbody tr{
-		border-bottom: 1px solid #ddd !important;
-	}
-
-	table.dataTable tbody tr:nth-child(even){
-		background-color: #f5f5f5 !important;
+		border-bottom: 1px solid #efefef !important;
 	}
 
 	table.dataTable tbody tr:hover{
-		background-color: #ECF0F1 !important;
+		background-color: #f5f5f5 !important;
 	}
 
 	table.dataTable{
@@ -197,7 +221,7 @@
 	}
 
 	#extra{
-		width: 278px;
+		width: 262px;
 		pointer-events: none;
 	}
 
@@ -215,7 +239,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 36px 48px;
+		padding: 21px 72px;
 		box-sizing: border-box;
 	}
 
@@ -225,7 +249,7 @@
 	}
 
 	.wp-customer-count-container span:first-child{
-		font-size: 28px;
+		font-size: 26px;
 		color: #2D3436;
 		font-weight: bold;
 		margin-right: 32px;
@@ -234,6 +258,7 @@
 	#wp-customer-count{
 		position: relative;
 		top: 3px;
+		font-size: 15px;
 		color: #555555;
 		margin-right: 16px;
 	}
@@ -241,12 +266,12 @@
 	#user-plus-icon{
 		position: relative;
 		background-color: white;
-		width: 38px;
-		height: 38px;
+		width: 36px;
+		height: 36px;
 		border-radius: 50%;
 		cursor: pointer;
 		box-shadow: 0 0 10px #ddd;
-		transition: 0.3s ease;
+		transition: 0.1s ease;
 	}
 
 	#user-plus-icon:hover{
@@ -259,7 +284,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: #2EC5FF;
-		transition: 0.3s ease;
+		transition: 0.1s ease;
 	}
 
 	#user-plus-icon:hover i{
@@ -275,8 +300,9 @@
 	.wp-customer-ac-de-buttons button{
 		font-family: inter;
 		border: none;
-		width: 104px;
-		height: 36px;
+		width: 95px;
+		height: 32px;
+		font-size: 14px;
 		margin: 0 1.5px;
 		font-weight: bolder;
 		letter-spacing: 0.5px;
@@ -301,11 +327,10 @@
 		position: relative !important;
 		width: 100%;
 		height: 100%;
-		padding: 0 48px 24px;
+		padding: 0 72px 24px;
 		box-sizing: border-box;
 	}
 
-/*MEMBERSHIP LOGO*/
 	.wp-membership-logo{
 		position: absolute;
 		left: 50%;
@@ -316,6 +341,30 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		overflow: hidden;
+	}
+
+	.wp-membership-logo::before{
+		content: attr(dataholder);
+		position: absolute;
+		width: calc(100% - 2px);
+		height: 100%;
+		left: 50%;
+		transform: translateX(-155%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #ECF0F1;
+		color: white;
+		font-weight: bold;
+		letter-spacing: 0.5px;
+		z-index: 3;
+		pointer-events: none;	
+		transition: transform 0.3s ease;
+	}
+
+	.wp-membership-logo:hover::before{
+		transform: translateX(-50%);
 	}
 
 	.wp-membership-logo i.fa-gem{
@@ -325,17 +374,51 @@
 
 	.wp-membership-logo i.fa-award{
 		font-size: 32px;
-		color: #C0BFDF;
 	}
 
 	.wp-membership-logo #membership-level{
 		position: absolute;
-		left: calc(50% - 1px);
-		top: 15px;
+		left: calc(50% - 0.5px);
+		top: 12px;
 		transform: translateX(-50%);
 		font-size: 11px;
 		font-weight: bold;
-		color: #C0BFDF;
 	}
-/*END OF MEMBERSHIP LOGO*/
-/*-------------------------------------- END OF CUSTOMER PAGE ----------------------------------*/
+
+	.wp-membership-logo.sliver-status i.fa-award, 
+	.wp-membership-logo.sliver-status #membership-level{
+		color: #AEAEEF;
+	}
+
+	.sliver-status.wp-membership-logo::before{
+		background-color: #AEAEEF;
+	}
+
+	.wp-membership-logo.gold-status i.fa-award,
+	.wp-membership-logo.gold-status #membership-level{
+		color: #FDD600;
+	}
+
+	.gold-status.wp-membership-logo::before{
+		background-color: #FDD600;
+	}
+
+	.wp-membership-logo.platinum-status i.fa-award,
+	.wp-membership-logo.platinum-status #membership-level{
+		color: #B9BBBC;
+	}
+
+	.platinum-status.wp-membership-logo::before{
+		background-color: #B9BBBC;
+	}
+
+	.diamond-status.wp-membership-logo::before{
+		background-color: #2EC5FF;
+	}
+
+	.customer-detail{
+		color: #222;
+		text-decoration: none;
+		border-bottom: 1px dotted #555;
+	}
+/*-------------------------------------- END OF CUSTOMER PAGE ----------------------------------
