@@ -195,7 +195,7 @@
 		position: sticky;
 		top: 0;
 		background-color: white !important;
-		box-shadow: 0 1.5px 1.5px #efefef;
+		box-shadow: 0 1px 1px #efefef;
 		z-index: 1;
 	}
 
