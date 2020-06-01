@@ -48,8 +48,7 @@ class Membership extends DataObject
   public function updatePercentage()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_MEMBERSHIP .' percentage = percentage WHERE id = :id';
-
+    $sql = 'UPDATE '. TBL_MEMBERSHIP .' SET percentage = :percentage WHERE id = :id';
     try {
       $st = $conn->prepare($sql);
       $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
@@ -65,7 +64,7 @@ class Membership extends DataObject
   public function updateDefinition()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_MEMBERSHIP .' definition = definition WHERE id = :id';
+    $sql = 'UPDATE '. TBL_MEMBERSHIP .' SET definition = :definition WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
