@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 31, 2020 at 03:23 PM
+-- Generation Time: Jun 01, 2020 at 01:40 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- PHP Version: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -66,10 +65,26 @@ INSERT INTO `customer_order` (`id`, `customer_id`, `product_link`, `remark`, `qu
 CREATE TABLE `customer_statement` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `amount` float NOT NULL,
+  `amount` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `amount_status` int(1) NOT NULL,
   `about` text COLLATE utf8_unicode_ci NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `customer_statement`
+--
+
+INSERT INTO `customer_statement` (`id`, `customer_id`, `amount`, `amount_status`, `about`, `created_date`) VALUES
+(1, 14, '2000', 1, 'add', '2020-06-01 11:25:53'),
+(2, 14, '2000', 0, 'sub', '2020-06-01 11:26:12'),
+(3, 14, '2000', 1, 'add', '2020-06-01 11:28:49'),
+(4, 14, '2000', 0, 'sub', '2020-06-01 11:30:22'),
+(5, 14, '2000', 1, 'add', '2020-06-01 11:31:58'),
+(6, 14, '2000', 0, 'sub', '2020-06-01 11:34:30'),
+(7, 14, '2000', 1, 'add', '2020-06-01 11:35:08'),
+(8, 14, '2000', 1, 'add', '2020-06-01 11:36:04'),
+(9, 14, '4000', 0, 'sub', '2020-06-01 11:36:32');
 
 -- --------------------------------------------------------
 
@@ -151,7 +166,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `user_status`, `phone`, `addr
 (11, 'Mite', '*07D96E7E024EF70A08BFAD98C515AEB5126FEF77', 0, '09457560332', 'london', 1, 0, 0, 4, '2020-05-31 13:18:31', '2020-05-31 13:18:31'),
 (12, 'chocotaco', '*6AA3E3281F392090BCB9E0A1029E31741BA75060', 0, '09977503263', 'nth', 1, 0, 0, 4, '2020-05-31 13:16:06', '0000-00-00 00:00:00'),
 (13, 'shawn', '*07624B12A69A692EDC6E5419C3895D44769B34AA', 0, '09975403263', 'nth', 1, 0, 0, 2, '2020-05-31 13:16:06', '0000-00-00 00:00:00'),
-(14, 'Anna', '*8342278FD80E338FC16478FB1C13FA4F04C8A16C', 0, '098567360332', 'Washinton', 1, 0, 0, 3, '2020-05-31 13:18:33', '2020-05-31 13:18:33'),
+(14, 'Anna', '*8342278FD80E338FC16478FB1C13FA4F04C8A16C', 0, '098567360332', 'Washinton', 1, 0, 60000, 3, '2020-06-01 11:36:32', '2020-05-31 13:18:33'),
 (15, 'Lavanda', '*737928839815AC74376F2DDD9AC43D6A6DEDFC16', 0, '09697503263', 'nth', 1, 0, 0, 2, '2020-05-31 13:18:18', '0000-00-00 00:00:00'),
 (16, 'Harry', '*FC72AB3E457BAC1DB695653A5AD9CF8EA993C752', 0, '0969703233', 'nth', 1, 0, 0, 1, '2020-05-31 13:18:18', '0000-00-00 00:00:00'),
 (17, 'McDonal', '*BF9F7F6F50C822351F892F60789BAC577C9429F4', 0, '09972255924', 'yangon', 1, 0, 0, 3, '2020-05-31 13:19:53', '0000-00-00 00:00:00'),
@@ -208,7 +223,7 @@ ALTER TABLE `customer_order`
 -- AUTO_INCREMENT for table `customer_statement`
 --
 ALTER TABLE `customer_statement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `login_record`

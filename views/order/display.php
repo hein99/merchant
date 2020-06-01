@@ -15,16 +15,16 @@ displayMainNavigation('order');
    <table id="tb-request-js">
      <thead>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -32,16 +32,16 @@ displayMainNavigation('order');
      </thead>
      <tfoot>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -52,16 +52,16 @@ displayMainNavigation('order');
    <table id="tb-pending-js">
      <thead>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -69,16 +69,16 @@ displayMainNavigation('order');
      </thead>
      <tfoot>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -89,16 +89,16 @@ displayMainNavigation('order');
    <table id="tb-confirm-js">
      <thead>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -106,16 +106,16 @@ displayMainNavigation('order');
      </thead>
      <tfoot>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -126,16 +126,16 @@ displayMainNavigation('order');
    <table id="tb-cancel-js">
      <thead>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -143,16 +143,16 @@ displayMainNavigation('order');
      </thead>
      <tfoot>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>

@@ -18,19 +18,19 @@ displayMainNavigation('customer');
     <div id="extra"></div>
   </div>
 
-  <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+  <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
  
   <div class="wp-customer-table">
     <table id="tb-activate-js">
       <thead>
         <tr>
           <th>Membership</th>
-          <th>Customer ID</th>
-          <th>Customer Name</th>
-          <th>Phone no.</th>
+          <th>Customer&nbsp;ID</th>
+          <th>Customer&nbsp;Name</th>
+          <th>Phone&nbsp;no</th>
           <th>Balance</th>
-          <th>Created Date</th>
-          <th>Activation status</th>
+          <th>Created&nbsp;Date</th>
+          <th>Activation&nbsp;Status</th>
         </tr>
       </thead>
     </table>
@@ -39,12 +39,12 @@ displayMainNavigation('customer');
       <thead>
         <tr>
           <th>Membership</th>
-          <th>Customer ID</th>
-          <th>Customer Name</th>
-          <th>Phone no.</th>
+          <th>Customer&nbsp;ID</th>
+          <th>Customer&nbsp;Name</th>
+          <th>Phone&nbsp;no</th>
           <th>Balance</th>
-          <th>Created Date</th>
-          <th>Activation status</th>
+          <th>Created&nbsp;Date</th>
+          <th>Activation&nbsp;Status</th>
         </tr>
       </thead>
     </table>

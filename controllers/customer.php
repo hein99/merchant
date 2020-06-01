@@ -20,6 +20,9 @@ switch($action)
   case 'get_customer_balance':
     getCustomerBalance();
     break;
+  case 'get_history_table':
+    getHistoryTable();
+    break;
   case 'create':
     addCustomerAccount();
     break;
@@ -175,6 +178,12 @@ function getCustomerBalance()
   $customer_amount = UsersAccount::getCustomerBalance($_POST['customer_id']);
   echo $customer_amount->getValue('balance');
 }
+function getHistoryTable()
+{
+  $customer_statements = CustomerStatement::getCustomerStatement($_POST['customer_id']);
+  require('./views/customer/general.php');
+  echo $table_output = updateHistoryTable($customer_statements);
+}
 function addCustomerAccount()
 {
   $required_fields = array('username', 'password', 'phone', 'address');
@@ -329,7 +338,8 @@ function addAmount()
     $customer_amount = UsersAccount::getCustomerBalance($customer_statement->getValue('customer_id'));
     $customer_total_amount = $customer_amount->getValue('balance') + $customer_statement->getValue('amount');
     UsersAccount::updateCustomerBalance($customer_statement->getValue('customer_id'), $customer_total_amount);
-    $customer_statement->addCustomerStatement();
+    $amount_status = 1;
+    $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), $amount_status);
   }
 }
 function subAmount()
@@ -367,7 +377,8 @@ function subAmount()
     }else{
       $customer_total_amount = $customer_amount->getValue('balance') - $customer_statement->getValue('amount');
       UsersAccount::updateCustomerBalance($customer_statement->getValue('customer_id'), $customer_total_amount);
-      $customer_statement->addCustomerStatement();
+      $amount_status = 0;
+      $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), $amount_status);
     }
   }
 }

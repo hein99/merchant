@@ -132,6 +132,7 @@ displayMainNavigation('customer');
 <br/><br/>
 <div class="">
   <h2>History</h2>
+  <?php echo '<span id="status">status</span>'; ?>
   <table>
     <thead>
       <tr>
@@ -140,12 +141,12 @@ displayMainNavigation('customer');
         <th>Amount</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="statement_history">
       <?php foreach ($customer_statements as $customer_statement): ?>
         <tr>
           <td><?php echo $customer_statement->getValueEncoded('created_date'); ?></td>
           <td><?php echo $customer_statement->getValueEncoded('about'); ?></td>
-          <td><?php echo $customer_statement->getValueEncoded('amount'); ?></td>
+          <td class="<?php echo $customer_statement->getValue('amount_status') ? 'plus' : 'minus'?>"><span><?php echo $customer_statement->getValue('amount_status') ? '+' : '-'?></span><?php echo $customer_statement->getValueEncoded('amount'); ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>
