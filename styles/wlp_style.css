@@ -1,4 +1,4 @@
-ERROR PAGE*/
+/*ERROR PAGE*/
 	.error-page-content{
 		font-family: sans-serif;
 		width: 100vw;
@@ -98,30 +98,69 @@ ERROR PAGE*/
 		display: none;
 	}
 
-	.dataTables_wrapper .dataTables_paginate .paginate_button{
-		padding: 6px 12px !important;
-	}
-
 	.dataTables_wrapper{
 		display: flex;
 		position: absolute !important;
-		width: calc(100% - 144px);
+		width: calc(100% - 88px);
 		height: calc(100% - 24px);
 		background-color: white;
 		border: 1px solid #ddd;
+	}
+
+	.dataTables_wrapper .dataTables_paginate .paginate_button{
+		padding: 6px 12px !important;
+		box-sizing: border-box;
+		display: inline-block;
+		min-width: 1.5em;
+		margin: 2px;
+		text-align: center;
+		color: #333 !important;
+		text-decoration: none !important;
+		cursor: pointer;
+		border-radius: 2px;
+	}
+
+	.dataTables_paginate span{
+		width: 100%;
+		height: 100%;
+		padding: 9px 3px;
+		background-color: #efefef;
+		border-radius: 2px;
+	}
+
+	.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+		color: #2EC5FF !important;
+		cursor: pointer;
+	}
+
+	.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+	.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+	.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active{
+		cursor: default;
+		color: #999 !important;
+		border: 1px solid transparent;
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.dataTables_wrapper .dataTables_paginate .paginate_button.current{
+		color: white !important;
+		background-color: #2EC5FF;
 	}
 
 	.dataTables_filter{
 		position: absolute;
 		right: 0;
 		top: 0;
-		transform: translateY(-57px);
+		transform: translateY(-55px);
 	}
 
 	.dataTables_filter input{
 		border-radius: 5px;
 		width: 159px;
-		height: 32px;
+		height: 28px;
+		font-size: 14px;
+		margin-left: 8px;
 		letter-spacing: 0.5px;
 		color: #2D3436;
 		padding: 0 10px;
@@ -134,7 +173,7 @@ ERROR PAGE*/
 
 	.dataTables_wrapper .dataTables_info{
 		position: absolute;
-		bottom: 8px;
+		bottom: 10px;
 		left: 10px;
 		font-size: 14px;
 		padding: 10px !important;
@@ -153,36 +192,15 @@ ERROR PAGE*/
 	}
 
 	table.dataTable thead th{
-		padding: 18px 10px !important;
+		font-size: 16px;
+		font-weight: bold;
+		cursor: pointer;
+		padding: 16px 5px !important;
 		border-bottom: 1px solid #ddd !important;
 		box-sizing: border-box;
 	}
 
-	table.dataTable thead th:nth-child(1){
-		max-width: 128px !important;
-	}
-
-	table.dataTable thead th:nth-child(2){
-		min-width: 110px;
-	}
-
-	table.dataTable thead th:nth-child(3){
-		min-width: 132px;
-	}
-
-	table.dataTable thead th:nth-child(4){
-		min-width: 110px;
-	}
-
-	table.dataTable thead th:nth-child(5){
-		min-width: 132px;
-	}
-
 	table.dataTable thead th:nth-child(6){
-		min-width: 147px;
-	}
-
-	table.dataTable thead th:nth-child(7){
 		min-width: 139px;
 	}
 
@@ -190,7 +208,7 @@ ERROR PAGE*/
 		position: relative;
 		text-align: center;
 		font-size: 14px;
-		padding: 16px 10px !important;
+		padding: 14px 5px !important;
 	}
 
 	table.dataTable tbody td:nth-child(3){
@@ -239,7 +257,7 @@ ERROR PAGE*/
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 21px 72px;
+		padding: 21px 44px;
 		box-sizing: border-box;
 	}
 
@@ -327,7 +345,7 @@ ERROR PAGE*/
 		position: relative !important;
 		width: 100%;
 		height: 100%;
-		padding: 0 72px 24px;
+		padding: 0 44px 24px;
 		box-sizing: border-box;
 	}
 
@@ -368,15 +386,15 @@ ERROR PAGE*/
 	}
 
 	.wp-membership-logo i.fa-gem{
-		font-size: 22px;
+		font-size: 18px;
 		color: #2EC5FF;
 	}
 
 	.wp-membership-logo i.fa-award{
-		font-size: 32px;
+		font-size: 28px;
 	}
 
-	.wp-membership-logo #membership-level{
+	.wp-membership-logo #membership-level{display: none;
 		position: absolute;
 		left: calc(50% - 0.5px);
 		top: 12px;

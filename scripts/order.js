@@ -7,6 +7,7 @@ $(document).ready(function(){
       },
       "columns": [
           { "data": "order_id" },
+          { "data": "customer_name"},
           { "data": "product_link" },
           { "data": "remark" },
           { "data": "quantity" },
@@ -28,6 +29,7 @@ $(document).ready(function(){
       },
       "columns": [
           { "data": "order_id" },
+          { "data": "customer_name"},
           { "data": "product_link" },
           { "data": "remark" },
           { "data": "quantity" },
@@ -49,6 +51,7 @@ $(document).ready(function(){
       },
       "columns": [
           { "data": "order_id" },
+          { "data": "customer_name"},
           { "data": "product_link" },
           { "data": "remark" },
           { "data": "quantity" },
@@ -70,6 +73,7 @@ $(document).ready(function(){
       },
       "columns": [
           { "data": "order_id" },
+          { "data": "customer_name"},
           { "data": "product_link" },
           { "data": "remark" },
           { "data": "quantity" },

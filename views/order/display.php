@@ -16,7 +16,8 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order&nbsp;ID</th>
-         <th>Product&nbsp;link</th>
+         <th>Customer&nbsp;Name</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -24,7 +25,7 @@ displayMainNavigation('order');
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -33,7 +34,8 @@ displayMainNavigation('order');
      <tfoot>
        <tr>
          <th>Order&nbsp;ID</th>
-         <th>Product&nbsp;link</th>
+         <th>Customer&nbsp;Name</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -41,7 +43,7 @@ displayMainNavigation('order');
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -53,7 +55,8 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order&nbsp;ID</th>
-         <th>Product&nbsp;link</th>
+         <th>Customer&nbsp;Name</th>
+         <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -61,7 +64,7 @@ displayMainNavigation('order');
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -70,6 +73,7 @@ displayMainNavigation('order');
      <tfoot>
        <tr>
          <th>Order&nbsp;ID</th>
+         <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
@@ -78,7 +82,7 @@ displayMainNavigation('order');
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -90,6 +94,7 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order&nbsp;ID</th>
+         <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
@@ -98,7 +103,7 @@ displayMainNavigation('order');
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -107,6 +112,7 @@ displayMainNavigation('order');
      <tfoot>
        <tr>
          <th>Order&nbsp;ID</th>
+         <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
@@ -115,7 +121,7 @@ displayMainNavigation('order');
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -127,6 +133,7 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order&nbsp;ID</th>
+         <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
@@ -135,7 +142,7 @@ displayMainNavigation('order');
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
@@ -144,6 +151,7 @@ displayMainNavigation('order');
      <tfoot>
        <tr>
          <th>Order&nbsp;ID</th>
+         <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
@@ -152,7 +160,7 @@ displayMainNavigation('order');
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight Cost[$]</th>
+         <th>Weight&nbsp;Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>

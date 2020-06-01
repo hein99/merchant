@@ -30,6 +30,7 @@ $(document).ready(function(){
       data:{customer_id:customer_id, amount:amount, about:about},
       success:function(data)
       {
+        $('#status').html(data);
         $('#amount').val('');
         $('#about').val('');
         $.ajax({
@@ -38,6 +39,14 @@ $(document).ready(function(){
           data:{customer_id:customer_id},
           success: function(data){
             $('#balance').html(data);
+            $.ajax({
+              url: PAGE_URL+'/customer/get_history_table',
+              method: "POST",
+              data:{customer_id:customer_id},
+              success: function(data){
+                $('#statement_history').html(data);
+              }
+            })
           }
         })
       }
@@ -62,6 +71,14 @@ $(document).ready(function(){
           data:{customer_id:customer_id},
           success: function(data){
             $('#balance').html(data);
+            $.ajax({
+              url: PAGE_URL+'/customer/get_history_table',
+              method: "POST",
+              data:{customer_id:customer_id},
+              success: function(data){
+                $('#statement_history').html(data);
+              }
+            })
           }
         })
       }
