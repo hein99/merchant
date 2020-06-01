@@ -32,7 +32,7 @@ switch($action)
 function getNewOrdersCount()
 {
   $total = CustomerOrder::getNewOrdersCount();
-  echo json_encode($total);
+  echo $total;
 }
 
 function getTotalOrdersCount()

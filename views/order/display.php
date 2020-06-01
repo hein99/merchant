@@ -15,14 +15,14 @@ displayMainNavigation('order');
    <table id="tb-request-js">
      <thead>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
          <th>Weight Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
@@ -32,14 +32,14 @@ displayMainNavigation('order');
      </thead>
      <tfoot>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
          <th>Weight Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
@@ -52,14 +52,14 @@ displayMainNavigation('order');
    <table id="tb-pending-js">
      <thead>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
          <th>Weight Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
@@ -69,14 +69,14 @@ displayMainNavigation('order');
      </thead>
      <tfoot>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
          <th>Weight Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
@@ -89,14 +89,14 @@ displayMainNavigation('order');
    <table id="tb-confirm-js">
      <thead>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
          <th>Weight Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
@@ -106,14 +106,14 @@ displayMainNavigation('order');
      </thead>
      <tfoot>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
          <th>Weight Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
@@ -126,14 +126,14 @@ displayMainNavigation('order');
    <table id="tb-cancel-js">
      <thead>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
          <th>Weight Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
@@ -143,14 +143,14 @@ displayMainNavigation('order');
      </thead>
      <tfoot>
        <tr>
-         <th>Order ID</th>
-         <th>Product link</th>
+         <th>Order&nbsp;ID</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
          <th>Amount</th>
-         <th>MM Tax[%]</th>
-         <th>US Tax[%]</th>
+         <th>MM&nbsp;Tax[%]</th>
+         <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
          <th>Weight Cost[$]</th>
          <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
