@@ -630,3 +630,36 @@ nav::before{
   opacity: 0.6;
 }
 /**********end of dashboard**********/
+
+/**********beginning of memberships**********/
+#ky-memberships-section{
+  padding: 4%;
+  display: grid;
+  grid-gap: 4%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr; /*define that also in dashboard*/
+  grid-auto-rows: 260px;
+}
+
+#ky-memberships-section > div{
+  background-color: red;
+}
+
+.ky-silver-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.ky-membership-header{
+  /* width: 100%; */
+  height: 100px;
+}
+
+.ky-membership-header{
+  display: flex;
+  flex: row;
+  justify-content: space-between;
+  padding: 5px;
+}
