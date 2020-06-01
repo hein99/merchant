@@ -44,7 +44,7 @@ function getTotalOrdersCount()
 function getOrders()
 {
   $order_status = isset($_GET['order_status']) ? $_GET['order_status'] : '' ;
-  if ( $order_status && $order_status < 4) {
+  if ( $order_status && $order_status < 5) {
     $orders = CustomerOrder::getCustomerOrderArrayByOrderStatus($order_status);
   }
   else{
@@ -61,7 +61,7 @@ function getOrders()
         $commission = Membership::getMembershipByID($order['membership_id']); // get commission percentage from Membership table
         $new_customer = (object)array(
           'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'product_link' => $order['product_link'],
+          'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'quantity' => $order['quantity'],
           'price' => number_format($order['price'], 2) . '$',
@@ -70,7 +70,7 @@ function getOrders()
           'us_tax' => '<input type="text" value="'.$order['us_tax'].'" class="us-tax-js" >',
           'commission' => '<input type="text" value="'.$commission['percentage'].'" class="commission-js" >',
           'weight' => '<input type="text" value="'.$order['weight_cost'].'" class="weight-js" >',
-          'net_weight' => '<span class="net-weight-js>'.$order['weight_cost']*$order['quantity'].'</span>"',
+          'net_weight' => '<span class="net-weight-js">'.$order['weight_cost']*$order['quantity'].'</span>',
           'order_status' => '<select class="order-status-js" name="order_status">
             <option value="request" selected disabled>Request</option>
             <option value="pending">Pending</option>
@@ -85,7 +85,7 @@ function getOrders()
       foreach ($orders as $order) {
         $new_customer = (object)array(
           'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'product_link' => $order['product_link'],
+          'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'quantity' => $order['quantity'],
           'price' => number_format($order['price'], 2) . '$',
@@ -94,7 +94,7 @@ function getOrders()
           'us_tax' => '<input type="text" value="'.$order['us_tax'].'" class="us-tax-js" >',
           'commission' => '<input type="text" value="'.$order['commission'].'" class="commission-js" >',
           'weight' => '<input type="text" value="'.$order['weight_cost'].'" class="weight-js" >',
-          'net_weight' => '<span class="net-weight-js>'.$order['weight_cost']*$order['quantity'].'</span>"',
+          'net_weight' => '<span class="net-weight-js">'.$order['weight_cost']*$order['quantity'].'</span>',
           'order_status' => '<select class="order-status-js" name="order_status">
             <option value="pending" selected disabled>Pending</option>
             <option value="cancel">Cancel</option>
@@ -108,7 +108,7 @@ function getOrders()
       foreach ($orders as $order) {
         $new_customer = (object)array(
           'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'product_link' => $order['product_link'],
+          'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'quantity' => $order['quantity'],
           'price' => number_format($order['price'], 2) . '$',
@@ -132,7 +132,7 @@ function getOrders()
       foreach ($orders as $order) {
         $new_customer = (object)array(
           'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'product_link' => $order['product_link'],
+          'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'quantity' => $order['quantity'],
           'price' => number_format($order['price'], 2) . '$',

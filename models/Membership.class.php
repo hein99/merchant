@@ -15,7 +15,9 @@ class Membership extends DataObject
     $sql = 'SELECT * FROM ' . TBL_MEMBERSHIP . ' WHERE id = :id';
 
     try {
-      $st = $conn->query($sql);
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $id, PDO::PARAM_INT);
+      $st->execute();
       $row = $st->fetch();
       return $row;
     } catch(PDOException $e) {
@@ -58,6 +60,7 @@ class Membership extends DataObject
       parent::disconnect($conn);
       die('Query failed: ' . $e->getMessage());
     }
+  }
 
   public function updateDefinition()
   {

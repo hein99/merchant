@@ -11,12 +11,12 @@ displayMainNavigation('order');
    <button type="button" name="button" id="btn-confirm-js">Confirm</button>
    <button type="button" name="button" id="btn-cancel-js">Cancel</button>
 
-
+   <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
    <table id="tb-request-js">
      <thead>
        <tr>
          <th>Order ID</th>
-         <th>Product_link</th>
+         <th>Product link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -25,15 +25,15 @@ displayMainNavigation('order');
          <th>US Tax[%]</th>
          <th>Commission</th>
          <th>Weight Cost</th>
-         <th>Net Weight Cost</th>
-         <th>Order Status</th>
-         <th>Product Shipping Status</th>
+         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Order&nbsp;Status</th>
+         <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </thead>
      <tfoot>
        <tr>
          <th>Order ID</th>
-         <th>Product_link</th>
+         <th>Product link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -42,9 +42,9 @@ displayMainNavigation('order');
          <th>US Tax[%]</th>
          <th>Commission</th>
          <th>Weight Cost</th>
-         <th>Net Weight Cost</th>
-         <th>Order Status</th>
-         <th>Product Shipping Status</th>
+         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Order&nbsp;Status</th>
+         <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </tfoot>
    </table>
@@ -53,7 +53,7 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order ID</th>
-         <th>Product_link</th>
+         <th>Product link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -62,15 +62,15 @@ displayMainNavigation('order');
          <th>US Tax[%]</th>
          <th>Commission</th>
          <th>Weight Cost</th>
-         <th>Net Weight Cost</th>
-         <th>Order Status</th>
-         <th>Product Shipping Status</th>
+         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Order&nbsp;Status</th>
+         <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </thead>
      <tfoot>
        <tr>
          <th>Order ID</th>
-         <th>Product_link</th>
+         <th>Product link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -79,9 +79,9 @@ displayMainNavigation('order');
          <th>US Tax[%]</th>
          <th>Commission</th>
          <th>Weight Cost</th>
-         <th>Net Weight Cost</th>
-         <th>Order Status</th>
-         <th>Product Shipping Status</th>
+         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Order&nbsp;Status</th>
+         <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </tfoot>
    </table>
@@ -90,7 +90,7 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order ID</th>
-         <th>Product_link</th>
+         <th>Product link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -99,15 +99,15 @@ displayMainNavigation('order');
          <th>US Tax[%]</th>
          <th>Commission</th>
          <th>Weight Cost</th>
-         <th>Net Weight Cost</th>
-         <th>Order Status</th>
-         <th>Product Shipping Status</th>
+         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Order&nbsp;Status</th>
+         <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </thead>
      <tfoot>
        <tr>
          <th>Order ID</th>
-         <th>Product_link</th>
+         <th>Product link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -116,9 +116,9 @@ displayMainNavigation('order');
          <th>US Tax[%]</th>
          <th>Commission</th>
          <th>Weight Cost</th>
-         <th>Net Weight Cost</th>
-         <th>Order Status</th>
-         <th>Product Shipping Status</th>
+         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Order&nbsp;Status</th>
+         <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </tfoot>
    </table>
@@ -127,7 +127,7 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order ID</th>
-         <th>Product_link</th>
+         <th>Product link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -136,15 +136,15 @@ displayMainNavigation('order');
          <th>US Tax[%]</th>
          <th>Commission</th>
          <th>Weight Cost</th>
-         <th>Net Weight Cost</th>
-         <th>Order Status</th>
-         <th>Product Shipping Status</th>
+         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Order&nbsp;Status</th>
+         <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </thead>
      <tfoot>
        <tr>
          <th>Order ID</th>
-         <th>Product_link</th>
+         <th>Product link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -153,9 +153,9 @@ displayMainNavigation('order');
          <th>US Tax[%]</th>
          <th>Commission</th>
          <th>Weight Cost</th>
-         <th>Net Weight Cost</th>
-         <th>Order Status</th>
-         <th>Product Shipping Status</th>
+         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Order&nbsp;Status</th>
+         <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </tfoot>
    </table>
