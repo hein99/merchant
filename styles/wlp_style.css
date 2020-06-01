@@ -99,10 +99,9 @@
 	}
 
 	.dataTables_wrapper{
-		display: flex;
-		position: absolute !important;
-		width: calc(100% - 88px);
-		height: calc(100% - 24px);
+		position: relative !important;
+		width: 100%;
+		height: 100%;
 		background-color: white;
 		border: 1px solid #ddd;
 	}
@@ -187,16 +186,25 @@
 	}
 
 	table.dataTable.no-footer{
+		width: 100% !important;
 		border-collapse: collapse !important;
 		border-bottom: 0 !important;
 	}
 
+	table.dataTable thead tr{
+		position: sticky;
+		top: 0;
+		background-color: white !important;
+		box-shadow: 0 1.5px 1.5px #efefef;
+		z-index: 1;
+	}
+
 	table.dataTable thead th{
+		position: relative;
 		font-size: 16px;
 		font-weight: bold;
-		cursor: pointer;
+		cursor: pointer;	
 		padding: 16px 5px !important;
-		border-bottom: 1px solid #ddd !important;
 		box-sizing: border-box;
 	}
 
@@ -220,6 +228,7 @@
 	}
 
 	table.dataTable tbody tr{
+		background-color: white;
 		border-bottom: 1px solid #efefef !important;
 	}
 
@@ -438,5 +447,14 @@
 		color: #222;
 		text-decoration: none;
 		border-bottom: 1px dotted #555;
+	}
+
+	.table-wrapper{
+		display: flex;
+		position: relative;
+		width: 100%;
+		height: calc(100% - 64px);
+		background-color: transparent;
+		overflow-y: auto;
 	}
 /*-------------------------------------- END OF CUSTOMER PAGE ----------------------------------
