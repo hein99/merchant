@@ -41,22 +41,23 @@ $(document).ready(function(){
   });
 /*customer page*/
 
+  $(document).on('click', '#btn-activate-js', function(){
+    $('#tb-activate-js_wrapper').show();
+    $('#tb-deactivate-js_wrapper').hide();
+  });
+
+  $(document).on('click', '#btn-deactivate-js', function(){
+    $('#tb-activate-js_wrapper').hide();
+    $('#tb-deactivate-js_wrapper').show();
+  });
+
+  $(document).on('click', '.activate-toggle-js', function(){
+    var id = $(this).data('id');
+    changeActivateStatus(id);
+  });
 });
 
-$(document).on('click', '#btn-activate-js', function(){
-  $('#tb-activate-js_wrapper').show();
-  $('#tb-deactivate-js_wrapper').hide();
-});
 
-$(document).on('click', '#btn-deactivate-js', function(){
-  $('#tb-activate-js_wrapper').hide();
-  $('#tb-deactivate-js_wrapper').show();
-});
-
-$(document).on('click', '.activate-toggle-js', function(){
-  var id = $(this).data('id');
-  changeActivateStatus(id);
-});
 
 function changeActivateStatus(id)
 {

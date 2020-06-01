@@ -3,6 +3,7 @@ switch($action)
 {
   case '':
   case 'display':
+    $memberships = Membership::getAllMembership();
     require('./views/membership/display.php');
     break;
 
