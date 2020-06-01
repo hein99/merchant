@@ -16,6 +16,7 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order&nbsp;ID</th>
+         <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
@@ -33,6 +34,7 @@ displayMainNavigation('order');
      <tfoot>
        <tr>
          <th>Order&nbsp;ID</th>
+         <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
@@ -53,6 +55,7 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order&nbsp;ID</th>
+         <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
@@ -70,7 +73,8 @@ displayMainNavigation('order');
      <tfoot>
        <tr>
          <th>Order&nbsp;ID</th>
-         <th>Product&nbsp;Link</th>
+         <th>Customer&nbsp;Name</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -90,7 +94,8 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order&nbsp;ID</th>
-         <th>Product&nbsp;Link</th>
+         <th>Customer&nbsp;Name</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -107,7 +112,8 @@ displayMainNavigation('order');
      <tfoot>
        <tr>
          <th>Order&nbsp;ID</th>
-         <th>Product&nbsp;Link</th>
+         <th>Customer&nbsp;Name</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -127,7 +133,8 @@ displayMainNavigation('order');
      <thead>
        <tr>
          <th>Order&nbsp;ID</th>
-         <th>Product&nbsp;Link</th>
+         <th>Customer&nbsp;Name</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
@@ -144,7 +151,8 @@ displayMainNavigation('order');
      <tfoot>
        <tr>
          <th>Order&nbsp;ID</th>
-         <th>Product&nbsp;Link</th>
+         <th>Customer&nbsp;Name</th>
+         <th>Product&nbsp;link</th>
          <th>Remark</th>
          <th>Quantity</th>
          <th>Price</th>
