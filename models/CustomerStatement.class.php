@@ -30,16 +30,15 @@ class CustomerStatement extends DataObject
     }
   }
 
-  public function addCustomerStatement()
+  public function addCustomerStatement($sign_amount)
   {
     $conn = parent::connect();
     $sql = 'INSERT INTO ' .TBL_CUSTOMER_STATEMENT . '(customer_id, amount, about, created_date)
             VALUES (:customer_id, :amount, :about, NOW())';
-
     try{
       $st = $conn->prepare($sql);
       $st->bindValue(':customer_id', $this->data['customer_id'], PDO::PARAM_INT);
-      $st->bindValue(':amount', $this->data['amount'], PDO::PARAM_STR);
+      $st->bindValue(':amount', $sign_amount, PDO::PARAM_STR);
       $st->bindValue(':about', $this->data['about'], PDO::PARAM_STR);
       $st->execute();
       parent::disconnect($conn);
