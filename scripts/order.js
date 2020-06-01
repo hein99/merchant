@@ -2,7 +2,7 @@ $(document).ready(function(){
   getTotalOrdersCount();
   $('#tb-request-js').DataTable( {
       "ajax": {
-          "url": PAGE_URL + "/order/get_orders/?order_status=1",
+          "url": PAGE_URL + "/order/get_orders/?order_status=0",
           "dataSrc": ""
       },
       "columns": [
@@ -23,7 +23,7 @@ $(document).ready(function(){
   } );
   $('#tb-pending-js').DataTable( {
       "ajax": {
-          "url": PAGE_URL + "/order/get_orders/?order_status=2",
+          "url": PAGE_URL + "/order/get_orders/?order_status=1",
           "dataSrc": ""
       },
       "columns": [
@@ -44,7 +44,7 @@ $(document).ready(function(){
   } );
   $('#tb-confirm-js').DataTable( {
       "ajax": {
-          "url": PAGE_URL + "/order/get_orders/?order_status=3",
+          "url": PAGE_URL + "/order/get_orders/?order_status=2",
           "dataSrc": ""
       },
       "columns": [
@@ -65,7 +65,7 @@ $(document).ready(function(){
   } );
   $('#tb-cancel-js').DataTable( {
       "ajax": {
-          "url": PAGE_URL + "/order/get_orders/?order_status=4",
+          "url": PAGE_URL + "/order/get_orders/?order_status=3",
           "dataSrc": ""
       },
       "columns": [
