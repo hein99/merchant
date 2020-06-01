@@ -23,9 +23,9 @@ displayMainNavigation('order');
          <th>Amount</th>
          <th>MM Tax[%]</th>
          <th>US Tax[%]</th>
-         <th>Commission</th>
-         <th>Weight Cost</th>
-         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Commission[%]</th>
+         <th>Weight Cost[$]</th>
+         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
@@ -40,9 +40,9 @@ displayMainNavigation('order');
          <th>Amount</th>
          <th>MM Tax[%]</th>
          <th>US Tax[%]</th>
-         <th>Commission</th>
-         <th>Weight Cost</th>
-         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Commission[%]</th>
+         <th>Weight Cost[$]</th>
+         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
@@ -60,9 +60,9 @@ displayMainNavigation('order');
          <th>Amount</th>
          <th>MM Tax[%]</th>
          <th>US Tax[%]</th>
-         <th>Commission</th>
-         <th>Weight Cost</th>
-         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Commission[%]</th>
+         <th>Weight Cost[$]</th>
+         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
@@ -77,9 +77,9 @@ displayMainNavigation('order');
          <th>Amount</th>
          <th>MM Tax[%]</th>
          <th>US Tax[%]</th>
-         <th>Commission</th>
-         <th>Weight Cost</th>
-         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Commission[%]</th>
+         <th>Weight Cost[$]</th>
+         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
@@ -97,9 +97,9 @@ displayMainNavigation('order');
          <th>Amount</th>
          <th>MM Tax[%]</th>
          <th>US Tax[%]</th>
-         <th>Commission</th>
-         <th>Weight Cost</th>
-         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Commission[%]</th>
+         <th>Weight Cost[$]</th>
+         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
@@ -114,9 +114,9 @@ displayMainNavigation('order');
          <th>Amount</th>
          <th>MM Tax[%]</th>
          <th>US Tax[%]</th>
-         <th>Commission</th>
-         <th>Weight Cost</th>
-         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Commission[%]</th>
+         <th>Weight Cost[$]</th>
+         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
@@ -134,9 +134,9 @@ displayMainNavigation('order');
          <th>Amount</th>
          <th>MM Tax[%]</th>
          <th>US Tax[%]</th>
-         <th>Commission</th>
-         <th>Weight Cost</th>
-         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Commission[%]</th>
+         <th>Weight Cost[$]</th>
+         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
@@ -151,9 +151,9 @@ displayMainNavigation('order');
          <th>Amount</th>
          <th>MM Tax[%]</th>
          <th>US Tax[%]</th>
-         <th>Commission</th>
-         <th>Weight Cost</th>
-         <th>Net&nbsp;Weight&nbsp;Cost</th>
+         <th>Commission[%]</th>
+         <th>Weight Cost[$]</th>
+         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
