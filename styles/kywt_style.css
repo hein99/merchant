@@ -565,7 +565,7 @@ nav::before{
   flex-direction: column;
 }
 
-.ky-create-customer-form input, textarea{
+.ky-create-customer-form input, .ky-create-customer-form textarea{
   display: inline-block;
   width: 210px;
   height: 38px;
@@ -640,26 +640,29 @@ nav::before{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: auto auto;
-  grid-gap: 4%;
-  padding: 4%;
+  grid-gap: 4.5%;
+  padding: 3% 4.5%;
+  background-color: #f9f9f9;
 }
 
 .ky-membership-container{
-  background-color: red;
-  border-radius: 7px;
+  border-radius: 11px;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px 0px rgba(182, 101, 252, 0.11);
 }
 
 .ky-membership-header{
   width: 100%;
-  height: 50px;
+  height: 20%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   background-color: #76888F;
-  padding: 0px 18px;
+  padding: 0px 22px;
   box-sizing: border-box;
+  border-radius: 11px 11px 0 0;
 }
 
 .ky-membership-logo-container{
@@ -670,23 +673,30 @@ nav::before{
 .ky-membership-logo-container > div {
   position: relative;
   display: inline-flex;
-  width: 37px;
-  height: 37px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
   color: #fff;
   border: 3px solid #fff;
+  box-sizing: border-box;
+  margin-right: 12px;
+}
+
+.ky-membership-logo-container > span {
+  font-size: 1em;
+  font-weight: 600;
+  color: #fff;
 }
 
 .ky-membership-logo-container i {
-  font-size: 1.6em;
+  font-size: 1.5em;
 }
-
 
 .ky-membership-logo-container .ky-silver-icon span {
   position: absolute;
-  top: 20%;
+  top: 18%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 10px;
@@ -694,31 +704,99 @@ nav::before{
 }
 
 .ky-percentage-container{
-  /* width: 40px; */
   display: flex;
+  flex-direction: row;
+  height: 35px;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 6px;
 }
 
-.ky-percentage-container input{
-  display: inline-block;
-  width: 20px;
-  height: 30px;
-  /* border: none; */
+.ky-percentage-input-container,
+.btn-edit-percentage-js,
+.btn-save-percentage-js{
+  width: 30px;
+  height: 100%;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.ky-percentage-container div{
-  display: inline-block;
-  width: 13px;
-  height: 30px;
-  border-radius: 5px;
-}
-
+.ky-percentage-container input,
 .ky-percentage-container button{
   display: inline-block;
   width: 100%;
   height: 100%;
   border: none;
+  outline: none;
+  text-align: center;
+  background: none;
+  font-size: 1.1em;
 }
 
-.ky-percentage-container button i{
-  font-size: 10px;
+.ky-percentage-container i{
+  font-size: 0.8em;
 }
+
+.btn-save-percentage-js i{
+  color: #27AE60;
+}
+
+.btn-edit-percentage-js,
+.btn-save-percentage-js{
+  background-color: #ddd;
+}
+
+.ky-membership-body{
+  width: 100%;
+  height: 80%;
+  padding: 8px 20px 0px 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.ky-membership-body textarea{
+  width: 98%;
+  height: 160px;
+  background: none;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  max-height: 160px;
+  letter-spacing: 0.1px;
+}
+
+.ky-membership-body-footer{
+  width: 98%;
+  margin: 10px auto 0 auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+
+.ky-membership-body-footer button{
+  display: inline-block;
+  width: 80px;
+  height: 35px;
+  text-align: center;
+  font-size: 0.95em;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  padding: 6px 15px;
+  box-sizing: border-box;
+}
+
+.btn-save-text-js,
+.btn-edit-text-js{
+  background-color: #2ec5ff;
+}
+
+.btn-cancel-text-js{
+  background-color: #E74C3C;
+}
+/**********end of memberships**********/
