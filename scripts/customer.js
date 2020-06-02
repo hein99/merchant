@@ -41,6 +41,30 @@ $(document).ready(function(){
   });
 
   $('.dataTable').wrap('<div class="customer-table-wrapper"></div>');
+
+
+  $('.info').addClass('info-animation');
+  var isPaused = true;
+  var t = window.setInterval(function() {
+    if(!isPaused) {
+      $('.info').css({'transform':'translate(' + 28 + 'px)'}, 'slow');
+    }
+  });
+
+  $('#info-icon').on('click', function(e) {
+    e.preventDefault();
+    isPaused = true;
+    $('.info-message').addClass('info-message-animation');
+    $('.dataTable thead th').addClass('twinkle');
+  });
+    
+  $('#info-close').on('click', function(e) {
+    e.preventDefault();
+    isPaused = false;
+    $('.info-message').removeClass('info-message-animation');
+    $('.dataTable thead th').removeClass('twinkle');
+    $('.info').removeClass('info-animation');
+  });
 /*customer page*/
 
   $(document).on('click', '#btn-activate-js', function(){
@@ -53,10 +77,18 @@ $(document).ready(function(){
     $('#tb-deactivate-js_wrapper').show();
   });
 
-  $(document).on('click', '.activate-toggle-js', function(){
-    var id = $(this).data('id');
+  $(document).on('click', '.activate-icon', function(){
+    var parent = $(this).parent();
+    var check_box = $('.activate-toggle-js', parent);
+    var id = $('.activate-toggle-js', parent).data('id');
+
     changeActivateStatus(id);
-  });
+
+    if($(check_box).prop('checked') == true)
+        $(check_box).prop('checked', false);
+      else
+        $(check_box).prop('checked', true);
+    });  
 });
 
 

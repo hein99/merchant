@@ -22,6 +22,14 @@ displayMainNavigation('customer');
  
   <div class="wp-customer-table">
     <table id="tb-activate-js">
+      <div class="info">
+        <span class="info-message">
+          <span>Click the names to order Ascending or Descending</span>
+          <!-- <span class="info-hide"><input type="checkbox" id="hide-info-message">Do not show it again</span> -->
+          <span id="info-close"><i class="fas fa-window-close"></i></span>
+        </span>
+        <i class="fas fa-info-circle" id="info-icon"></i>
+      </div>
       <thead>
         <tr>
           <th>Membership</th>
