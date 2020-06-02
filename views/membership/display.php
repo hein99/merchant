@@ -2,18 +2,20 @@
 displayPageHeader('Membership | ' . WEB_NAME);
 displayMainNavigation('membership');
  ?>
- <session class=""> <!-- cover all membership sessions -->
+ <session id="ky-memberships-section"> <!-- cover all membership sessions -->
    <?php foreach($memberships as $membership) : ?>
-     <div class=""> <!-- cover each membership session  -->
-       <div class=""> <!-- header -->
-         <div class=""> <!-- logo session -->
-           <span><!-- logo --></span>
+     <div class="ky-membership-container"> <!-- cover each membership session  -->
+       <div class="ky-membership-header"> <!-- header -->
+         <div class="ky-membership-logo-container"> <!-- logo session -->
+           <div class="ky-silver-icon">
+             <i class="fas fa-award"></i><span>s</span>
+           </div>
            <span><?php echo $membership->getValueEncoded('name') ?></span>
          </div>
 
-         <div class=""> <!-- commission percentage -->
+         <div class="ky-percentage-container"> <!-- commission percentage -->
            <input type="text" value="<?php echo $membership->getValueEncoded('percentage') ?>" placeholder="2%" data-id="<?php echo $membership->getValueEncoded('id') ?>" class="percentage-text-js">
-           <button type="button" class="btn-edit-percentage-js">Edit</button>
+           <div><button type="button" class="btn-edit-percentage-js"><i class="fas fa-pen"></i></button></div>
            <button type="button" class="btn-save-percentage-js">Save</button>
          </div>
        </div>
@@ -21,6 +23,8 @@ displayMainNavigation('membership');
        <!-- body -->
        <div class="">
          <textarea class="definition-text-js" data-id="<?php echo $membership->getValueEncoded('id') ?>"><?php echo $membership->getValueEncoded('definition') ?></textarea>
+       </div>
+       <div>
          <button type="button" class="btn-edit-text-js">Edit</button>
          <div class="btn-gp-save-text-js"> <!-- Save and Canel buttons -->
            <button type="button" class="btn-save-text-js">Save</button>

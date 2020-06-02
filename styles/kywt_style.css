@@ -634,3 +634,91 @@ nav::before{
   opacity: 0.6;
 }
 /**********end of dashboard**********/
+
+/**********beginning of memberships**********/
+#ky-memberships-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto auto;
+  grid-gap: 4%;
+  padding: 4%;
+}
+
+.ky-membership-container{
+  background-color: red;
+  border-radius: 7px;
+}
+
+.ky-membership-header{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #76888F;
+  padding: 0px 18px;
+  box-sizing: border-box;
+}
+
+.ky-membership-logo-container{
+  display: flex;
+  align-items: center;
+}
+
+.ky-membership-logo-container > div {
+  position: relative;
+  display: inline-flex;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: 3px solid #fff;
+}
+
+.ky-membership-logo-container i {
+  font-size: 1.6em;
+}
+
+
+.ky-membership-logo-container .ky-silver-icon span {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.ky-percentage-container{
+  /* width: 40px; */
+  display: flex;
+}
+
+.ky-percentage-container input{
+  display: inline-block;
+  width: 20px;
+  height: 30px;
+  /* border: none; */
+}
+
+.ky-percentage-container div{
+  display: inline-block;
+  width: 13px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.ky-percentage-container button{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.ky-percentage-container button i{
+  font-size: 10px;
+}
