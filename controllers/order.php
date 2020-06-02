@@ -20,9 +20,15 @@ switch($action)
 
   case 'change_order_info':
     changeOrderInfo();
+    break;
+
+  case 'change_order_status':
+    changeOrderStatus();
+    break;
 
   case 'change_product_status':
     changeProductStatus();
+    break;
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -90,6 +96,40 @@ function changeOrderInfo()
   else
   {
     $order->updateInformation();
+    header('location: ' . URL . '/customer/');
+  }
+}
+
+function changeOrderStatus()
+{
+  $required_fields = array('id', 'order_status');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $order = new CustomerOrder(array(
+    'id' => isset($_POST['id']) ? preg_replace('/[^0-9]/', '', $_POST['id']) : '',
+    'order_status' => isset($_POST['order_status']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['order_status']) : ''
+  ));
+
+  foreach($required_fields as $required_field)
+  {
+    if($order->getValue($required_field) == '' )
+      $missing_fields[] = $required_field;
+  }
+
+  if($missing_fields)
+  {
+    $error_messages[] = 'Please fill all required field';
+  }
+
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else
+  {
+    $order->updateOrderStatus();
     header('location: ' . URL . '/customer/');
   }
 }

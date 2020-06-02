@@ -171,6 +171,7 @@ displayMainNavigation('order');
 
 
  <script src="<?php echo FILE_URL ?>/scripts/order.js" charset="utf-8"></script>
+ <script src="<?php echo FILE_URL ?>/scripts/order1.js" charset="utf-8"></script>
  <script src="<?php echo FILE_URL ?>/scripts/datatables.min.js" charset="utf-8"></script>
 <?php
 displayPageFooter();

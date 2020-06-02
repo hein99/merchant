@@ -92,7 +92,7 @@ class CustomerOrder extends DataObject
   public function updateInformation()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' us_tax = :us_tax, mm_tax = :mm_tax, commission = :commission, weight_cost = :weight_cost, order_status = :order_status WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET us_tax = :us_tax, mm_tax = :mm_tax, commission = :commission, weight_cost = :weight_cost, order_status = :order_status WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
@@ -111,10 +111,28 @@ class CustomerOrder extends DataObject
   }
 
 #update for product_shipping_status
+  public function updateOrderStatus()
+  {
+    $conn = parent::connect();
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET order_status = :order_status WHERE id = :id';
+
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
+      $st->bindValue(':order_status', $this->data['order_status'], PDO::PARAM_INT);
+      $st->execute();
+      parent::disconnect($conn);
+    } catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+
+#update for product_shipping_status
   public function updateProductShippingStatus()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' product_shipping_status = product_shipping_status WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET product_shipping_status = :product_shipping_status WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
@@ -127,5 +145,6 @@ class CustomerOrder extends DataObject
       die('Query failed: ' . $e->getMessage());
     }
   }
+
 }
  ?>

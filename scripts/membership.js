@@ -54,7 +54,6 @@ $(document).ready(function() {
 
 function editPercentRequest(id, percentage)
 {
-  console.log('id: ' + id + '<=>' + 'per: ' + percentage);
   $.ajax({
     method:"POST",
     url: PAGE_URL+'/membership/change_percentage',
