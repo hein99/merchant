@@ -47,9 +47,9 @@ $(document).ready(function(){
   var isPaused = true;
   var t = window.setInterval(function() {
     if(!isPaused) {
-      $('.info').css({'transform':'translate(' + 30 + 'px)'}, 'slow');
+      $('.info').css({'transform':'translate(' + 28 + 'px)'}, 'slow');
     }
-  }, 5000);
+  });
 
   $('#info-icon').on('click', function(e) {
     e.preventDefault();
