@@ -201,11 +201,96 @@
 		z-index: 1;
 	}
 
+	.info{
+		position: absolute;
+		left: 14px;
+		top: 15px;
+		transform: translateX(30px);
+		transition: 0.3s 0s ease;
+	}
+
+	.info-animation{
+		transform: translateX(0);
+		transition: 0.3s 3s ease;
+	}
+
+	#info-icon{
+		font-size: 22px;
+		color: #999;
+		cursor: pointer;
+	}	
+
+	.info-message{
+		font-family: sans-serif;
+		position: absolute;
+		width: 339px;
+		transform: translateX(-10px);
+		opacity: 0;
+		border-radius: 1.5px;
+		pointer-events: none;
+		left: 0;
+		top: -72px;
+		padding: 5px 8px;
+		font-weight: bold;
+		line-height: 26px;
+		background-color: #777;
+		color: white;
+		font-size: 13px;
+		transition: all 0s;
+	}
+
+	.info-message-animation{
+		transform: translateX(0);
+		opacity: 1;
+		pointer-events: all;
+		transition: transform 0.3s ease, opacity 0.3s ease;
+	}
+
+	/*.info-hide{
+		display: flex;
+		align-items: center;
+		font-size: 10px;
+		font-weight: normal;
+	}
+
+	.info-hide input{
+		margin-right: 5px;
+	}*/
+
+	#info-close{
+		position: absolute;
+		top: 50%;
+		right: 5px;
+		transform: translateY(-50%);
+		cursor: pointer;
+	}
+
+	#info-close i{
+		font-size: 14px;
+		color: #fff;
+	}
+
 	table.dataTable thead th{
 		font-size: 16px;
 		font-weight: bold;
 		cursor: pointer;	
 		padding: 16px 5px !important;
+	}
+
+	table.dataTable thead th.twinkle{
+		animation: twinkle 1s 3;
+	}
+
+	@keyframes twinkle{
+		0%{
+			opacity: 1;
+		}
+		50%{
+			opacity: 0.2;
+		}
+		100%{
+			opacity: 1;
+		}
 	}
 
 	table.dataTable thead th:nth-child(6){
@@ -457,6 +542,45 @@
 		height: calc(100% - 64px);
 		background-color: transparent;
 		overflow-y: auto;
+	}
+
+	.activate-toggle-js{
+		display: none;
+	}
+
+	.activate-icon{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 32px;
+		height: 16px;
+		background-color: #ccc;
+		border-radius: 25px;
+		z-index: 3;
+		cursor: pointer;
+		box-sizing: border-box;
+	}
+
+	.activate-icon::before{
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 3px;
+		transform: translate(0, -50%);
+		width: 12px;
+		height: 12px;
+		background-color: white;
+		border-radius: 50%;
+		transition: transform 0.3s ease;
+	}
+
+	.activate-toggle-js:checked ~ .activate-icon{
+		background-color: #2EC5FF;
+	}
+
+	.activate-toggle-js:checked ~ .activate-icon::before{
+		transform: translate(14px, -50%);
 	}
 
 @media(max-height: 41em){
