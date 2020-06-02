@@ -24,7 +24,7 @@ displayMainNavigation('customer');
     <table id="tb-activate-js">
       <div class="info">
         <span class="info-message">
-          <span>Click the names to order Ascending or Descending</span>
+          <span>Click the labels to order Ascending or Descending</span>
           <!-- <span class="info-hide"><input type="checkbox" id="hide-info-message">Do not show it again</span> -->
           <span id="info-close"><i class="fas fa-window-close"></i></span>
         </span>
