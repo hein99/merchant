@@ -203,9 +203,9 @@
 
 	.info{
 		position: absolute;
-		left: 14px;
+		left: 16px;
 		top: 15px;
-		transform: translateX(30px);
+		transform: translateX(28px);
 		transition: 0.3s 0s ease;
 	}
 
@@ -277,6 +277,10 @@
 		padding: 16px 5px !important;
 	}
 
+	.wp-order-table table.dataTable thead th{
+		padding: 16px 15px !important;
+	}
+
 	table.dataTable thead th.twinkle{
 		animation: twinkle 1s 3;
 	}
@@ -293,8 +297,13 @@
 		}
 	}
 
-	table.dataTable thead th:nth-child(6){
+	.wp-customer-table table.dataTable thead th:nth-child(6),
+	.wp-order-table table.dataTable thead th:nth-child(4){
 		min-width: 139px;
+	}
+
+	.wp-order-table table.dataTable thead th:nth-child(6){
+		min-width: 0;
 	}
 
 	table.dataTable tbody td{
@@ -304,12 +313,46 @@
 		padding: 14px 5px !important;
 	}
 
-	table.dataTable tbody td:nth-child(3){
+	.wp-order-table table.dataTable tbody td{
+		padding: 9px 15px !important;
+	}
+
+	.wp-order-table table.dataTable tbody td a{
+		text-decoration: none;
+		color: #222;
+		border-bottom: 1px dotted #222;
+	}
+
+	.wp-order-table table.dataTable tbody td input[type="text"]{
+		width: 36px;
+		border: 1px dotted #999;
+		color: #555;
+		padding: 3px 5px;
+		border-radius: 3px;
+	}
+
+	.wp-order-table table.dataTable tbody td input[type="text"]:focus{
+		border: 1px solid #555;
+	}
+
+	.wp-order-table table.dataTable tbody td:nth-child(2){
+		padding-left: 28px !important;
+	}
+
+	.wp-customer-table table.dataTable tbody td:nth-child(3),
+	.wp-order-table table.dataTable tbody td:nth-child(2){
 		text-align: left;
 	}
 
-	table.dataTable tbody td:nth-child(5){
+	.wp-customer-table table.dataTable tbody td:nth-child(5),
+	.wp-order-table table.dataTable tbody td:nth-child(6),
+	.wp-order-table table.dataTable tbody td:nth-child(7){
 		text-align: right;
+	}
+
+	.wp-order-table table.dataTable tbody td:nth-child(3),
+	.wp-order-table table.dataTable tbody td:nth-child(5){
+		text-align: center;
 	}
 
 	table.dataTable tbody tr{
@@ -457,6 +500,12 @@
 		overflow: hidden;
 	}
 
+	.wp-order-table .wp-membership-logo i{
+		position: absolute;
+		left: 5px;
+		font-size: 22px !important;
+	}
+
 	.wp-membership-logo::before{
 		content: attr(dataholder);
 		position: absolute;
@@ -476,6 +525,10 @@
 		transition: transform 0.3s ease;
 	}
 
+	.wp-order-table .wp-membership-logo::before{
+		display: none;
+	}
+
 	.wp-membership-logo:hover::before{
 		transform: translateX(-50%);
 	}
@@ -489,17 +542,7 @@
 		font-size: 28px;
 	}
 
-	.wp-membership-logo #membership-level{display: none;
-		position: absolute;
-		left: calc(50% - 0.5px);
-		top: 12px;
-		transform: translateX(-50%);
-		font-size: 11px;
-		font-weight: bold;
-	}
-
-	.wp-membership-logo.sliver-status i.fa-award, 
-	.wp-membership-logo.sliver-status #membership-level{
+	.wp-membership-logo.sliver-status i.fa-award{
 		color: #AEAEEF;
 	}
 
@@ -507,8 +550,7 @@
 		background-color: #AEAEEF;
 	}
 
-	.wp-membership-logo.gold-status i.fa-award,
-	.wp-membership-logo.gold-status #membership-level{
+	.wp-membership-logo.gold-status i.fa-award{
 		color: #FDD600;
 	}
 
@@ -516,8 +558,7 @@
 		background-color: #FDD600;
 	}
 
-	.wp-membership-logo.platinum-status i.fa-award,
-	.wp-membership-logo.platinum-status #membership-level{
+	.wp-membership-logo.platinum-status i.fa-award{
 		color: #B9BBBC;
 	}
 
@@ -535,13 +576,17 @@
 		border-bottom: 1px dotted #555;
 	}
 
-	.customer-table-wrapper{
+	.customer-table-wrapper, .order-table-wrapper{
 		display: flex;
-		position: relative;
+		position: absolute;
 		width: 100%;
 		height: calc(100% - 64px);
 		background-color: transparent;
-		overflow-y: auto;
+		overflow: auto;
+	}
+
+	.order-table-wrapper table{
+		padding: 0 10px;
 	}
 
 	.activate-toggle-js{
