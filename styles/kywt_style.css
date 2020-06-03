@@ -18,10 +18,11 @@ header{
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
-  box-shadow: 0px 3px 5px #DDDDDD;
+  z-index: 10;
+  box-shadow: 0px 3px 5px #ddd;
 }
 
-nav {
+nav{
   position: relative;
   border-right: 1px solid #eee;
   box-shadow: 0px 0px 20px 0px rgba(182, 101, 252, 0.07);
@@ -89,12 +90,13 @@ nav {
   opacity: 0;
   pointer-events: none;
   width: 195px;
-  background-color: #EFEFEF;
+  background-color: white;
   font-size: 14px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   border-radius: 3px;
-  padding: 25px 20px;
+  padding: 5px 10px;
   box-sizing: border-box;
   transition: 0.3s ease;
 }
@@ -107,16 +109,26 @@ nav {
 
 .ky-logout-dropdown-menu a, .ky-logo-name-container a{
   text-decoration: none;
-  color: #000000;
+  color: #000;
 }
 
-.ky-logout-dropdown-menu a:last-child{
+.ky-logout-dropdown-menu a{
+  padding: 18px 10px;
+  color: #777;
+  transition: 0.3s ease;
+}
+
+.ky-logout-dropdown-menu a:first-child:hover{
+  color: #222;
+}
+
+.ky-logout-dropdown-menu a:last-child:hover{
   color: #EA2027;
 }
 
-.ky-logout-dropdown-menu a:first-child{
-  margin-bottom: 20px;
-}
+/*.ky-logout-dropdown-menu a:first-child{
+  border-bottom: 1px solid #555;
+}*/
 
 /*.ky-logout-dropdown-menu::before{
   content: "";
@@ -128,8 +140,13 @@ nav {
 }*/
 
 .ky-logout-dropdown-menu i{
-  margin-left: 5px;
-  font-size: 10px;
+  float: right;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.ky-logout-dropdown-menu a:hover i{
+  transform: translateX(-5px);
 }
 
 .ky-sidemenu-list a{
@@ -140,6 +157,7 @@ nav {
 .ky-sidemenu-list li{
   display: flex;
   align-items: center;
+  border-left: 10px solid white;
   transition: 0.3s ease;
 }
 
@@ -158,8 +176,12 @@ nav {
 
 .ky-sidemenu-list li:hover, .ky-sidemenu-list li.active{
   background-color: #EFEFEF;
-  border-left: 10px solid #2ec5ff;
+  border-left-color: #2ec5ff;
   padding-left: 25px;
+}
+
+.ky-sidemenu-list li:not(.active):hover{
+  border-left-color: #efefef;
 }
 
 nav::before{
@@ -366,9 +388,10 @@ nav::before{
 
 /**********beginning of dashboard**********/
 #ky-dashboard-section{
-  padding: 4% 4% 0 4%;
-  background-color: #f9f9f9;
+  padding: 24px 44px 0;
+  background-color: #efefef;
   position: relative;
+  box-sizing: border-box;
 }
 
 .ky-dashboard-container{
@@ -379,7 +402,7 @@ nav::before{
 
 .dashboard-form-part{
   grid-column: 1/5;
-  margin-top: 3%;
+  margin-top: 32px;
 }
 
 .ky-dashboard-container a{
@@ -531,7 +554,7 @@ nav::before{
 
 .dashboard-form-part{
   position: relative;
-  padding: 3% 0 3% 0;
+  padding: 32px 0 24px 0;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -557,7 +580,7 @@ nav::before{
   font-size: 20px;
   color: #2D3436;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .ky-create-customer-form{
@@ -566,14 +589,16 @@ nav::before{
 }
 
 .ky-create-customer-form input, .ky-create-customer-form textarea{
+  font-family: inter;
   display: inline-block;
   width: 210px;
   height: 38px;
   color: #000000;
+  font-size: 14px;
   background-color: #EFEFEF;
   text-align: center;
 	border-radius: 7px;
-	margin-bottom: 18px;
+	margin-bottom: 16px;
 	padding: 0 9px;
 	box-sizing: border-box;
   border: none;
@@ -581,10 +606,9 @@ nav::before{
 }
 
 .ky-create-customer-form textarea{
-  vertical-align: middle;
+  display: block;
   height: 60px;
   max-height: 60px;
-  padding: 4px;
   letter-spacing: 0.1px;
   font-size: 14px;
   padding: 4px 9px;
