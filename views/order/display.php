@@ -12,7 +12,7 @@ displayMainNavigation('order');
     <div class="wp-customer-ac-de-buttons order-status-buttons">
         <button type="button" name="button" id="btn-request-js" class="active">Request</button>
         <button type="button" name="button" id="btn-pending-js">Pending</button>
-        <button type="button" name="button" id="btn-confirm-js">Complete</button>
+        <button type="button" name="button" id="btn-confirm-js">Confirm</button>
         <button type="button" name="button" id="btn-cancel-js">Cancel</button>
     </div>
 
