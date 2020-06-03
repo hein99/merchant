@@ -37,7 +37,8 @@ function displayMainNavigation($active_page='')
         <i class="fas fa-caret-down"></i>
       </div>
       <div class="ky-logout-dropdown-menu">
-        <a href="<?php echo URL ?>/settings">Account settings</a><a href="<?php echo URL ?>/settings/logout">Log out<i class="fas fa-arrow-right"></i></a>
+        <a href="<?php echo URL ?>/settings">Account settings<i class="fas fa-user-cog"></i></a>
+        <a href="<?php echo URL ?>/settings/logout">Log out<i class="fas fa-sign-out-alt"></i></a>
       </div>
     </div>
   </header>
