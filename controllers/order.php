@@ -52,6 +52,7 @@ function getOrders()
   $order_status = isset($_GET['order_status']) ? $_GET['order_status'] : '' ;
   if ( $order_status >= 0 && $order_status <= 3) {
     $orders = CustomerOrder::getCustomerOrderArrayByOrderStatus($order_status);
+    CustomerOrder::updateView();
   }
   else{
     $ERR_STATUS = ERR_URL;

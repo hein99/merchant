@@ -105,7 +105,7 @@ $(document).ready(function(){
     $('.info-message').addClass('info-message-animation');
     $('.dataTable thead th').addClass('twinkle');
   });
-    
+
   $('#info-close').on('click', function(e) {
     e.preventDefault();
     isPaused = false;
@@ -158,7 +158,5 @@ function changeProductShippingStatus(currentObj, product_shipping_status)
     method:"POST",
     url: PAGE_URL+'/order/change_product_status',
     data: {id: id, product_shipping_status: product_shipping_status}
-  }).done(function(e){
-    parent.hide();
-  });
+  })
 }

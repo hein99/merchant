@@ -14,7 +14,8 @@ class CustomerOrder extends DataObject
     'weight_cost' => '',
     'order_status' => '',
     'product_shipping_status' => '',
-    'is_view' => '',
+    'has_viewed_admin' => '',
+    'has_viewed_customer' => '',
     'created_date' => ''
   );
 
@@ -58,7 +59,7 @@ class CustomerOrder extends DataObject
   public static function getNewOrdersCount()
   {
     $conn = parent::connect();
-    $sql = 'SELECT COUNT(*) FROM ' . TBL_CUSTOMER_ORDER . ' WHERE is_view = 0';
+    $sql = 'SELECT COUNT(*) FROM ' . TBL_CUSTOMER_ORDER . ' WHERE has_viewed_admin = 0';
 
     try {
       $st = $conn->query($sql);
@@ -71,16 +72,14 @@ class CustomerOrder extends DataObject
     }
   }
 
-#update for is_view
-  public function updateView()
+#update for has_viewed_admin
+  public static function updateView()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' is_view = !is_view WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET has_viewed_admin = 1';
 
     try {
-      $st = $conn->prepare($sql);
-      $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
-      $st->execute();
+      $conn->query($sql);
       parent::disconnect($conn);
     } catch(PDOException $e) {
       parent::disconnect($conn);
@@ -114,7 +113,7 @@ class CustomerOrder extends DataObject
   public function updateOrderStatus()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET order_status = :order_status WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET order_status = :order_status, product_shipping_status = 0, has_viewed_customer=0 WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
@@ -132,7 +131,7 @@ class CustomerOrder extends DataObject
   public function updateProductShippingStatus()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET product_shipping_status = :product_shipping_status WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET product_shipping_status = :product_shipping_status, has_viewed_customer=0 WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
