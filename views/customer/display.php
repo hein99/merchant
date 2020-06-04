@@ -7,7 +7,7 @@ displayMainNavigation('customer');
     <div class="wp-customer-count-container">
       <span>Customers</span>
       <div id="wp-customer-count"><i id="customer-count-js"></i>&nbsp;Total</div>
-      <span id="user-plus-icon"><i class="fas fa-user-plus"></i></span>
+      <a href="<?php echo URL ?>/dashboard"><span id="user-plus-icon"><i class="fas fa-user-plus"></i></span></a>
     </div>
 
     <div class="wp-customer-ac-de-buttons">
@@ -19,7 +19,7 @@ displayMainNavigation('customer');
   </div>
 
   <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
- 
+
   <div class="wp-customer-table">
     <table id="tb-activate-js">
       <div class="info">

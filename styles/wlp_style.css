@@ -9,7 +9,7 @@
 	}
 
 	.error-page-container{
-		width: 720px;
+		width: 490px;
 		height: 450px;
 		display: flex;
 		flex-direction: column;
@@ -222,7 +222,7 @@
 	.info-message{
 		font-family: sans-serif;
 		position: absolute;
-		width: 355px;
+		width: 26em;
 		transform: translateX(-10px);
 		opacity: 0;
 		border-radius: 1.5px;
@@ -319,6 +319,11 @@
 		text-decoration: none;
 		color: #222;
 		border-bottom: 1px dotted #222;
+	}
+
+	table.dataTable tbody td a:hover{
+		color: #2EC5FF;
+		border-bottom-color: #2EC5FF;
 	}
 
 	.wp-order-table table.dataTable tbody td input[type="text"]{
@@ -462,6 +467,10 @@
 		letter-spacing: 0.5px;
 		color: #999;
 		background-color: white;
+	}
+
+	.wp-customer-ac-de-buttons button:not(.active):hover{
+		color: #2EC5FF;
 	}
 
 	.wp-customer-ac-de-buttons button:first-child{

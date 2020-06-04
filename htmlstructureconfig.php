@@ -33,11 +33,12 @@ function displayMainNavigation($active_page='')
     <div class="ky-user-container">
       <div class="ky-user-content">
         <i class="fas fa-user-circle"></i>
-          <span>Swe Swe Nyein</span>
+          <span><?php echo $_SESSION['merchant_admin_account']->getValueEncoded('username') ?></span>
         <i class="fas fa-caret-down"></i>
       </div>
       <div class="ky-logout-dropdown-menu">
-        <a href="<?php echo URL ?>/settings">Account settings</a><a href="<?php echo URL ?>/settings/logout">Log out<i class="fas fa-arrow-right"></i></a>
+        <a href="<?php echo URL ?>/settings">Account settings<i class="fas fa-user-cog"></i></a>
+        <a href="<?php echo URL ?>/settings/logout">Log out<i class="fas fa-sign-out-alt"></i></a>
       </div>
     </div>
   </header>
