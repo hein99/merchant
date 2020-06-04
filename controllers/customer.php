@@ -124,8 +124,6 @@ function addCustomerAccount()
   }
   else {
     $customer_account->createCustomerAccount();
-    $customer_acc_byname = UsersAccount::getCustomerAccountByUsername($customer_account->getValue('username'));
-    LoginRecord::addUserLoginRecord($customer_acc_byname->getValue('id'));
     header('location: ' . URL . '/dashboard/');
   }
 }
@@ -145,7 +143,7 @@ function editCustomerInfo()
     'membership_id' => isset($_POST['membership_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['membership_id']) : ''
   ));
   foreach ($required_fields as $required_field) {
-    if($customer_info->getValue($required_field) == '')
+    if(!$customer_info->getValue($required_field))
       $missing_fields[] = $required_field;
   }
   if($missing_fields)
