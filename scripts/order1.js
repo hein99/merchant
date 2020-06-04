@@ -91,29 +91,6 @@ $(document).ready(function(){
 
   $('.dataTable').wrap('<div class="order-table-wrapper"></div>');
 
-  $('.info').addClass('info-animation');
-  var isPaused = true;
-  var t = window.setInterval(function() {
-    if(!isPaused) {
-      $('.info').css({'transform':'translate(' + 28 + 'px)'}, 'slow');
-    }
-  });
-
-  $('#info-icon').on('click', function(e) {
-    e.preventDefault();
-    isPaused = true;
-    $('.info-message').addClass('info-message-animation');
-    $('.dataTable thead th').addClass('twinkle');
-  });
-    
-  $('#info-close').on('click', function(e) {
-    e.preventDefault();
-    isPaused = false;
-    $('.info-message').removeClass('info-message-animation');
-    $('.dataTable thead th').removeClass('twinkle');
-    $('.info').removeClass('info-animation');
-  });
-
 });
 
 function changeOrderInfoRequest(currentObj)
