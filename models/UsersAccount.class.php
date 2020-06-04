@@ -253,7 +253,7 @@ class UsersAccount extends DataObject
   public function editCustomerInfo()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET username = :username, phone = :phone, address = :address, activate_status = !activate_status, point = :point, balance = :balance, membership_id = :membership_id, modified_date = NOW() WHERE id = :id';
+    $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET username = :username, phone = :phone, address = :address, point = :point, balance = :balance, membership_id = :membership_id, modified_date = NOW() WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
