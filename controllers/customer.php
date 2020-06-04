@@ -124,6 +124,8 @@ function addCustomerAccount()
   }
   else {
     $customer_account->createCustomerAccount();
+    $customer = UsersAccount::getCustomerAccountByUsername($customer_account->getValue('username'));
+    LoginRecord::addUserLoginRecord($customer->getValue('id'));
     header('location: ' . URL . '/dashboard/');
   }
 }
