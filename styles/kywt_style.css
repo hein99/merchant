@@ -86,6 +86,7 @@ nav{
 
 .ky-logout-dropdown-menu{
   position: absolute;
+  right: 0;
   transform: translateY(-10px);
   opacity: 0;
   pointer-events: none;
@@ -388,39 +389,44 @@ nav::before{
 
 /**********beginning of dashboard**********/
 #ky-dashboard-section{
-  padding: 3% 44px 0;
+  padding: 3% 44px 0 44px;
   background-color: #efefef;
   position: relative;
   box-sizing: border-box;
-}
-
-.ky-dashboard-container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 4%;
 }
+
+/* .ky-dashboard-container{
+  height: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 4%;
+} */
 
 .dashboard-form-part{
   grid-column: 1/5;
   margin-top: 32px;
 }
 
-.ky-dashboard-container a{
+#ky-dashboard-section a{
   display: inline-block;
-  height: 5.5em;
+  height: 80px;
+  max-height: 80px;
   text-decoration: none;
   background-color: #ffffff;
-  border-radius: 14px;
+  border-radius: 10px;
   padding-left: 1.5em;
   border: 1px solid #eee;
   box-shadow: 0px 0px 20px 0px rgba(182, 101, 252, 0.07);
 }
 
-.ky-dashboard-container a:nth-child(4){
+#ky-dashboard-section a:nth-child(4){
   padding: 0 1.5em;
 }
 
-.ky-dashboard-container a:hover{
+#ky-dashboard-section a:hover{
   transform: scale(1.05);
   box-shadow: 0px 0px 20px 0px rgba(182, 101, 252, 0.07);
   transition: all 300ms ease;
