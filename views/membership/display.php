@@ -22,13 +22,15 @@ displayMainNavigation('membership');
        <!-- body -->
        <div class="ky-membership-body">
          <textarea class="definition-text-js" data-id="<?php echo $membership->getValueEncoded('id') ?>"><?php echo $membership->getValueEncoded('definition') ?></textarea>
-         <div class="ky-membership-body-footer">
+       </div>
+       <div class="ky-membership-body-footer">
+         <div>
            <button type="button" class="btn-edit-text-js">Edit</button>
-           <div class="btn-gp-save-text-js"> <!-- Save and Canel buttons -->
-             <button type="button" class="btn-save-text-js">Save</button>
-             <button type="button" class="btn-cancel-text-js">Cancel</button>
-           </div>
          </div>
+         <div class="btn-gp-save-text-js"> <!-- Save and Canel buttons -->
+           <button type="button" class="btn-save-text-js">Save</button>
+           <button type="button" class="btn-cancel-text-js">Cancel</button>
+        </div>
        </div>
      </div>
    <?php endforeach; ?>
