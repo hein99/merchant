@@ -33,7 +33,7 @@ $(document).ready(function(){
   function getNewMessagesCount()
   {
     $.ajax({
-      url: PAGE_URL+'/conversation/get_new_messages_count',
+      url: PAGE_URL+'/conversation/get_all_new_messages_count',
       method:"POST",
       success:function(data){
         $('#messages_count').html(data);

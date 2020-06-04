@@ -7,8 +7,8 @@ switch($action)
     require('./views/conversation/display.php');
     break;
 
-  case 'get_new_messages_count'://request all messages that admin have not seen yet
-    getNewMessagesCount();
+  case 'get_all_new_messages_count'://request all messages that admin have not seen yet
+    getAllNewMessagesCount();
     break;
 
   case 'get_all_chat_users':
@@ -21,10 +21,10 @@ switch($action)
     exit();
 }
 
-function getNewMessagesCount()
+function getAllNewMessagesCount()
 {
   // $id = UsersAccount::getAdminAccountById($_SESSION['merchant_admin_account']->getValue('id'));
-  $total = MessageRecord::getNewMessagesCount($_SESSION['merchant_admin_account']->getValue('id'));
+  $total = MessageRecord::getAllNewMessagesCount($_SESSION['merchant_admin_account']->getValue('id'));
   echo $total;
 }
 
