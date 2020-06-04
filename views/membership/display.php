@@ -7,9 +7,7 @@ displayMainNavigation('membership');
      <div class="ky-membership-container"> <!-- cover each membership session  -->
        <div class="ky-membership-header"> <!-- header -->
          <div class="ky-membership-logo-container"> <!-- logo session -->
-           <div class="ky-silver-icon">
-             <i class="fas fa-award"></i><span>s</span>
-           </div>
+           <?php echo chooseMembership($membership->getValueEncoded('id')) ?>
            <span><?php echo $membership->getValueEncoded('name') ?></span>
          </div>
 
@@ -38,4 +36,40 @@ displayMainNavigation('membership');
  <script src="<?php echo FILE_URL ?>/scripts/membership.js" charset="utf-8"></script>
 <?php
 displayPageFooter();
+
+function chooseMembership($membership_id)
+{
+  $membership_name = '';
+  // change from membership id to membership name
+  switch($membership_id)
+  {
+    case 1:
+      $membership_name = ' <div class="ky-silver-icon">
+         <i class="fas fa-award"></i><span>s</span>
+       </div>';
+      break;
+
+    case 2:
+      $membership_name = '<div class="ky-gold-icon">
+         <i class="fas fa-award"></i><span>g</span>
+       </div>';
+      break;
+
+    case 3:
+      $membership_name = '<div class="ky-platinum-icon">
+         <i class="fas fa-award"></i><span>p</span>
+       </div>';
+      break;
+
+    case 4:
+      $membership_name = '<div class="ky-diamond-icon">
+        <i class="fas fa-gem"></i>
+       </div>';
+      break;
+
+    default:
+      exit();
+  }
+  return $membership_name;
+}
 ?>

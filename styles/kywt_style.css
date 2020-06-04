@@ -728,7 +728,7 @@ nav::before{
   font-size: 1.5em;
 }
 
-.ky-membership-logo-container .ky-silver-icon span {
+.ky-membership-logo-container .ky-silver-icon span, .ky-membership-logo-container .ky-gold-icon span, .ky-membership-logo-container .ky-platinum-icon span {
   position: absolute;
   top: 18%;
   left: 50%;
