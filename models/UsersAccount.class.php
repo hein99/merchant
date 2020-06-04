@@ -253,7 +253,7 @@ class UsersAccount extends DataObject
   public function editCustomerInfo()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET username = :username, phone = :phone, address = :address, point = :point, balance = :balance, membership_id = :membership_id, modified_date = NOW() WHERE id = :id';
+    $sql = 'UPDATE ' . TBL_USERS_ACCOUNT .' SET username = :username, phone = :phone, address = :address, point = :point, membership_id = :membership_id, modified_date = NOW() WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
@@ -261,8 +261,7 @@ class UsersAccount extends DataObject
       $st->bindValue(':username', $this->data['username'], PDO::PARAM_STR);
       $st->bindValue(':phone', $this->data['phone'], PDO::PARAM_STR);
       $st->bindValue(':address', $this->data['address'], PDO::PARAM_STR);
-      $st->bindValue(':point', $this->data['point'], PDO::PARAM_INT);
-      $st->bindValue(':balance', $this->data['balance'], PDO::PARAM_INT);
+      $st->bindValue(':point', $this->data['point'], PDO::PARAM_STR);
       $st->bindValue(':membership_id', $this->data['membership_id'], PDO::PARAM_INT);
       $st->execute();
       parent::disconnect($conn);

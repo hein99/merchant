@@ -75,10 +75,6 @@ displayMainNavigation('customer');
         <input type="number" name="point" value="<?php echo $customer->getValueEncoded('point') ?>">
       </div>
       <div class="">
-        <span>Balance</span>
-        <input type="number" name="balance" value="<?php echo $customer->getValueEncoded('balance') ?>">
-      </div>
-      <div class="">
         <span>Membership</span>
         <select name="membership_id">
           <option value="1" <?php echo $membership_id == 1 ? 'selected': '' ?>>Silver</option>
