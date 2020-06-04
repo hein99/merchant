@@ -20,7 +20,7 @@ displayMainNavigation('dashboard');
         <i class="fas fa-shapes"></i>
       </div>
       <div class="ky-info-container ky-order-info">
-        <span id="orders_count"></span>
+        <!-- <span id="orders_count"></span> -->
         <span>New Orders</span>
       </div>
     </div>
@@ -36,7 +36,7 @@ displayMainNavigation('dashboard');
       </div>
     </div>
   </a>
-  <a href="<?php echo URL ?>/membership/display/" class="">
+  <a href="<?php echo URL ?>/membership/display/">
     <div class="dashboard-small-container memberships">
       <span>Memberships</span>
       <div class="ky-membership-icons-container">
@@ -77,6 +77,14 @@ displayMainNavigation('dashboard');
     <div class=""></div>
   </section>
 </section>
+<script type="text/javascript">
+  $(document).ready(function() {
+    var w=$('#ky-dashboard-section').width();
+    var h=$('.dashboard-form-part').height();
+    console.log(w);
+    console.log(h);
+  });
+</script>
 <script src="<?php echo URL ?>/scripts/dashboard.js"></script>
 
 <?php

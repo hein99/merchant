@@ -389,41 +389,35 @@ nav::before{
 
 /**********beginning of dashboard**********/
 #ky-dashboard-section{
-  padding: 3% 44px 0 44px;
+  padding: 3% 44px 3% 44px;
   background-color: #efefef;
   position: relative;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 4%;
+  grid-column-gap: 3.5%;
+  height: 100%;
+  width: 100%;
 }
-
-/* .ky-dashboard-container{
-  height: 5%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 4%;
-} */
 
 .dashboard-form-part{
   grid-column: 1/5;
-  margin-top: 32px;
 }
 
 #ky-dashboard-section a{
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 230px;
   height: 80px;
-  max-height: 80px;
+  min-height: 80px;
   text-decoration: none;
   background-color: #ffffff;
   border-radius: 10px;
   padding-left: 1.5em;
+  box-sizing: border-box;
   border: 1px solid #eee;
   box-shadow: 0px 0px 20px 0px rgba(182, 101, 252, 0.07);
-}
-
-#ky-dashboard-section a:nth-child(4){
-  padding: 0 1.5em;
 }
 
 #ky-dashboard-section a:hover{
@@ -498,11 +492,16 @@ nav::before{
   color: #807878;
 }
 
-.dashboard-small-container.memberships{
+#ky-dashboard-section a:nth-child(4){
+  padding-left: 0;
+}
+
+.memberships.dashboard-small-container.memberships{
+  width: auto;
   display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 8px 0px;
+  padding: 8px 8px;
   box-sizing: border-box;
 }
 
@@ -512,21 +511,12 @@ nav::before{
   color: #636E72;
 }
 
-.ky-membership-icons-container{
-  display: inline-flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .ky-membership-icons-container > div{
   position: relative;
   display: inline-flex;
   width: 40px;
   height: 40px;
-  margin: 0 2.5px;
+  margin: 0 4px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
@@ -565,14 +555,14 @@ nav::before{
 
 .dashboard-form-part{
   position: relative;
-  padding: 32px 0 24px 0;
+  padding: 32px 0 0 0;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
   border-radius: 10px;
-  height: 80%;
+  height: auto;
   border: 1px solid #eee;
   box-shadow: 0px 0px 20px 0px rgba(182, 101, 252, 0.07);
   overflow: hidden;
