@@ -143,7 +143,7 @@ function editCustomerInfo()
     'membership_id' => isset($_POST['membership_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['membership_id']) : ''
   ));
   foreach ($required_fields as $required_field) {
-    if(!$customer_info->getValue($required_field))
+    if($customer_info->getValue($required_field) == '')
       $missing_fields[] = $required_field;
   }
   if($missing_fields)
