@@ -33,7 +33,7 @@ function displayMainNavigation($active_page='')
     <div class="ky-user-container">
       <div class="ky-user-content">
         <i class="fas fa-user-circle"></i>
-          <span>Swe Swe Nyein</span>
+          <span><?php echo $_SESSION['merchant_admin_account']->getValueEncoded('username') ?></span>
         <i class="fas fa-caret-down"></i>
       </div>
       <div class="ky-logout-dropdown-menu">
