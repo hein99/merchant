@@ -7,7 +7,7 @@ displayMainNavigation('customer');
     <div class="wp-customer-count-container">
       <span>Customers</span>
       <div id="wp-customer-count"><i id="customer-count-js"></i>&nbsp;Total</div>
-      <a href="<?php echo URL ?>/dashboard"><span id="user-plus-icon"><i class="fas fa-user-plus"></i></span></a>
+      <a href="<?php echo URL ?>/dashboard" id="user-plus-icon"><i class="fas fa-user-plus"></i></a>
     </div>
 
     <div class="wp-customer-ac-de-buttons">
@@ -18,18 +18,8 @@ displayMainNavigation('customer');
     <div id="extra"></div>
   </div>
 
-  <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
-
   <div class="wp-customer-table">
     <table id="tb-activate-js">
-      <div class="info">
-        <span class="info-message">
-          <span>Click the labels to order Ascending or Descending</span>
-          <!-- <span class="info-hide"><input type="checkbox" id="hide-info-message">Do not show it again</span> -->
-          <span id="info-close"><i class="fas fa-window-close"></i></span>
-        </span>
-        <i class="fas fa-info-circle" id="info-icon"></i>
-      </div>
       <thead>
         <tr>
           <th>Membership</th>
