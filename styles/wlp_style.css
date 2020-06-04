@@ -201,82 +201,58 @@
 		z-index: 5;
 	}
 
-	.info{
-		position: absolute;
-		left: 16px;
-		top: 15px;
-		transform: translateX(28px);
-		transition: 0.3s ease;
-	}
-
-	.info-animation{
-		transform: translateX(0);
-	}
-
-	#info-icon{
-		font-size: 22px;
-		color: #999;
-		cursor: pointer;
-	}	
-
-	.info-message{
-		font-family: sans-serif;
-		position: absolute;
-		width: 26em;
-		transform: translateX(-10px);
-		opacity: 0;
-		border-radius: 1.5px;
-		pointer-events: none;
-		left: 0;
-		top: -72px;
-		padding: 12px 8px;
-		font-weight: bold;
-		background-color: #777;
-		color: white;
-		font-size: 13px;
-		transition: all 0s;
-	}
-
-	.info-message-animation{
-		transform: translateX(0);
-		opacity: 1;
-		pointer-events: all;
-		transition: transform 0.3s ease, opacity 0.3s ease;
-	}
-
-	/*.info-hide{
-		display: flex;
-		align-items: center;
-		font-size: 10px;
-		font-weight: normal;
-	}
-
-	.info-hide input{
-		margin-right: 5px;
-	}*/
-
-	#info-close{
-		position: absolute;
-		top: 50%;
-		right: 8px;
-		transform: translateY(-50%);
-		cursor: pointer;
-	}
-
-	#info-close i{
-		font-size: 14px;
-		color: #fff;
-	}
-
 	table.dataTable thead th{
+		position: relative;
 		font-size: 16px;
 		font-weight: bold;
 		cursor: pointer;	
 		padding: 16px 5px !important;
 	}
 
+	table.dataTable thead tr .sorting::before,
+	table.dataTable thead tr .sorting::after{
+		content: '';
+		position: absolute;
+		top: calc(50% - 5px);
+		right: 6px;
+		transform: translateY(-50%);
+		width: 10px;
+		height: 7px; 
+		background-color: #ddd;
+		clip-path: polygon(50% 0, 100% 100%, 0 100%);
+	}
+
+	table.dataTable thead tr .sorting::after{
+		content: '';
+		position: absolute;
+		top: calc(50% + 5px);
+		transform: translateY(-50%);
+		clip-path: polygon(0 0, 100% 0, 50% 100%);
+	}
+
+	table.dataTable thead tr .sorting_asc::before,
+	table.dataTable thead tr .sorting_desc::before{
+		content: '';
+		position: absolute;
+		top: calc(50% - 5px);
+		right: 6px;
+		transform: translateY(-50%);
+		width: 10px;
+		height: 7px; 
+		background-color: #2EC5FF;
+		clip-path: polygon(50% 0, 100% 100%, 0 100%);
+	}
+
+	table.dataTable thead tr .sorting_desc::before{
+		content: '';
+		position: absolute;
+		top: calc(50% + 5px);
+		transform: translateY(-50%);
+		clip-path: polygon(0 0, 100% 0, 50% 100%);
+	}
+
 	.wp-order-table table.dataTable thead th{
-		padding: 16px 15px !important;
+		padding: 16px 25px !important;
 	}
 
 	table.dataTable thead th.twinkle{
@@ -312,7 +288,7 @@
 	}
 
 	.wp-order-table table.dataTable tbody td{
-		padding: 9px 15px !important;
+		padding: 9px 25px !important;
 	}
 
 	.wp-order-table table.dataTable tbody td a{
@@ -428,7 +404,6 @@
 		width: 36px;
 		height: 36px;
 		border-radius: 50%;
-		cursor: pointer;
 		box-shadow: 0 0 10px #ddd;
 		transition: 0.1s ease;
 	}

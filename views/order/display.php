@@ -19,17 +19,8 @@ displayMainNavigation('order');
     <div id="extra"></div>
 </div>
 
-   <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
    <div class="wp-customer-table wp-order-table">
    <table id="tb-request-js">
-    <div class="info">
-        <span class="info-message">
-            <span>Click the labels to order Ascending or Descending</span>
-            <!-- <span class="info-hide"><input type="checkbox" id="hide-info-message">Do not show it again</span> -->
-            <span id="info-close"><i class="fas fa-window-close"></i></span>
-        </span>
-        <i class="fas fa-info-circle" id="info-icon"></i>
-    </div>
      <thead>
        <tr>
          <th>Order&nbsp;ID</th>
