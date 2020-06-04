@@ -20,7 +20,7 @@ displayMainNavigation('dashboard');
         <i class="fas fa-shapes"></i>
       </div>
       <div class="ky-info-container ky-order-info">
-        <!-- <span id="orders_count"></span> -->
+        <span id="orders_count"></span>
         <span>New Orders</span>
       </div>
     </div>
