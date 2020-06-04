@@ -17,8 +17,8 @@ switch($action)
 
 function getNewMessagesCount()
 {
-  $id = UsersAccount::getAdminAccountById($_SESSION['merchant_admin_account']->getValue('id'));
-  $total = MessageRecord::getNewMessagesCount($id->getValue('id'));
+  // $id = UsersAccount::getAdminAccountById($_SESSION['merchant_admin_account']->getValue('id'));
+  $total = MessageRecord::getNewMessagesCount($_SESSION['merchant_admin_account']->getValue('id'));
   echo $total;
 }
  ?>
