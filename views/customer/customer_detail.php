@@ -42,8 +42,8 @@ displayMainNavigation('customer');
     // echo $customer->getValueEncoded('activate_status') ? '<button type="button" name="button" class="activate-toggle-js" id="btn-activate-js" data-id="'.$customer->getValueEncoded('id').'">Activate</button>' :
     //   '<button type="button" name="button" class="activate-toggle-js" id="btn-deactivate-js" data-id="'.$customer->getValueEncoded('id').'">Deactivate</button>';
      ?>
-    <button type="button" name="button" class="activate-toggle-js <?php echo $customer->getValueEncoded('activate_status') ? '':'hide' ?>" id="btn-activate-js" data-id="<?php echo $customer->getValueEncoded('id') ?>">Activate</button>
-    <button type="button" name="button" class="activate-toggle-js <?php echo $customer->getValueEncoded('activate_status') ? 'hide':'' ?>" id="btn-deactivate-js" data-id="<?php echo $customer->getValueEncoded('id') ?>">Deactivate</button>
+    <button type="button" name="button" class="detail-activate-toggle-js <?php echo $customer->getValueEncoded('activate_status') ? '':'hide' ?>" id="btn-activate-js" data-id="<?php echo $customer->getValueEncoded('id') ?>">Activate</button>
+    <button type="button" name="button" class="detail-activate-toggle-js <?php echo $customer->getValueEncoded('activate_status') ? 'hide':'' ?>" id="btn-deactivate-js" data-id="<?php echo $customer->getValueEncoded('id') ?>">Deactivate</button>
     <div class="">
       <span><i class="fas fa-award silver <?php echo $membership_icon; ?>"></i> <?php echo $membership_name; ?></span> / <span><?php echo $customer->getValueEncoded('point') ?> points</span>
     </div>

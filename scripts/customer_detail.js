@@ -8,7 +8,7 @@ $(document).ready(function(){
     $('#btn-deactivate-js').hide();
     $('#btn-activate-js').show();
   });
-  $(document).on('click', '.activate-toggle-js', function(){
+  $(document).on('click', '.detail-activate-toggle-js', function(){
     var id = $(this).data('id');
     changeActivateStatus(id);
   });

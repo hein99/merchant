@@ -9,7 +9,7 @@ function ordersJsonReturn($orders, $order_status)
         $membership = chooseMembership($order['membership_id']);
         $commission = Membership::getMembershipByID($order['membership_id']); // get commission percentage from Membership table
         $new_customer = (object)array(
-          'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
+          'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
           'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
@@ -35,7 +35,7 @@ function ordersJsonReturn($orders, $order_status)
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
         $new_customer = (object)array(
-          'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
+          'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
           'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
@@ -62,7 +62,7 @@ function ordersJsonReturn($orders, $order_status)
         $membership = chooseMembership($order['membership_id']);
         $product_shipping_status = chooseProductShippingStatus($order['product_shipping_status'], $order['id']);
         $new_customer = (object)array(
-          'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
+          'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
           'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
@@ -88,8 +88,8 @@ function ordersJsonReturn($orders, $order_status)
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
         $new_customer = (object)array(
+          'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
           'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
-          'order_id' => str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'quantity' => $order['quantity'],
@@ -111,6 +111,14 @@ function ordersJsonReturn($orders, $order_status)
       break;
   }
   echo json_encode($new_orders);
+}
+
+function isNewOrder($has_viewed_admin)
+{
+  if ($has_viewed_admin)
+    return '';
+  else
+    return '<span class="new-order" dataholder="new order"></span>';
 }
 
 function chooseMembership($membership_id)

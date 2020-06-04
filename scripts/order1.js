@@ -90,7 +90,6 @@ $(document).ready(function(){
   });
 
   $('.dataTable').wrap('<div class="order-table-wrapper"></div>');
-
 });
 
 function changeOrderInfoRequest(currentObj)
@@ -135,7 +134,5 @@ function changeProductShippingStatus(currentObj, product_shipping_status)
     method:"POST",
     url: PAGE_URL+'/order/change_product_status',
     data: {id: id, product_shipping_status: product_shipping_status}
-  }).done(function(e){
-    parent.hide();
-  });
+  })
 }
