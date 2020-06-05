@@ -40,33 +40,39 @@ class LoginRecord extends DataObject
       die('Query failed: '.$e->getMessage());
     }
   }
-  public static function getUsersActiveActivity($user_id) // get to know user active or not
+  public static function getUsersActiveActivity($admin_id) // get all users' active activity except from admin
   {
     $conn = parent::connect();
-    $sql = 'SELECT active_activity FROM ' . TBL_LOGIN_RECORD . ' WHERE user_id = :user_id';
+    $sql = 'SELECT * FROM ' . TBL_LOGIN_RECORD . ' WHERE user_id <> :admin_id';
     try {
       $st = $conn->prepare($sql);
-      $st->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+      $st->bindValue(':admin_id', $admin_id, PDO::PARAM_INT);
       $st->execute();
-      $row = $st->fetch();
+      $login_records = array();
+      foreach ($st->fetchAll() as $row) {
+        $login_records[] = new LoginRecord($row);
+      }
       parent::disconnect($conn);
-      if($row) return $row;
+      return $login_records;
     }catch (PDOException $e) {
       parent::disconnect($conn);
       die('Query failed: '.$e->getMessage());
     }
   }
-  public static function getIsType($user_id) // get to know user is typing... or not
+  public static function getIsType($admin_id) // get all users' is_type is 1 except from admin
   {
     $conn = parent::connect();
-    $sql = 'SELECT is_type FROM ' . TBL_LOGIN_RECORD . ' WHERE user_id = :user_id';
+    $sql = 'SELECT * FROM ' . TBL_LOGIN_RECORD . ' WHERE user_id <> :admin_id AND is_type = \'yes\'';
     try {
       $st = $conn->prepare($sql);
-      $st->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+      $st->bindValue(':admin_id', $admin_id, PDO::PARAM_INT);
       $st->execute();
-      $row = $st->fetch();
+      $login_records = array();
+      foreach ($st->fetchAll() as $row) {
+        $login_records[] = new LoginRecord($row);
+      }
       parent::disconnect($conn);
-      if($row) return $row;
+      return $login_records;
     }catch (PDOException $e) {
       parent::disconnect($conn);
       die('Query failed: '.$e->getMessage());
