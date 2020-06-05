@@ -663,13 +663,13 @@ nav::before{
 #ky-memberships-section{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-auto-rows: auto auto;
-  grid-gap: 4.5%;
-  padding: 3% 4.5%;
+  grid-column-gap: 5%;
+  padding: 2% 5%;
   background-color: #f9f9f9;
 }
 
 .ky-membership-container{
+  height: 96%;
   border-radius: 11px;
   background-color: #fff;
   box-shadow: 0px 0px 20px 0px rgba(182, 101, 252, 0.11);
@@ -678,13 +678,14 @@ nav::before{
 .ky-membership-header{
   width: 100%;
   height: 20%;
+  max-height: 20%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   background-color: #76888F;
-  padding: 0px 22px;
+  padding: 10px 24px;
   box-sizing: border-box;
   border-radius: 11px 11px 0 0;
 }
@@ -774,53 +775,97 @@ nav::before{
 
 .ky-membership-body{
   width: 100%;
-  height: 80%;
-  padding: 8px 20px 0px 20px;
+  height: 62%;
+  padding: 14px 24px;
   box-sizing: border-box;
   text-align: center;
 }
 
 .ky-membership-body textarea{
-  width: 98%;
-  height: 160px;
+  width: 100%;
+  height: 150px;
   background: none;
   border: 2px solid #ddd;
   border-radius: 5px;
   padding: 5px;
   box-sizing: border-box;
-  max-height: 160px;
+  max-height: 150px;
   letter-spacing: 0.1px;
 }
 
 .ky-membership-body-footer{
-  width: 98%;
-  margin: 10px auto 0 auto;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: end;
+  width: 100%;
+  height: 18%;
+  position: relative;
 }
 
-.ky-membership-body-footer button{
+.ky-membership-body-footer > div{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  box-sizing: border-box;
+}
+
+.btn-edit-text-js,
+.btn-save-text-js,
+.btn-cancel-text-js{
   display: inline-block;
   width: 80px;
-  height: 35px;
+  height: 36px;
   text-align: center;
   font-size: 0.95em;
   border: none;
   color: #fff;
   border-radius: 5px;
-  padding: 6px 15px;
   box-sizing: border-box;
+  background-color: #2ec5ff;
 }
 
-.btn-save-text-js,
-.btn-edit-text-js{
-  background-color: #2ec5ff;
+.btn-edit-text-js:hover,
+.btn-save-text-js:hover{
+  background-color: #07678c;
+  transition: all 300ms ease;
+}
+
+.btn-cancel-text-js:hover{
+  background-color: #CA2A19;
+  transition: all 300ms ease;
 }
 
 .btn-cancel-text-js{
   background-color: #E74C3C;
+  margin-left: 14px;
 }
+
+.ky-membership-body textarea.animate{
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(0deg, #2EC5FF, #42F0E7) border-box;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  animation: gradient 200ms 5;
+}
+
+@keyframes gradient {
+  0% { background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(0deg, #2EC5FF, #42F0E7) border-box; }
+  25% { background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(90deg, #2EC5FF, #42F0E7) border-box; }
+  50% { background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(180deg, #2EC5FF, #42F0E7) border-box; }
+  75% { background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(270deg, #2EC5FF, #42F0E7) border-box; }
+  100% { background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(360deg, #2EC5FF, #42F0E7) border-box; }
+}
+
 /**********end of memberships**********/

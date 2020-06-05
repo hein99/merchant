@@ -13,6 +13,7 @@ $(document).ready(function() {
     $(this).hide();
     $('.btn-save-percentage-js', parent).show();
     $('.percentage-text-js', parent).prop("disabled", false);
+    $('.percentage-text-js', parent).focus();
   });
 
   $(document).on('click', '.btn-save-percentage-js', function(){
@@ -27,27 +28,34 @@ $(document).ready(function() {
   });
 
   $(document).on('click', '.btn-edit-text-js', function(){
-    var parent = $(this).parent().parent();
+    var body_parent = $(this).parent().parent().prev();
+    var footer_parent = $(this).parent().parent();
     $(this).hide();
-    $('.btn-gp-save-text-js', parent).show();
-    $('.definition-text-js', parent).prop("disabled", false);
+    $('.btn-gp-save-text-js', footer_parent).show();
+    $('.definition-text-js', body_parent).prop("disabled", false);
+    $('.definition-text-js', body_parent).addClass("animate");
+    $('.definition-text-js', body_parent).focus();
   });
 
   $(document).on('click', '.btn-cancel-text-js', function(){
-    var parent = $(this).parent().parent().parent();
-    $('.btn-gp-save-text-js', parent).hide();
-    $('.btn-edit-text-js', parent).show();
-    $('.definition-text-js', parent).prop("disabled", true);
+    var body_parent = $(this).parent().parent().prev();
+    var footer_parent = $(this).parent().parent();
+    $('.btn-gp-save-text-js', footer_parent).hide();
+    $('.btn-edit-text-js', footer_parent).show();
+    $('.definition-text-js', body_parent).prop("disabled", true);
+    $('.definition-text-js', body_parent).removeClass("animate");
   });
 
   $(document).on('click', '.btn-save-text-js', function(){
-    var parent = $(this).parent().parent().parent();
-    $('.btn-gp-save-text-js', parent).hide();
-    $('.btn-edit-text-js', parent).show();
-    $('.definition-text-js', parent).prop("disabled", true);
+    var body_parent = $(this).parent().parent().prev();
+    var footer_parent = $(this).parent().parent();
+    $('.btn-gp-save-text-js', footer_parent).hide();
+    $('.btn-edit-text-js', footer_parent).show();
+    $('.definition-text-js', body_parent).prop("disabled", true);
+    $('.definition-text-js', body_parent).removeClass("animate");
 
-    var id = $('.definition-text-js', parent).data('id');
-    var definition = $('.definition-text-js', parent).val();
+    var id = $('.definition-text-js', body_parent).data('id');
+    var definition = $('.definition-text-js', body_parent).val();
     editDefinitionRequest(id, definition);
   });
 });
