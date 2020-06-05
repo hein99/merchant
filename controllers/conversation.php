@@ -24,6 +24,10 @@ switch($action)
     gettypingUsers();
     break;
 
+  case 'get_each_new_messages_count':
+    getEachNewMessagesCount();
+    break;
+
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -74,6 +78,24 @@ function gettypingUsers()
     $return_active_users[]= $login_record->getValue('user_id');
   }
   echo json_encode($return_active_users);
+}
+
+function getEachNewMessagesCount()
+{
+  $eachNewMessages = array();
+  $userList = UsersAccount::getActivateCustomerAccount();
+  foreach($userList as $ul)
+  {
+    $count = MessageRecord::countUnseenMessage($ul['id'], $_SESSION['merchant_admin_account']->getValue('id'));
+    if($count>0)
+    {
+      $eachNewMessages[] = array(
+        'from_user_id' => $ul['id'],
+        'messages_count' => $count
+      );
+    }
+  }
+  echo json_encode($eachNewMessages);
 }
 
 function checkActiveNow($active_activity)
