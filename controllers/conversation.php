@@ -68,12 +68,12 @@ function getActiveUsers()
 function gettypingUsers()
 {
   $login_records = LoginRecord::getIsType($_SESSION['merchant_admin_account']->getValue('id'));
-  $return_active_users = array();
+  $return_typing_users = array();
   foreach($login_records as $login_record)
   {
-    $return_active_users[]= $login_record->getValue('user_id');
+    $return_typing_users[]= $login_record->getValue('user_id');
   }
-  echo json_encode($return_active_users);
+  echo json_encode($return_typing_users);
 }
 
 function checkActiveNow($active_activity)
