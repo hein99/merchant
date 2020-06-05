@@ -9,22 +9,6 @@ class LoginRecord extends DataObject
     'is_type' => ''
   );
 
-  // public static function getUserLoginRecord($user_id) // i have no idea why i added this function :3
-  // {
-  //   $conn = parent::connect();
-  //   $sql = 'SELECT * FROM '.TBL_LOGIN_RECORD.' WHERE user_id = :user_id';
-  //   try {
-  //     $st = $conn->prepare($sql);
-  //     $st->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-  //     $st->execute();
-  //     $row = $st->fetch();
-  //     parent::disconnect($conn);
-  //     if($row) return new LoginRecord($row);
-  //   }catch(PDOException $e){
-  //     parent::disconnect($conn);
-  //     die('Query failed: ' . $e->getMessage());
-  //   }
-  // }
   public static function addUserLoginRecord($user_id) //add to login record when admin create a user
   {
     $conn = parent::connect();

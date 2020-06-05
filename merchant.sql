@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 04, 2020 at 12:32 PM
+-- Generation Time: Jun 05, 2020 at 04:05 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -91,6 +91,18 @@ CREATE TABLE `login_record` (
   `is_type` enum('no','yes') COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `login_record`
+--
+
+INSERT INTO `login_record` (`id`, `user_id`, `active_activity`, `is_type`) VALUES
+(1, 3, '2020-06-04 15:06:43', 'no'),
+(2, 4, '2020-06-05 04:30:52', 'no'),
+(3, 5, '2020-06-05 04:36:07', 'no'),
+(4, 6, '2020-06-05 13:40:06', 'yes'),
+(5, 7, '2020-06-05 13:57:52', 'no'),
+(6, 8, '2020-06-05 13:35:10', 'no');
+
 -- --------------------------------------------------------
 
 --
@@ -126,10 +138,24 @@ CREATE TABLE `message_record` (
   `to_user_id` int(11) NOT NULL,
   `from_user_id` int(11) NOT NULL,
   `messages` text COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `is_image` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL,
   `arrived_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `message_record`
+--
+
+INSERT INTO `message_record` (`id`, `to_user_id`, `from_user_id`, `messages`, `is_image`, `arrived_time`, `status`) VALUES
+(1, 1, 2, 'Hello, Admin!', 'no', '2020-06-05 12:44:18', 0),
+(2, 1, 2, 'Hello, Admin!', 'no', '2020-06-05 12:45:18', 0),
+(3, 1, 2, 'I am your friend.', 'no', '2020-06-05 12:45:18', 0),
+(4, 1, 3, 'Hello Admin!', 'no', '2020-06-05 12:49:38', 0),
+(5, 1, 3, 'Hello Admin 1!', 'no', '2020-06-05 12:50:40', 0),
+(6, 1, 3, 'Where are you?', 'no', '2020-06-05 12:50:40', 0),
+(7, 1, 3, 'Today is Friday!', 'no', '2020-06-05 12:52:35', 0),
+(8, 1, 3, 'Tomorrow is Saturday', 'no', '2020-06-05 12:52:35', 0);
 
 -- --------------------------------------------------------
 
@@ -158,7 +184,13 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `user_status`, `phone`, `address`, `activate_status`, `point`, `balance`, `membership_id`, `created_date`, `modified_date`) VALUES
 (1, 'Anna', '*8342278FD80E338FC16478FB1C13FA4F04C8A16C', 1, '09788351044', 'nth', 1, 0, 0, 1, '2020-06-04 05:14:22', '0000-00-00 00:00:00'),
-(2, 'updatedDavid', '*F67248311B2147A3A8FEEAF515A1EA82882B3A68', 0, '09765920059', '104UpdatedMarlamyine3rdstreetHlaing16QtrYangon', 1, 100, 1501, 2, '2020-06-04 07:05:47', '2020-06-04 07:05:47');
+(2, 'updatedDavid', '*F67248311B2147A3A8FEEAF515A1EA82882B3A68', 0, '09765920059', '104UpdatedMarlamyine3rdstreetHlaing16QtrYangon', 1, 100, 1501, 2, '2020-06-04 07:05:47', '2020-06-04 07:05:47'),
+(3, 'Masha', '*7FA8D2E62A13B4798B45E796728821341D613CD7', 0, '09793530086', 'London', 1, 0, 0, 1, '2020-06-04 15:06:54', '2020-06-04 15:06:54'),
+(4, 'Pete', '*F2C2536A0DC1CE63A11AF365189127F123053A53', 0, '09765920059', 'WashitonDC', 1, 0, 0, 1, '2020-06-05 04:40:47', '2020-06-05 04:40:47'),
+(5, 'Lavenda', '*00D9BF1AA5A4378C1F3FBCEB95A6CE21B2DF7809', 0, '09965343432', 'NewYork', 1, 0, 0, 1, '2020-06-05 04:40:48', '2020-06-05 04:40:48'),
+(6, 'Chocotaco', '*6AA3E3281F392090BCB9E0A1029E31741BA75060', 0, '09457503263', 'Paris', 1, 0, 0, 1, '2020-06-05 04:40:48', '2020-06-05 04:40:48'),
+(7, 'Joe', '*60D178145669A4D1569FE820852BB3425CB2D4A7', 0, '09765920059', 'yangon', 1, 0, 0, 1, '2020-06-05 09:10:59', '2020-06-05 09:10:59'),
+(8, 'GuGu', '*0FA3E3D473E613A9E60C25004155109A49F7A6A4', 0, '09793530086', 'yangon', 1, 0, 0, 1, '2020-06-05 13:35:56', '2020-06-05 13:35:56');
 
 --
 -- Indexes for dumped tables
@@ -189,6 +221,12 @@ ALTER TABLE `membership`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `message_record`
+--
+ALTER TABLE `message_record`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -214,7 +252,7 @@ ALTER TABLE `customer_statement`
 -- AUTO_INCREMENT for table `login_record`
 --
 ALTER TABLE `login_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `membership`
@@ -223,10 +261,16 @@ ALTER TABLE `membership`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `message_record`
+--
+ALTER TABLE `message_record`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
