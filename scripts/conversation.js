@@ -1,15 +1,17 @@
 $(document).ready(function(){
   getAllChatUsers();
-
+  setInterval(function(){
+    messageCount();
+  },2000);
   function getAllChatUsers()
   {
     $.get(PAGE_URL + "/conversation/get_all_chat_users", function(returnUserList){
+      console.log(returnUserList);
       $.each(returnUserList, function(index, userlist){
         $(buildUserList(userlist.id, userlist.username)).appendTo("#user_lists");
       });
     }, "json");
   }
-
   function buildUserList(id, username)
   {
     var list = '';
