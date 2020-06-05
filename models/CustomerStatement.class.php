@@ -13,7 +13,7 @@ class CustomerStatement extends DataObject
   public static function getCustomerStatement($customer_id)
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_CUSTOMER_STATEMENT.' WHERE customer_id = :customer_id';
+    $sql = 'SELECT * FROM '.TBL_CUSTOMER_STATEMENT.' WHERE customer_id = :customer_id ORDER BY created_date DESC';
     try {
       $st = $conn->prepare($sql);
       $st->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
