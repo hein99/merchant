@@ -111,7 +111,7 @@
     public static function updateMessageStatus($from_user_id, $to_user_id)
     {
       $conn = parent::connect();
-      $sql = 'UPDATE '.TBL_MESSAGE_RECORD.' SET status = 1 WHERE from_user_id = :to_user_id AND to_user_id = :from_user_id AND status = 0';
+      $sql = 'UPDATE '.TBL_MESSAGE_RECORD.' SET status = 1 WHERE from_user_id = :to_user_id AND to_user_id = :from_user_id';
       try {
         $st = $conn->prepare($sql);
         $st->bindValue(':from_user_id', $from_user_id, PDO::PARAM_INT);

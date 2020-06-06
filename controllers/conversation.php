@@ -8,7 +8,8 @@ switch($action)
     require('./views/conversation/display.php');
     break;
 
-  case 'get_all_new_messages_count'://request all messages that admin have not seen yet
+  #request all messages that admin have not seen yet
+  case 'get_all_new_messages_count':
     getAllNewMessagesCount();
     break;
 
@@ -26,6 +27,14 @@ switch($action)
 
   case 'get_each_new_messages_count':
     getEachNewMessagesCount();
+    break;
+
+  case 'get_all_messages_by_customer_id':
+    getAllMessagesByCustomerId($id);
+    break;
+
+  case 'get_new_messages_by_customer_id':
+    getNewMessagesByCustomerId($id);
     break;
 
   default:
@@ -97,6 +106,45 @@ function getEachNewMessagesCount()
   }
   echo json_encode($eachNewMessages);
 }
+
+function getAllMessagesByCustomerId($id)
+{
+  if($id)
+  {
+    $messages = MessageRecord::getAllMessage($_SESSION['merchant_admin_account']->getValue('id'), $id);
+    MessageRecord::updateMessageStatus($_SESSION['merchant_admin_account']->getValue('id'), $id);
+    $returnMessages = array();
+    foreach ($messages as $message)
+    {
+      $returnMessages[] = array(
+        'from_user_id' => $message->getValue('from_user_id'),
+        'to_user_id' => $message->getValue('to_user_id'),
+        'messages' => $message->getValue('messages')
+      );
+    }
+    echo json_encode($returnMessages);
+  }
+}
+
+function getNewMessagesByCustomerId($id)
+{
+  if($id)
+  {
+    $messages = MessageRecord::getNewMessage($_SESSION['merchant_admin_account']->getValue('id'), $id);
+    MessageRecord::updateMessageStatus($_SESSION['merchant_admin_account']->getValue('id'), $id);
+    $returnMessages = array();
+    foreach ($messages as $message)
+    {
+      $returnMessages[] = array(
+        'from_user_id' => $message->getValue('from_user_id'),
+        'to_user_id' => $message->getValue('to_user_id'),
+        'messages' => $message->getValue('messages')
+      );
+    }
+    echo json_encode($returnMessages);
+  }
+}
+
 
 function checkActiveNow($active_activity)
 {
