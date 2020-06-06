@@ -34,7 +34,7 @@ function getAllChatUsers()
 function buildUserList(id, username)
 {
   var list = '';
-  list += '<li id="customer-' + id + '-js" class="start_chat">';
+  list += '<li id="customer-' + id + '-js" class="start_chat" data-touserid="'+id+'" data-tousername="'+username+'">';
   list += '<span class="customer-name-js">'+username+'</span>';
   list += '<span class="messages-count-js">0</span>';
   list += '<span class="typing-js">Typing...</span>';
