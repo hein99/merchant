@@ -7,7 +7,7 @@
       'to_user_id' => '',
       'from_user_id' => '',
       'messages' => '',
-      'image' => '',
+      'is_image' => '',
       'arrived_time' => '',
       'status' => ''
     );
@@ -77,14 +77,14 @@
     public function addMessage()
     {
       $conn = parent::connect();
-      $sql = 'INSERT INTO '.TBL_MESSAGE_RECORD.' (to_user_id, from_user_id, messages, image, arrived_time, status)
-              VALUES (:to_user_id, :from_user_id, :messages, :image, NOW(), 0)';
+      $sql = 'INSERT INTO '.TBL_MESSAGE_RECORD.' (to_user_id, from_user_id, messages, is_image, arrived_time, status)
+              VALUES (:to_user_id, :from_user_id, :messages, :is_image, NOW(), 0)';
       try {
         $st = $conn->prepare($sql);
         $st->bindValue(':to_user_id', $this->data['to_user_id'], PDO::PARAM_INT);
         $st->bindValue(':from_user_id', $this->data['from_user_id'], PDO::PARAM_INT);
         $st->bindValue(':messages', $this->data['messages'], PDO::PARAM_STR);
-        $st->bindValue(':image', $this->data['image'], PDO::PARAM_STR);
+        $st->bindValue(':is_image', $this->data['is_image'], PDO::PARAM_STR);
         $st->execute();
         parent::disconnect($conn);
       }catch (PDOException $e) {

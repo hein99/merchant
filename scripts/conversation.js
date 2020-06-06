@@ -1,8 +1,6 @@
 $(document).ready(function(){
   getAllChatUsers();
 
-});
-
 function getAllChatUsers()
 {
   $.ajax({
@@ -36,7 +34,7 @@ function getAllChatUsers()
 function buildUserList(id, username)
 {
   var list = '';
-  list += '<li id="customer-' + id + '-js">';
+  list += '<li id="customer-' + id + '-js" class="start_chat" data-touserid="'+id+'" data-tousername="'+username+'">';
   list += '<span class="customer-name-js">'+username+'</span>';
   list += '<span class="messages-count-js">0</span>';
   list += '<span class="typing-js">Typing...</span>';
@@ -88,12 +86,11 @@ function getEachNewMessagesCount()
       for(userList of returnUserLists){
         var parent = '#customer-' + userList['from_user_id'] + '-js';
         $('.messages-count-js', parent).show().html(userList['messages_count']);
-        $(parent).prependTo('#user-lists')
+        $(parent).prependTo('#user-lists');
       }
     },
     dataType: 'json'
   });
 }
-
-
+});
 // console.log(returnUserLists);
