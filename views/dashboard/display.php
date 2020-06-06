@@ -40,21 +40,10 @@ displayMainNavigation('dashboard');
     <div class="dashboard-small-container memberships">
       <span>Memberships</span>
       <div class="ky-membership-icons-container">
-        <div class="ky-silver-icon">
-          <i class="fas fa-award"></i>
-          <span class="ky-letter-inside-icon">s</span>
-        </div>
-        <div class="ky-gold-icon">
-          <i class="fas fa-award"></i>
-          <span class="ky-letter-inside-icon">g</span>
-        </div>
-        <div class="ky-platinum-icon">
-          <i class="fas fa-award"></i>
-          <span class="ky-letter-inside-icon">p</span>
-        </div>
-        <div class="ky-diamond-icon">
-          <i class="fas fa-gem"></i>
-        </div>
+        <i class="fas fa-award ky-silver-icon"></i>
+        <i class="fas fa-award ky-gold-icon"></i>
+        <i class="fas fa-award ky-platinum-icon"></i>
+        <i class="fas fa-gem ky-diamond-icon"></i>
       </div>
     </div>
   </a>

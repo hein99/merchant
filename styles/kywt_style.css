@@ -389,13 +389,14 @@ nav::before{
 
 /**********beginning of dashboard**********/
 #ky-dashboard-section{
-  padding: 3% 44px 3% 44px;
+  padding: 4% 44px 4% 44px;
   background-color: #efefef;
   position: relative;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 3.5%;
+  grid-column-gap: 4%;
+  grid-row-gap: 6%;
   height: 100%;
   width: 100%;
 }
@@ -408,13 +409,10 @@ nav::before{
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  min-width: 230px;
-  height: 80px;
-  min-height: 80px;
+  height: auto;
   text-decoration: none;
   background-color: #ffffff;
   border-radius: 10px;
-  padding-left: 1.5em;
   box-sizing: border-box;
   border: 1px solid #eee;
   box-shadow: 0px 0px 20px 0px rgba(182, 101, 252, 0.07);
@@ -427,6 +425,7 @@ nav::before{
 }
 
 .dashboard-small-container{
+  position: relative;
   display: inline-flex;
   width: 100%;
   height: 100%;
@@ -436,49 +435,39 @@ nav::before{
 }
 
 .ky-icon-container{
+  width: 40%;
   display: inline-flex;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  margin-right: 1.5em;
+  background-color: #fff;
+  box-sizing: border-box;
 }
 
 .ky-icon-container i{
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
-.ky-icon-container.ky-customer-icon{
-  background-color: #3498DB;
-}
-
+.ky-icon-container.ky-customer-icon,
 .ky-info-container.ky-customer-info > span:first-child{
   color: #3498DB;
 }
 
-.ky-icon-container.ky-order-icon{
-  background-color: #27AE60;
-}
-
+.ky-icon-container.ky-order-icon,
 .ky-info-container.ky-order-info > span:first-child{
   color: #27AE60;
 }
 
-.ky-icon-container.ky-conversation-icon{
-  background-color: #E74C3C;
-}
-
+.ky-icon-container.ky-conversation-icon,
 .ky-info-container.ky-conversation-info > span:first-child{
   color: #E74C3C;
 }
 
 .ky-info-container{
+  width: 60%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .ky-info-container > span:first-child{
@@ -494,13 +483,16 @@ nav::before{
 
 #ky-dashboard-section a:nth-child(4){
   padding-left: 0;
+  padding: 4px 8px;
+  box-sizing: border-box;
 }
 
 .memberships.dashboard-small-container.memberships{
-  width: auto;
+  width: 100%;
+  height: 100%;
   display: inline-flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 8px 8px;
   box-sizing: border-box;
 }
@@ -511,46 +503,33 @@ nav::before{
   color: #636E72;
 }
 
-.ky-membership-icons-container > div{
-  position: relative;
-  display: inline-flex;
-  width: 40px;
-  height: 40px;
-  margin: 0 4px;
-  border-radius: 50%;
+.ky-membership-icons-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  color: #fff;
 }
 
 .ky-membership-icons-container i{
   font-size: 1.7em;
-}
-
-.ky-letter-inside-icon{
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 10px;
-  color: white;
-  font-weight: 800;
+  margin: 2px 8px;
 }
 
 .ky-silver-icon{
-  background-color: #C0BFDF;
+  color: #C0BFDF;
 }
 
 .ky-gold-icon{
-  background-color: #FDD600
+  color: #FDD600;
 }
 
 .ky-platinum-icon{
-  background-color: #B9BBBC;
+  color: #B9BBBC;
 }
 
 .ky-diamond-icon{
-  background-color: #2EC5FF;
+  color: #2EC5FF;
 }
 
 .dashboard-form-part{
@@ -677,8 +656,8 @@ nav::before{
 
 .ky-membership-header{
   width: 100%;
-  height: 20%;
-  max-height: 20%;
+  height: 22%;
+  max-height: 22%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -715,17 +694,30 @@ nav::before{
   color: #fff;
 }
 
-.ky-membership-logo-container i {
-  font-size: 1.5em;
+div.ky-silver-icon{
+  background-color: #C0BFDF;
 }
 
-.ky-membership-logo-container .ky-silver-icon span, .ky-membership-logo-container .ky-gold-icon span, .ky-membership-logo-container .ky-platinum-icon span {
-  position: absolute;
-  top: 18%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 10px;
-  font-weight: 800;
+div.ky-gold-icon{
+  background-color: #FDD600;
+}
+
+div.ky-platinum-icon{
+  background-color: #B9BBBC;
+}
+
+div.ky-diamond-icon{
+  background-color: #2EC5FF;
+}
+
+.ky-membership-logo-container i {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+div.ky-diamond-icon > .fa-gem{
+  font-size: 1.3em;
+  margin-top: 2px;
 }
 
 .ky-percentage-container{
@@ -775,7 +767,7 @@ nav::before{
 
 .ky-membership-body{
   width: 100%;
-  height: 62%;
+  height: 60%;
   padding: 14px 24px;
   box-sizing: border-box;
   text-align: center;
@@ -783,13 +775,13 @@ nav::before{
 
 .ky-membership-body textarea{
   width: 100%;
-  height: 150px;
+  height: 130px;
+  max-height: 130px;
   background: none;
   border: 2px solid #ddd;
   border-radius: 5px;
   padding: 5px;
   box-sizing: border-box;
-  max-height: 150px;
   letter-spacing: 0.1px;
 }
 
@@ -807,6 +799,7 @@ nav::before{
   display: flex;
   flex-direction: row;
   justify-content: end;
+  -webkit-justify-content: flex-end;
   box-sizing: border-box;
 }
 
