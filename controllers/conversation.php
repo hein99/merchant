@@ -50,6 +50,10 @@ switch($action)
     sendMessage();
     break;
 
+  case 'send_photo':
+    sendPhoto();
+    break;
+
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -206,7 +210,7 @@ function sendMessage()
   $message = new MessageRecord(array(
     'to_user_id' => isset($_POST['to_user_id']) ? preg_replace('/[^0-9]/', '', $_POST['to_user_id']) : '',
     'from_user_id' => $_SESSION['merchant_admin_account']->getValue('id'),
-    'messages' => isset($_POST['messages']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['messages']) : '',
+    'messages' => isset($_POST['messages']) ? $_POST['messages'] : '',
     'is_image' => 'no'
   ));
   foreach($required_fields as $required_field)
@@ -227,6 +231,43 @@ function sendMessage()
   else
   {
     $message->addMessage();
+  }
+}
+
+function sendPhoto()
+{
+  $required_fields = array('to_user_id',);
+  $missing_fields = array();
+  $error_messages = array();
+
+  $message = new MessageRecord(array(
+    'to_user_id' => isset($_POST['to_user_id']) ? preg_replace('/[^0-9]/', '', $_POST['to_user_id']) : '',
+    'from_user_id' => $_SESSION['merchant_admin_account']->getValue('id'),
+    'messages' => 'not message',
+    'is_image' => 'yes'
+  ));
+  foreach($required_fields as $required_field)
+  {
+    if($message->getValue($required_field) == '' )
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'Please fill all required field';
+  }
+
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else
+  {
+    $message_id = $message->addMessage();
+
+    $tmp = $_FILES['photo']['tmp_name'];
+    $photo_name = 'user_' . $message->getValue('id') . '_img_mss_' . $message_id;
+    move_uploaded_file($tmp, './photos/conversation/' . $photo_name);
   }
 }
 
