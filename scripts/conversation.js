@@ -2,7 +2,11 @@ $(document).ready(function(){
 
 // User Lists
 
-  getAllChatUsers();
+getAllChatUsers();
+
+// setInterval(function(){
+//   update_last_activity();
+// }, 3000);
 
 function getAllChatUsers()
 {
@@ -113,8 +117,8 @@ function makeChatBox(to_user_id, to_user_name)
   content += '<div class="form-group">';
   content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control chat_message"></textarea>';
   content += '<div class="image_upload"><form id="uploadImage" method="post" action="upload.php"><label for="uploadFile"></label><input type="file" name="uploadFile" id="uploadFile" accept=".jpg, .png" /></form></div>';
-  content += '</div><div class="form-group" align="right">';
-  content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
+  content += '</div><div align="right">';
+  content += '<button type="button" name="send_chat" id="'+to_user_id+'">Send</button></div></div>';
   $('#user_model_details').html(content);
 }
 
@@ -152,48 +156,102 @@ function get_chat_history(to_user_id, to_user_name)
       var element = document.getElementsByClassName("chat_history")[0];
       element.scrollTo(0,element.scrollHeight);
 
+      $('#chat_message_'+to_user_id).emojioneArea({
+        pickerPosition:"top",
+        toneStyle: "bullet"
+      });
+
       setInterval(function(){
         get_new_message(to_user_id, to_user_name);
       }, 3000);
 
     });
   }
-  function get_new_message(to_user_id, to_user_name)
-  {
-    $.ajax({
-      url: PAGE_URL+'/conversation/get_new_messages_by_customer_id/'+to_user_id,
-      method: "GET",
-      success: function(returnMessages){
-        if(returnMessages)
-        {
-          var output = '';
-          for(message of returnMessages){
-            var user_name = '';
-            var chat_style = '';
-            var time_style = '';
-            var message_list = '';
-            if(message.from_user_id == ADMIN_ID)
-            {
-              message_list = message.messages;
-              user_name = '<b class="from_user">You</b>';
-              chat_style = 'from_user_chat_style';
-              time_style = 'from_user_time_style';
-            }else{
-              message_list = message.messages;
-              user_name = '<b class="to_user">'+to_user_name+'</b>';
-              chat_style = 'to_user_chat_style';
-              time_style = 'to_user_time_style';
-            }
-            output += '<li><div class=""><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
+
+function get_new_message(to_user_id, to_user_name)
+{
+  $.ajax({
+    url: PAGE_URL+'/conversation/get_new_messages_by_customer_id/'+to_user_id,
+    method: "GET",
+    success: function(returnMessages){
+      if(returnMessages)
+      {
+        var output = '';
+        for(message of returnMessages){
+          var user_name = '';
+          var chat_style = '';
+          var time_style = '';
+          var message_list = '';
+          if(message.from_user_id == ADMIN_ID)
+          {
+            message_list = message.messages;
+            user_name = '<b class="from_user">You</b>';
+            chat_style = 'from_user_chat_style';
+            time_style = 'from_user_time_style';
+          }else{
+            message_list = message.messages;
+            user_name = '<b class="to_user">'+to_user_name+'</b>';
+            chat_style = 'to_user_chat_style';
+            time_style = 'to_user_time_style';
           }
-          $(output).appendTo("#chat_history_"+to_user_id+" ul");
+          output += '<li><div class=""><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
         }
-      },
-        dataType: 'json'
-      }).done(function(){
+        $(output).appendTo("#chat_history_"+to_user_id+" ul");
+      }
+    },
+      dataType: 'json'
+    }).done(function(){
         var element = document.getElementsByClassName("chat_history")[0];
         element.scrollTo(0,element.scrollHeight);
-      });
-  }
+    });
+}
+
+$(document).on('focus', '.chat_message', function(){
+  var is_type = 'yes';
+  $.ajax({
+    url: PAGE_URL+'/conversation/update_is_type/'+ADMIN_ID,
+    method: "POST",
+    data: {is_type:is_type},
+    success:function(){
+
+    }
+  })
+});
+
+$(document).on('blur', '.chat_message', function(){
+  var is_type = 'no';
+  $.ajax({
+    url: PAGE_URL+'/conversation/update_is_type/'+ADMIN_ID,
+    method: "POST",
+    data: {is_type:is_type},
+    success:function(){
+
+    }
+  })
+});
+
+// function update_last_activity(){
+//   $.ajax({
+//     url: url: PAGE_URL+'/conversation/update_last_activity/'+ADMIN_ID,
+//     success: function(){
+//
+//     }
+//   })
+// }
+
+// $(document).on('click', '.send_chat', function(){
+//   var to_user_id = $(this).attr('id');
+//   var message  = $.trim($('#chat_message_'+to_user_id).val());
+//   if(message != '')
+//   {
+//     $.ajax({
+//       url: PAGE_URL+'/conversation/update_last_activity/'+ADMIN_ID, //from user id
+//       method: "POST",
+//       data: {to_user_id:to_user_id, chat_message:message},
+//       success: function()
+//     })
+//   }
+// });
+
 });
 // console.log(returnUserLists);
