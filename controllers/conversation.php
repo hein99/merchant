@@ -42,6 +42,7 @@ switch($action)
     break;
 
   case 'update_activity_time':
+
     updateActivityTime();
     break;
 

@@ -114,7 +114,7 @@ function makeChatBox(to_user_id, to_user_name)
   content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
   content += '<div class="image_upload"><form id="uploadImage" method="post" action="upload.php"><label for="uploadFile"></label><input type="file" name="uploadFile" id="uploadFile" accept=".jpg, .png" /></form></div>';
   content += '</div><div align="right">';
-  content += '<button type="button" name="send_chat" id="'+to_user_id+'">Send</button></div></div>';
+  content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
   $('#user_model_details').html(content);
 }
 
@@ -232,13 +232,16 @@ $(document).on('click', '.send_chat', function(){
   if(message != '')
   {
     $.ajax({
-      url: PAGE_URL+'/conversation/update_last_activity/', //from user id
+      url: PAGE_URL+'/conversation/send_message',
       method: "POST",
-      data: {to_user_id:to_user_id, chat_message:message},
+      data: {to_user_id:to_user_id, messages:message},
       success: function(){
-
+        var element = $('#chat_message_'+to_user_id).emojioneArea();
+        element[0].emojioneArea.setText('');
       }
     })
+  }else{
+    alert('Type something');
   }
 });
 
