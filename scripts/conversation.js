@@ -101,9 +101,6 @@ $(document).on('click', '.start_chat', function(){
   var to_user_id = $(this).data('touserid');
   var to_user_name = $(this).data('tousername');
   makeChatBox(to_user_id, to_user_name);
-
-  // var element = document.getElementsByClassName("chat_history")[0];
-  // element.scrollTo(0,element.scrollHeight);
 });
 
 function makeChatBox(to_user_id, to_user_name)
