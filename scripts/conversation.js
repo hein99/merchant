@@ -159,7 +159,7 @@ function get_chat_history(to_user_id, to_user_name)
 
       setInterval(function(){
         get_new_message(to_user_id, to_user_name);
-      }, 3000);
+      }, 2000);
 
     });
   }
@@ -170,7 +170,7 @@ function get_new_message(to_user_id, to_user_name)
     url: PAGE_URL+'/conversation/get_new_messages_by_customer_id/'+to_user_id,
     method: "GET",
     success: function(returnMessages){
-      if(returnMessages)
+      if(returnMessages != '')
       {
         var output = '';
         for(message of returnMessages){
@@ -193,13 +193,11 @@ function get_new_message(to_user_id, to_user_name)
           output += '<li><div class=""><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
         }
         $(output).appendTo("#chat_history_"+to_user_id+" ul");
+        $(".chat_history").stop().animate({ scrollTop: $(".chat_history")[0].scrollHeight}, 1000);
       }
     },
       dataType: 'json'
-    }).done(function(){
-        var element = document.getElementsByClassName("chat_history")[0];
-        element.scrollTo(0,element.scrollHeight);
-    });
+    })
 }
 
 $(document).on('focus', '.chat_message', function(){
