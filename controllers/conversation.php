@@ -119,7 +119,8 @@ function getAllMessagesByCustomerId($id)
       $returnMessages[] = array(
         'from_user_id' => $message->getValue('from_user_id'),
         'to_user_id' => $message->getValue('to_user_id'),
-        'messages' => $message->getValue('messages')
+        'messages' => $message->getValue('messages'),
+        'arrived_time' => $message->getValue('arrived_time')
       );
     }
     echo json_encode($returnMessages);
@@ -138,7 +139,8 @@ function getNewMessagesByCustomerId($id)
       $returnMessages[] = array(
         'from_user_id' => $message->getValue('from_user_id'),
         'to_user_id' => $message->getValue('to_user_id'),
-        'messages' => $message->getValue('messages')
+        'messages' => $message->getValue('messages'),
+        'arrived_time' => $message->getValue('arrived_time')
       );
     }
     echo json_encode($returnMessages);
