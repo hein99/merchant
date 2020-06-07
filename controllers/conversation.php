@@ -41,6 +41,10 @@ switch($action)
     changeTypingById();
     break;
 
+  case 'update_activity_time':
+    updateActivityTime();
+    break;
+
   case 'send_message':
     sendMessage();
     break;
@@ -185,6 +189,11 @@ function changeTypingById()
   {
     $login_record->updateIsType();
   }
+}
+
+function updateActivityTime()
+{
+  LoginRecord::updateUsersActiveActivity($_SESSION['merchant_admin_account']->getValue('id'));
 }
 
 function sendMessage()

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2020 at 07:45 AM
+-- Generation Time: Jun 07, 2020 at 04:05 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -101,7 +101,8 @@ INSERT INTO `login_record` (`id`, `user_id`, `active_activity`, `is_type`) VALUE
 (3, 5, '2020-06-05 04:36:07', 'no'),
 (4, 6, '2020-06-05 13:40:06', 'yes'),
 (5, 7, '2020-06-05 13:57:52', 'no'),
-(6, 8, '2020-06-05 13:35:10', 'no');
+(6, 8, '2020-06-05 13:35:10', 'no'),
+(7, 1, '2020-06-07 14:01:56', 'yes');
 
 -- --------------------------------------------------------
 
@@ -151,12 +152,15 @@ INSERT INTO `message_record` (`id`, `to_user_id`, `from_user_id`, `messages`, `i
 (1, 1, 2, 'No.1) 2 to 1', 'no', '2020-06-06 22:54:00', 1),
 (2, 1, 2, 'No2.) 2 to 1', 'no', '2020-06-06 22:54:00', 1),
 (3, 1, 2, 'No3.) 2 to 1', 'no', '2020-06-06 22:54:00', 1),
-(4, 1, 3, 'Hello Admin!', 'no', '2020-06-06 22:34:59', 0),
-(5, 1, 3, 'Hello Admin 1!', 'no', '2020-06-06 22:35:19', 0),
-(6, 1, 3, 'Where are you?', 'no', '2020-06-06 22:35:19', 0),
-(7, 1, 3, 'Today is Friday!', 'no', '2020-06-06 22:35:19', 0),
-(8, 1, 3, 'Tomorrow is Saturday', 'no', '2020-06-06 22:35:19', 0),
-(9, 2, 1, 'No1.) 1 to 2', 'no', '2020-06-06 22:54:00', 1);
+(4, 1, 3, 'Hello Admin!', 'no', '2020-06-07 05:48:50', 1),
+(5, 1, 3, 'Hello Admin 1!', 'no', '2020-06-07 05:48:50', 1),
+(6, 1, 3, 'Where are you?', 'no', '2020-06-07 05:48:50', 1),
+(7, 1, 3, 'Today is Friday!', 'no', '2020-06-07 05:48:50', 1),
+(8, 1, 3, 'Tomorrow is Saturday', 'no', '2020-06-07 05:48:50', 1),
+(9, 2, 1, 'No1.) 1 to 2', 'no', '2020-06-06 22:54:00', 1),
+(10, 1, 2, 'Send form test form', 'no', '2020-06-07 13:16:47', 0),
+(11, 2, 1, 'Send form test form 2', 'no', '2020-06-07 13:19:21', 0),
+(12, 3, 1, 'testing message send to user 3', 'no', '2020-06-07 13:20:05', 0);
 
 -- --------------------------------------------------------
 
@@ -184,14 +188,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `user_status`, `phone`, `address`, `activate_status`, `point`, `balance`, `membership_id`, `created_date`, `modified_date`) VALUES
-(1, 'Anna', '*8342278FD80E338FC16478FB1C13FA4F04C8A16C', 1, '09788351044', 'nth', 1, 0, 0, 1, '2020-06-04 05:14:22', '0000-00-00 00:00:00'),
-(2, 'updatedDavid', '*F67248311B2147A3A8FEEAF515A1EA82882B3A68', 0, '09765920059', '104UpdatedMarlamyine3rdstreetHlaing16QtrYangon', 1, 100, 1501, 2, '2020-06-04 07:05:47', '2020-06-04 07:05:47'),
-(3, 'Masha', '*7FA8D2E62A13B4798B45E796728821341D613CD7', 0, '09793530086', 'London', 1, 0, 0, 1, '2020-06-04 15:06:54', '2020-06-04 15:06:54'),
-(4, 'Pete', '*F2C2536A0DC1CE63A11AF365189127F123053A53', 0, '09765920059', 'WashitonDC', 1, 0, 0, 1, '2020-06-05 04:40:47', '2020-06-05 04:40:47'),
-(5, 'Lavenda', '*00D9BF1AA5A4378C1F3FBCEB95A6CE21B2DF7809', 0, '09965343432', 'NewYork', 1, 0, 0, 1, '2020-06-05 04:40:48', '2020-06-05 04:40:48'),
-(6, 'Chocotaco', '*6AA3E3281F392090BCB9E0A1029E31741BA75060', 0, '09457503263', 'Paris', 1, 0, 0, 1, '2020-06-05 04:40:48', '2020-06-05 04:40:48'),
-(7, 'Joe', '*60D178145669A4D1569FE820852BB3425CB2D4A7', 0, '09765920059', 'yangon', 1, 0, 0, 1, '2020-06-05 09:10:59', '2020-06-05 09:10:59'),
-(8, 'GuGu', '*0FA3E3D473E613A9E60C25004155109A49F7A6A4', 0, '09793530086', 'yangon', 1, 0, 0, 1, '2020-06-05 13:35:56', '2020-06-05 13:35:56');
+(1, 'Anna', '*8342278FD80E338FC16478FB1C13FA4F04C8A16C', 1, '09788351044', 'nth', 1, 0, 0, 1, '2020-06-07 12:37:11', '0000-00-00 00:00:00'),
+(2, 'updatedDavid', '*F67248311B2147A3A8FEEAF515A1EA82882B3A68', 0, '09765920059', '104UpdatedMarlamyine3rdstreetHlaing16QtrYangon', 1, 100, 1501, 2, '2020-06-07 12:37:11', '2020-06-04 07:05:47'),
+(3, 'Masha', '*7FA8D2E62A13B4798B45E796728821341D613CD7', 0, '09793530086', 'London', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-04 15:06:54'),
+(4, 'Pete', '*F2C2536A0DC1CE63A11AF365189127F123053A53', 0, '09765920059', 'WashitonDC', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-05 04:40:47'),
+(5, 'Lavenda', '*00D9BF1AA5A4378C1F3FBCEB95A6CE21B2DF7809', 0, '09965343432', 'NewYork', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-05 04:40:48'),
+(6, 'Chocotaco', '*6AA3E3281F392090BCB9E0A1029E31741BA75060', 0, '09457503263', 'Paris', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-05 04:40:48'),
+(7, 'Joe', '*60D178145669A4D1569FE820852BB3425CB2D4A7', 0, '09765920059', 'yangon', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-05 09:10:59'),
+(8, 'GuGu', '*0FA3E3D473E613A9E60C25004155109A49F7A6A4', 0, '09793530086', 'yangon', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-05 13:35:56');
 
 --
 -- Indexes for dumped tables
@@ -253,7 +257,7 @@ ALTER TABLE `customer_statement`
 -- AUTO_INCREMENT for table `login_record`
 --
 ALTER TABLE `login_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `membership`
@@ -265,7 +269,7 @@ ALTER TABLE `membership`
 -- AUTO_INCREMENT for table `message_record`
 --
 ALTER TABLE `message_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
