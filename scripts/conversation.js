@@ -100,7 +100,7 @@ function getEachNewMessagesCount()
 $(document).on('click', '.start_chat', function(){
   var to_user_id = $(this).data('touserid');
   var to_user_name = $(this).data('tousername');
-  makeChatBox(to_user_id, to_user_name);
+  get_chat_history(to_user_id, to_user_name);
 });
 
 function makeChatBox(to_user_id, to_user_name)
@@ -108,7 +108,7 @@ function makeChatBox(to_user_id, to_user_name)
   var content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
   content += '<h4>You have chat with '+to_user_name;
   content += '</h4><div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'"><ul>';
-  get_chat_history(to_user_id, to_user_name);
+  // get_chat_history(to_user_id, to_user_name);
   content += '</ul></div>';
   content += '<div class="form-group">';
   content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control chat_message"></textarea>';
@@ -124,6 +124,7 @@ function get_chat_history(to_user_id, to_user_name)
     url: PAGE_URL+'/conversation/get_all_messages_by_customer_id/'+to_user_id,
     method: "GET",
     success: function(returnMessages){
+      makeChatBox(to_user_id, to_user_name);
       var output = '';
       for(message of returnMessages){
         var user_name = '';
@@ -136,10 +137,9 @@ function get_chat_history(to_user_id, to_user_name)
           user_name = '<b class="from_user">You</b>';
           chat_style = 'from_user_chat_style';
           time_style = 'from_user_time_style';
-        }
-        else {
+        }else{
           message_list = message.messages;
-          user_name = '<b class="to_user">'+to_user_name+'</br>';
+          user_name = '<b class="to_user">'+to_user_name+'</b>';
           chat_style = 'to_user_chat_style';
           time_style = 'to_user_time_style';
         }
@@ -147,11 +147,53 @@ function get_chat_history(to_user_id, to_user_name)
       }
       $(output).appendTo("#chat_history_"+to_user_id+" ul");
     },
-    dataType: 'json'
-  }).done(function(){
+      dataType: 'json'
+    }).done(function(){
       var element = document.getElementsByClassName("chat_history")[0];
       element.scrollTo(0,element.scrollHeight);
-  });
-}
+
+      setInterval(function(){
+        get_new_message(to_user_id, to_user_name);
+      }, 3000);
+
+    });
+  }
+  function get_new_message(to_user_id, to_user_name)
+  {
+    $.ajax({
+      url: PAGE_URL+'/conversation/get_new_messages_by_customer_id/'+to_user_id,
+      method: "GET",
+      success: function(returnMessages){
+        if(returnMessages)
+        {
+          var output = '';
+          for(message of returnMessages){
+            var user_name = '';
+            var chat_style = '';
+            var time_style = '';
+            var message_list = '';
+            if(message.from_user_id == ADMIN_ID)
+            {
+              message_list = message.messages;
+              user_name = '<b class="from_user">You</b>';
+              chat_style = 'from_user_chat_style';
+              time_style = 'from_user_time_style';
+            }else{
+              message_list = message.messages;
+              user_name = '<b class="to_user">'+to_user_name+'</b>';
+              chat_style = 'to_user_chat_style';
+              time_style = 'to_user_time_style';
+            }
+            output += '<li><div class=""><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
+          }
+          $(output).appendTo("#chat_history_"+to_user_id+" ul");
+        }
+      },
+        dataType: 'json'
+      }).done(function(){
+        var element = document.getElementsByClassName("chat_history")[0];
+        element.scrollTo(0,element.scrollHeight);
+      });
+  }
 });
 // console.log(returnUserLists);
