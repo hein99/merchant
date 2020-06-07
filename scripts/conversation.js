@@ -108,7 +108,7 @@ function makeChatBox(to_user_id, to_user_name)
   var content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
   content += '<h4>You have chat with '+to_user_name;
   content += '</h4><div style="height:300px; border:1px solid #ccc; overflow-y:scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
-  content += get_chat_history(to_user_id, to_user_name);
+  get_chat_history(to_user_id, to_user_name);
   // $(get_chat_history(to_user_id, to_user_name)).appendTo('#chat_history_'+to_user_id);
   content += '</div>';
   content += '<div class="form-group">';
