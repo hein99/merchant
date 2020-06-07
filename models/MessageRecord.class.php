@@ -31,8 +31,8 @@
     public static function getAllMessage($from_user_id, $to_user_id)
     {
       $conn = parent::connect();
-      $sql = 'SELECT * FROM '.TBL_MESSAGE_RECORD.' WHERE (from_user_id = :from_user_id AND to_user_id = :to_user_id)
-              OR (from_user_id = :to_user_id AND to_user_id = :from_user_id)
+      $sql = 'SELECT * FROM '.TBL_MESSAGE_RECORD.' WHERE ((from_user_id = :from_user_id AND to_user_id = :to_user_id)
+              OR (from_user_id = :to_user_id AND to_user_id = :from_user_id))
               ORDER BY arrived_time ASC';
       try {
         $st = $conn->prepare($sql);
@@ -111,7 +111,8 @@
     public static function updateMessageStatus($from_user_id, $to_user_id)
     {
       $conn = parent::connect();
-      $sql = 'UPDATE '.TBL_MESSAGE_RECORD.' SET status = 1 WHERE from_user_id = :to_user_id AND to_user_id = :from_user_id';
+      $sql = 'UPDATE '.TBL_MESSAGE_RECORD.' SET status = 1 WHERE (from_user_id = :from_user_id AND to_user_id = :to_user_id)
+              OR (from_user_id = :to_user_id AND to_user_id = :from_user_id)';
       try {
         $st = $conn->prepare($sql);
         $st->bindValue(':from_user_id', $from_user_id, PDO::PARAM_INT);
