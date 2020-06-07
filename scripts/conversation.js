@@ -4,9 +4,9 @@ $(document).ready(function(){
 
 getAllChatUsers();
 
-// setInterval(function(){
-//   update_last_activity();
-// }, 3000);
+setInterval(function(){
+  update_last_activity();
+}, 3000);
 
 function getAllChatUsers()
 {
@@ -209,7 +209,7 @@ function get_new_message(to_user_id, to_user_name)
 $(document).on('focus', '.chat_message', function(){
   var is_type = 'yes';
   $.ajax({
-    url: PAGE_URL+'/conversation/change_typing_by_id/',
+    url: PAGE_URL+'/conversation/change_typing_by_id',
     method: "POST",
     data: {is_type:is_type},
     success:function(){
@@ -221,7 +221,7 @@ $(document).on('focus', '.chat_message', function(){
 $(document).on('blur', '.chat_message', function(){
   var is_type = 'no';
   $.ajax({
-    url: PAGE_URL+'/conversation/change_typing_by_id/'+ADMIN_ID,
+    url: PAGE_URL+'/conversation/change_typing_by_id',
     method: "POST",
     data: {is_type:is_type},
     success:function(){
@@ -230,14 +230,14 @@ $(document).on('blur', '.chat_message', function(){
   })
 });
 
-// function update_last_activity(){
-//   $.ajax({
-//     url: url: PAGE_URL+'/conversation/update_last_activity/'+ADMIN_ID,
-//     success: function(){
-//
-//     }
-//   })
-// }
+function update_last_activity(){
+  $.ajax({
+    url: PAGE_URL+'/conversation/update_activity_time/',
+    success: function(){
+
+    }
+  })
+}
 
 // $(document).on('click', '.send_chat', function(){
 //   var to_user_id = $(this).attr('id');
