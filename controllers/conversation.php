@@ -49,6 +49,10 @@ switch($action)
     sendMessage();
     break;
 
+  case 'send_photo':
+    sendPhoto();
+    break;
+
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -226,6 +230,50 @@ function sendMessage()
   else
   {
     $message->addMessage();
+  }
+}
+
+function sendPhoto()
+{
+  $required_fields = array('to_user_id', 'from_user_id');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $message = new MessageRecord(array(
+    'to_user_id' => isset($_POST['to_user_id']) ? preg_replace('/[^0-9]/', '', $_POST['to_user_id']) : '',
+    'from_user_id' => $_SESSION['merchant_admin_account']->getValue('id'),
+    'messages' => 'not message',
+    'is_image' => 'yes'
+  ));
+  foreach($required_fields as $required_field)
+  {
+    if($message->getValue($required_field) == '' )
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'Please fill all required field';
+  }
+
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else
+  {
+    $message_id = $message->addMessage();
+
+    $tmp = $_FILES['photo']['tmp_name'];
+    $photo_name = 'user_' . $message->getValue('id') . '_img_mss_' . $message_id;
+    move_uploaded_file($tmp, './photos/categories/' . $photo_name);
+
+    $tmp = new Category(array(
+      'id' => $category->getValue('id'),
+      'photo_name' => $photo_name
+    ));
+    $tmp->updatePhotoName();
+
   }
 }
 
