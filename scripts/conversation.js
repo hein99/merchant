@@ -115,7 +115,7 @@ function makeChatBox(to_user_id, to_user_name)
   // get_chat_history(to_user_id, to_user_name);
   content += '</ul></div>';
   content += '<div class="form-group">';
-  content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control chat_message"></textarea>';
+  content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
   content += '<div class="image_upload"><form id="uploadImage" method="post" action="upload.php"><label for="uploadFile"></label><input type="file" name="uploadFile" id="uploadFile" accept=".jpg, .png" /></form></div>';
   content += '</div><div align="right">';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'">Send</button></div></div>';
@@ -209,7 +209,7 @@ function get_new_message(to_user_id, to_user_name)
 $(document).on('focus', '.chat_message', function(){
   var is_type = 'yes';
   $.ajax({
-    url: PAGE_URL+'/conversation/update_is_type/'+ADMIN_ID,
+    url: PAGE_URL+'/conversation/change_typing_by_id/',
     method: "POST",
     data: {is_type:is_type},
     success:function(){
@@ -221,7 +221,7 @@ $(document).on('focus', '.chat_message', function(){
 $(document).on('blur', '.chat_message', function(){
   var is_type = 'no';
   $.ajax({
-    url: PAGE_URL+'/conversation/update_is_type/'+ADMIN_ID,
+    url: PAGE_URL+'/conversation/change_typing_by_id/'+ADMIN_ID,
     method: "POST",
     data: {is_type:is_type},
     success:function(){
