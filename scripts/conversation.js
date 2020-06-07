@@ -143,7 +143,7 @@ function get_chat_history(to_user_id, to_user_name)
           chat_style = 'to_user_chat_style';
           time_style = 'to_user_time_style';
         }
-        output += '<li><div class=""><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
+        output += '<li><div class="chat_list"><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
       }
       $(output).appendTo("#chat_history_"+to_user_id+" ul");
     },
