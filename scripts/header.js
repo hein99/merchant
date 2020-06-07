@@ -1,4 +1,18 @@
 $(document).ready(function() {
+
+	setInterval(function(){
+	  update_last_activity();
+	}, 3000);
+
+	function update_last_activity(){
+		$.ajax({
+			url: PAGE_URL+'/conversation/update_activity_time',
+			success: function(){
+
+			}
+		})
+	}
+
 	$('.ky-sidemenu-list li').on('click', function(e) {
 		$(this).addClass("active").siblings().removeClass("active");
 	});

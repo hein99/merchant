@@ -4,10 +4,6 @@ $(document).ready(function(){
 
 getAllChatUsers();
 
-setInterval(function(){
-  update_last_activity();
-}, 3000);
-
 function getAllChatUsers()
 {
   $.ajax({
@@ -230,28 +226,21 @@ $(document).on('blur', '.chat_message', function(){
   })
 });
 
-function update_last_activity(){
-  $.ajax({
-    url: PAGE_URL+'/conversation/update_activity_time/',
-    success: function(){
+$(document).on('click', '.send_chat', function(){
+  var to_user_id = $(this).attr('id');
+  var message  = $.trim($('#chat_message_'+to_user_id).val());
+  if(message != '')
+  {
+    $.ajax({
+      url: PAGE_URL+'/conversation/update_last_activity/', //from user id
+      method: "POST",
+      data: {to_user_id:to_user_id, chat_message:message},
+      success: function(){
 
-    }
-  })
-}
-
-// $(document).on('click', '.send_chat', function(){
-//   var to_user_id = $(this).attr('id');
-//   var message  = $.trim($('#chat_message_'+to_user_id).val());
-//   if(message != '')
-//   {
-//     $.ajax({
-//       url: PAGE_URL+'/conversation/update_last_activity/'+ADMIN_ID, //from user id
-//       method: "POST",
-//       data: {to_user_id:to_user_id, chat_message:message},
-//       success: function()
-//     })
-//   }
-// });
+      }
+    })
+  }
+});
 
 });
 // console.log(returnUserLists);
