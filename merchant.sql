@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 05, 2020 at 04:05 PM
+-- Generation Time: Jun 07, 2020 at 07:45 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -51,7 +51,7 @@ CREATE TABLE `customer_order` (
 --
 
 INSERT INTO `customer_order` (`id`, `customer_id`, `product_link`, `remark`, `quantity`, `price`, `us_tax`, `mm_tax`, `commission`, `weight_cost`, `order_status`, `product_shipping_status`, `has_viewed_admin`, `has_viewed_customer`, `created_date`) VALUES
-(1, 2, 'https://item.taobao.com/item.htm?spm=a21wu.241046-global.4691948847.5.41cab6cb5U5S8P&scm=1007.15423.84311.100200300000005&id=566185672494&pvid=7f287f08-6e79-4bf9-a113-913df6e7b2df', 'black', 1, 2, 5, 5, 9, 7, 3, 0, 1, 0, '2020-06-04 07:47:31'),
+(1, 2, 'https://item.taobao.com/item.htm?spm=a21wu.241046-global.4691948847.5.41cab6cb5U5S8P&scm=1007.15423.84311.100200300000005&id=566185672494&pvid=7f287f08-6e79-4bf9-a113-913df6e7b2df', 'black', 1, 2, 5, 5, 9, 7, 0, 0, 1, 0, '2020-06-06 13:18:40'),
 (2, 2, 'https://item.taobao.com/item.htm?spm=a21wu.241046-global.4691948847.5.41cab6cb5U5S8P&scm=1007.15423.84311.100200300000005&id=566185672494&pvid=7f287f08-6e79-4bf9-a113-913df6e7b2df', 'black and white', 3, 5.6, 0, 0, 0, 7, 0, 0, 1, 0, '2020-06-04 07:42:23');
 
 -- --------------------------------------------------------
@@ -122,9 +122,9 @@ CREATE TABLE `membership` (
 --
 
 INSERT INTO `membership` (`id`, `name`, `definition`, `percentage`, `modified_date`) VALUES
-(1, 'Silver', 'hein khant', 10, '2020-06-01 17:39:04'),
-(2, 'Gold', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 9, '2020-06-01 05:12:17'),
-(3, 'Platinum', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, '2020-06-01 16:45:13'),
+(1, 'Silver', 'GU GU', 99, '2020-06-06 13:17:11'),
+(2, 'Gold', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, cons gu gu gu gu gu gu gu gu ectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 9, '2020-06-06 13:17:52'),
+(3, 'Platinum', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. gi gi git i gi gi gi Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, '2020-06-06 13:18:18'),
 (4, 'Diamond', 'wai linn phyoe', 5, '2020-06-01 17:26:51');
 
 -- --------------------------------------------------------
@@ -140,7 +140,7 @@ CREATE TABLE `message_record` (
   `messages` text COLLATE utf8_unicode_ci NOT NULL,
   `is_image` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL,
   `arrived_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` int(1) NOT NULL
+  `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -148,14 +148,15 @@ CREATE TABLE `message_record` (
 --
 
 INSERT INTO `message_record` (`id`, `to_user_id`, `from_user_id`, `messages`, `is_image`, `arrived_time`, `status`) VALUES
-(1, 1, 2, 'Hello, Admin!', 'no', '2020-06-05 12:44:18', 0),
-(2, 1, 2, 'Hello, Admin!', 'no', '2020-06-05 12:45:18', 0),
-(3, 1, 2, 'I am your friend.', 'no', '2020-06-05 12:45:18', 0),
-(4, 1, 3, 'Hello Admin!', 'no', '2020-06-05 12:49:38', 0),
-(5, 1, 3, 'Hello Admin 1!', 'no', '2020-06-05 12:50:40', 0),
-(6, 1, 3, 'Where are you?', 'no', '2020-06-05 12:50:40', 0),
-(7, 1, 3, 'Today is Friday!', 'no', '2020-06-05 12:52:35', 0),
-(8, 1, 3, 'Tomorrow is Saturday', 'no', '2020-06-05 12:52:35', 0);
+(1, 1, 2, 'No.1) 2 to 1', 'no', '2020-06-06 22:54:00', 1),
+(2, 1, 2, 'No2.) 2 to 1', 'no', '2020-06-06 22:54:00', 1),
+(3, 1, 2, 'No3.) 2 to 1', 'no', '2020-06-06 22:54:00', 1),
+(4, 1, 3, 'Hello Admin!', 'no', '2020-06-06 22:34:59', 0),
+(5, 1, 3, 'Hello Admin 1!', 'no', '2020-06-06 22:35:19', 0),
+(6, 1, 3, 'Where are you?', 'no', '2020-06-06 22:35:19', 0),
+(7, 1, 3, 'Today is Friday!', 'no', '2020-06-06 22:35:19', 0),
+(8, 1, 3, 'Tomorrow is Saturday', 'no', '2020-06-06 22:35:19', 0),
+(9, 2, 1, 'No1.) 1 to 2', 'no', '2020-06-06 22:54:00', 1);
 
 -- --------------------------------------------------------
 
@@ -264,7 +265,7 @@ ALTER TABLE `membership`
 -- AUTO_INCREMENT for table `message_record`
 --
 ALTER TABLE `message_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
