@@ -37,6 +37,14 @@ switch($action)
     getNewMessagesByCustomerId($id);
     break;
 
+  case 'change_typing_by_id':
+    changeTypingById();
+    break;
+
+  case 'send_message':
+    sendMessage();
+    break;
+
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -45,7 +53,6 @@ switch($action)
 
 function getAllNewMessagesCount()
 {
-  // $id = UsersAccount::getAdminAccountById($_SESSION['merchant_admin_account']->getValue('id'));
   $total = MessageRecord::getAllNewMessagesCount($_SESSION['merchant_admin_account']->getValue('id'));
   echo $total;
 }
@@ -147,6 +154,71 @@ function getNewMessagesByCustomerId($id)
   }
 }
 
+function changeTypingById()
+{
+  $required_fields = array('user_id', 'is_type');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $login_record = new LoginRecord(array(
+    'user_id' => $_SESSION['merchant_admin_account']->getValue('id'),
+    'is_type' => isset($_POST['is_type']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['is_type']) : ''
+  ));
+
+  foreach($required_fields as $required_field)
+  {
+    if($login_record->getValue($required_field) == '' )
+      $missing_fields[] = $required_field;
+  }
+
+  if($missing_fields)
+  {
+    $error_messages[] = 'Please fill all required field';
+  }
+
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else
+  {
+    $login_record->updateIsType();
+  }
+}
+
+function sendMessage()
+{
+  $required_fields = array('to_user_id', 'from_user_id', 'messages');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $message = new MessageRecord(array(
+    'to_user_id' => isset($_POST['to_user_id']) ? preg_replace('/[^0-9]/', '', $_POST['to_user_id']) : '',
+    'from_user_id' => $_SESSION['merchant_admin_account']->getValue('id'),
+    'messages' => isset($_POST['messages']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['messages']) : '',
+    'is_image' => 'no'
+  ));
+  foreach($required_fields as $required_field)
+  {
+    if($message->getValue($required_field) == '' )
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'Please fill all required field';
+  }
+
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else
+  {
+    $message->addMessage();
+  }
+}
 
 function checkActiveNow($active_activity)
 {
