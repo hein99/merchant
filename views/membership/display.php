@@ -47,20 +47,17 @@ function chooseMembership($membership_id)
   {
     case 1:
       $membership_name = ' <div class="ky-silver-icon">
-         <i class="fas fa-award"></i><span>s</span>
-       </div>';
+         <i class="fas fa-award"></i></div>';
       break;
 
     case 2:
       $membership_name = '<div class="ky-gold-icon">
-         <i class="fas fa-award"></i><span>g</span>
-       </div>';
+         <i class="fas fa-award"></i></div>';
       break;
 
     case 3:
       $membership_name = '<div class="ky-platinum-icon">
-         <i class="fas fa-award"></i><span>p</span>
-       </div>';
+         <i class="fas fa-award"></i></div>';
       break;
 
     case 4:
