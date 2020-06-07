@@ -209,7 +209,7 @@ function sendMessage()
   $message = new MessageRecord(array(
     'to_user_id' => isset($_POST['to_user_id']) ? preg_replace('/[^0-9]/', '', $_POST['to_user_id']) : '',
     'from_user_id' => $_SESSION['merchant_admin_account']->getValue('id'),
-    'messages' => isset($_POST['messages']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['messages']) : '',
+    'messages' => isset($_POST['messages']) ? $_POST['messages'] : '',
     'is_image' => 'no'
   ));
   foreach($required_fields as $required_field)
@@ -235,7 +235,7 @@ function sendMessage()
 
 function sendPhoto()
 {
-  $required_fields = array('to_user_id', 'from_user_id');
+  $required_fields = array('to_user_id',);
   $missing_fields = array();
   $error_messages = array();
 
@@ -266,14 +266,7 @@ function sendPhoto()
 
     $tmp = $_FILES['photo']['tmp_name'];
     $photo_name = 'user_' . $message->getValue('id') . '_img_mss_' . $message_id;
-    move_uploaded_file($tmp, './photos/categories/' . $photo_name);
-
-    $tmp = new Category(array(
-      'id' => $category->getValue('id'),
-      'photo_name' => $photo_name
-    ));
-    $tmp->updatePhotoName();
-
+    move_uploaded_file($tmp, './photos/conversation/' . $photo_name);
   }
 }
 
