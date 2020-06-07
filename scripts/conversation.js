@@ -109,10 +109,11 @@ function makeChatBox(to_user_id, to_user_name)
   content += '<h4>You have chat with '+to_user_name;
   content += '</h4><div style="height:300px; border:1px solid #ccc; overflow-y:scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
   content += get_chat_history(to_user_id, to_user_name);
+  // $(get_chat_history(to_user_id, to_user_name)).appendTo('#chat_history_'+to_user_id);
   content += '</div>';
   content += '<div class="form-group">';
   content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control chat_message"></textarea>';
-  content += '<div class="image_upload"><form id="uploadImage" method="post" action="upload.php"><label for="uploadFile"><img src="photo.png" /></label><input type="file" name="uploadFile" id="uploadFile" accept=".jpg, .png" /></form></div>';
+  content += '<div class="image_upload"><form id="uploadImage" method="post" action="upload.php"><label for="uploadFile"></label><input type="file" name="uploadFile" id="uploadFile" accept=".jpg, .png" /></form></div>';
   content += '</div><div class="form-group" align="right">';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
   $('#user_model_details').html(content);
@@ -123,34 +124,36 @@ function get_chat_history(to_user_id, to_user_name)
   $.ajax({
     url: PAGE_URL+'/conversation/get_all_messages_by_customer_id/'+to_user_id,
     method: "GET",
-    success: function(returnChatList){
+    success: function(returnMessages){
+      // console.log(returnMessages);
       var output = '';
-      for(chatList of returnChatList){
+      for(message of returnMessages){
         var user_name = '';
         var chat_style = '';
         var time_style = '';
-        var message = '';
-        if(chatList.from_user_id == ADMIN_ID)
+        var message_list = '';
+        if(message.from_user_id == ADMIN_ID)
         {
-          message = chatList.messages;
+          message_list = message.messages;
           user_name = '<b class="from_user">You</b>';
           chat_style = 'from_user_chat_style';
           time_style = 'from_user_time_style';
         }
         else {
-          message = chatList.messages;
+          message_list = message.messages;
           user_name = '<b class="to_user">'+to_user_name+'</br>';
           chat_style = 'to_user_chat_style';
           time_style = 'to_user_time_style';
         }
-        output += '<div class=""><div class="'+chat_style+'"><p>'+user_name+' - '+message+'</p></div><div class="'+time_style+'"><small><em>'+chatList.arrived_time+'</em></small></div></div>';
+        output += '<div class=""><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div>';
       }
       // return output;
-      $('#chat_history_'+to_user_id).html(output);
-    }
+      // $('#chat_history_'+to_user_id).html(output);
+      $(output).appendTo("#chat_history_"+to_user_id);
+    },
+    dataType: 'json'
   })
 }
-
 
 });
 // console.log(returnUserLists);
