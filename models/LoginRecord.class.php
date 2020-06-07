@@ -62,13 +62,12 @@ class LoginRecord extends DataObject
       die('Query failed: '.$e->getMessage());
     }
   }
-  public static function updateUsersActiveActivity($activity, $user_id) // update activity time during user login
+  public static function updateUsersActiveActivity($user_id) // update activity time during user login
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '.TBL_LOGIN_RECORD. ' SET active_activity = :activity WHERE id = :user_id';
+    $sql = 'UPDATE '.TBL_LOGIN_RECORD. ' SET active_activity = NOW() WHERE user_id = :user_id';
     try {
       $st = $conn->prepare($sql);
-      $st->bindValue(':activity', $activity, PDO::PARAM_STR);
       $st->bindValue(':user_id', $user_id, PDO::PARAM_INT);
       $st->execute();
       parent::disconnect($conn);
@@ -77,14 +76,14 @@ class LoginRecord extends DataObject
       die('Query failed: '.$e->getMessage());
     }
   }
-  public static function updateIsType($is_type, $user_id) //update is typing... when onclick or onblur on textarea
+  public function updateIsType() //update is typing... when onclick or onblur on textarea
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '.TBL_LOGIN_RECORD. ' SET is_type = :is_type WHERE id = :user_id';
+    $sql = 'UPDATE '.TBL_LOGIN_RECORD. ' SET is_type = :is_type WHERE user_id = :user_id';
     try {
       $st = $conn->prepare($sql);
-      $st->bindValue(':is_type', $is_type, PDO::PARAM_STR);
-      $st->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+      $st->bindValue(':user_id', $this->data['user_id'], PDO::PARAM_INT);
+      $st->bindValue(':is_type', $this->data['is_type'], PDO::PARAM_STR);
       $st->execute();
       parent::disconnect($conn);
     }catch (PDOException $e) {

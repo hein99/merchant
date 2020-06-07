@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 // User Lists
 
-  getAllChatUsers();
+getAllChatUsers();
 
 function getAllChatUsers()
 {
@@ -100,22 +100,21 @@ function getEachNewMessagesCount()
 $(document).on('click', '.start_chat', function(){
   var to_user_id = $(this).data('touserid');
   var to_user_name = $(this).data('tousername');
-  makeChatBox(to_user_id, to_user_name);
+  get_chat_history(to_user_id, to_user_name);
 });
 
 function makeChatBox(to_user_id, to_user_name)
 {
   var content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
   content += '<h4>You have chat with '+to_user_name;
-  content += '</h4><div style="height:300px; border:1px solid #ccc; overflow-y:scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
-  content += get_chat_history(to_user_id, to_user_name);
-  // $(get_chat_history(to_user_id, to_user_name)).appendTo('#chat_history_'+to_user_id);
-  content += '</div>';
+  content += '</h4><div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'"><ul>';
+  // get_chat_history(to_user_id, to_user_name);
+  content += '</ul></div>';
   content += '<div class="form-group">';
-  content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control chat_message"></textarea>';
+  content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
   content += '<div class="image_upload"><form id="uploadImage" method="post" action="upload.php"><label for="uploadFile"></label><input type="file" name="uploadFile" id="uploadFile" accept=".jpg, .png" /></form></div>';
-  content += '</div><div class="form-group" align="right">';
-  content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
+  content += '</div><div align="right">';
+  content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
   $('#user_model_details').html(content);
 }
 
@@ -125,7 +124,7 @@ function get_chat_history(to_user_id, to_user_name)
     url: PAGE_URL+'/conversation/get_all_messages_by_customer_id/'+to_user_id,
     method: "GET",
     success: function(returnMessages){
-      // console.log(returnMessages);
+      makeChatBox(to_user_id, to_user_name);
       var output = '';
       for(message of returnMessages){
         var user_name = '';
@@ -138,22 +137,111 @@ function get_chat_history(to_user_id, to_user_name)
           user_name = '<b class="from_user">You</b>';
           chat_style = 'from_user_chat_style';
           time_style = 'from_user_time_style';
-        }
-        else {
+        }else{
           message_list = message.messages;
-          user_name = '<b class="to_user">'+to_user_name+'</br>';
+          user_name = '<b class="to_user">'+to_user_name+'</b>';
           chat_style = 'to_user_chat_style';
           time_style = 'to_user_time_style';
         }
-        output += '<div class=""><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div>';
+        output += '<li><div class="chat_list"><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
       }
-      // return output;
-      // $('#chat_history_'+to_user_id).html(output);
-      $(output).appendTo("#chat_history_"+to_user_id);
+      $(output).appendTo("#chat_history_"+to_user_id+" ul");
     },
-    dataType: 'json'
-  })
+      dataType: 'json'
+    }).done(function(){
+      var element = document.getElementsByClassName("chat_history")[0];
+      element.scrollTo(0,element.scrollHeight);
+
+      $('#chat_message_'+to_user_id).emojioneArea({
+        pickerPosition:"top",
+        toneStyle: "bullet"
+      });
+
+      setInterval(function(){
+        get_new_message(to_user_id, to_user_name);
+      }, 2000);
+
+    });
+  }
+
+function get_new_message(to_user_id, to_user_name)
+{
+  $.ajax({
+    url: PAGE_URL+'/conversation/get_new_messages_by_customer_id/'+to_user_id,
+    method: "GET",
+    success: function(returnMessages){
+      if(returnMessages != '')
+      {
+        var output = '';
+        for(message of returnMessages){
+          var user_name = '';
+          var chat_style = '';
+          var time_style = '';
+          var message_list = '';
+          if(message.from_user_id == ADMIN_ID)
+          {
+            message_list = message.messages;
+            user_name = '<b class="from_user">You</b>';
+            chat_style = 'from_user_chat_style';
+            time_style = 'from_user_time_style';
+          }else{
+            message_list = message.messages;
+            user_name = '<b class="to_user">'+to_user_name+'</b>';
+            chat_style = 'to_user_chat_style';
+            time_style = 'to_user_time_style';
+          }
+          output += '<li><div class=""><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
+        }
+        $(output).appendTo("#chat_history_"+to_user_id+" ul");
+        $(".chat_history").stop().animate({ scrollTop: $(".chat_history")[0].scrollHeight}, 1000);
+      }
+    },
+      dataType: 'json'
+    })
 }
+
+$(document).on('focus', '.chat_message', function(){
+  var is_type = 'yes';
+  $.ajax({
+    url: PAGE_URL+'/conversation/change_typing_by_id',
+    method: "POST",
+    data: {is_type:is_type},
+    success:function(){
+
+    }
+  })
+});
+
+$(document).on('blur', '.chat_message', function(){
+  var is_type = 'no';
+  $.ajax({
+    url: PAGE_URL+'/conversation/change_typing_by_id',
+    method: "POST",
+    data: {is_type:is_type},
+    success:function(){
+
+    }
+  })
+});
+
+$(document).on('click', '.send_chat', function(){
+  var to_user_id = $(this).attr('id');
+  var message  = $.trim($('#chat_message_'+to_user_id).val());
+  if(message != '')
+  {
+    $.ajax({
+      url: PAGE_URL+'/conversation/send_message',
+      method: "POST",
+      data: {to_user_id:to_user_id, messages:message},
+      success: function(){
+        var element = $('#chat_message_'+to_user_id).emojioneArea();
+        element[0].emojioneArea.setText('');
+      }
+    })
+  }else{
+    alert('Type something');
+  }
+});
 
 });
 // console.log(returnUserLists);
