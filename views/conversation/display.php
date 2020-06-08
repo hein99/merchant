@@ -7,6 +7,10 @@ displayMainNavigation('conversation');
    <ul id="user-lists"></ul>
    <div id="user_model_details"></div>
  </div>
+ <form method="post" id="image-form" enctype="multipart/form-data" >
+   <input type="file" name="file" class="file">
+   <button type="button" class="browse btn btn-primary">Browse...</button>
+ </form>
 <script>
   var ADMIN_ID = <?php echo $_SESSION['merchant_admin_account']->getValue('id') ?>;
 </script>
