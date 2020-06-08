@@ -109,6 +109,21 @@
         die('Query failed: ' . $e->getMessage());
       }
     }
+    public function updatePhotoName()
+    {
+      $conn = parent::connect();
+      $sql = 'UPDATE ' .TBL_MESSAGE_RECORD. ' SET messages = :messages WHERE id = :id ';
+      try {
+        $st = $conn->prepare($sql);
+        $st->bindValue(':messages', $this->data['messages'], PDO::PARAM_STR);
+        $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
+        $st->execute();
+        parent::disconnect($conn);
+      } catch (PDOException $e) {
+        parent::disconnect($conn);
+        die("Query failed: ". $e->getMessage());
+      }
+    }
     public static function updateMessageStatus($from_user_id, $to_user_id)
     {
       $conn = parent::connect();

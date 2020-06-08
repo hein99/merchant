@@ -42,12 +42,15 @@ switch($action)
     break;
 
   case 'update_activity_time':
-
     updateActivityTime();
     break;
 
   case 'send_message':
     sendMessage();
+    break;
+
+  case 'send_photo':
+    sendPhoto();
     break;
 
   default:
@@ -128,10 +131,16 @@ function getAllMessagesByCustomerId($id)
     $returnMessages = array();
     foreach ($messages as $message)
     {
+      $mss = '';
+      if($message->getValue('is_image') == 'yes')
+        $mss = '<img src="'.FILE_URL.'/photos/conversation/'.$message->getValue('messages').'" alt="Photo Downloading" class="display-photo">';
+      else
+        $mss = $message->getValue('messages');
+
       $returnMessages[] = array(
         'from_user_id' => $message->getValue('from_user_id'),
         'to_user_id' => $message->getValue('to_user_id'),
-        'messages' => $message->getValue('messages'),
+        'messages' => $mss,
         'arrived_time' => $message->getValue('arrived_time')
       );
     }
@@ -148,10 +157,16 @@ function getNewMessagesByCustomerId($id)
     $returnMessages = array();
     foreach ($messages as $message)
     {
+      $mss = '';
+      if($message->getValue('is_image') == 'yes')
+        $mss = '<img src="'.FILE_URL.'/photos/conversation/'.$message->getValue('messages').'" alt="Photo Downloading" class="display-photo">';
+      else
+        $mss = $message->getValue('messages');
+
       $returnMessages[] = array(
         'from_user_id' => $message->getValue('from_user_id'),
         'to_user_id' => $message->getValue('to_user_id'),
-        'messages' => $message->getValue('messages'),
+        'messages' => $mss,
         'arrived_time' => $message->getValue('arrived_time')
       );
     }
@@ -230,6 +245,56 @@ function sendMessage()
   }
 }
 
+function sendPhoto()
+{
+  $required_fields = array('to_user_id',);
+  $missing_fields = array();
+  $error_messages = array();
+
+  $message = new MessageRecord(array(
+    'to_user_id' => isset($_POST['to_user_id']) ? preg_replace('/[^0-9]/', '', $_POST['to_user_id']) : '',
+    'from_user_id' => $_SESSION['merchant_admin_account']->getValue('id'),
+    'messages' => 'not message',
+    'is_image' => 'yes'
+  ));
+  foreach($required_fields as $required_field)
+  {
+    if($message->getValue($required_field) == '' )
+      $missing_fields[] = $required_field;
+  }
+  if($missing_fields)
+  {
+    $error_messages[] = 'Please fill all required field';
+  }
+
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else
+  {
+    switch ($_FILES['photo']['type']) {
+      case 'image/gif':
+        savePhoto($message, 'gif');
+        break;
+
+      case 'image/jpeg':
+        savePhoto($message, 'jpeg');
+        break;
+
+      case 'image/png':
+        savePhoto($message, 'png');
+        break;
+
+      default:
+        exit();
+        break;
+    }
+
+  }
+}
+
 function checkActiveNow($active_activity)
 {
   $diff_time = strtotime('now') - strtotime($active_activity);
@@ -238,4 +303,18 @@ function checkActiveNow($active_activity)
   else
     return false;
 }
+
+function savePhoto($message, $img_type)
+{
+  $message_id = $message->addMessage();
+  $tmp = $_FILES['photo']['tmp_name'];
+  $photo_name = 'user_' . $message->getValue('to_user_id') . '_img_mss_' . $message_id . '.' .$img_type;
+  move_uploaded_file($tmp, './photos/conversation/' . $photo_name);
+  $update_message = new MessageRecord(array(
+    'id' => $message_id,
+    'messages' => $photo_name
+  ));
+  $update_message->updatePhotoName();
+}
+
  ?>
