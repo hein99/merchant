@@ -112,7 +112,7 @@ function makeChatBox(to_user_id, to_user_name)
   content += '</ul></div>';
   content += '<div class="form-group">';
   content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
-  content += '<div class="image_upload"><form id="uploadImage" method="post" action="upload.php"><label for="uploadFile"></label><input type="file" name="uploadFile" id="uploadFile" accept=".jpg, .png" /></form></div>';
+  content += '<div class="image_upload"><form id="uploadImage"><label for="uploadFile"></label><input type="file" name="photo" id="uploadFile" accept=".jpg, .png" /><input type="submit" value="Send Photo" name="send_photo"></form></div>';
   content += '</div><div align="right">';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
   $('#user_model_details').html(content);
