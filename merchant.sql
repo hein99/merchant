@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2020 at 04:05 PM
+-- Generation Time: Jun 08, 2020 at 12:06 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -43,7 +43,7 @@ CREATE TABLE `customer_order` (
   `product_shipping_status` tinyint(1) NOT NULL,
   `has_viewed_admin` tinyint(1) NOT NULL,
   `has_viewed_customer` tinyint(1) NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -51,8 +51,8 @@ CREATE TABLE `customer_order` (
 --
 
 INSERT INTO `customer_order` (`id`, `customer_id`, `product_link`, `remark`, `quantity`, `price`, `us_tax`, `mm_tax`, `commission`, `weight_cost`, `order_status`, `product_shipping_status`, `has_viewed_admin`, `has_viewed_customer`, `created_date`) VALUES
-(1, 2, 'https://item.taobao.com/item.htm?spm=a21wu.241046-global.4691948847.5.41cab6cb5U5S8P&scm=1007.15423.84311.100200300000005&id=566185672494&pvid=7f287f08-6e79-4bf9-a113-913df6e7b2df', 'black', 1, 2, 5, 5, 9, 7, 0, 0, 1, 0, '2020-06-06 13:18:40'),
-(2, 2, 'https://item.taobao.com/item.htm?spm=a21wu.241046-global.4691948847.5.41cab6cb5U5S8P&scm=1007.15423.84311.100200300000005&id=566185672494&pvid=7f287f08-6e79-4bf9-a113-913df6e7b2df', 'black and white', 3, 5.6, 0, 0, 0, 7, 0, 0, 1, 0, '2020-06-04 07:42:23');
+(1, 2, 'https://item.taobao.com/item.htm?spm=a21wu.241046-global.4691948847.5.41cab6cb5U5S8P&scm=1007.15423.84311.100200300000005&id=566185672494&pvid=7f287f08-6e79-4bf9-a113-913df6e7b2df', 'black', 1, 2, 5, 5, 9, 7, 0, 0, 1, 0, '2020-06-06 19:48:40'),
+(2, 2, 'https://item.taobao.com/item.htm?spm=a21wu.241046-global.4691948847.5.41cab6cb5U5S8P&scm=1007.15423.84311.100200300000005&id=566185672494&pvid=7f287f08-6e79-4bf9-a113-913df6e7b2df', 'black and white', 3, 5.6, 0, 0, 0, 7, 0, 0, 1, 0, '2020-06-04 14:12:23');
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE `customer_statement` (
   `amount` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `amount_status` int(1) NOT NULL,
   `about` text COLLATE utf8_unicode_ci NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -74,9 +74,9 @@ CREATE TABLE `customer_statement` (
 --
 
 INSERT INTO `customer_statement` (`id`, `customer_id`, `amount`, `amount_status`, `about`, `created_date`) VALUES
-(1, 2, '1000', 1, 'Deposit', '2020-06-04 05:45:02'),
-(2, 2, '500', 0, 'buyproduct', '2020-06-04 05:45:29'),
-(3, 2, '1000', 1, 'bonus', '2020-06-04 05:46:08');
+(1, 2, '1000', 1, 'Deposit', '2020-06-04 12:15:02'),
+(2, 2, '500', 0, 'buyproduct', '2020-06-04 12:15:29'),
+(3, 2, '1000', 1, 'bonus', '2020-06-04 12:16:08');
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ INSERT INTO `login_record` (`id`, `user_id`, `active_activity`, `is_type`) VALUE
 (4, 6, '2020-06-05 13:40:06', 'yes'),
 (5, 7, '2020-06-05 13:57:52', 'no'),
 (6, 8, '2020-06-05 13:35:10', 'no'),
-(7, 1, '2020-06-07 14:01:56', 'yes');
+(7, 1, '2020-06-08 10:06:05', 'no');
 
 -- --------------------------------------------------------
 
@@ -140,7 +140,7 @@ CREATE TABLE `message_record` (
   `from_user_id` int(11) NOT NULL,
   `messages` text COLLATE utf8_unicode_ci NOT NULL,
   `is_image` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL,
-  `arrived_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `arrived_time` datetime NOT NULL,
   `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -149,18 +149,33 @@ CREATE TABLE `message_record` (
 --
 
 INSERT INTO `message_record` (`id`, `to_user_id`, `from_user_id`, `messages`, `is_image`, `arrived_time`, `status`) VALUES
-(1, 1, 2, 'No.1) 2 to 1', 'no', '2020-06-06 22:54:00', 1),
-(2, 1, 2, 'No2.) 2 to 1', 'no', '2020-06-06 22:54:00', 1),
-(3, 1, 2, 'No3.) 2 to 1', 'no', '2020-06-06 22:54:00', 1),
-(4, 1, 3, 'Hello Admin!', 'no', '2020-06-07 05:48:50', 1),
-(5, 1, 3, 'Hello Admin 1!', 'no', '2020-06-07 05:48:50', 1),
-(6, 1, 3, 'Where are you?', 'no', '2020-06-07 05:48:50', 1),
-(7, 1, 3, 'Today is Friday!', 'no', '2020-06-07 05:48:50', 1),
-(8, 1, 3, 'Tomorrow is Saturday', 'no', '2020-06-07 05:48:50', 1),
-(9, 2, 1, 'No1.) 1 to 2', 'no', '2020-06-06 22:54:00', 1),
-(10, 1, 2, 'Send form test form', 'no', '2020-06-07 13:16:47', 0),
-(11, 2, 1, 'Send form test form 2', 'no', '2020-06-07 13:19:21', 0),
-(12, 3, 1, 'testing message send to user 3', 'no', '2020-06-07 13:20:05', 0);
+(1, 1, 2, 'No.1) 2 to 1', 'no', '2020-06-08 16:24:24', 1),
+(2, 1, 2, 'No2.) 2 to 1', 'no', '2020-06-08 16:24:24', 1),
+(3, 1, 2, 'No3.) 2 to 1', 'no', '2020-06-08 16:24:24', 1),
+(4, 1, 3, 'Hello Admin!', 'no', '2020-06-08 16:25:11', 1),
+(5, 1, 3, 'Hello Admin 1!', 'no', '2020-06-08 16:25:11', 1),
+(6, 1, 3, 'Where are you?', 'no', '2020-06-08 16:25:11', 1),
+(7, 1, 3, 'Today is Friday!', 'no', '2020-06-08 16:25:11', 1),
+(8, 1, 3, 'Tomorrow is Saturday', 'no', '2020-06-08 16:25:11', 1),
+(9, 2, 1, 'No1.) 1 to 2', 'no', '2020-06-08 16:24:24', 1),
+(10, 1, 2, 'Send form test form', 'no', '2020-06-08 16:24:24', 1),
+(11, 2, 1, 'Send form test form 2', 'no', '2020-06-08 16:24:24', 1),
+(12, 3, 1, 'testing message send to user 3', 'no', '2020-06-08 16:25:11', 1),
+(15, 2, 1, 'hkk', 'no', '2020-06-08 16:24:24', 1),
+(19, 4, 1, 'user_4_img_mss_19.png', 'yes', '2020-06-08 16:25:08', 1),
+(20, 4, 1, 'No1.) 1 to 4', 'no', '2020-06-08 16:25:08', 1),
+(21, 4, 1, 'No2.) 1 to 4', 'no', '2020-06-08 16:25:08', 1),
+(22, 4, 1, 'user_4_img_mss_22.png', 'yes', '2020-06-08 16:25:08', 1),
+(23, 4, 1, 'user_4_img_mss_23.png', 'yes', '2020-06-08 16:25:08', 1),
+(24, 2, 1, 'user_2_img_mss_24.png', 'yes', '2020-06-08 16:24:24', 1),
+(25, 2, 1, 'hjhlhkl', 'no', '2020-06-08 16:24:24', 1),
+(26, 3, 1, 'user_3_img_mss_26.png', 'yes', '2020-06-08 16:25:11', 1),
+(27, 3, 1, 'button', 'no', '2020-06-08 16:25:11', 1),
+(28, 4, 1, 'hein\nkaung\nkhant', 'no', '2020-06-08 16:25:08', 1),
+(29, 4, 1, 'swe swe nyein', 'no', '2020-06-08 16:25:08', 1),
+(30, 4, 1, 'gu gu', 'no', '2020-06-08 16:25:08', 1),
+(31, 4, 1, 'gi gi', 'no', '2020-06-08 16:25:08', 1),
+(32, 4, 1, 'good good', 'no', '2020-06-08 16:25:08', 1);
 
 -- --------------------------------------------------------
 
@@ -179,8 +194,8 @@ CREATE TABLE `users` (
   `point` int(11) NOT NULL,
   `balance` float NOT NULL,
   `membership_id` int(11) NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_date` datetime NOT NULL,
+  `modified_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -188,14 +203,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `user_status`, `phone`, `address`, `activate_status`, `point`, `balance`, `membership_id`, `created_date`, `modified_date`) VALUES
-(1, 'Anna', '*8342278FD80E338FC16478FB1C13FA4F04C8A16C', 1, '09788351044', 'nth', 1, 0, 0, 1, '2020-06-07 12:37:11', '0000-00-00 00:00:00'),
-(2, 'updatedDavid', '*F67248311B2147A3A8FEEAF515A1EA82882B3A68', 0, '09765920059', '104UpdatedMarlamyine3rdstreetHlaing16QtrYangon', 1, 100, 1501, 2, '2020-06-07 12:37:11', '2020-06-04 07:05:47'),
-(3, 'Masha', '*7FA8D2E62A13B4798B45E796728821341D613CD7', 0, '09793530086', 'London', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-04 15:06:54'),
-(4, 'Pete', '*F2C2536A0DC1CE63A11AF365189127F123053A53', 0, '09765920059', 'WashitonDC', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-05 04:40:47'),
-(5, 'Lavenda', '*00D9BF1AA5A4378C1F3FBCEB95A6CE21B2DF7809', 0, '09965343432', 'NewYork', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-05 04:40:48'),
-(6, 'Chocotaco', '*6AA3E3281F392090BCB9E0A1029E31741BA75060', 0, '09457503263', 'Paris', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-05 04:40:48'),
-(7, 'Joe', '*60D178145669A4D1569FE820852BB3425CB2D4A7', 0, '09765920059', 'yangon', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-05 09:10:59'),
-(8, 'GuGu', '*0FA3E3D473E613A9E60C25004155109A49F7A6A4', 0, '09793530086', 'yangon', 1, 0, 0, 1, '2020-06-07 12:37:11', '2020-06-05 13:35:56');
+(1, 'Anna', '*8342278FD80E338FC16478FB1C13FA4F04C8A16C', 1, '09788351044', 'nth', 1, 0, 0, 1, '2020-06-07 19:07:11', '0000-00-00 00:00:00'),
+(2, 'updatedDavid', '*F67248311B2147A3A8FEEAF515A1EA82882B3A68', 0, '09765920059', '104UpdatedMarlamyine3rdstreetHlaing16QtrYangon', 1, 100, 1501, 2, '2020-06-07 19:07:11', '2020-06-04 07:05:47'),
+(3, 'Masha', '*7FA8D2E62A13B4798B45E796728821341D613CD7', 0, '09793530086', 'London', 1, 0, 0, 1, '2020-06-07 19:07:11', '2020-06-04 15:06:54'),
+(4, 'Pete', '*F2C2536A0DC1CE63A11AF365189127F123053A53', 0, '09765920059', 'WashitonDC', 1, 0, 0, 1, '2020-06-07 19:07:11', '2020-06-05 04:40:47'),
+(5, 'Lavenda', '*00D9BF1AA5A4378C1F3FBCEB95A6CE21B2DF7809', 0, '09965343432', 'NewYork', 1, 0, 0, 1, '2020-06-07 19:07:11', '2020-06-05 04:40:48'),
+(6, 'Chocotaco', '*6AA3E3281F392090BCB9E0A1029E31741BA75060', 0, '09457503263', 'Paris', 1, 0, 0, 1, '2020-06-07 19:07:11', '2020-06-05 04:40:48'),
+(7, 'Joe', '*60D178145669A4D1569FE820852BB3425CB2D4A7', 0, '09765920059', 'yangon', 1, 0, 0, 1, '2020-06-07 19:07:11', '2020-06-05 09:10:59'),
+(8, 'GuGu', '*0FA3E3D473E613A9E60C25004155109A49F7A6A4', 0, '09793530086', 'yangon', 1, 0, 0, 1, '2020-06-07 19:07:11', '2020-06-05 13:35:56');
 
 --
 -- Indexes for dumped tables
@@ -269,7 +284,7 @@ ALTER TABLE `membership`
 -- AUTO_INCREMENT for table `message_record`
 --
 ALTER TABLE `message_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `users`
