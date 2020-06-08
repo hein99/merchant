@@ -112,9 +112,10 @@ function makeChatBox(to_user_id, to_user_name)
   content += '</ul></div>';
   content += '<div class="form-group">';
   content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
-  content += '<div class="image_upload"><form id="uploadForm" action="" method="post" enctype="multipart/form-data">'
-  content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'"><br>'
-  content += '<label for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><input type="file" name="photo" id="uploadFile" accept=".jpg, .png" />'
+  content += '<div class="image_upload"><form id="uploadForm" action="" method="post" enctype="multipart/form-data">';
+  content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'"><br>';
+  content += '<label for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><input type="file" name="photo" id="uploadFile" accept=".jpg, .png" />';
+  content += '<div class="form-group"><img src="https://placehold.it/80x80" id="preview" class="img-thumbnail"></div>';
   content += '<input type="button" value="Send Photo" name="send_photo" id="btn_send" /></form></div>';
   content += '</div><div align="right">';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
@@ -245,6 +246,24 @@ $(document).on('click', '.send_chat', function(){
     alert('Type something');
   }
 });
+
+// $(document).on("click", ".upload_image_logo", function() {
+//   var file = $(this)
+//   .find("#uploadFile");
+//   file.trigger("click");
+// });
+// $('input[type="file"]').change(function(e) {
+//   var fileName = e.target.files[0].name;
+//   // $("#file").val(fileName);
+//
+//   var reader = new FileReader();
+//   reader.onload = function(e) {
+//   // get loaded data and render thumbnail.
+//   document.getElementById("preview").src = e.target.result;
+//   };
+//   // read the image file as a data URL.
+//   reader.readAsDataURL(this.files[0]);
+// });
 
 $(document).on('click', '#btn_send', function(){
   var formElem = document.querySelector("#uploadForm");
