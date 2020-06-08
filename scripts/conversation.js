@@ -112,7 +112,7 @@ function makeChatBox(to_user_id, to_user_name)
   content += '</ul></div>';
   content += '<div class="form-group">';
   content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
-  content += '<div class="image_upload"><form id="uploadForm">'
+  content += '<div class="image_upload"><form id="uploadForm" action="" method="post" enctype="multipart/form-data">'
   content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'"><br>'
   content += '<label for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><input type="file" name="photo" id="uploadFile" accept=".jpg, .png" />'
   content += '<input type="button" value="Send Photo" name="send_photo" id="btn_send" /></form></div>';
@@ -246,7 +246,7 @@ $(document).on('click', '.send_chat', function(){
   }
 });
 
-$('#btn_send').click(function(){
+$(document).on('click', '#btn_send', function(){
   var formElem = document.querySelector("#uploadForm");
   console.log(formElem);
   var formData = new FormData(formElem)
