@@ -15,3 +15,9 @@
 .chat_history ul li{
   padding: 3px;
 }
+#uploadFile{
+  display: none;
+}
+.upload_image_logo{
+  width: 18px;
+}

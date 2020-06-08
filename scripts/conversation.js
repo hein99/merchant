@@ -112,7 +112,10 @@ function makeChatBox(to_user_id, to_user_name)
   content += '</ul></div>';
   content += '<div class="form-group">';
   content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
-  content += '<div class="image_upload"><form id="uploadImage"><label for="uploadFile"></label><input type="file" name="photo" id="uploadFile" accept=".jpg, .png" /><input type="submit" value="Send Photo" name="send_photo"></form></div>';
+  content += '<div class="image_upload"><form id="uploadForm">'
+  content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'"><br>'
+  content += '<label for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><input type="file" name="photo" id="uploadFile" accept=".jpg, .png" />'
+  content += '<input type="button" value="Send Photo" name="send_photo" id="btn_send" /></form></div>';
   content += '</div><div align="right">';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
   $('#user_model_details').html(content);
@@ -241,6 +244,24 @@ $(document).on('click', '.send_chat', function(){
   }else{
     alert('Type something');
   }
+});
+
+$('#btn_send').click(function(){
+  var formElem = document.querySelector("#uploadForm");
+  console.log(formElem);
+  var formData = new FormData(formElem)
+  console.log(formData);
+
+  $.ajax({
+    method:"POST",
+    url: PAGE_URL+'/conversation/send_photo',
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function(returnUserLists){
+      console.log(returnUserLists);
+      }
+  });
 });
 
 });
