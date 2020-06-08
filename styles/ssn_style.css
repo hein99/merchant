@@ -9,3 +9,9 @@
   margin-bottom: 24px;
   padding: 16px;
 }
+.from_user_chat_style, .from_user_time_style{
+  text-align: right;
+}
+.chat_history ul li{
+  padding: 3px;
+}
