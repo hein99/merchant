@@ -108,7 +108,6 @@ function makeChatBox(to_user_id, to_user_name)
   var content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
   content += '<h4>You have chat with '+to_user_name;
   content += '</h4><div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'"><ul>';
-  // get_chat_history(to_user_id, to_user_name);
   content += '</ul></div>';
   content += '<div class="">';
   content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
@@ -116,31 +115,19 @@ function makeChatBox(to_user_id, to_user_name)
   content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'"><br>';
   content += '<label for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><input type="file" name="photo" id="uploadFile" accept="image/*" />';
   content += '<input type="button" value="Send Photo" name="send_photo" id="btn_send" /></form></div>';
-
   content += '<div align="right">';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
-
-  // content += '<img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">';
-  // content += '<form method="post" id="uploadForm" enctype="multipart/form-data" ><input type="file" name="file" class="file"><button type="button" class="browse">Browse...</button></form>';
 
   $('#user_model_details').html(content);
 }
 
-$(document).on("click", ".browse", function() {
-  var file = $(this)
-  .parent()
-  .find(".file");
-  file.trigger("click");
-});
-$('input[type="file"]').change(function(e) {
-
+$(document).on('change', '#uploadFile', function(e){
   var reader = new FileReader();
   reader.onload = function(e) {
   document.getElementById("preview").src = e.target.result;
   };
   reader.readAsDataURL(this.files[0]);
 });
-
 function get_chat_history(to_user_id, to_user_name)
 {
   $.ajax({
