@@ -118,27 +118,37 @@ function makeChatBox(to_user_id, to_user_name)
   content += '<input type="button" value="Send Photo" name="send_photo" id="btn_send" /></form></div>';
 
   // content += '<img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">';
-  // content += '<form method="post" id="uploadForm" enctype="multipart/form-data" ><input type="file" name="file" class="file"><button type="button" class="browse btn btn-primary">Browse...</button></form>';
+  // content += '<form method="post" id="uploadForm" enctype="multipart/form-data" >
+  //             <input type="file" name="file" class="file">
+  //             <button type="button" class="browse btn btn-primary">Browse...</button>
+  //             </form>';
 
   content += '<div align="right">';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
   $('#user_model_details').html(content);
 }
 
-$(document).on("click", ".browse", function() {
-  var file = $(this)
-  .parent()
-  .find(".file");
-  file.trigger("click");
-});
-$('input[type="file"]').change(function(e) {
-
+// $(document).on("click", ".browse", function() {
+//   var file = $(this)
+//   .parent()
+//   .find(".file");
+//   file.trigger("click");
+// });
+$(document).on('change', '#uploadFile', function(e){
   var reader = new FileReader();
   reader.onload = function(e) {
   document.getElementById("preview").src = e.target.result;
   };
   reader.readAsDataURL(this.files[0]);
 });
+// $('input[type="file"]').change(function(e) {
+//
+//   var reader = new FileReader();
+//   reader.onload = function(e) {
+//   document.getElementById("preview").src = e.target.result;
+//   };
+//   reader.readAsDataURL(this.files[0]);
+// });
 
 function get_chat_history(to_user_id, to_user_name)
 {
