@@ -117,11 +117,12 @@ function makeChatBox(to_user_id, to_user_name)
   content += '<label for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><input type="file" name="photo" id="uploadFile" accept="image/*" />';
   content += '<input type="button" value="Send Photo" name="send_photo" id="btn_send" /></form></div>';
 
-  // content += '<img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">';
-  // content += '<form method="post" id="uploadForm" enctype="multipart/form-data" ><input type="file" name="file" class="file"><button type="button" class="browse btn btn-primary">Browse...</button></form>';
-
   content += '<div align="right">';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
+
+  // content += '<img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">';
+  // content += '<form method="post" id="uploadForm" enctype="multipart/form-data" ><input type="file" name="file" class="file"><button type="button" class="browse">Browse...</button></form>';
+
   $('#user_model_details').html(content);
 }
 
