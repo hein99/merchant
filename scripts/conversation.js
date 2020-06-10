@@ -1,8 +1,92 @@
 $(document).ready(function(){
+  // User Lists
+  getAllChatUsers();
 
-// User Lists
+});
 
-getAllChatUsers();
+$(document).on('focus', '.chat_message', function(){
+  var is_type = 'yes';
+  $.ajax({
+    url: PAGE_URL+'/conversation/change_typing_by_id',
+    method: "POST",
+    data: {is_type:is_type},
+    success:function(){
+
+    }
+  })
+});
+
+$(document).on('blur', '.chat_message', function(){
+  var is_type = 'no';
+  $.ajax({
+    url: PAGE_URL+'/conversation/change_typing_by_id',
+    method: "POST",
+    data: {is_type:is_type},
+    success:function(){
+
+    }
+  })
+});
+
+$(document).on('click', '.send_chat', function(){
+  var to_user_id = $(this).attr('id');
+  var message  = $.trim($('#chat_message_'+to_user_id).val());
+  if(message != '')
+  {
+    $.ajax({
+      url: PAGE_URL+'/conversation/send_message',
+      method: "POST",
+      data: {to_user_id:to_user_id, messages:message},
+      success: function(){
+        var element = $('#chat_message_'+to_user_id).emojioneArea();
+        element[0].emojioneArea.setText('');
+      }
+    })
+  }else{
+    alert('Type something');
+  }
+});
+
+$(document).on('click', '#btn_send', function(){
+  var formElem = document.querySelector("#uploadForm");
+  var formData = new FormData(formElem)
+
+  $.ajax({
+    method:"POST",
+    url: PAGE_URL+'/conversation/send_photo',
+    data: formData,
+    contentType: false,
+    processData: false
+  });
+});
+
+$(document).on('change', '#uploadFile', function(e){
+  var reader = new FileReader();
+  reader.onload = function(e) {
+  document.getElementById("preview").src = e.target.result;
+  };
+  reader.readAsDataURL(this.files[0]);
+});
+
+// Message Lists
+$(document).on('click', '.start_chat', function(){
+  var to_user_id = $(this).data('touserid');
+  var to_user_name = $(this).data('tousername');
+  get_chat_history(to_user_id, to_user_name);
+});
+
+
+function buildUserList(id, username)
+{
+  var list = '';
+  list += '<li id="customer-' + id + '-js" class="start_chat" data-touserid="'+id+'" data-tousername="'+username+'">';
+  list += '<span class="customer-name-js">'+username+'</span>';
+  list += '<span class="messages-count-js">0</span>';
+  list += '<span class="typing-js">Typing...</span>';
+  list += '<span class="active-now">Active now</span>';
+  list += '</li>';
+  return list;
+}
 
 function getAllChatUsers()
 {
@@ -32,18 +116,6 @@ function getAllChatUsers()
       getEachNewMessagesCount();
     }, 3000);
   });
-}
-
-function buildUserList(id, username)
-{
-  var list = '';
-  list += '<li id="customer-' + id + '-js" class="start_chat" data-touserid="'+id+'" data-tousername="'+username+'">';
-  list += '<span class="customer-name-js">'+username+'</span>';
-  list += '<span class="messages-count-js">0</span>';
-  list += '<span class="typing-js">Typing...</span>';
-  list += '<span class="active-now">Active now</span>';
-  list += '</li>';
-  return list;
 }
 
 function getActiveUsers()
@@ -96,13 +168,6 @@ function getEachNewMessagesCount()
   });
 }
 
-// Message Lists
-$(document).on('click', '.start_chat', function(){
-  var to_user_id = $(this).data('touserid');
-  var to_user_name = $(this).data('tousername');
-  get_chat_history(to_user_id, to_user_name);
-});
-
 function makeChatBox(to_user_id, to_user_name)
 {
   var content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
@@ -121,13 +186,6 @@ function makeChatBox(to_user_id, to_user_name)
   $('#user_model_details').html(content);
 }
 
-$(document).on('change', '#uploadFile', function(e){
-  var reader = new FileReader();
-  reader.onload = function(e) {
-  document.getElementById("preview").src = e.target.result;
-  };
-  reader.readAsDataURL(this.files[0]);
-});
 function get_chat_history(to_user_id, to_user_name)
 {
   $.ajax({
@@ -209,67 +267,3 @@ function get_new_message(to_user_id, to_user_name)
       dataType: 'json'
     })
 }
-
-$(document).on('focus', '.chat_message', function(){
-  var is_type = 'yes';
-  $.ajax({
-    url: PAGE_URL+'/conversation/change_typing_by_id',
-    method: "POST",
-    data: {is_type:is_type},
-    success:function(){
-
-    }
-  })
-});
-
-$(document).on('blur', '.chat_message', function(){
-  var is_type = 'no';
-  $.ajax({
-    url: PAGE_URL+'/conversation/change_typing_by_id',
-    method: "POST",
-    data: {is_type:is_type},
-    success:function(){
-
-    }
-  })
-});
-
-$(document).on('click', '.send_chat', function(){
-  var to_user_id = $(this).attr('id');
-  var message  = $.trim($('#chat_message_'+to_user_id).val());
-  if(message != '')
-  {
-    $.ajax({
-      url: PAGE_URL+'/conversation/send_message',
-      method: "POST",
-      data: {to_user_id:to_user_id, messages:message},
-      success: function(){
-        var element = $('#chat_message_'+to_user_id).emojioneArea();
-        element[0].emojioneArea.setText('');
-      }
-    })
-  }else{
-    alert('Type something');
-  }
-});
-
-$(document).on('click', '#btn_send', function(){
-  var formElem = document.querySelector("#uploadForm");
-  console.log(formElem);
-  var formData = new FormData(formElem)
-  console.log(formData);
-
-  $.ajax({
-    method:"POST",
-    url: PAGE_URL+'/conversation/send_photo',
-    data: formData,
-    contentType: false,
-    processData: false,
-    success: function(returnUserLists){
-      console.log(returnUserLists);
-      }
-  });
-});
-
-});
-// console.log(returnUserLists);
