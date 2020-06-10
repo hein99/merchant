@@ -13,7 +13,7 @@ function ordersJsonReturn($orders, $order_status)
           'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
-          'quantity' => $order['quantity'],
+          'quantity' => '<span class="qty-js">'.$order['quantity'].'</span>',
           'price' => number_format($order['price'], 2) . '$',
           'amount' => number_format($order['price']*$order['quantity'], 2) . '$',
           'mm_tax' => '<input type="text" value="'.$order['mm_tax'].'" class="mm-tax-js" >',

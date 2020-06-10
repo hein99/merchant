@@ -217,6 +217,10 @@ $(document).on('change', '.product-shipping-status-js', function(){
   }
 });
 
+$(document).on('change', '.weight-js', function(){
+  calculateNetWeight($(this));
+});
+
 
 function getTotalOrdersCount()
 {
@@ -227,6 +231,15 @@ function getTotalOrdersCount()
       $('#order-count-js').html(data);
     }
   })
+}
+
+function calculateNetWeight(currentObj)
+{
+  var parent = currentObj.parent().parent();
+
+  var qty = $('.qty-js', parent).html();
+  var weight_cost = $('.weight-js', parent).val();
+  $('.net-weight-js', parent).html(qty * weight_cost);
 }
 
 function changeOrderInfoRequest(currentObj)
