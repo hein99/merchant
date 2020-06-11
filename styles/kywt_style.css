@@ -314,8 +314,8 @@ nav::before{
 }
 
 .ky-account-configure-form input:focus,
-.dashboard-form-conatainer input:focus,
-.dashboard-form-conatainer textarea:focus{
+.dashboard-form-container input:focus,
+.dashboard-form-container textarea:focus{
   box-shadow: 0 0 4px rgba(0,0,0,0.8);
   border: none;
 }
