@@ -2,7 +2,7 @@
 displayPageHeader('Customer List | ' . WEB_NAME);
 displayMainNavigation('customer');
  ?>
- <section>
+ <section id="wp-customer-detail-back">
     <?php
     $membership_id = $customer->getValueEncoded('membership_id');
     $membership_name = '';
@@ -32,7 +32,7 @@ displayMainNavigation('customer');
 
     ?>
   <div class="wp-customer-detail-header">
-    <a href="javascript:history.go(-1)">Back</a>
+    <a href="javascript:history.go(-1)"><i class="fas fa-arrow-left"></i></a>
   </div>
   <div class="wp-customer-detail-container">
     <div class="wp-customer-detail">
@@ -139,7 +139,7 @@ displayMainNavigation('customer');
         <textarea name="about" rows="5" cols="20" placeholder="Add a reason to add or subtract" id="about"></textarea>
       </div>
 
-      <div class="">
+      <div class="wp-add-sub-buttons">
         <button type="button" name="add" id="sn-add-amount">Add</button>
         <button type="button" name="sub" id="sn-sub-amount">Sub</button>
       </div>
@@ -148,6 +148,7 @@ displayMainNavigation('customer');
   <div class="wp-customer-history">
     <h2>History</h2>
     <!-- <?php echo '<span id="status">status</span>'; ?> -->
+    <div class="wp-history-table">
     <table>
       <thead>
         <tr>
@@ -156,6 +157,7 @@ displayMainNavigation('customer');
           <th>Amount</th>
         </tr>
       </thead>
+      
       <tbody id="statement_history">
         <?php foreach ($customer_statements as $customer_statement): ?>
           <tr>
@@ -165,6 +167,7 @@ displayMainNavigation('customer');
           </tr>
         <?php endforeach; ?>
       </tbody>
+      </div>
     </table>
   </div>
 </div>

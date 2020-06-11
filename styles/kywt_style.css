@@ -19,6 +19,7 @@ header{
   align-items: center;
   flex-wrap: nowrap;
   z-index: 10;
+  background-color: white;
   box-shadow: 0px 3px 5px #ddd;
 }
 
@@ -28,7 +29,7 @@ nav{
   box-shadow: 0px 0px 20px 0px rgba(182, 101, 252, 0.07);
   overflow: hidden;
   font-size: 0.9em;
-  z-index: 1;
+  z-index: 3;
 }
 
 .ky-logo-name-container {
@@ -148,6 +149,10 @@ nav{
 
 .ky-logout-dropdown-menu a:hover i{
   transform: translateX(-5px);
+}
+
+.ky-sidemenu-list{
+  background-color: white;
 }
 
 .ky-sidemenu-list a{
@@ -314,8 +319,8 @@ nav::before{
 }
 
 .ky-account-configure-form input:focus,
-.dashboard-form-conatainer input:focus,
-.dashboard-form-conatainer textarea:focus{
+.dashboard-form-container input:focus,
+.dashboard-form-container textarea:focus{
   box-shadow: 0 0 4px rgba(0,0,0,0.8);
   border: none;
 }
