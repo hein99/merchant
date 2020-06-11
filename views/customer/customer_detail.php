@@ -116,7 +116,7 @@ displayMainNavigation('customer');
        <input type="password" name="new_password" placeholder="New Password">
      </div>
      <div class="wp-change-customer-password">
-       <button type="submit">Change</button>
+       <button type="submit" id="change_password">Change</button>
      </div>
    </form>
 </div>

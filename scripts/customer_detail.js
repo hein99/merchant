@@ -20,6 +20,9 @@ $(document).ready(function(){
       method:"POST",
     })
   }
+  $(document).on('click', '#change_password', function(){
+      confirm("Do you really want to change Customer's Password?");
+  });
   $(document).on('click', 'form #sn-add-amount', function(){
     var customer_id = $('#customer_id').val();
     var amount = $('#amount').val();
