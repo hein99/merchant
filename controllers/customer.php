@@ -221,7 +221,7 @@ function addAmount()
   $customer_statement = new CustomerStatement(array(
     'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['customer_id']) : '',
     'amount' => isset($_POST['amount']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['amount']) : '',
-    'about' => isset($_POST['about']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['about']) : ''
+    'about' => isset($_POST['about']) ? $_POST['about'] : ''
   ));
 
   foreach($required_fields as $required_field)
@@ -255,7 +255,7 @@ function subAmount()
   $customer_statement = new CustomerStatement(array(
     'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['customer_id']) : '',
     'amount' => isset($_POST['amount']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['amount']) : '',
-    'about' => isset($_POST['about']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['about']) : ''
+    'about' => isset($_POST['about']) ? $_POST['about'] : ''
   ));
 
   foreach($required_fields as $required_field)
