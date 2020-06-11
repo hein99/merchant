@@ -11,6 +11,7 @@ class CustomerOrder extends DataObject
     'us_tax' => '',
     'mm_tax' => '',
     'commission' => '',
+    'product_weight' => '',
     'weight_cost' => '',
     'order_status' => '',
     'product_shipping_status' => '',

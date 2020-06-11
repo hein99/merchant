@@ -14,13 +14,12 @@ function ordersJsonReturn($orders, $order_status)
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'quantity' => '<span class="qty-js">'.$order['quantity'].'</span>',
-          'price' => number_format($order['price'], 2) . '$',
-          'amount' => number_format($order['price']*$order['quantity'], 2) . '$',
+          'unit_price' => number_format($order['price'], 2) . '$',
+          'product_weight' => $order['product_weight'],
+          'weight_cost' => '<input type="text" value="'.$order['weight_cost'].'" class="weight-js" >',
           'mm_tax' => '<input type="text" value="'.$order['mm_tax'].'" class="mm-tax-js" >',
           'us_tax' => '<input type="text" value="'.$order['us_tax'].'" class="us-tax-js" >',
           'commission' => '<input type="text" value="'.$commission['percentage'].'" class="commission-js" >',
-          'weight' => '<input type="text" value="'.$order['weight_cost'].'" class="weight-js" >',
-          'net_weight' => '<span class="net-weight-js">'.$order['weight_cost']*$order['quantity'].'</span>',
           'order_status' => '<select class="request-order-status-js" name="order_status" data-id="'.$order['id'].'">
             <option value="request" selected disabled>Request</option>
             <option value="pending">Pending</option>

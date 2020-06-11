@@ -22,72 +22,72 @@ $(document).ready(function(){
           { "data": "product_shipping_status" }
       ]
   } );
-  $('#tb-pending-js').DataTable( {
-      "ajax": {
-          "url": PAGE_URL + "/order/get_orders/?order_status=1",
-          "dataSrc": ""
-      },
-      "columns": [
-          { "data": "order_id" },
-          { "data": "customer_name"},
-          { "data": "product_link" },
-          { "data": "remark" },
-          { "data": "quantity" },
-          { "data": "price" },
-          { "data": "amount" },
-          { "data": "mm_tax" },
-          { "data": "us_tax" },
-          { "data": "commission" },
-          { "data": "weight" },
-          { "data": "net_weight" },
-          { "data": "order_status" },
-          { "data": "product_shipping_status" }
-      ]
-  } );
-  $('#tb-confirm-js').DataTable( {
-      "ajax": {
-          "url": PAGE_URL + "/order/get_orders/?order_status=2",
-          "dataSrc": ""
-      },
-      "columns": [
-          { "data": "order_id" },
-          { "data": "customer_name"},
-          { "data": "product_link" },
-          { "data": "remark" },
-          { "data": "quantity" },
-          { "data": "price" },
-          { "data": "amount" },
-          { "data": "mm_tax" },
-          { "data": "us_tax" },
-          { "data": "commission" },
-          { "data": "weight" },
-          { "data": "net_weight" },
-          { "data": "order_status" },
-          { "data": "product_shipping_status" }
-      ]
-  } );
-  $('#tb-cancel-js').DataTable( {
-      "ajax": {
-          "url": PAGE_URL + "/order/get_orders/?order_status=3",
-          "dataSrc": ""
-      },
-      "columns": [
-          { "data": "order_id" },
-          { "data": "customer_name"},
-          { "data": "product_link" },
-          { "data": "remark" },
-          { "data": "quantity" },
-          { "data": "price" },
-          { "data": "amount" },
-          { "data": "mm_tax" },
-          { "data": "us_tax" },
-          { "data": "commission" },
-          { "data": "weight" },
-          { "data": "net_weight" },
-          { "data": "order_status" },
-          { "data": "product_shipping_status" }
-      ]
-  } );
+  // $('#tb-pending-js').DataTable( {
+  //     "ajax": {
+  //         "url": PAGE_URL + "/order/get_orders/?order_status=1",
+  //         "dataSrc": ""
+  //     },
+  //     "columns": [
+  //         { "data": "order_id" },
+  //         { "data": "customer_name"},
+  //         { "data": "product_link" },
+  //         { "data": "remark" },
+  //         { "data": "quantity" },
+  //         { "data": "price" },
+  //         { "data": "amount" },
+  //         { "data": "mm_tax" },
+  //         { "data": "us_tax" },
+  //         { "data": "commission" },
+  //         { "data": "weight" },
+  //         { "data": "net_weight" },
+  //         { "data": "order_status" },
+  //         { "data": "product_shipping_status" }
+  //     ]
+  // } );
+  // $('#tb-confirm-js').DataTable( {
+  //     "ajax": {
+  //         "url": PAGE_URL + "/order/get_orders/?order_status=2",
+  //         "dataSrc": ""
+  //     },
+  //     "columns": [
+  //         { "data": "order_id" },
+  //         { "data": "customer_name"},
+  //         { "data": "product_link" },
+  //         { "data": "remark" },
+  //         { "data": "quantity" },
+  //         { "data": "price" },
+  //         { "data": "amount" },
+  //         { "data": "mm_tax" },
+  //         { "data": "us_tax" },
+  //         { "data": "commission" },
+  //         { "data": "weight" },
+  //         { "data": "net_weight" },
+  //         { "data": "order_status" },
+  //         { "data": "product_shipping_status" }
+  //     ]
+  // } );
+  // $('#tb-cancel-js').DataTable( {
+  //     "ajax": {
+  //         "url": PAGE_URL + "/order/get_orders/?order_status=3",
+  //         "dataSrc": ""
+  //     },
+  //     "columns": [
+  //         { "data": "order_id" },
+  //         { "data": "customer_name"},
+  //         { "data": "product_link" },
+  //         { "data": "remark" },
+  //         { "data": "quantity" },
+  //         { "data": "price" },
+  //         { "data": "amount" },
+  //         { "data": "mm_tax" },
+  //         { "data": "us_tax" },
+  //         { "data": "commission" },
+  //         { "data": "weight" },
+  //         { "data": "net_weight" },
+  //         { "data": "order_status" },
+  //         { "data": "product_shipping_status" }
+  //     ]
+  // } );
 
   $('#tb-request-js_wrapper').show();
   $('#tb-pending-js_wrapper').hide();
