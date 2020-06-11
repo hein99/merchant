@@ -13,6 +13,7 @@ class CustomerOrder extends DataObject
     'commission' => '',
     'product_weight' => '',
     'weight_cost' => '',
+    'exchange_rate' => '',
     'order_status' => '',
     'product_shipping_status' => '',
     'has_viewed_admin' => '',
