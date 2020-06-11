@@ -48,7 +48,7 @@ displayMainNavigation('customer');
               <i class="fas fa-award <?php echo $membership_icon; ?>"></i>
               <span id="membership-status"><?php echo $membership_name; ?></span>
               <span id="slash">&nbsp;/&nbsp;</span><?php echo $customer->getValueEncoded('point') ?> points
-            </span>     
+            </span>
         </div>
           <span id="wp-customer-activation">
             <button type="button" name="button" class="detail-activate-toggle-js <?php echo $customer->getValueEncoded('activate_status') ? '':'hide' ?> wp-activate" id="btn-activate-js" data-id="<?php echo $customer->getValueEncoded('id') ?>">Activate</button>
@@ -111,14 +111,9 @@ displayMainNavigation('customer');
      <h2>Change Password</h2>
        <input type="hidden" name="id" value="<?php echo $customer->getValueEncoded('id') ?>">
        <input type="hidden" name="username" value="<?php echo $customer->getValueEncoded('username') ?>">
+       <input type="hidden" name="phone" value="<?php echo $customer->getValueEncoded('phone') ?>">
      <div class="wp-change-customer-password">
-       <input type="password" name="current_password" placeholder="Current Password">
-     </div>
-     <div class="wp-change-customer-password">
-       <input type="password" name="new_password1" placeholder="New Password">
-     </div>
-     <div class="wp-change-customer-password">
-       <input type="password" name="new_password2" placeholder="Confirm Password">
+       <input type="password" name="new_password" placeholder="New Password">
      </div>
      <div class="wp-change-customer-password">
        <button type="submit">Change</button>
@@ -157,7 +152,7 @@ displayMainNavigation('customer');
           <th>Amount</th>
         </tr>
       </thead>
-      
+
       <tbody id="statement_history">
         <?php foreach ($customer_statements as $customer_statement): ?>
           <tr>

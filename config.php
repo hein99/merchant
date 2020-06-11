@@ -18,6 +18,7 @@ define('TBL_CUSTOMER_ORDER', 'customer_order');
 define('TBL_MEMBERSHIP', 'membership');
 define('TBL_LOGIN_RECORD', 'login_record');
 define('TBL_MESSAGE_RECORD', 'message_record');
+define('TBL_PASSWORD_REQUEST', 'password_request');
 
 #Error status
 $ERR_STATUS = 0;

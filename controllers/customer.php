@@ -166,14 +166,6 @@ function editCustomerInfo()
 }
 function changeCustomerPassword()
 {
-  $request_account = new UsersAccount(array(
-    'id' => isset($_POST['id']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['id']) : '',
-    'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
-    'password' => isset($_POST['current_password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['current_password']) : ''
-  ));
-  $current_account = $request_account->authenticateCustomerAccount();
-  if($current_account)
-  {
     $required_fields = array('password');
     $missing_fields = array();
     $error_messages = array();
@@ -181,7 +173,8 @@ function changeCustomerPassword()
     $new_account = new UsersAccount(array(
       'id' => isset($_POST['id']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['id']) : '',
       'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
-      'password' => ( isset($_POST['new_password1']) and isset($_POST['new_password2']) and $_POST['new_password1'] == $_POST['new_password2']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['new_password1']) : ''
+      'phone' => isset($_POST['phone']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['phone']) : '',
+      'password' => isset($_POST['new_password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['new_password']) : '',
     ));
     foreach ($required_fields as $required_field) {
       if(!$new_account->getValue($required_field))
@@ -191,26 +184,15 @@ function changeCustomerPassword()
     {
       $error_messages[] = 'There were some missing fields. Please make sure and submit again!';
     }
-    if(!isset($_POST['new_password1']) or !isset($_POST['new_password2']) or !$_POST['new_password1'] or !$_POST['new_password2'] or $_POST['new_password1'] != $_POST['new_password2'])
-    {
-      $error_messages[] = 'Make sure you enter your password correctly in both password fields';
-    }
     if($error_messages)
     {
       $ERR_STATUS = ERR_FORM;
       require('./views/error_display.php');
     }else {
       $new_account->editCustomerPassword();
+      PasswordRequest::donePasswordChanged($new_account->getValue('phone'));
       header('location: ' . URL . '/customer/detail/' . $_POST['id']);
     }
-  }
-  else {
-    $error_messages = array();
-    $error_messages[] = 'There were some missing fields. ';
-    $error_messages[] = 'Please make sure and submit again!';
-    $ERR_STATUS = ERR_FORM;
-    require('./views/error_display.php');
-  }
 }
 function addAmount()
 {
@@ -316,5 +298,10 @@ function changeActivateStatus()
   {
     $customer->editCustomerActivateStatus();
   }
+}
+
+function getForgotPasswordCustomer()
+{
+
 }
  ?>

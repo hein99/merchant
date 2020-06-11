@@ -24,10 +24,12 @@ checkAuthentication();
 switch ($controller)
 {
   case 'dashboard':
+  require('./models/PasswordRequest.class.php');
     break;
   case 'customer':
   require('./models/CustomerStatement.class.php');
   require('./models/LoginRecord.class.php');
+  require('./models/PasswordRequest.class.php');
     break;
   case 'order':
     require('./models/Membership.class.php');
