@@ -235,6 +235,24 @@ $(document).on('change', '.weight-js', function(){
   calculateTotalMMK($(this), total_dollar);
 });
 
+$(document).on('change', '.mm-tax-js', function(){
+  var sub_total = calculateSubTotal($(this));
+  var total_dollar = calculateTotalDollar($(this), sub_total);
+  calculateTotalMMK($(this), total_dollar);
+});
+
+$(document).on('change', '.us-tax-js', function(){
+  var sub_total = calculateSubTotal($(this));
+  var total_dollar = calculateTotalDollar($(this), sub_total);
+  calculateTotalMMK($(this), total_dollar);
+});
+
+$(document).on('change', '.commission-js', function(){
+  var sub_total = calculateSubTotal($(this));
+  var total_dollar = calculateTotalDollar($(this), sub_total);
+  calculateTotalMMK($(this), total_dollar);
+});
+
 
 function getTotalOrdersCount()
 {
