@@ -23,18 +23,21 @@ displayMainNavigation('order');
    <table id="tb-request-js">
      <thead>
        <tr>
-         <th>Order&nbsp;ID</th>
+         <th>Order&nbsp;Id</th>
          <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
-         <th>Price</th>
-         <th>Amount</th>
+         <th>Unit&nbsp;Price[$]</th>
+         <th>Product&nbsp;Weight[Kg]</th>
+         <th>Weight&nbsp;Cost[$]</th>
+         <th>SubTotal[$]</th>
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight&nbsp;Cost[$]</th>
-         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
+         <th>Total&nbsp;Amount[$]</th>
+         <th>Exchange&nbsp;Rate</th>
+         <th>Total&nbsp;Amount[MMK]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
@@ -44,18 +47,21 @@ displayMainNavigation('order');
    <table id="tb-pending-js">
      <thead>
        <tr>
-         <th>Order&nbsp;ID</th>
+         <th>Order&nbsp;Id</th>
          <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
-         <th>Price</th>
-         <th>Amount</th>
+         <th>Unit&nbsp;Price[$]</th>
+         <th>Product&nbsp;Weight[Kg]</th>
+         <th>Weight&nbsp;Cost[$]</th>
+         <th>SubTotal[$]</th>
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight&nbsp;Cost[$]</th>
-         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
+         <th>Total&nbsp;Amount[$]</th>
+         <th>Exchange&nbsp;Rate</th>
+         <th>Total&nbsp;Amount[MMK]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
@@ -65,18 +71,21 @@ displayMainNavigation('order');
    <table id="tb-confirm-js">
      <thead>
        <tr>
-         <th>Order&nbsp;ID</th>
+         <th>Order&nbsp;Id</th>
          <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
-         <th>Price</th>
-         <th>Amount</th>
+         <th>Unit&nbsp;Price[$]</th>
+         <th>Product&nbsp;Weight[Kg]</th>
+         <th>Weight&nbsp;Cost[$]</th>
+         <th>SubTotal[$]</th>
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight&nbsp;Cost[$]</th>
-         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
+         <th>Total&nbsp;Amount[$]</th>
+         <th>Exchange&nbsp;Rate</th>
+         <th>Total&nbsp;Amount[MMK]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
@@ -86,18 +95,21 @@ displayMainNavigation('order');
    <table id="tb-cancel-js">
      <thead>
        <tr>
-         <th>Order&nbsp;ID</th>
+         <th>Order&nbsp;Id</th>
          <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;Link</th>
          <th>Remark</th>
          <th>Quantity</th>
-         <th>Price</th>
-         <th>Amount</th>
+         <th>Unit&nbsp;Price[$]</th>
+         <th>Product&nbsp;Weight[Kg]</th>
+         <th>Weight&nbsp;Cost[$]</th>
+         <th>SubTotal[$]</th>
          <th>MM&nbsp;Tax[%]</th>
          <th>US&nbsp;Tax[%]</th>
          <th>Commission[%]</th>
-         <th>Weight&nbsp;Cost[$]</th>
-         <th>Net&nbsp;Weight&nbsp;Cost[$]</th>
+         <th>Total&nbsp;Amount[$]</th>
+         <th>Exchange&nbsp;Rate</th>
+         <th>Total&nbsp;Amount[MMK]</th>
          <th>Order&nbsp;Status</th>
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>

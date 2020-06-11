@@ -8,19 +8,25 @@ function ordersJsonReturn($orders, $order_status)
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
         $commission = Membership::getMembershipByID($order['membership_id']); // get commission percentage from Membership table
+        $sub_total = ($order['quantity']*$order['price']) + ($order['product_weight']*$order['weight_cost']);
+        $total_amount_dollar = $sub_total + (($order['mm_tax']+$order['us_tax']+$commission['percentage'])/100)*$sub_total;
+        $total_amount_mmk = $total_amount_dollar * $order['exchange_rate'];
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
           'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
-          'quantity' => '<span class="qty-js">'.$order['quantity'].'</span>',
-          'price' => number_format($order['price'], 2) . '$',
-          'amount' => number_format($order['price']*$order['quantity'], 2) . '$',
+          'quantity' => '<span class="qty-js" data-qty="'.$order['quantity'].'">'.$order['quantity'].'</span>',
+          'unit_price' => '<span class="uprice-js" data-uprice="'.$order['price'].'">'.number_format($order['price'], 2).'&nbsp;$</span>',
+          'product_weight' => '<span class="pweight-js" data-pweight="'.$order['product_weight'].'">'.$order['product_weight'].'&nbsp;Kg</span>',
+          'weight_cost' => '<input type="text" value="'.$order['weight_cost'].'" class="weight-js" >',
+          'sub_total' => '<span class="sub-total-js">'.number_format($sub_total, 2).'</span>&nbsp;$',
           'mm_tax' => '<input type="text" value="'.$order['mm_tax'].'" class="mm-tax-js" >',
           'us_tax' => '<input type="text" value="'.$order['us_tax'].'" class="us-tax-js" >',
           'commission' => '<input type="text" value="'.$commission['percentage'].'" class="commission-js" >',
-          'weight' => '<input type="text" value="'.$order['weight_cost'].'" class="weight-js" >',
-          'net_weight' => '<span class="net-weight-js">'.$order['weight_cost']*$order['quantity'].'</span>',
+          'total_amount_dollar' => '<span class="total-dollar-js">'.number_format($total_amount_dollar, 2).'</span>&nbsp;$',
+          'exchange_rate' => '<span class="exchange-rate-js" data-erate="'.$order['exchange_rate'].'">'.number_format($order['exchange_rate'], 2).'</span>&nbsp;MMK',
+          'total_amount_mmk' => '<span class="total-mmk-js">'.number_format($total_amount_mmk, 2).'</span>&nbsp;MMK',
           'order_status' => '<select class="request-order-status-js" name="order_status" data-id="'.$order['id'].'">
             <option value="request" selected disabled>Request</option>
             <option value="pending">Pending</option>
@@ -34,19 +40,25 @@ function ordersJsonReturn($orders, $order_status)
     case 1:
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
+        $sub_total = ($order['quantity']*$order['price']) + ($order['product_weight']*$order['weight_cost']);
+        $total_amount_dollar = $sub_total + (($order['mm_tax']+$order['us_tax']+$order['commission'])/100)*$sub_total;
+        $total_amount_mmk = $total_amount_dollar * $order['exchange_rate'];
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
           'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'quantity' => $order['quantity'],
-          'price' => number_format($order['price'], 2) . '$',
-          'amount' => number_format($order['price']*$order['quantity'], 2) . '$',
-          'mm_tax' => $order['mm_tax'].'%',
-          'us_tax' => $order['us_tax'].'%',
-          'commission' => $order['commission'].'%',
-          'weight' => $order['weight_cost'].'$',
-          'net_weight' => $order['weight_cost']*$order['quantity'].'$',
+          'unit_price' => number_format($order['price'], 2) . '&nbsp;$',
+          'product_weight' => $order['product_weight'].'&nbsp;Kg',
+          'weight_cost' => $order['weight_cost'] . '&nbsp;$',
+          'sub_total' => '<span class="sub-total-js">'.number_format($sub_total, 2).'</span>&nbsp;$',
+          'mm_tax' => $order['mm_tax'] . '&nbsp;%',
+          'us_tax' => $order['us_tax'] . '&nbsp;%',
+          'commission' => $order['commission'] . '&nbsp;%',
+          'total_amount_dollar' => '<span class="total-dollar-js">'.number_format($total_amount_dollar, 2).'</span>&nbsp;$',
+          'exchange_rate' => $order['exchange_rate']. '&nbsp;MMK',
+          'total_amount_mmk' => '<span class="total-mmk-js">'.number_format($total_amount_mmk, 2).'</span>&nbsp;MMK',
           'order_status' => '<select class="order-status-js" name="order_status" data-id="'.$order['id'].'">
             <option value="request">Request</option>
             <option value="default" selected disabled>Pending</option>
@@ -61,19 +73,25 @@ function ordersJsonReturn($orders, $order_status)
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
         $product_shipping_status = chooseProductShippingStatus($order['product_shipping_status'], $order['id']);
+        $sub_total = ($order['quantity']*$order['price']) + ($order['product_weight']*$order['weight_cost']);
+        $total_amount_dollar = $sub_total + (($order['mm_tax']+$order['us_tax']+$order['commission'])/100)*$sub_total;
+        $total_amount_mmk = $total_amount_dollar * $order['exchange_rate'];
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
           'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'quantity' => $order['quantity'],
-          'price' => number_format($order['price'], 2) . '$',
-          'amount' => number_format($order['price']*$order['quantity'], 2) . '$',
-          'mm_tax' => $order['mm_tax'].'%',
-          'us_tax' => $order['us_tax'].'%',
-          'commission' => $order['commission'].'%',
-          'weight' => $order['weight_cost'].'$',
-          'net_weight' => $order['weight_cost']*$order['quantity'].'$',
+          'unit_price' => number_format($order['price'], 2) . '&nbsp;$',
+          'product_weight' => $order['product_weight'].'&nbsp;Kg',
+          'weight_cost' => $order['weight_cost'] . '&nbsp;$',
+          'sub_total' => '<span class="sub-total-js">'.number_format($sub_total, 2).'</span>&nbsp;$',
+          'mm_tax' => $order['mm_tax'] . '&nbsp;%',
+          'us_tax' => $order['us_tax'] . '&nbsp;%',
+          'commission' => $order['commission'] . '&nbsp;%',
+          'total_amount_dollar' => '<span class="total-dollar-js">'.number_format($total_amount_dollar, 2).'</span>&nbsp;$',
+          'exchange_rate' => $order['exchange_rate']. '&nbsp;MMK',
+          'total_amount_mmk' => '<span class="total-mmk-js">'.number_format($total_amount_mmk, 2).'</span>&nbsp;MMK',
           'order_status' => '<select class="order-status-js" name="order_status" data-id="'.$order['id'].'">
             <option value="request">Request</option>
             <option value="default" selected disabled>Confirm</option>
@@ -87,19 +105,25 @@ function ordersJsonReturn($orders, $order_status)
     case 3:
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
+        $sub_total = ($order['quantity']*$order['price']) + ($order['product_weight']*$order['weight_cost']);
+        $total_amount_dollar = $sub_total + (($order['mm_tax']+$order['us_tax']+$order['commission'])/100)*$sub_total;
+        $total_amount_mmk = $total_amount_dollar * $order['exchange_rate'];
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
           'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'quantity' => $order['quantity'],
-          'price' => number_format($order['price'], 2) . '$',
-          'amount' => number_format($order['price']*$order['quantity'], 2) . '$',
-          'mm_tax' => $order['mm_tax'].'%',
-          'us_tax' => $order['us_tax'].'%',
-          'commission' => $order['commission'].'%',
-          'weight' => $order['weight_cost'].'$',
-          'net_weight' => $order['weight_cost']*$order['quantity'].'$',
+          'unit_price' => number_format($order['price'], 2) . '&nbsp;$',
+          'product_weight' => $order['product_weight'].'&nbsp;Kg',
+          'weight_cost' => $order['weight_cost'] . '&nbsp;$',
+          'sub_total' => '<span class="sub-total-js">'.number_format($sub_total, 2).'</span>&nbsp;$',
+          'mm_tax' => $order['mm_tax'] . '&nbsp;%',
+          'us_tax' => $order['us_tax'] . '&nbsp;%',
+          'commission' => $order['commission'] . '&nbsp;%',
+          'total_amount_dollar' => '<span class="total-dollar-js">'.number_format($total_amount_dollar, 2).'</span>&nbsp;$',
+          'exchange_rate' => $order['exchange_rate']. '&nbsp;MMK',
+          'total_amount_mmk' => '<span class="total-mmk-js">'.number_format($total_amount_mmk, 2).'</span>&nbsp;MMK',
           'order_status' => '<select class="order-status-js" name="order_status" data-id="'.$order['id'].'">
             <option value="request">Request</option>
             <option value="default" selected disabled>Cancel</option>
