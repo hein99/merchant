@@ -1213,7 +1213,7 @@
 	}
 
 	.wp-conversation-list{
-		width: 35%;
+		width: 30%;
 		height: 100%;
 		box-sizing: border-box;
 	}
@@ -1257,7 +1257,7 @@
 	.customer-active-status{
 		position: absolute;
 		right: 12px;
-		width: 35%;
+		width: 36%;
 		height: 100%;
 		display: flex;
 		justify-content: space-between;
@@ -1278,8 +1278,8 @@
 	}
 
 	.messages-count-js{
-		width: 28px;
-		height: 28px;
+		width: 24px;
+		height: 24px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -1307,9 +1307,9 @@
 
 	#user_model_details{
 		position: relative;
-		width: 65%;
+		width: 70%;
 		height: 100%;
-		padding-left: 3%;
+		padding-left: 5%;
 		box-sizing: border-box;
 	}
 
