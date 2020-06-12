@@ -4,10 +4,9 @@
 .chat_history{
   box-sizing: border-box;
   height: 50vh;
-  border: 1px solid #ccc;
+  background-color: #fff;
   overflow-y: auto;
-  margin-bottom: 24px;
-  padding: 16px;
+  padding: 8px 16px;
 }
 .from_user_chat_style, .from_user_time_style{
   text-align: right;
