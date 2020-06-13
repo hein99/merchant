@@ -5,6 +5,14 @@ $(document).ready(function(){
   $(document).on('click', '.start_chat', function(){
     $(this).addClass('active').siblings().removeClass('active');
   });
+
+  $(document).on('click', '.upload_image_logo', function(){
+    $('#uploadForm').css('display', 'block');
+  });
+
+  $(document).on('click', '#btn_send, #cancel_send', function(){
+    $('#uploadForm').css('display', 'none');
+  });
 });
 
 $(document).on('focus', '.chat_message', function(){
@@ -178,11 +186,11 @@ function makeChatBox(to_user_id, to_user_name)
   content += '</span></h4><div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'"><ul>';
   content += '</ul></div>';
   content += '<div class="wp-conversation-message-container">';
-  content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
-  content += '<form id="uploadForm" action="" method="post" enctype="multipart/form-data"><img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">';
+  content += '<label id="wp-send-photo" for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
+  content += '<form id="uploadForm" action="" method="post" enctype="multipart/form-data"><img src="'+PAGE_FILE_URL+'/logos/image-preview.png" id="preview" class="img-thumbnail">';
   content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'"><br>';
-  content += '<label for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><input type="file" name="photo" id="uploadFile" accept="image/*" />';
-  content += '<input type="button" value="Send Photo" name="send_photo" id="btn_send" /></form>';
+  content += '<input type="file" name="photo" id="uploadFile" accept="image/*" />';
+  content += '<div id="send_photo_button_container"><input type="button" value="Send Photo" name="send_photo" id="btn_send" /><input type="button" value="Cancel" name="cancel_photo" id="cancel_send" /></div></form>';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
 
   $('#user_model_details').html(content);
@@ -260,7 +268,7 @@ function get_new_message(to_user_id, to_user_name)
             chat_style = 'to_user_chat_style';
             time_style = 'to_user_time_style';
           }
-          output += '<li><div class=""><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
+          output += '<li><div class="wp-chat-message"><div class="'+chat_style+'"><p>'+user_name+' - '+message_list+'</p></div><div class="'+time_style+'"><small><em>'+message.arrived_time+'</em></small></div></div></li>';
         }
         $(output).appendTo("#chat_history_"+to_user_id+" ul");
         $(".chat_history").stop().animate({ scrollTop: $(".chat_history")[0].scrollHeight}, 1000);
