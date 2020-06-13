@@ -187,7 +187,7 @@ function makeChatBox(to_user_id, to_user_name)
   content += '</ul></div>';
   content += '<div class="wp-conversation-message-container">';
   content += '<label id="wp-send-photo" for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
-  content += '<form id="uploadForm" action="" method="post" enctype="multipart/form-data"><img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">';
+  content += '<form id="uploadForm" action="" method="post" enctype="multipart/form-data"><img src="'+PAGE_FILE_URL+'/logos/image-preview.png" id="preview" class="img-thumbnail">';
   content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'"><br>';
   content += '<input type="file" name="photo" id="uploadFile" accept="image/*" />';
   content += '<div id="send_photo_button_container"><input type="button" value="Send Photo" name="send_photo" id="btn_send" /><input type="button" value="Cancel" name="cancel_photo" id="cancel_send" /></div></form>';
