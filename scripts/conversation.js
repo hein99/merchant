@@ -7,11 +7,11 @@ $(document).ready(function(){
   });
 
   $(document).on('click', '.upload_image_logo', function(){
-    $('#uploadForm').addClass('drop');
+    $('#uploadForm').css('display', 'block');
   });
 
   $(document).on('click', '#btn_send, #cancel_send', function(){
-    $('#uploadForm').removeClass('drop');
+    $('#uploadForm').css('display', 'none');
   });
 });
 
