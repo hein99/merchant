@@ -11,7 +11,7 @@ class PasswordRequest extends DataObject
   public static function getAllPasswordRequest()
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_PASSWORD_REQUEST.' ORDER BY status ASC';
+    $sql = 'SELECT * FROM '.TBL_PASSWORD_REQUEST.' WHERE status = 0';
     try {
       $st = $conn->query($sql);
       $password_request = array();

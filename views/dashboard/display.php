@@ -73,7 +73,7 @@ displayMainNavigation('dashboard');
      ?>
      <ul>
        <?php foreach($password_requests as $password_request) : ?>
-         <li class="<?php echo $password_request->getValueEncoded('status') ? 'changed' : 'unchange' ?>"><?php echo $password_request->getValueEncoded('phone') ?> <span><?php echo $password_request->getValueEncoded('requested_date') ?></span></li>
+         <li class=""><?php echo $password_request->getValueEncoded('phone') ?> <span><?php echo $password_request->getValueEncoded('requested_date') ?></span></li>
        <?php endforeach; ?>
      </ul>
   </div>
