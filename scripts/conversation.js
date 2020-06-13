@@ -2,6 +2,9 @@ $(document).ready(function(){
   // User Lists
   getAllChatUsers();
 
+  $(document).on('click', '.start_chat', function(){
+    $(this).addClass('active').siblings().removeClass('active');
+  });
 });
 
 $(document).on('focus', '.chat_message', function(){
@@ -81,9 +84,9 @@ function buildUserList(id, username)
   var list = '';
   list += '<li id="customer-' + id + '-js" class="start_chat" data-touserid="'+id+'" data-tousername="'+username+'">';
   list += '<span class="customer-name-js">'+username+'</span>';
-  list += '<span class="messages-count-js">0</span>';
+  list += '<div class="customer-active-status"><span class="messages-count-js">0</span>';
   list += '<span class="typing-js">Typing...</span>';
-  list += '<span class="active-now">Active now</span>';
+  list += '<span class="active-now"></span></div>';
   list += '</li>';
   return list;
 }
@@ -171,16 +174,15 @@ function getEachNewMessagesCount()
 function makeChatBox(to_user_id, to_user_name)
 {
   var content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
-  content += '<h4>You have chat with '+to_user_name;
-  content += '</h4><div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'"><ul>';
+  content += '<h4>You have chat with <span id="chatting-name">'+to_user_name;
+  content += '</span></h4><div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'"><ul>';
   content += '</ul></div>';
-  content += '<div class="">';
+  content += '<div class="wp-conversation-message-container">';
   content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
   content += '<form id="uploadForm" action="" method="post" enctype="multipart/form-data"><img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">';
   content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'"><br>';
   content += '<label for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><input type="file" name="photo" id="uploadFile" accept="image/*" />';
-  content += '<input type="button" value="Send Photo" name="send_photo" id="btn_send" /></form></div>';
-  content += '<div align="right">';
+  content += '<input type="button" value="Send Photo" name="send_photo" id="btn_send" /></form>';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
 
   $('#user_model_details').html(content);

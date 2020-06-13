@@ -2,9 +2,11 @@
 displayPageHeader('Customer List | ' . WEB_NAME);
 displayMainNavigation('conversation');
  ?>
- <div class="">
-   <h1>Conversation</h1>
-   <ul id="user-lists"></ul>
+ <div class="wp-conversation-container">
+ 	<h1>Conversation</h1>
+ 	<div class="wp-conversation-list">
+	   <ul id="user-lists"></ul>
+	</div>
    <div id="user_model_details"></div>
  </div>
 <script>
