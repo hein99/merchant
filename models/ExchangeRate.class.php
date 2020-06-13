@@ -25,6 +25,22 @@ class ExchangeRate extends DataObject
       die('Query failed: '.$e->getMessage());
     }
   }
+
+  public static function getLatestExchangeRate()
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM '.TBL_EXCHANGE_RATE.' ORDER BY created_date DESC LIMIT 1';
+    try {
+      $st = $conn->query($sql);
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new ExchangeRate($row);
+    }catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: '.$e->getMessage());
+    }
+  }
+
   public function createExchangeRate()
   {
     $conn = parent::connect();
