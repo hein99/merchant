@@ -48,9 +48,10 @@ $(document).on('click', '.send_chat', function(){
       url: PAGE_URL+'/conversation/send_message',
       method: "POST",
       data: {to_user_id:to_user_id, messages:message},
-      success: function(){
+      success: function(msg){
         var element = $('#chat_message_'+to_user_id).emojioneArea();
         element[0].emojioneArea.setText('');
+        console.log(msg);
       }
     })
   }else{
@@ -67,7 +68,10 @@ $(document).on('click', '#btn_send', function(){
     url: PAGE_URL+'/conversation/send_photo',
     data: formData,
     contentType: false,
-    processData: false
+    processData: false,
+    success: function(msg){
+      console.log(msg);
+    }
   });
 });
 

@@ -104,10 +104,10 @@ function gettypingUsers()
   {
     $return_typing_users[]= $login_record->getValue('user_id');
   }
-  // echo json_encode($return_typing_users);
+  echo json_encode($return_typing_users);
 
-  #fake response
-  echo json_encode(array(4, 6));
+  // #fake response
+  // echo json_encode(array(4, 6));
 }
 
 function getEachNewMessagesCount()
@@ -125,10 +125,10 @@ function getEachNewMessagesCount()
       );
     }
   }
-  // echo json_encode($eachNewMessages);
+  echo json_encode($eachNewMessages);
 
   #fake response
-  echo json_encode(array(array('from_user_id' => 4, 'messages_count' => 5), array('from_user_id' => 6, 'messages_count' => 10)));
+  // echo json_encode(array(array('from_user_id' => 4, 'messages_count' => 5), array('from_user_id' => 6, 'messages_count' => 10)));
 }
 
 function getAllMessagesByCustomerId($id)
