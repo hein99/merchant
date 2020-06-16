@@ -41,7 +41,7 @@ $(document).ready(function(){
     })
   }
 
-  $('.edit-rate').on('click', function(){
+  $(document).on('click', '.edit-rate', function(){
     if($('#mmk').prop('disabled') == true){
       $('#mmk').removeAttr('disabled');
     }
@@ -84,4 +84,4 @@ $(document).ready(function(){
       },
     }
   });
-
+});
