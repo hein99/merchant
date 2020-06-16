@@ -13,6 +13,10 @@ $(document).ready(function(){
   $(document).on('click', '#btn_send, #cancel_send', function(){
     $('#uploadForm').css('display', 'none');
   });
+
+  if($('#user_model_details').is(':empty')) {
+    $('#user_model_details').wrapInner("<div id='blank-container'>Hi</div>");
+  }
 });
 
 $(document).on('focus', '.chat_message', function(){
