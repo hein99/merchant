@@ -15,7 +15,7 @@ displayMainNavigation('order');
         <button type="button" name="button" id="btn-confirm-js">Confirm</button>
         <button type="button" name="button" id="btn-cancel-js">Cancel</button>
     </div>
-
+    <div class="reload-notice" style="display: none;">Please reload the page for update order list</div><!-- not display at initial -->
     <div id="extra"></div>
 </div>
 
@@ -119,7 +119,6 @@ displayMainNavigation('order');
 </div>
 
  <script src="<?php echo FILE_URL ?>/scripts/order.js" charset="utf-8"></script>
- <script src="<?php echo FILE_URL ?>/scripts/order1.js" charset="utf-8"></script>
  <script src="<?php echo FILE_URL ?>/scripts/datatables.min.js" charset="utf-8"></script>
 <?php
 displayPageFooter();

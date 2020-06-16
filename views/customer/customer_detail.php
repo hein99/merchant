@@ -59,7 +59,7 @@ displayMainNavigation('customer');
       <div class="wp-customer-about">
         <div id="wp-balance">
           <i class="fas fa-wallet"></i>
-          <?php echo number_format($customer->getValueEncoded('balance')) ?>&nbsp;Ks
+          <?php echo number_format($customer->getValueEncoded('balance'), 2) ?>&nbsp;Ks
         </div>
         <div id="wp-phone">
           <i class="fas fa-phone-alt"></i>
@@ -77,19 +77,19 @@ displayMainNavigation('customer');
       <h2>Change Information</h2>
       <input type="hidden" name="id" value="<?php echo $customer->getValueEncoded('id') ?>">
       <div class="wp-change-customer-detail">
-        <input type="text" name="username" value="<?php echo $customer->getValueEncoded('username') ?>">
+        <input type="text" name="username" value="<?php echo $customer->getValueEncoded('username') ?>" id="username">
         <span>Username</span>
       </div>
       <div class="wp-change-customer-detail">
-        <input type="number" name="phone" value="<?php echo $customer->getValueEncoded('phone') ?>">
+        <input type="number" name="phone" value="<?php echo $customer->getValueEncoded('phone') ?>" id="phone">
         <span>Phone</span>
       </div>
       <div class="wp-change-customer-detail wp-customer-address">
-        <textarea name="address"><?php echo $customer->getValueEncoded('address') ?></textarea>
+        <textarea name="address" id="address"><?php echo $customer->getValueEncoded('address') ?></textarea>
         <span>Address</span>
       </div>
       <div class="wp-change-customer-detail">
-        <input type="number" name="point" value="<?php echo $customer->getValueEncoded('point') ?>">
+        <input type="number" name="point" value="<?php echo $customer->getValueEncoded('point') ?>" id="point">
         <span>Point</span>
       </div>
       <div class="wp-change-customer-detail">
@@ -110,7 +110,6 @@ displayMainNavigation('customer');
       <div id="fingerprint"><i class="fas fa-fingerprint"></i></div>
      <h2>Change Password</h2>
        <input type="hidden" name="id" value="<?php echo $customer->getValueEncoded('id') ?>">
-       <input type="hidden" name="username" value="<?php echo $customer->getValueEncoded('username') ?>">
        <input type="hidden" name="phone" value="<?php echo $customer->getValueEncoded('phone') ?>">
      <div class="wp-change-customer-password">
        <input type="password" name="new_password" placeholder="New Password">
@@ -127,7 +126,7 @@ displayMainNavigation('customer');
       <div class="wp-amount">
         <h2>Add an amount</h2>
         <input type="hidden" name="id" value="<?php echo $customer->getValueEncoded('id') ?>" id="customer_id">
-        <input type="number" name="amount" placeholder="0Ks" id="amount">
+        <input type="number" name="amount" placeholder="0.00" id="amount">
       </div>
 
       <div class="wp-about">
@@ -167,6 +166,7 @@ displayMainNavigation('customer');
   </div>
 </div>
  </section>
+<script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
 <script src="<?php echo URL ?>/scripts/customer_detail.js"></script>
 <?php
 displayPageFooter();

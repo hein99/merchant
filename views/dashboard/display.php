@@ -131,6 +131,7 @@ displayMainNavigation('dashboard');
     console.log(h);
   });
 </script>
+<script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
 <script src="<?php echo URL ?>/scripts/dashboard.js"></script>
 
 <?php
