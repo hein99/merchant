@@ -1313,6 +1313,15 @@
 		box-sizing: border-box;
 	}
 
+	#blank-container{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	.user_dialog{
 		height: 100%;
 	}
@@ -1390,7 +1399,7 @@
 
 	#wp-send-photo{
 		position: absolute;
-		right: 6%;
+		right: 36px;
 		top: 5%;
 		cursor: pointer;
 		z-index: 1;
