@@ -40,4 +40,23 @@ $(document).ready(function(){
       }
     })
   }
+
+  $('.edit-rate').on('click', function(){
+    if($('#mmk').prop('disabled') == true){
+      $('#mmk').removeAttr('disabled');
+    }
+
+    $('#mmk').focus().select();
+    $(this).hide();
+    $('.done-edit').show();
+  });
+
+  $('.done-edit').on('click', function(){
+    if($('#mmk').prop('disabled') == false){
+      $('#mmk').prop('disabled', true);
+    }
+
+    $(this).hide();
+    $('.edit-rate').show();
+  });
 });
