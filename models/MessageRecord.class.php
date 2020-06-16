@@ -86,8 +86,9 @@
         $st->bindValue(':messages', $this->data['messages'], PDO::PARAM_STR);
         $st->bindValue(':is_image', $this->data['is_image'], PDO::PARAM_STR);
         $st->execute();
+        $id = $conn->lastInsertId();
         parent::disconnect($conn);
-        return $conn->lastInsertId();
+        return $id;
       }catch (PDOException $e) {
         parent::disconnect($conn);
         die('Query failed: ' . $e->getMessage());

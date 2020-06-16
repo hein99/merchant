@@ -63,7 +63,7 @@ function changeDefinition()
 
   $membership = new Membership(array(
     'id' => isset($_POST['id']) ? preg_replace('/[^0-9]/', '', $_POST['id']) : '',
-    'definition' => isset($_POST['definition']) ? $_POST['definition'] : ''
+    'definition' => isset($_POST['definition']) ? preg_replace('/[^ \,\-\_a-zA-Z0-9]/', '', $_POST['definition']) : ''
   ));
 
   foreach($required_fields as $required_field)

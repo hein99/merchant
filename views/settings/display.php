@@ -11,13 +11,13 @@ displayMainNavigation('settings');
          <span id="current-text">CURRENT</span>
          <span id="new-text">NEW</span>
          <div class="ky-current-account-container">
-           <input type="text" name="current_username" placeholder="Username">
-           <input type="password" name="current_password" placeholder="Password">
+           <input type="text" name="phone" placeholder="Phone" id="phone">
+           <input type="password" name="current_password" placeholder="Password" id="current_password">
          </div>
          <div class="ky-new-account-container">
-           <input type="text" name="new_username" placeholder="Username">
-           <input type="password" name="new_password1" placeholder="New Password">
-           <input type="password" name="new_password2" placeholder="Confirm Password">
+           <input type="text" name="new_username" placeholder="Username" id="new_username">
+           <input type="password" name="new_password1" placeholder="New Password" id="new_password1">
+           <input type="password" name="new_password2" placeholder="Confirm Password" id="new_password2">
          </div>
          <div class="ky-change-button-container">
            <button type="submit">CHANGE</button>
@@ -30,19 +30,8 @@ displayMainNavigation('settings');
    <div class=""></div>
    <div class=""></div>
  </section>
- <script type="text/javascript">
- $(document).ready(function() {
-   $('.ky-current-account-container input').on('focus', function(){
-   $('#new-text').removeClass('ky-onfocus');
-   $('#current-text').addClass('ky-onfocus');
- });
-
- $('.ky-new-account-container input').on('focus', function(){
-   $('#current-text').removeClass('ky-onfocus');
-   $('#new-text').addClass('ky-onfocus');
- });
- });
- </script>
+ <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
+ <script src="<?php echo FILE_URL ?>/scripts/settings.js" charset="utf-8"></script>
 <?php
 displayPageFooter();
 ?>

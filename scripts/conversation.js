@@ -13,6 +13,10 @@ $(document).ready(function(){
   $(document).on('click', '#btn_send, #cancel_send', function(){
     $('#uploadForm').css('display', 'none');
   });
+
+  if($('#user_model_details').is(':empty')) {
+    $('#user_model_details').wrapInner("<div id='blank-container'>Hi</div>");
+  }
 });
 
 $(document).on('focus', '.chat_message', function(){
@@ -20,10 +24,7 @@ $(document).on('focus', '.chat_message', function(){
   $.ajax({
     url: PAGE_URL+'/conversation/change_typing_by_id',
     method: "POST",
-    data: {is_type:is_type},
-    success:function(){
-
-    }
+    data: {is_type:is_type}
   })
 });
 
@@ -32,10 +33,7 @@ $(document).on('blur', '.chat_message', function(){
   $.ajax({
     url: PAGE_URL+'/conversation/change_typing_by_id',
     method: "POST",
-    data: {is_type:is_type},
-    success:function(){
-
-    }
+    data: {is_type:is_type}
   })
 });
 
@@ -48,7 +46,7 @@ $(document).on('click', '.send_chat', function(){
       url: PAGE_URL+'/conversation/send_message',
       method: "POST",
       data: {to_user_id:to_user_id, messages:message},
-      success: function(){
+      success: function(msg){
         var element = $('#chat_message_'+to_user_id).emojioneArea();
         element[0].emojioneArea.setText('');
       }

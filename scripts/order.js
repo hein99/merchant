@@ -316,6 +316,8 @@ function changeOrderInfoRequest(currentObj)
     data: {id: id, us_tax: us_tax, mm_tax: mm_tax, commission: commission, weight_cost: weight_cost, order_status: 1}
   }).done(function(e){
     parent.hide();
+    if(!$('.reload-notice').is(':visible'))
+      $('.reload-notice').show();
   });
 }
 
@@ -331,6 +333,8 @@ function changeOrderStatus(currentObj, order_status)
     data: {id: id, order_status: order_status}
   }).done(function(e){
     parent.hide();
+    if(!$('.reload-notice').is(':visible'))
+      $('.reload-notice').show();
   });
 }
 

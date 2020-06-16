@@ -54,10 +54,10 @@ class UsersAccount extends DataObject
   public function authenticateAdminAccount()
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND password = PASSWORD(:password) AND user_status = 1';
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE phone = :phone AND password = PASSWORD(:password) AND user_status = 1';
     try {
       $st = $conn->prepare($sql);
-      $st->bindValue(':username', $this->data['username'], PDO::PARAM_STR);
+      $st->bindValue(':phone', $this->data['phone'], PDO::PARAM_STR);
       $st->bindValue(':password', $this->data['password'], PDO::PARAM_STR);
       $st->execute();
       $row = $st->fetch();
@@ -162,13 +162,13 @@ class UsersAccount extends DataObject
     }
   }
 
-  public static function getCustomerAccountByUsername($username)
+  public static function getCustomerAccountByPhone($phone)
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND user_status = 0';
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE phone = :phone AND user_status = 0';
     try {
       $st = $conn->prepare($sql);
-      $st->bindValue(':username', $username, PDO::PARAM_STR);
+      $st->bindValue(':phone', $phone, PDO::PARAM_STR);
       $st->execute();
       $row = $st->fetch();
       parent::disconnect($conn);
@@ -211,7 +211,9 @@ class UsersAccount extends DataObject
       $st->bindValue(':phone', $this->data['phone'], PDO::PARAM_STR);
       $st->bindValue(':address', $this->data['address'], PDO::PARAM_STR);
       $st->execute();
+      $id = $conn->lastInsertId();
       parent::disconnect($conn);
+      return $id;
     }catch (PDOException $e) {
       parent::disconnect($conn);
       die('Query failed: ' . $e->getMessage());
@@ -233,13 +235,13 @@ class UsersAccount extends DataObject
       die("Query failed: ". $e->getMessage());
     }
   }
-  public static function getCustomerNameCheck($username, $id)
+  public static function getPhoneNumberCheck($phone, $id)
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE username = :username AND id != :id AND user_status = 0';
+    $sql = 'SELECT * FROM '.TBL_USERS_ACCOUNT.' WHERE phone = :phone AND id != :id AND user_status = 0';
     try {
       $st = $conn->prepare($sql);
-      $st->bindValue(':username', $username, PDO::PARAM_STR);
+      $st->bindValue(':phone', $phone, PDO::PARAM_STR);
       $st->bindValue(':id', $id, PDO::PARAM_INT);
       $st->execute();
       $row = $st->fetch();
@@ -312,7 +314,7 @@ class UsersAccount extends DataObject
     try {
       $st = $conn->prepare($sql);
       $st->bindValue(':id', $id, PDO::PARAM_INT);
-      $st->bindValue(':balance', $balance, PDO::PARAM_INT);
+      $st->bindValue(':balance', $balance);
       $st->execute();
       parent::disconnect($conn);
     } catch (PDOException $e) {

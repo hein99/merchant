@@ -25,6 +25,7 @@ switch ($controller)
 {
   case 'dashboard':
   require('./models/PasswordRequest.class.php');
+  require('./models/ExchangeRate.class.php');
     break;
   case 'customer':
   require('./models/CustomerStatement.class.php');

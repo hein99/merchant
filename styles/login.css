@@ -102,7 +102,7 @@
 	border-radius: 50%;
 }
 
-#username, #login, .login-pass{
+#phone-js, #login, .login-pass{
 	display: block;
 	width: 220px;
 	height: 40px;
@@ -117,7 +117,7 @@
 	box-sizing: border-box;
 }
 
-#username:focus, #password:focus, #password:focus + .login-eye, .login-eye:active, .login-pass:active{
+#phone-js:focus, #password:focus, #password:focus + .login-eye, .login-eye:active, .login-pass:active{
 	background-color: #dfdfdf;
 }
 
