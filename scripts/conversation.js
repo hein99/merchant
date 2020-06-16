@@ -15,7 +15,7 @@ $(document).ready(function(){
   });
 
   if($('#user_model_details').is(':empty')) {
-    $('#user_model_details').wrapInner("<div id='blank-container'>Hi</div>");
+    $('#user_model_details').wrapInner("<div id='blank-container'><i class='far fa-comments'></i><p>Click on name to start chatting</p></div>");
   }
 });
 
