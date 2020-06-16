@@ -98,14 +98,62 @@ displayMainNavigation('dashboard');
           <h2>Password Request</h2>
           <div class="wp-req-pass-table">
             <table>
-              <tr>
-                <th><i class="fas fa-phone-alt"></i></th>
-                <th><i class="fas fa-clock"></i></th>
-              </tr>
-              <tr>
-                <td>09899846568</td>
-                <td>2020-04-18 21:30:58</td>
-              </tr>
+              <thead>
+                <tr>
+                  <th><span><i class="fas fa-phone-alt"></i></span></th>
+                  <th><span><i class="fas fa-clock"></i></span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+                <tr>
+                  <td>09899846568</td>
+                  <td>2020-04-18 21:30:58</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
