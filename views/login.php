@@ -35,7 +35,7 @@ function displayLoginFrom($error_messages, $admin_account)
   </div>
   <form class="login-body" action="<?php echo URL ?>/views/login.php" method="post">
     <input type="hidden" name="action" value="login">
-    <input type="text" name="username" placeholder="Username" id="username" value="<?php echo isset($admin_account) ? $admin_account->getValueEncoded('username') : ''?>">
+    <input type="text" name="phone" placeholder="phone" id="phone-js" value="<?php echo isset($admin_account) ? $admin_account->getValueEncoded('phone') : ''?>">
     <div class="login-pass">
       <input type="password" name="password" placeholder="Password" id="password">
       <span class="login-eye">
@@ -53,59 +53,21 @@ function displayLoginFrom($error_messages, $admin_account)
     <input type="submit" id="login" name="" value="Login">
   </form>
 </div>
-  <script type="text/javascript">
-    $(function(){
-
-      $('#username').focus();
-
-      $close = $('.close-eye');
-      $password = $('#password');
-
-      $('.login-eye').click(function(){
-        $close.toggle();
-        $('.open-eye svg, .inner').toggleClass('show');
-
-        if($password.attr('type') == 'password'){
-          $password.attr('type', 'text');
-          $password.focus();
-        }else{
-          $password.attr('type', 'password');
-          $password.focus();
-        }
-      });
-
-      $('#password').keydown(function(e){
-        if(e.which == 115){
-          $password.attr('type', 'text');
-          $password.focus();
-          $close.hide();
-          $('.open-eye svg, .inner').addClass('show');
-        }
-      });
-
-      $('#password').keyup(function(e){
-        if(e.which == 115){
-          $password.attr('type', 'password');
-          $password.focus();
-          $close.show();
-          $('.open-eye svg, .inner').removeClass('show');
-        }
-      });
-    });
-  </script>
+<script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
+<script src="<?php echo FILE_URL ?>/scripts/login.js" charset="utf-8"></script>
   <?php
   displayPageFooter();
   }
 
   function processLoginForm()
   {
-    $required_fields = array('username', 'password');
+    $required_fields = array('phone', 'password');
     $missing_fields = array();
     $error_messages = array();
 
     $admin_account = new UsersAccount(array(
-      'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
-      'password' => isset($_POST['password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['password']) : ''
+      'phone' => isset($_POST['phone']) ? preg_replace('/[^0-9]/', '', $_POST['phone']) : '',
+      'password' => isset($_POST['password']) ? $_POST['password'] : ''
     ));
     foreach ($required_fields as $required_field) {
       if(!$admin_account->getValue($required_field))
@@ -117,7 +79,7 @@ function displayLoginFrom($error_messages, $admin_account)
     }
     elseif(!$loggedin_account = $admin_account->authenticateAdminAccount())
     {
-      $error_messages[] = '<p class="error">Please check your username and password, and try again!</p>';
+      $error_messages[] = '<p class="error">Please check your phone number and password, and try again!</p>';
     }
     if($error_messages)
     {

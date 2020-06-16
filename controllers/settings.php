@@ -21,8 +21,8 @@ switch($action)
 function changeAccount()
 {
   $request_account = new UsersAccount(array(
-    'username' => isset($_POST['current_username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['current_username']) : '',
-    'password' => isset($_POST['current_password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['current_password']) : ''
+    'phone' => isset($_POST['phone']) ? preg_replace('/[^0-9]/', '', $_POST['phone']) : '',
+    'password' => isset($_POST['current_password']) ? $_POST['current_password']: ''
   ));
   $current_account = $request_account->authenticateAdminAccount();
   if($current_account)

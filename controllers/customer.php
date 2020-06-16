@@ -94,10 +94,10 @@ function addCustomerAccount()
   $error_messages = array();
 
   $customer_account = new UsersAccount(array(
-    'username' => isset($_POST['username']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
-    'password' => (isset($_POST['password1']) and isset($_POST['password2']) and $_POST['password1'] == $_POST['password2']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['password1']) : '',
-    'phone' => isset($_POST['phone']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['phone']) : '',
-    'address' => isset($_POST['address']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['address']) : ''
+    'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
+    'password' => (isset($_POST['password1']) and isset($_POST['password2']) and $_POST['password1'] == $_POST['password2']) ? $_POST['password1'] : '',
+    'phone' => isset($_POST['phone']) ? preg_replace('/[^0-9]/', '', $_POST['phone']) : '',
+    'address' => isset($_POST['address']) ? preg_replace('/[^ \,\-\_a-zA-Z0-9]/', '', $_POST['address']) : ''
   ));
 
   foreach($required_fields as $required_field)
@@ -113,9 +113,9 @@ function addCustomerAccount()
   {
     $error_messages[] = 'Please make sure you enter your password correctly in both password fields!';
   }
-  if(UsersAccount::getCustomerAccountByUsername($customer_account->getValue('username')))
+  if(UsersAccount::getCustomerAccountByPhone($customer_account->getValue('phone')))
   {
-    $error_messages[] = 'A member with that username already exists in the database. Please choose another username.';
+    $error_messages[] = 'A member with that phone number already exists in the database. Please use another phone number.';
   }
   if($error_messages)
   {
@@ -123,9 +123,8 @@ function addCustomerAccount()
     require('./views/error_display.php');
   }
   else {
-    $customer_account->createCustomerAccount();
-    $customer = UsersAccount::getCustomerAccountByUsername($customer_account->getValue('username'));
-    LoginRecord::addUserLoginRecord($customer->getValue('id'));
+    $id = $customer_account->createCustomerAccount();
+    LoginRecord::addUserLoginRecord($id);
     header('location: ' . URL . '/dashboard/');
   }
 }
@@ -136,12 +135,12 @@ function editCustomerInfo()
   $error_messages = array();
 
   $customer_info = new UsersAccount(array(
-    'id' => isset($_POST['id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['id']) : '',
-    'username' => isset($_POST['username']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
-    'phone' => isset($_POST['phone']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['phone']) : '',
-    'address' => isset($_POST['address']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['address']) : '',
-    'point' => isset($_POST['point']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['point']) : '',
-    'membership_id' => isset($_POST['membership_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['membership_id']) : ''
+    'id' => isset($_POST['id']) ? preg_replace('/[^0-9]/', '', $_POST['id']) : '',
+    'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
+    'phone' => isset($_POST['phone']) ? preg_replace('/[^0-9]/', '', $_POST['phone']) : '',
+    'address' => isset($_POST['address']) ? preg_replace('/[^ \,\-\_a-zA-Z0-9]/', '', $_POST['address']) : '',
+    'point' => isset($_POST['point']) ? preg_replace('/[^0-9]/', '', $_POST['point']) : '',
+    'membership_id' => isset($_POST['membership_id']) ? preg_replace('/[^0-9]/', '', $_POST['membership_id']) : ''
   ));
   foreach ($required_fields as $required_field) {
     if($customer_info->getValue($required_field) == '')
@@ -151,9 +150,9 @@ function editCustomerInfo()
   {
     $error_messages[] = 'There were some missing fields. Please make sure and submit again!';
   }
-  if(UsersAccount::getCustomerNameCheck($customer_info->getValue('username'), $customer_info->getValue('id')))
+  if(UsersAccount::getPhoneNumberCheck($customer_info->getValue('phone'), $customer_info->getValue('id')))
   {
-    $error_messages[] = 'A member with that username already exists in the database. Please choose an another username.';
+    $error_messages[] = 'A member with that phone number already exists in the database. Please choose an another phone number.';
   }
   if($error_messages)
   {
@@ -171,10 +170,9 @@ function changeCustomerPassword()
     $error_messages = array();
 
     $new_account = new UsersAccount(array(
-      'id' => isset($_POST['id']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['id']) : '',
-      'username' => isset($_POST['username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['username']) : '',
-      'phone' => isset($_POST['phone']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['phone']) : '',
-      'password' => isset($_POST['new_password']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['new_password']) : '',
+      'id' => isset($_POST['id']) ? preg_replace('/[^0-9]/', '', $_POST['id']) : '',
+      'phone' => isset($_POST['phone']) ? preg_replace('/[^0-9]/', '', $_POST['phone']) : '',
+      'password' => isset($_POST['new_password']) ? $_POST['new_password'] : ''
     ));
     foreach ($required_fields as $required_field) {
       if(!$new_account->getValue($required_field))
@@ -201,9 +199,9 @@ function addAmount()
   $error_messages = array();
 
   $customer_statement = new CustomerStatement(array(
-    'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['customer_id']) : '',
-    'amount' => isset($_POST['amount']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['amount']) : '',
-    'about' => isset($_POST['about']) ? $_POST['about'] : ''
+    'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^0-9]/', '', $_POST['customer_id']) : '',
+    'amount' => isset($_POST['amount']) ? preg_replace('/[^.\0-9]/', '', $_POST['amount']) : '',
+    'about' => isset($_POST['about']) ? preg_replace('/[^ \,\-\_a-zA-Z0-9]/', '', $_POST['about']) : ''
   ));
 
   foreach($required_fields as $required_field)
@@ -235,9 +233,9 @@ function subAmount()
   $error_messages = array();
 
   $customer_statement = new CustomerStatement(array(
-    'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['customer_id']) : '',
-    'amount' => isset($_POST['amount']) ? preg_replace('/[^-\_a-zA-Z0-9]/', '', $_POST['amount']) : '',
-    'about' => isset($_POST['about']) ? $_POST['about'] : ''
+    'customer_id' => isset($_POST['customer_id']) ? preg_replace('/[^0-9]/', '', $_POST['customer_id']) : '',
+    'amount' => isset($_POST['amount']) ? preg_replace('/[^.\0-9]/', '', $_POST['amount']) : '',
+    'about' => isset($_POST['about']) ? preg_replace('/[^ \,\-\_a-zA-Z0-9]/', '', $_POST['about']) : ''
   ));
 
   foreach($required_fields as $required_field)

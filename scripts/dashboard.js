@@ -40,4 +40,29 @@ $(document).ready(function(){
       }
     })
   }
+
+  $('.customer-create-form-js').validate({
+    rules: {
+      username: {
+        required: true,
+        minlength: 2
+      },
+      password1: {
+        required: true,
+        minlength: 6
+      },
+      password2: {
+        required: true,
+        minlength: 6,
+        equalTo: "#password1"
+      },
+      phone: {
+        required: true,
+        number: true
+      },
+      address: {
+        required: true
+      },
+    }
+  });
 });

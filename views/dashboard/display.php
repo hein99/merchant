@@ -51,13 +51,13 @@ displayMainNavigation('dashboard');
     <section class="dashboard-form-part">
       <div class="dashboard-form-container">
         <span>Add New Customer</span>
-        <form class="" action="<?php echo URL ?>/customer/create/" method="post">
+        <form class="customer-create-form-js" action="<?php echo URL ?>/customer/create/" method="post">
           <div class="ky-create-customer-form">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password1" placeholder="Password">
-            <input type="password" name="password2" placeholder="Confirm Password">
-            <input type="number" name="phone" placeholder="Phone Number">
-            <textarea name="address" placeholder="Address"></textarea>
+            <input type="text" name="username" placeholder="Username" id="username">
+            <input type="password" name="password1" placeholder="Password" id="password1">
+            <input type="password" name="password2" placeholder="Confirm Password" id="password2">
+            <input type="number" name="phone" placeholder="Phone Number" id="phone">
+            <textarea name="address" placeholder="Address" id="address"></textarea>
             <input type="submit" value="Create">
           </div>
         </form>
@@ -86,6 +86,7 @@ displayMainNavigation('dashboard');
     console.log(h);
   });
 </script>
+<script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
 <script src="<?php echo URL ?>/scripts/dashboard.js"></script>
 
 <?php
