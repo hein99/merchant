@@ -40,7 +40,7 @@ function createExchangeRates()
   $exchange_rate = new ExchangeRate(array(
     'mmk' => isset($_POST['mmk']) ? preg_replace('/[^.\0-9]/', '', $_POST['mmk']) : ''
   ));
-  if($exchange_rate->getValue('mmk'))
+  if(!$exchange_rate->getValue('mmk'))
   {
     $ERR_STATUS = ERR_FORM;
     require('./views/error_display.php');
@@ -48,7 +48,9 @@ function createExchangeRates()
   }
   else
   {
-    $exchange_rate->createExchangeRate();
+    $latest_rate = ExchangeRate::getLatestExchangeRate();
+    if($latest_rate->getValue('mmk') != $exchange_rate->getValue('mmk'))
+      $exchange_rate->createExchangeRate();
   }
 }
  ?>

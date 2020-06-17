@@ -88,9 +88,10 @@ displayMainNavigation('dashboard');
           </div>
           <div id="wp-exc-rate">
             <div class="wp-exchange-rate">
+              <?php $rate = ExchangeRate::getLatestExchangeRate(); ?>
               <span>1&nbsp;<i class="fas fa-dollar-sign"></i></span>
               <span id="wp-exchange-icon"><i class="fas fa-exchange-alt"></i></span>
-              <span id="mmk-rate"><input id="mmk" type="text" name="" value="1500" disabled="disabled"><span id="exc-mmk">MMK</span></span>
+              <span id="mmk-rate"><input id="mmk" type="text" name="" value="<?php echo $rate->getValueEncoded('mmk') ?>" disabled="disabled"><span id="exc-mmk">MMK</span></span>
             </div>
           </div>
         </div>
@@ -105,78 +106,26 @@ displayMainNavigation('dashboard');
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
-                <tr>
-                  <td>09899846568</td>
-                  <td>2020-04-18 21:30:58</td>
-                </tr>
+                <?php
+                  $password_requests = PasswordRequest::getAllPasswordRequest();
+                  foreach($password_requests as $password_request) :
+                 ?>
+                 <tr>
+                   <td><?php echo $password_request->getValueEncoded('phone') ?></td>
+                   <td><?php echo $password_request->getValueEncoded('requested_date') ?></td>
+                 </tr>
+                <?php endforeach; ?>
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </section>
-  
-  <!-- <div class="">
-    <?php
-      $password_requests = PasswordRequest::getAllPasswordRequest();
-     ?>
-     <ul>
-       <?php foreach($password_requests as $password_request) : ?>
-         <li class=""><?php echo $password_request->getValueEncoded('phone') ?> <span><?php echo $password_request->getValueEncoded('requested_date') ?></span></li>
-       <?php endforeach; ?>
-     </ul>
-  </div> -->
 </section>
 <script type="text/javascript">
   $(document).ready(function() {
     var w=$('#ky-dashboard-section').width();
     var h=$('.dashboard-form-part').height();
-    console.log(w);
-    console.log(h);
   });
 </script>
 <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>

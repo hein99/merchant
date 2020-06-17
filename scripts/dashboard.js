@@ -51,14 +51,15 @@ $(document).ready(function(){
     $('.done-edit').show();
   });
 
-  $('.done-edit').on('click', function(){
+  $(document).on('click', '.done-edit', function(){
     if($('#mmk').prop('disabled') == false){
       $('#mmk').prop('disabled', true);
     }
-
     $(this).hide();
     $('.edit-rate').show();
+    changeExchangeRateAjax();
   });
+
 
   $('.customer-create-form-js').validate({
     rules: {
@@ -84,4 +85,14 @@ $(document).ready(function(){
       },
     }
   });
+
+  function changeExchangeRateAjax()
+  {
+    var mmk = $('#mmk').val();
+    $.ajax({
+      url: PAGE_URL+'/dashboard/created_exchange_rate',
+      method:"POST",
+      data: "mmk=" + mmk
+    })
+  }
 });

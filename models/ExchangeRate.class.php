@@ -44,7 +44,7 @@ class ExchangeRate extends DataObject
   public function createExchangeRate()
   {
     $conn = parent::connect();
-    $sql = 'INSERT INTO '.TBL_EXCHANGE_RATE.' (mmk) VALUES(:mmk)';
+    $sql = 'INSERT INTO '.TBL_EXCHANGE_RATE.' (mmk, created_date) VALUES(:mmk, now())';
     try {
       $st = $conn->prepare($sql);
       $st->bindValue(':mmk', $this->data['mmk']);
