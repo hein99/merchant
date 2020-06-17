@@ -30,7 +30,7 @@ switch($ERR_STATUS)
 
   <div class="ky-user-content" style="cursor: auto;">
     <i class="fas fa-user-circle"></i>
-      <span>Swe Swe Nyein</span>
+      <span><?php echo $_SESSION['merchant_admin_account']->getValueEncoded('username') ?></span>
   </div>
 </header>
 
