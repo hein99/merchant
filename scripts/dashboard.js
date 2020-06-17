@@ -61,7 +61,7 @@ $(document).ready(function(){
   });
 
 
-  $('.customer-create-form-js').validate({
+  $('.ky-create-customer-form').validate({
     rules: {
       username: {
         required: true,
