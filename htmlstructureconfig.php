@@ -7,7 +7,7 @@ function displayPageHeader($page_title, $dir_level=false)
       <meta charset="utf-8">
       <title><?php echo $page_title ?></title>
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/reset.css">
-      <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lato&family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+      <link href="https://fonts.googleapis.com/css2?family=Lato&family=Laila&family=Alegreya+Sans&display=swap" rel="stylesheet"> 
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.13.0/css/all.css'>
       <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/<?php echo $dir_level ? 'login.css' : 'config.css'?>">
