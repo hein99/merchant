@@ -1477,3 +1477,13 @@
 		opacity: 1;
 	}
 /*------------------------------------- END OF CONVERSATION ------------------------------------*/
+	.a{
+		position: relative;
+		width: 180px;
+		height: 80px;
+	}
+
+	.error{
+		position: absolute;
+		top: 0;
+	}
