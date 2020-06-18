@@ -10,19 +10,15 @@ $(document).ready(function(){
           { "data": "customer_name"},
           { "data": "product_link" },
           { "data": "remark" },
+          { "data": "cupon_code" },
           { "data": "quantity" },
           { "data": "unit_price" },
-          { "data": "product_weight" },
-          { "data": "weight_cost" },
-          { "data": "sub_total" },
-          { "data": "mm_tax" },
           { "data": "us_tax" },
-          { "data": "commission" },
-          { "data": "total_amount_dollar" },
-          { "data": "exchange_rate" },
-          { "data": "total_amount_mmk" },
-          { "data": "order_status" },
-          { "data": "product_shipping_status" }
+          { "data": "shipping_cost" },
+          { "data": "first_payment_dollar" },
+          { "data": "first_exchange_rate" },
+          { "data": "first_payment_mmk" },
+          { "data": "order_status" }
       ]
   } );
   $('#tb-pending-js').DataTable( {
@@ -35,71 +31,67 @@ $(document).ready(function(){
         { "data": "customer_name"},
         { "data": "product_link" },
         { "data": "remark" },
+        { "data": "cupon_code" },
         { "data": "quantity" },
         { "data": "unit_price" },
-        { "data": "product_weight" },
-        { "data": "weight_cost" },
-        { "data": "sub_total" },
-        { "data": "mm_tax" },
         { "data": "us_tax" },
-        { "data": "commission" },
-        { "data": "total_amount_dollar" },
-        { "data": "exchange_rate" },
-        { "data": "total_amount_mmk" },
-        { "data": "order_status" },
-        { "data": "product_shipping_status" }
+        { "data": "shipping_cost" },
+        { "data": "first_payment_dollar" },
+        { "data": "first_exchange_rate" },
+        { "data": "first_payment_mmk" },
+        { "data": "order_status" }
       ]
   } );
-  $('#tb-confirm-js').DataTable( {
-      "ajax": {
-          "url": PAGE_URL + "/order/get_orders/?order_status=2",
-          "dataSrc": ""
-      },
-      "columns": [
-        { "data": "order_id" },
-        { "data": "customer_name"},
-        { "data": "product_link" },
-        { "data": "remark" },
-        { "data": "quantity" },
-        { "data": "unit_price" },
-        { "data": "product_weight" },
-        { "data": "weight_cost" },
-        { "data": "sub_total" },
-        { "data": "mm_tax" },
-        { "data": "us_tax" },
-        { "data": "commission" },
-        { "data": "total_amount_dollar" },
-        { "data": "exchange_rate" },
-        { "data": "total_amount_mmk" },
-        { "data": "order_status" },
-        { "data": "product_shipping_status" }
-      ]
-  } );
-  $('#tb-cancel-js').DataTable( {
-      "ajax": {
-          "url": PAGE_URL + "/order/get_orders/?order_status=3",
-          "dataSrc": ""
-      },
-      "columns": [
-        { "data": "order_id" },
-        { "data": "customer_name"},
-        { "data": "product_link" },
-        { "data": "remark" },
-        { "data": "quantity" },
-        { "data": "unit_price" },
-        { "data": "product_weight" },
-        { "data": "weight_cost" },
-        { "data": "sub_total" },
-        { "data": "mm_tax" },
-        { "data": "us_tax" },
-        { "data": "commission" },
-        { "data": "total_amount_dollar" },
-        { "data": "exchange_rate" },
-        { "data": "total_amount_mmk" },
-        { "data": "order_status" },
-        { "data": "product_shipping_status" }
-      ]
-  } );
+  // $('#tb-confirm-js').DataTable( {
+  //     "ajax": {
+  //         "url": PAGE_URL + "/order/get_orders/?order_status=2",
+  //         "dataSrc": ""
+  //     },
+  //     "columns": [
+  //       { "data": "order_id" },
+  //       { "data": "customer_name"},
+  //       { "data": "product_link" },
+  //       { "data": "remark" },
+  //       { "data": "quantity" },
+  //       { "data": "unit_price" },
+  //       { "data": "product_weight" },
+  //       { "data": "weight_cost" },
+  //       { "data": "sub_total" },
+  //       { "data": "mm_tax" },
+  //       { "data": "us_tax" },
+  //       { "data": "commission" },
+  //       { "data": "total_amount_dollar" },
+  //       { "data": "exchange_rate" },
+  //       { "data": "total_amount_mmk" },
+  //       { "data": "order_status" },
+  //       { "data": "product_shipping_status" }
+  //     ]
+  // } );
+  // $('#tb-cancel-js').DataTable( {
+  //     "ajax": {
+  //         "url": PAGE_URL + "/order/get_orders/?order_status=3",
+  //         "dataSrc": ""
+  //     },
+  //     "columns": [
+  //       { "data": "order_id" },
+  //       { "data": "customer_name"},
+  //       { "data": "product_link" },
+  //       { "data": "remark" },
+  //       { "data": "quantity" },
+  //       { "data": "unit_price" },
+  //       { "data": "product_weight" },
+  //       { "data": "weight_cost" },
+  //       { "data": "sub_total" },
+  //       { "data": "mm_tax" },
+  //       { "data": "us_tax" },
+  //       { "data": "commission" },
+  //       { "data": "total_amount_dollar" },
+  //       { "data": "exchange_rate" },
+  //       { "data": "total_amount_mmk" },
+  //       { "data": "order_status" },
+  //       { "data": "product_shipping_status" }
+  //     ]
+  // } );
 
   $('#tb-request-js_wrapper').show();
   $('#tb-pending-js_wrapper').hide();

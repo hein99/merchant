@@ -41,8 +41,8 @@ displayMainNavigation('dashboard');
       <div class="dashboard-small-container memberships">
         <div>Memberships</div>
         <div class="ky-membership-icons-container">
-          <span><i class="fas fa-award ky-silver-icon"></i></span>
-          <span id="membership-hover"><i class="fas fa-award ky-gold-icon"></i></span>
+          <span id="membership-hover"><i class="fas fa-award ky-silver-icon"></i></span>
+          <span><i class="fas fa-award ky-gold-icon"></i></span>
           <span><i class="fas fa-award ky-platinum-icon"></i></span>
           <span><i class="fas fa-gem ky-diamond-icon"></i></span>
         </div>
@@ -54,17 +54,27 @@ displayMainNavigation('dashboard');
         <div class="dashboard-form">
           <span>Add New Customer</span>
           <form class="ky-create-customer-form" action="<?php echo URL ?>/customer/create/" method="post">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password1" placeholder="Password">
-            <input type="password" name="password2" placeholder="Confirm Password">
-            <input type="number" name="phone" placeholder="Phone Number">
-            <textarea name="address" placeholder="Address"></textarea>
+            <div class="error-input">
+              <input type="text" name="username" placeholder="Username">
+            </div>
+            <div class="error-input">
+              <input type="password" name="password1" placeholder="Password">
+            </div>
+            <div class="error-input">
+              <input type="password" name="password2" placeholder="Confirm Password">
+            </div>
+            <div class="error-input">
+              <input type="number" name="phone" placeholder="Phone Number">
+            </div>
+            <div class="error-input error-textarea">
+              <textarea name="address" placeholder="Address"></textarea>
+            </div>
             <input type="submit" value="Create">
           </form>
         </div>
-        <div class=""></div>
-        <div class=""></div>
-        <div class=""></div>
+        <div class="new-customer-form-circle1"></div>
+        <div class="new-customer-form-circle2"></div>
+        <div class="new-customer-form-circle3"></div>
       </div>
       <div class="exchange-rate-and-req-pass-container">
         <div class="wp-exchange-rate-container">
@@ -89,7 +99,7 @@ displayMainNavigation('dashboard');
           <div id="wp-exc-rate">
             <div class="wp-exchange-rate">
               <?php $rate = ExchangeRate::getLatestExchangeRate(); ?>
-              <span>1&nbsp;<i class="fas fa-dollar-sign"></i></span>
+              <span>1&nbsp;$</span>
               <span id="wp-exchange-icon"><i class="fas fa-exchange-alt"></i></span>
               <span id="mmk-rate"><input id="mmk" type="text" name="" value="<?php echo $rate->getValueEncoded('mmk') ?>" disabled="disabled"><span id="exc-mmk">MMK</span></span>
             </div>

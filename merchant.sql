@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2020 at 11:58 AM
+-- Generation Time: Jun 18, 2020 at 01:12 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -31,30 +31,35 @@ SET time_zone = "+00:00";
 CREATE TABLE `customer_order` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `product_link` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
-  `remark` text COLLATE utf8_unicode_ci NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `product_link` varchar(255) NOT NULL,
+  `remark` text NOT NULL,
+  `cupon_code` varchar(20) NOT NULL,
+  `quantity` int(5) NOT NULL,
   `price` float NOT NULL,
   `us_tax` float NOT NULL,
-  `mm_tax` float NOT NULL,
+  `shipping_cost` float NOT NULL,
+  `first_exchange_rate` float NOT NULL,
   `commission` float NOT NULL,
   `product_weight` float NOT NULL,
   `weight_cost` float NOT NULL,
-  `exchange_rate` float NOT NULL,
+  `mm_tax` float NOT NULL,
+  `second_exchange_rate` float NOT NULL,
+  `is_deliver` tinyint(1) NOT NULL,
+  `delivery_fee` float NOT NULL,
   `order_status` tinyint(1) NOT NULL,
   `product_shipping_status` tinyint(1) NOT NULL,
   `has_viewed_admin` tinyint(1) NOT NULL,
   `has_viewed_customer` tinyint(1) NOT NULL,
   `created_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customer_order`
 --
 
-INSERT INTO `customer_order` (`id`, `customer_id`, `product_link`, `remark`, `quantity`, `price`, `us_tax`, `mm_tax`, `commission`, `product_weight`, `weight_cost`, `exchange_rate`, `order_status`, `product_shipping_status`, `has_viewed_admin`, `has_viewed_customer`, `created_date`) VALUES
-(1, 2, 'https://item.taobao.com/item.htm?spm=a21wu.241046-global.4691948847.5.41cab6cb5U5S8P&scm=1007.15423.84311.100200300000005&id=566185672494&pvid=7f287f08-6e79-4bf9-a113-913df6e7b2df', 'black', 1, 2, 5, 5, 8, 5.5, 7, 1500, 0, 0, 1, 0, '2020-06-06 19:48:40'),
-(2, 2, 'https://item.taobao.com/item.htm?spm=a21wu.241046-global.4691948847.5.41cab6cb5U5S8P&scm=1007.15423.84311.100200300000005&id=566185672494&pvid=7f287f08-6e79-4bf9-a113-913df6e7b2df', 'black and white', 3, 5.6, 0, 0, 8, 4.5, 7, 1500, 2, 0, 1, 0, '2020-06-04 14:12:23');
+INSERT INTO `customer_order` (`id`, `customer_id`, `product_link`, `remark`, `cupon_code`, `quantity`, `price`, `us_tax`, `shipping_cost`, `first_exchange_rate`, `commission`, `product_weight`, `weight_cost`, `mm_tax`, `second_exchange_rate`, `is_deliver`, `delivery_fee`, `order_status`, `product_shipping_status`, `has_viewed_admin`, `has_viewed_customer`, `created_date`) VALUES
+(1, 2, 'https://item.taobao.com/item.htm?spm=a21bo.7929913.198967.13.3eb34174G8Pc45&id=605150240460', 'some remark, many remark, pretty much remark', '98IHIEKHIEN', 2, 500, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, '2020-06-18 16:32:52'),
+(2, 3, 'https://item.taobao.com/item.htm?spm=a21bo.7929913.198967.13.3eb34174G8Pc45&id=605150240460', 'some remark, many remark, pretty much remark, more remark', 'SS98IHIEKHIEN', 3, 400, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, '2020-06-18 16:32:52');
 
 -- --------------------------------------------------------
 
@@ -111,7 +116,10 @@ CREATE TABLE `exchange_rate` (
 INSERT INTO `exchange_rate` (`id`, `mmk`, `created_date`) VALUES
 (1, 1500, '2020-06-12 21:09:28'),
 (2, 1501, '2020-06-12 21:10:04'),
-(3, 1502, '2020-06-12 21:10:20');
+(3, 1502, '2020-06-12 21:10:20'),
+(4, 1503, '2020-06-17 12:04:01'),
+(5, 1504, '2020-06-17 12:04:43'),
+(6, 1505, '2020-06-17 12:09:28');
 
 -- --------------------------------------------------------
 
@@ -137,14 +145,16 @@ INSERT INTO `login_record` (`id`, `user_id`, `active_activity`, `is_type`) VALUE
 (4, 6, '2020-06-05 13:40:06', 'yes'),
 (5, 7, '2020-06-05 13:57:52', 'no'),
 (6, 8, '2020-06-05 13:35:10', 'no'),
-(7, 1, '2020-06-16 09:58:22', 'yes'),
+(7, 1, '2020-06-18 11:12:14', 'yes'),
 (8, 9, '2020-06-13 10:40:58', 'no'),
 (9, 10, '2020-06-13 10:41:47', 'no'),
 (10, 11, '2020-06-13 10:43:10', 'no'),
 (11, 12, '2020-06-13 10:43:57', 'no'),
 (12, 13, '2020-06-15 12:20:38', 'no'),
 (13, 14, '2020-06-15 12:25:45', 'no'),
-(14, 15, '2020-06-15 12:28:31', 'no');
+(14, 15, '2020-06-15 12:28:31', 'no'),
+(15, 16, '2020-06-17 10:54:43', 'no'),
+(16, 17, '2020-06-17 10:56:20', 'no');
 
 -- --------------------------------------------------------
 
@@ -257,7 +267,7 @@ CREATE TABLE `password_request` (
 --
 
 INSERT INTO `password_request` (`id`, `phone`, `requested_date`, `status`) VALUES
-(1, '090909', '2020-06-11 05:39:54', 0),
+(1, '09260968601', '2020-06-11 05:39:54', 0),
 (2, '909090', '2020-06-11 05:44:03', 1),
 (4, '09765920059', '2020-06-11 05:52:37', 1),
 (5, '09457503263', '2020-06-11 06:03:50', 1);
@@ -302,7 +312,9 @@ INSERT INTO `users` (`id`, `username`, `password`, `user_status`, `phone`, `addr
 (12, 'Jack', '*9BCDC990E611B8D852EFAF1E3919AB6AC8C8A9F0', 0, '09765920059', 'Myanmar', 1, 0, 0, 1, '2020-06-13 17:13:57', '2020-06-13 10:56:48'),
 (13, 'Ozil', '*E9389A03A50B19E3CBF5FFE0D7FAF100957E9C09', 0, '09260968600', 'Germany', 1, 0, 0, 1, '2020-06-15 18:50:38', '2020-06-15 12:25:55'),
 (14, 'Sanchez', '*5347F5756D2DB9EE957461E39C0F22ADA0B574F8', 0, '09260968601', 'Chilli', 1, 0, 0, 1, '2020-06-15 18:55:45', '2020-06-15 12:25:56'),
-(15, 'Pepe', '*4E90EF6D5302DD783982F606FC24275D9EEC29EB', 0, '09260968603', 'a, b-c_d', 0, 0, 0, 1, '2020-06-15 18:58:31', '2020-06-15 12:28:31');
+(15, 'Pepe', '*4E90EF6D5302DD783982F606FC24275D9EEC29EB', 0, '09260968603', 'a, b-c_d', 0, 0, 0, 1, '2020-06-15 18:58:31', '2020-06-15 12:28:31'),
+(16, 'Chez', '*8F0B18A362E7FE872BA86866383C786AEFD948A0', 0, '09260968610', 'Germany', 0, 0, 0, 1, '2020-06-17 17:24:43', '2020-06-17 10:54:43'),
+(17, 'Ronny', '*A97F629F36413F03A6F94669BEA9AC4645A57AC6', 0, '09260968611', 'England', 1, 0, 0, 1, '2020-06-17 17:26:19', '2020-06-18 07:51:51');
 
 --
 -- Indexes for dumped tables
@@ -376,13 +388,13 @@ ALTER TABLE `customer_statement`
 -- AUTO_INCREMENT for table `exchange_rate`
 --
 ALTER TABLE `exchange_rate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `login_record`
 --
 ALTER TABLE `login_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `membership`
@@ -406,7 +418,7 @@ ALTER TABLE `password_request`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -11,13 +11,16 @@ displayMainNavigation('settings');
          <span id="current-text">CURRENT</span>
          <span id="new-text">NEW</span>
          <div class="ky-current-account-container">
-           <input type="text" name="phone" placeholder="Phone" id="phone">
-           <input type="password" name="current_password" placeholder="Password" id="current_password">
-         </div>
+          <div class="error-input">
+            <input type="text" name="phone" placeholder="Phone" id="phone">
+          </div>
+          <div class="error-input">
+            <input type="password" name="current_password" placeholder="Password" id="current_password"></div>
+          </div>
          <div class="ky-new-account-container">
-           <input type="text" name="new_username" placeholder="Username" id="new_username">
-           <input type="password" name="new_password1" placeholder="New Password" id="new_password1">
-           <input type="password" name="new_password2" placeholder="Confirm Password" id="new_password2">
+           <div class="error-input"><input type="text" name="new_username" placeholder="Username" id="new_username"></div>
+           <div class="error-input"><input type="password" name="new_password1" placeholder="New Password" id="new_password1"></div>
+           <div class="error-input"><input type="password" name="new_password2" placeholder="Confirm Password" id="new_password2"></div>
          </div>
          <div class="ky-change-button-container">
            <button type="submit">CHANGE</button>

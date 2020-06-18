@@ -6,16 +6,20 @@ class CustomerOrder extends DataObject
     'customer_id' => '',
     'product_link' => '',
     'remark' => '',
+    'cupon_code' => '',
     'quantity' => '',
     'price' => '',
     'us_tax' => '',
-    'mm_tax' => '',
+    'shipping_cost' => '',
+    'first_exchange_rate' => '',
     'commission' => '',
     'product_weight' => '',
     'weight_cost' => '',
-    'exchange_rate' => '',
+    'mm_tax' => '',
+    'second_exchange_rate' => '',
+    'is_deliver' => '',
+    'delivery_fee' => '',
     'order_status' => '',
-    'product_shipping_status' => '',
     'has_viewed_admin' => '',
     'has_viewed_customer' => '',
     'created_date' => ''
@@ -129,23 +133,23 @@ class CustomerOrder extends DataObject
     }
   }
 
-#update for product_shipping_status
-  public function updateProductShippingStatus()
-  {
-    $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET product_shipping_status = :product_shipping_status, has_viewed_customer=0 WHERE id = :id';
-
-    try {
-      $st = $conn->prepare($sql);
-      $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
-      $st->bindValue(':product_shipping_status', $this->data['product_shipping_status'], PDO::PARAM_INT);
-      $st->execute();
-      parent::disconnect($conn);
-    } catch(PDOException $e) {
-      parent::disconnect($conn);
-      die('Query failed: ' . $e->getMessage());
-    }
-  }
+// #update for product_shipping_status
+//   public function updateProductShippingStatus()
+//   {
+//     $conn = parent::connect();
+//     $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET product_shipping_status = :product_shipping_status, has_viewed_customer=0 WHERE id = :id';
+// 
+//     try {
+//       $st = $conn->prepare($sql);
+//       $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
+//       $st->bindValue(':product_shipping_status', $this->data['product_shipping_status'], PDO::PARAM_INT);
+//       $st->execute();
+//       parent::disconnect($conn);
+//     } catch(PDOException $e) {
+//       parent::disconnect($conn);
+//       die('Query failed: ' . $e->getMessage());
+//     }
+//   }
 
 }
  ?>

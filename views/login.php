@@ -35,20 +35,24 @@ function displayLoginFrom($error_messages, $admin_account)
   </div>
   <form class="login-body" action="<?php echo URL ?>/views/login.php" method="post">
     <input type="hidden" name="action" value="login">
-    <input type="text" name="phone" placeholder="phone" id="phone-js" value="<?php echo isset($admin_account) ? $admin_account->getValueEncoded('phone') : ''?>">
-    <div class="login-pass">
-      <input type="password" name="password" placeholder="Password" id="password">
-      <span class="login-eye">
-        <i class="far fa-eye-slash close-eye"></i>
-        <i class="open-eye">
-          <div class="outer">
-          <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 3.50388C2.26035 1.61439 5.62484 -1.03088 9 3.50388C7.7621 5.38751 4.42905 8.0246 1 3.50388Z" stroke="black" stroke-width="0.8"/>
-          </svg>
-          <span class="inner"></span>
-          </div>
-        </i>
-      </span>
+    <div class="error-input">
+      <input type="text" name="phone" placeholder="Phone" id="phone-js" value="<?php echo isset($admin_account) ? $admin_account->getValueEncoded('phone') : ''?>">
+    </div>
+    <div class="error-input">
+      <div class="login-pass">
+        <input type="password" name="password" placeholder="Password" id="password">
+        <span class="login-eye">
+          <i class="far fa-eye-slash close-eye"></i>
+          <i class="open-eye">
+            <div class="outer">
+            <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 3.50388C2.26035 1.61439 5.62484 -1.03088 9 3.50388C7.7621 5.38751 4.42905 8.0246 1 3.50388Z" stroke="black" stroke-width="0.8"/>
+            </svg>
+            <span class="inner"></span>
+            </div>
+          </i>
+        </span>
+      </div>
     </div>
     <input type="submit" id="login" name="" value="Login">
   </form>
