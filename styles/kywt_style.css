@@ -965,6 +965,7 @@ nav::before{
 }
 
 .wp-req-pass-table tbody tr td{
+  font-size: 0.9em;
   color: #333;
   letter-spacing: 0.5px;
   padding: 8px 0;
