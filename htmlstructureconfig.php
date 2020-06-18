@@ -7,14 +7,14 @@ function displayPageHeader($page_title, $dir_level=false)
       <meta charset="utf-8">
       <title><?php echo $page_title ?></title>
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/reset.css">
-      <link href="https://fonts.googleapis.com/css2?family=Lato&family=Laila&family=Alegreya+Sans&display=swap" rel="stylesheet"> 
+      <link href="https://fonts.googleapis.com/css2?family=Lato&family=Laila&family=Alegreya+Sans&display=swap" rel="stylesheet">
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.13.0/css/all.css'>
       <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/<?php echo $dir_level ? 'login.css' : 'config.css'?>">
       <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
 
-      <script>window.jQuery || document.write('<script src="<?php echo FILE_URL ?>/scripts/jquery-3.4.1.min.js"><\/script>')</script>
+      <script>window.jQuery || document.write('<script src="<?php echo FILE_URL ?>/scripts/jquery-3olor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non .4.1.min.js"><\/script>')</script>
       <script>
         var PAGE_URL = '<?php echo URL ?>';
         var PAGE_FILE_URL = '<?php echo FILE_URL ?>';
