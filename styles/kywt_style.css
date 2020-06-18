@@ -631,13 +631,13 @@ nav::before{
 }
 
 .ky-info-container span:first-child{
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
   transition: 0.3s ease;
 }
 
 .ky-info-container span:last-child{
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: #777;
   letter-spacing: 0.5px;
   transition: 0.3s ease;
@@ -868,7 +868,7 @@ nav::before{
 }
 
 .wp-exchange-rate{
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Laila', sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -884,11 +884,11 @@ nav::before{
 }
 
 #mmk-rate input{
+  font-family: 'Laila', sans-serif;
   color: #555;
   display: inline-block;
   width: 56px;
   padding: 4px;
-  background-color: white;
   border-radius: 5px;
   border: 1px dotted #555;
   font-weight: bold;
