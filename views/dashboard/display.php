@@ -99,7 +99,7 @@ displayMainNavigation('dashboard');
           <div id="wp-exc-rate">
             <div class="wp-exchange-rate">
               <?php $rate = ExchangeRate::getLatestExchangeRate(); ?>
-              <span>1&nbsp;<i class="fas fa-dollar-sign"></i></span>
+              <span>1&nbsp;$</span>
               <span id="wp-exchange-icon"><i class="fas fa-exchange-alt"></i></span>
               <span id="mmk-rate"><input id="mmk" type="text" name="" value="<?php echo $rate->getValueEncoded('mmk') ?>" disabled="disabled"><span id="exc-mmk">MMK</span></span>
             </div>
