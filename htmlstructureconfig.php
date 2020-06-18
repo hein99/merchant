@@ -14,7 +14,7 @@ function displayPageHeader($page_title, $dir_level=false)
       <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
 
-      <script>window.jQuery || document.write('<script src="<?php echo FILE_URL ?>/scripts/jquery-3.4.1.min.js"><\/script>')</script>
+      <script>window.jQuery || document.write('<script src="<?php echo FILE_URL ?>/scripts/jquery-3olor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non .4.1.min.js"><\/script>')</script>
       <script>
         var PAGE_URL = '<?php echo URL ?>';
         var PAGE_FILE_URL = '<?php echo FILE_URL ?>';
