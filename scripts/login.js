@@ -45,4 +45,12 @@ $(function(){
       password: "required"
     }
   });
+
+  $('#password').focus(function(){
+    $('.login-eye').css('background-color', '#dfdfdf');
+  });
+
+  $('#password').blur(function(){
+    $('.login-eye').css('background-color', '#efefef');
+  });
 });

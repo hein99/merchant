@@ -91,6 +91,10 @@ input, textarea{
 .ky-user-content .fa-caret-down{
   font-size: 20px;
   transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
 }
 
 .ky-user-content .fa-caret-down.dropdown{
@@ -113,6 +117,10 @@ input, textarea{
   padding: 5px 10px;
   box-sizing: border-box;
   transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
 }
 
 .ky-logout-dropdown-menu.dropdown{
@@ -130,6 +138,10 @@ input, textarea{
   padding: 18px 10px;
   color: #777;
   transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
 }
 
 .ky-logout-dropdown-menu a:first-child:hover{
@@ -144,6 +156,10 @@ input, textarea{
   float: right;
   font-size: 14px;
   transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
 }
 
 .ky-logout-dropdown-menu a:hover i{
@@ -164,6 +180,10 @@ input, textarea{
   align-items: center;
   border-left: 10px solid white;
   transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
 }
 
 .ky-sidemenu-list li > span{
@@ -238,7 +258,7 @@ nav::before{
 
 .ky-account-configure-form > div span{
   text-align: center;
-  font-size: 0.9em;
+  font-size: 1.2em;
   margin-bottom: 15px; // left to reconfigure
 }
 
@@ -247,7 +267,7 @@ nav::before{
   position: relative;
   border: 2px solid #dddddd;
   border-bottom: none;
-  padding: 25px;
+  padding: 28px;
 }
 
 .ky-current-account-container{
@@ -270,19 +290,58 @@ nav::before{
 .ky-account-configure-form input{
   display: block;
   width: 180px;
-  height: 35px;
+  height: 100%;
   color: #000000;
   background-color: #EFEFEF;
   text-align: center;
 	border-radius: 7px;
-	margin-bottom: 20px;
 	padding: 0 9px;
 	box-sizing: border-box;
   border: none;
 }
 
-.ky-new-account-container input:last-child{
+.ky-current-account-container .error-input,
+.ky-new-account-container .error-input{
+  position: relative;
+  width: 180px;
+  height: 35px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.ky-create-customer-form .error-input{
+  position: relative;
+  width: 90%;
+  height: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ky-create-customer-form .error-textarea{
+  height: 52px;
+}
+
+.error-input:last-child{
   margin-bottom: 0;
+}
+
+.ky-current-account-container .error-input label.error,
+.ky-new-account-container .error-input label.error{
+  width: calc(100% + 52px);
+  position: absolute;
+  top: -16px;
+  left: -26px;
+  color: #EA2027;
+  font-size: 0.8em;
+}
+
+.ky-create-customer-form .error-input label.error{
+  width: calc(100% + 52px);
+  position: absolute;
+  top: -14px;
+  left: -26px;
+  color: #EA2027;
+  font-size: 0.8em;
 }
 
 .ky-change-button-container button{
@@ -297,6 +356,10 @@ nav::before{
   font-weight: bold;
   letter-spacing: 0.5px;
   transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
 }
 
 .ky-change-button-container button:hover,
@@ -471,6 +534,10 @@ nav::before{
   font-weight: bold;
   letter-spacing: 0.5px;
   transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
 }
 
 .memberships:hover div:first-child{
@@ -491,6 +558,10 @@ nav::before{
   justify-content: center;
   align-items: center;
   transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
 }
 
 .memberships:hover .ky-membership-icons-container span{
@@ -499,7 +570,6 @@ nav::before{
 
 .ky-membership-icons-container span:nth-child(1){
   background-color: #C0BFDF;
-  z-index: 1;
 }
 
 .ky-membership-icons-container span:nth-child(2){
@@ -515,17 +585,25 @@ nav::before{
 }
 
 #membership-hover{
-  box-shadow: 0 0 0 0 #FDD600;
+  box-shadow: 0 0 0 0 #C0BFDF;
   transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
 }
 
 .memberships:hover #membership-hover{
-  box-shadow: 0 0 0 200px #FDD600;
+  box-shadow: 0 0 0 200px #C0BFDF;
 }
 
 .ky-membership-icons-container span i{
   color: white;
   transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
 }
 
 .memberships:hover .ky-membership-icons-container span:nth-child(1) i{
@@ -562,6 +640,10 @@ nav::before{
   justify-content: center;
   align-items: center;
   transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
 }
 
 .ky-customer-icon span{
@@ -593,16 +675,24 @@ nav::before{
 }
 
 .ky-info-container span:first-child{
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
   transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
 }
 
 .ky-info-container span:last-child{
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: #777;
   letter-spacing: 0.5px;
   transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
 }
 
 #customers_count{
@@ -648,7 +738,7 @@ nav::before{
   font-size: 1.2em;
   color: #555;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .ky-create-customer-form{
@@ -658,15 +748,14 @@ nav::before{
 }
 
 .ky-create-customer-form input, .ky-create-customer-form textarea{
-  display: inline-block;
-  width: 90%;
-  height: 34px;
+  display: block;
+  width: 100%;
+  height: 100%;
   color: #000000;
-  font-size: 0.85em;
+  font-size: 0.9em;
   background-color: #f5f5f5;
   text-align: center;
 	border-radius: 5px;
-	margin-bottom: 12px;
 	padding: 6px 12px;
 	box-sizing: border-box;
   border: none;
@@ -679,16 +768,24 @@ nav::before{
   font-weight: bold;
   letter-spacing: 0.5px;
   transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
 }
 
 .ky-create-customer-form textarea{
-  min-height: 64px;
-  max-height: 64px;
+  min-height: 100%;
+  max-height: 100%;
   resize: none;
   letter-spacing: 0.1px;
 }
 
-.dashboard-form-container div:nth-child(2){
+.ky-create-customer-form input[type="submit"]{
+  width: 90%;
+}
+
+.new-customer-form-circle1{
   position: absolute;
   width: 95px;
   height: 95px;
@@ -700,7 +797,7 @@ nav::before{
   opacity: 0.6;
 }
 
-.dashboard-form-container div:nth-child(3){
+.new-customer-form-circle2{
   position: absolute;
   width: 159px;
   height: 159px;
@@ -712,7 +809,7 @@ nav::before{
   opacity: 0.9;
 }
 
-.dashboard-form-container div:nth-child(4){
+.new-customer-form-circle3{
   position: absolute;
   width: 254px;
   height: 254px;
@@ -765,6 +862,10 @@ nav::before{
   box-shadow: 0 0 5px #ddd;
   cursor: pointer;
   transition: 0.1s ease;
+  -webkit-transition: 0.1s ease;
+  -moz-transition: 0.1s ease;
+  -ms-transition: 0.1s ease;
+  -o-transition: 0.1s ease;
 }
 
 .done-edit{
@@ -778,6 +879,10 @@ nav::before{
   transform: translate(-50%, -50%);
   font-size: 0.8em;
   transition: 0.1s ease;
+  -webkit-transition: 0.1s ease;
+  -moz-transition: 0.1s ease;
+  -ms-transition: 0.1s ease;
+  -o-transition: 0.1s ease;
 }
 
 .edit-rate{
@@ -827,7 +932,7 @@ nav::before{
 }
 
 .wp-exchange-rate{
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Laila', sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -843,11 +948,11 @@ nav::before{
 }
 
 #mmk-rate input{
+  font-family: 'Laila', sans-serif;
   color: #555;
   display: inline-block;
   width: 56px;
   padding: 4px;
-  background-color: white;
   border-radius: 5px;
   border: 1px dotted #555;
   font-weight: bold;
@@ -924,6 +1029,7 @@ nav::before{
 }
 
 .wp-req-pass-table tbody tr td{
+  font-size: 0.9em;
   color: #333;
   letter-spacing: 0.5px;
   padding: 8px 0;
@@ -1118,11 +1224,19 @@ div.ky-diamond-icon > .fa-gem{
 .btn-save-text-js:hover{
   background-color: #07678c;
   transition: all 300ms ease;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
 }
 
 .btn-cancel-text-js:hover{
   background-color: #CA2A19;
   transition: all 300ms ease;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
 }
 
 .btn-cancel-text-js{
