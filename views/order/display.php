@@ -27,19 +27,15 @@ displayMainNavigation('order');
          <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;Link</th>
          <th>Remark</th>
+         <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[$]</th>
-         <th>Product&nbsp;Weight[Kg]</th>
-         <th>Weight&nbsp;Cost[$]</th>
-         <th>SubTotal[$]</th>
-         <th>MM&nbsp;Tax[%]</th>
-         <th>US&nbsp;Tax[%]</th>
-         <th>Commission[%]</th>
-         <th>Total&nbsp;Amount[$]</th>
-         <th>Exchange&nbsp;Rate</th>
-         <th>Total&nbsp;Amount[MMK]</th>
+         <th>US&nbsp;Tax[$]</th>
+         <th>Shipping&nbsp;Cost[$]</th>
+         <th>First&nbsp;Payment&nbsp;Dollar</th>
+         <th>First&nbsp;Exchange&nbsp;Rate</th>
+         <th>First&nbsp;Payment&nbsp;MMK</th>
          <th>Order&nbsp;Status</th>
-         <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </thead>
    </table>
@@ -51,24 +47,20 @@ displayMainNavigation('order');
          <th>Customer&nbsp;Name</th>
          <th>Product&nbsp;Link</th>
          <th>Remark</th>
+         <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[$]</th>
-         <th>Product&nbsp;Weight[Kg]</th>
-         <th>Weight&nbsp;Cost[$]</th>
-         <th>SubTotal[$]</th>
-         <th>MM&nbsp;Tax[%]</th>
-         <th>US&nbsp;Tax[%]</th>
-         <th>Commission[%]</th>
-         <th>Total&nbsp;Amount[$]</th>
-         <th>Exchange&nbsp;Rate</th>
-         <th>Total&nbsp;Amount[MMK]</th>
+         <th>US&nbsp;Tax[$]</th>
+         <th>Shipping&nbsp;Cost[$]</th>
+         <th>First&nbsp;Payment&nbsp;Dollar</th>
+         <th>First&nbsp;Exchange&nbsp;Rate</th>
+         <th>First&nbsp;Payment&nbsp;MMK</th>
          <th>Order&nbsp;Status</th>
-         <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </thead>
    </table>
 
-   <table id="tb-confirm-js">
+   <!-- <table id="tb-confirm-js">
      <thead>
        <tr>
          <th>Order&nbsp;Id</th>
@@ -114,7 +106,8 @@ displayMainNavigation('order');
          <th>Product&nbsp;Shipping&nbsp;Status</th>
        </tr>
      </thead>
-   </table>
+   </table> -->
+
     </div>
 </div>
 
