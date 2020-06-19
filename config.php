@@ -30,4 +30,15 @@ define('ERR_ACTION', 2);
 define('ERR_FORM', 3);
 define('ERR_URL', 4); // for URL query (i.e. http://localhost/merchat/order/get_orders?order_status=5) order_status does not contain 5.
 
+#Order status
+define('ORDER_STATUS_0', 'Request');
+define('ORDER_STATUS_1', 'Pending');
+define('ORDER_STATUS_2', 'Confirm');
+define('ORDER_STATUS_3', 'Shipping to US warehouse');
+define('ORDER_STATUS_4', 'Arrived at US warehouse');
+define('ORDER_STATUS_5', 'Shipping to Myanmar');
+define('ORDER_STATUS_6', 'Arrived at Myanmar');
+define('ORDER_STATUS_7', 'Complete');
+define('ORDER_STATUS_8', 'Cancel');
+
  ?>

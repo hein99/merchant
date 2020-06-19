@@ -1,5 +1,9 @@
+var has_order_tb = new Array(true, false, false, false, false, false, false, false);
 $(document).ready(function(){
   getTotalOrdersCount();
+
+  //hide all tables except from Request Table And request server For Request Table data by ajax
+  $('.order-tb-js').hide();
   $('#tb-request-js').DataTable( {
       "ajax": {
           "url": PAGE_URL + "/order/get_orders/?order_status=0",
@@ -21,228 +25,341 @@ $(document).ready(function(){
           { "data": "order_status" }
       ]
   } );
-  $('#tb-pending-js').DataTable( {
-      "ajax": {
-          "url": PAGE_URL + "/order/get_orders/?order_status=1",
-          "dataSrc": ""
-      },
-      "columns": [
-        { "data": "order_id" },
-        { "data": "customer_name"},
-        { "data": "product_link" },
-        { "data": "remark" },
-        { "data": "cupon_code" },
-        { "data": "quantity" },
-        { "data": "unit_price" },
-        { "data": "us_tax" },
-        { "data": "shipping_cost" },
-        { "data": "first_payment_dollar" },
-        { "data": "first_exchange_rate" },
-        { "data": "first_payment_mmk" },
-        { "data": "order_status" }
-      ]
-  } );
-  // $('#tb-confirm-js').DataTable( {
-  //     "ajax": {
-  //         "url": PAGE_URL + "/order/get_orders/?order_status=2",
-  //         "dataSrc": ""
-  //     },
-  //     "columns": [
-  //       { "data": "order_id" },
-  //       { "data": "customer_name"},
-  //       { "data": "product_link" },
-  //       { "data": "remark" },
-  //       { "data": "quantity" },
-  //       { "data": "unit_price" },
-  //       { "data": "product_weight" },
-  //       { "data": "weight_cost" },
-  //       { "data": "sub_total" },
-  //       { "data": "mm_tax" },
-  //       { "data": "us_tax" },
-  //       { "data": "commission" },
-  //       { "data": "total_amount_dollar" },
-  //       { "data": "exchange_rate" },
-  //       { "data": "total_amount_mmk" },
-  //       { "data": "order_status" },
-  //       { "data": "product_shipping_status" }
-  //     ]
-  // } );
-  // $('#tb-cancel-js').DataTable( {
-  //     "ajax": {
-  //         "url": PAGE_URL + "/order/get_orders/?order_status=3",
-  //         "dataSrc": ""
-  //     },
-  //     "columns": [
-  //       { "data": "order_id" },
-  //       { "data": "customer_name"},
-  //       { "data": "product_link" },
-  //       { "data": "remark" },
-  //       { "data": "quantity" },
-  //       { "data": "unit_price" },
-  //       { "data": "product_weight" },
-  //       { "data": "weight_cost" },
-  //       { "data": "sub_total" },
-  //       { "data": "mm_tax" },
-  //       { "data": "us_tax" },
-  //       { "data": "commission" },
-  //       { "data": "total_amount_dollar" },
-  //       { "data": "exchange_rate" },
-  //       { "data": "total_amount_mmk" },
-  //       { "data": "order_status" },
-  //       { "data": "product_shipping_status" }
-  //     ]
-  // } );
-
+  $('#tb-request-js').show().wrap('<div class="order-table-wrapper"></div>');
   $('#tb-request-js_wrapper').show();
-  $('#tb-pending-js_wrapper').hide();
-  $('#tb-confirm-js_wrapper').hide();
-  $('#tb-cancel-js_wrapper').hide();
 
-  $('.order-status-buttons button').on('click', function(){
-    $(this).addClass('active').siblings().removeClass('active');
-  });
-
-  $('.dataTable').wrap('<div class="order-table-wrapper"></div>');
 });
 
-$(document).on('click', '#btn-request-js', function(){
-  $('#tb-request-js_wrapper').show();
-  $('#tb-pending-js_wrapper').hide();
-  $('#tb-confirm-js_wrapper').hide();
-  $('#tb-cancel-js_wrapper').hide();
-});
-
-$(document).on('click', '#btn-pending-js', function(){
-  $('#tb-request-js_wrapper').hide();
-  $('#tb-pending-js_wrapper').show();
-  $('#tb-confirm-js_wrapper').hide();
-  $('#tb-cancel-js_wrapper').hide();
-});
-
-$(document).on('click', '#btn-confirm-js', function(){
-  $('#tb-request-js_wrapper').hide();
-  $('#tb-pending-js_wrapper').hide();
-  $('#tb-confirm-js_wrapper').show();
-  $('#tb-cancel-js_wrapper').hide();
-});
-
-$(document).on('click', '#btn-cancel-js', function(){
-  $('#tb-request-js_wrapper').hide();
-  $('#tb-pending-js_wrapper').hide();
-  $('#tb-confirm-js_wrapper').hide();
-  $('#tb-cancel-js_wrapper').show();
-});
-
-$(document).on('change', '.request-order-status-js', function(){
-  var text =$('option:selected', this).val();
-  switch(text)
+$(document).on('click', '.order-btn-js', function(){
+  var number = $(this).data('no');
+  switch(number)
   {
-    case 'pending':
-    if (confirm("Do you want to change order status(Pending)?\nAre you sure!")) {
-      changeOrderInfoRequest($(this));
-    } else {
-      $(this).val('request');
-    }
-    break;
-    case 'cancel':
-    if (confirm("Do you want to change order status(Cancel)?\nAre you sure!")) {
-      changeOrderStatus($(this), 3);
-    } else {
-      $(this).val('request');
-    }
-    break;
+    case 0:
+      $('.dataTable').parent().parent().hide();
+      $('#tb-request-js').parent().parent().show();
+      break;
+
+    case 1:
+      if(!has_order_tb[1])
+      {
+        $('#tb-pending-js').DataTable( {
+            "ajax": {
+                "url": PAGE_URL + "/order/get_orders/?order_status=1",
+                "dataSrc": ""
+            },
+            "columns": [
+              { "data": "order_id" },
+              { "data": "customer_name"},
+              { "data": "product_link" },
+              { "data": "remark" },
+              { "data": "cupon_code" },
+              { "data": "quantity" },
+              { "data": "unit_price" },
+              { "data": "us_tax" },
+              { "data": "shipping_cost" },
+              { "data": "first_payment_dollar" },
+              { "data": "first_exchange_rate" },
+              { "data": "first_payment_mmk" },
+              { "data": "order_status" }
+            ]
+        } );
+        $('#tb-pending-js').show().wrap('<div class="order-table-wrapper"></div>');
+        has_order_tb[1] = true;
+      }
+      $('.dataTable').parent().parent().hide();
+      $('#tb-pending-js').parent().parent().show();
+      break;
+
+    case 2:
+      if(!has_order_tb[2])
+      {
+        $('#tb-confirm-js').DataTable( {
+            "ajax": {
+                "url": PAGE_URL + "/order/get_orders/?order_status=2",
+                "dataSrc": ""
+            },
+            "columns": [
+              { "data": "order_id" },
+              { "data": "customer_name"},
+              { "data": "product_link" },
+              { "data": "remark" },
+              { "data": "cupon_code" },
+              { "data": "quantity" },
+              { "data": "unit_price" },
+              { "data": "us_tax" },
+              { "data": "shipping_cost" },
+              { "data": "first_payment_dollar" },
+              { "data": "first_exchange_rate" },
+              { "data": "first_payment_mmk" },
+              { "data": "order_status" }
+            ]
+        } );
+        $('#tb-confirm-js').show().wrap('<div class="order-table-wrapper"></div>');
+        has_order_tb[2] = true;
+      }
+      $('.dataTable').parent().parent().hide();
+      $('#tb-confirm-js').parent().parent().show();
+      break;
+
+    case 3:
+      if(!has_order_tb[3])
+      {
+        $('#tb-ship-to-us-js').DataTable( {
+            "ajax": {
+                "url": PAGE_URL + "/order/get_orders/?order_status=3",
+                "dataSrc": ""
+            },
+            "columns": [
+              { "data": "order_id" },
+              { "data": "customer_name"},
+              { "data": "product_link" },
+              { "data": "remark" },
+              { "data": "cupon_code" },
+              { "data": "quantity" },
+              { "data": "unit_price" },
+              { "data": "us_tax" },
+              { "data": "shipping_cost" },
+              { "data": "first_payment_dollar" },
+              { "data": "first_exchange_rate" },
+              { "data": "first_payment_mmk" },
+              { "data": "commission" },
+              { "data": "weight" },
+              { "data": "weight_cost" },
+              { "data": "mm_tax" },
+              { "data": "second_payment_dollar" },
+              { "data": "second_exchange_rate" },
+              { "data": "second_payment_mmk" },
+              { "data": "order_status" }
+            ]
+        } );
+        $('#tb-ship-to-us-js').show().wrap('<div class="order-table-wrapper"></div>');
+        has_order_tb[3] = true;
+      }
+      $('.dataTable').parent().parent().hide();
+      $('#tb-ship-to-us-js').parent().parent().show();
+      break;
+
+    case 4:
+      if(!has_order_tb[4])
+      {
+        $('#tb-arrived-at-us-js').DataTable( {
+            "ajax": {
+                "url": PAGE_URL + "/order/get_orders/?order_status=4",
+                "dataSrc": ""
+            },
+            "columns": [
+              { "data": "order_id" },
+              { "data": "customer_name"},
+              { "data": "product_link" },
+              { "data": "remark" },
+              { "data": "cupon_code" },
+              { "data": "quantity" },
+              { "data": "unit_price" },
+              { "data": "us_tax" },
+              { "data": "shipping_cost" },
+              { "data": "first_payment_dollar" },
+              { "data": "first_exchange_rate" },
+              { "data": "first_payment_mmk" },
+              { "data": "commission" },
+              { "data": "weight" },
+              { "data": "weight_cost" },
+              { "data": "mm_tax" },
+              { "data": "second_payment_dollar" },
+              { "data": "second_exchange_rate" },
+              { "data": "second_payment_mmk" },
+              { "data": "order_status" }
+            ]
+        } );
+        $('#tb-arrived-at-us-js').show().wrap('<div class="order-table-wrapper"></div>');
+        has_order_tb[4] = true;
+      }
+      $('.dataTable').parent().parent().hide();
+      $('#tb-arrived-at-us-js').parent().parent().show();
+      break;
+
+    case 5:
+      if(!has_order_tb[5])
+      {
+        $('#tb-ship-to-mm-js').DataTable( {
+            "ajax": {
+                "url": PAGE_URL + "/order/get_orders/?order_status=5",
+                "dataSrc": ""
+            },
+            "columns": [
+              { "data": "order_id" },
+              { "data": "customer_name"},
+              { "data": "product_link" },
+              { "data": "remark" },
+              { "data": "cupon_code" },
+              { "data": "quantity" },
+              { "data": "unit_price" },
+              { "data": "us_tax" },
+              { "data": "shipping_cost" },
+              { "data": "first_payment_dollar" },
+              { "data": "first_exchange_rate" },
+              { "data": "first_payment_mmk" },
+              { "data": "commission" },
+              { "data": "weight" },
+              { "data": "weight_cost" },
+              { "data": "mm_tax" },
+              { "data": "second_payment_dollar" },
+              { "data": "second_exchange_rate" },
+              { "data": "second_payment_mmk" },
+              { "data": "order_status" }
+            ]
+        } );
+        $('#tb-ship-to-mm-js').show().wrap('<div class="order-table-wrapper"></div>');
+        has_order_tb[5] = true;
+      }
+      $('.dataTable').parent().parent().hide();
+      $('#tb-ship-to-mm-js').parent().parent().show();
+      break;
+
+    case 6:
+      if(!has_order_tb[6])
+      {
+        $('#tb-arrived-at-mm-js').DataTable( {
+            "ajax": {
+                "url": PAGE_URL + "/order/get_orders/?order_status=6",
+                "dataSrc": ""
+            },
+            "columns": [
+              { "data": "order_id" },
+              { "data": "customer_name"},
+              { "data": "product_link" },
+              { "data": "remark" },
+              { "data": "cupon_code" },
+              { "data": "quantity" },
+              { "data": "unit_price" },
+              { "data": "us_tax" },
+              { "data": "shipping_cost" },
+              { "data": "first_payment_dollar" },
+              { "data": "first_exchange_rate" },
+              { "data": "first_payment_mmk" },
+              { "data": "commission" },
+              { "data": "weight" },
+              { "data": "weight_cost" },
+              { "data": "mm_tax" },
+              { "data": "second_payment_dollar" },
+              { "data": "second_exchange_rate" },
+              { "data": "second_payment_mmk" },
+              { "data": "delivery_fee" },
+              { "data": "order_status" }
+            ]
+        } );
+        $('#tb-arrived-at-mm-js').show().wrap('<div class="order-table-wrapper"></div>');
+        has_order_tb[6] = true;
+      }
+      $('.dataTable').parent().parent().hide();
+      $('#tb-arrived-at-mm-js').parent().parent().show();
+      break;
+
+    case 7:
+      if(!has_order_tb[7])
+      {
+        $('#tb-complete-js').DataTable( {
+            "ajax": {
+                "url": PAGE_URL + "/order/get_orders/?order_status=7",
+                "dataSrc": ""
+            },
+            "columns": [
+              { "data": "order_id" },
+              { "data": "customer_name"},
+              { "data": "product_link" },
+              { "data": "remark" },
+              { "data": "cupon_code" },
+              { "data": "quantity" },
+              { "data": "unit_price" },
+              { "data": "us_tax" },
+              { "data": "shipping_cost" },
+              { "data": "first_payment_dollar" },
+              { "data": "first_exchange_rate" },
+              { "data": "first_payment_mmk" },
+              { "data": "commission" },
+              { "data": "weight" },
+              { "data": "weight_cost" },
+              { "data": "mm_tax" },
+              { "data": "second_payment_dollar" },
+              { "data": "second_exchange_rate" },
+              { "data": "second_payment_mmk" },
+              { "data": "delivery_fee" },
+              { "data": "order_status" }
+            ]
+        } );
+        $('#tb-complete-js').show().wrap('<div class="order-table-wrapper"></div>');
+        has_order_tb[7] = true;
+      }
+      $('.dataTable').parent().parent().hide();
+      $('#tb-complete-js').parent().parent().show();
+      break;
+
+    case 8:
+      if(!has_order_tb[8])
+      {
+        $('#tb-cancel-js').DataTable( {
+            "ajax": {
+                "url": PAGE_URL + "/order/get_orders/?order_status=8",
+                "dataSrc": ""
+            },
+            "columns": [
+              { "data": "order_id" },
+              { "data": "customer_name"},
+              { "data": "product_link" },
+              { "data": "remark" },
+              { "data": "cupon_code" },
+              { "data": "quantity" },
+              { "data": "unit_price" },
+              { "data": "us_tax" },
+              { "data": "shipping_cost" },
+              { "data": "first_payment_dollar" },
+              { "data": "first_exchange_rate" },
+              { "data": "first_payment_mmk" },
+              { "data": "order_status" }
+            ]
+        } );
+        $('#tb-cancel-js').show().wrap('<div class="order-table-wrapper"></div>');
+        has_order_tb[8] = true;
+      }
+      $('.dataTable').parent().parent().hide();
+      $('#tb-cancel-js').parent().parent().show();
+      break;
   }
 });
 
-$(document).on('change', '.order-status-js', function(){
-  var text =$('option:selected', this).val();
-  switch(text)
-  {
-    case 'request':
-    if (confirm("Do you want to change order status(Request)?\nAre you sure!")) {
-      changeOrderStatus($(this), 0);
-    } else {
-      $(this).val('default');
-    }
-    break;
-    case 'cancel':
-    if (confirm("Do you want to change order status(Cancel)?\nAre you sure!")) {
-      changeOrderStatus($(this), 3);
-    } else {
-      $(this).val('default');
-    }
-    break;
-  }
-});
-
-$(document).on('change', '.product-shipping-status-js', function(){
-  var text =$('option:selected', this).val();
-  switch(text)
-  {
-    case 'undefined':
-    if (confirm("Do you want to change Product Shipping Status(Undefined)?\nAre you sure!")) {
-      changeProductShippingStatus($(this), 0);
-    } else {
-      $(this).val('default');
-    }
-    break;
-
-    case 'us_warehouse':
-    if (confirm("Do you want to change Product Shipping Status(US Warehouse)?\nAre you sure!")) {
-      changeProductShippingStatus($(this), 1);
-    } else {
-      $(this).val('default');
-    }
-    break;
-
-    case 'transit':
-    if (confirm("Do you want to change Product Shipping Status(Transit)?\nAre you sure!")) {
-      changeProductShippingStatus($(this), 2);
-    } else {
-      $(this).val('default');
-    }
-    break;
-
-    case 'arrived':
-    if (confirm("Do you want to change Product Shipping Status(Arrived)?\nAre you sure!")) {
-      changeProductShippingStatus($(this), 3);
-    } else {
-      $(this).val('default');
-    }
-    break;
-
-    case 'delivered':
-    if (confirm("Do you want to change Product Shipping Status(Delivered)?\nAre you sure!")) {
-      changeProductShippingStatus($(this), 4);
-    } else {
-      $(this).val('default');
-    }
-    break;
-  }
-});
-
-$(document).on('change', '.weight-js', function(){
-  var sub_total = calculateSubTotal($(this));
-  var total_dollar = calculateTotalDollar($(this), sub_total);
-  calculateTotalMMK($(this), total_dollar);
-});
-
-$(document).on('change', '.mm-tax-js', function(){
-  var sub_total = calculateSubTotal($(this));
-  var total_dollar = calculateTotalDollar($(this), sub_total);
-  calculateTotalMMK($(this), total_dollar);
+$(document).on('click', '.order-status-buttons button', function(){
+  $(this).addClass('active').siblings().removeClass('active');
 });
 
 $(document).on('change', '.us-tax-js', function(){
-  var sub_total = calculateSubTotal($(this));
-  var total_dollar = calculateTotalDollar($(this), sub_total);
-  calculateTotalMMK($(this), total_dollar);
+  changeFirstPayment($(this));
 });
 
-$(document).on('change', '.commission-js', function(){
-  var sub_total = calculateSubTotal($(this));
-  var total_dollar = calculateTotalDollar($(this), sub_total);
-  calculateTotalMMK($(this), total_dollar);
+$(document).on('change', '.us-shipping-cost-js', function(){
+  changeFirstPayment($(this));
+});
+
+$(document).on('change', '.us-shipping-cost-js', function(){
+  changeFirstPayment($(this));
+});
+
+$(document).on('change', '.percentage-js', function(){
+  changeSecondPayment($(this));
+});
+
+$(document).on('change', '.product-weight-js', function(){
+  changeSecondPayment($(this));
+});
+
+$(document).on('change', '.weight-cost-js', function(){
+  changeSecondPayment($(this));
+});
+
+$(document).on('change', '.mm-tax-js', function(){
+  changeSecondPayment($(this));
+});
+
+$(document).on('change', '.order-status-js', function(){
+  changeOrderStatus($(this));
 });
 
 
@@ -257,92 +374,229 @@ function getTotalOrdersCount()
   })
 }
 
-function calculateSubTotal(currentObj)
+function changeFirstPayment(selectedObj)
 {
-  var parent = currentObj.parent().parent();
-
+  var parent = selectedObj.parent().parent();
   var qty = $('.qty-js', parent).data('qty');
-  var unit_price = $('.uprice-js', parent).data('uprice');
-  var product_weight = $('.pweight-js', parent).data('pweight');
-  var weight_cost = currentObj.val();
-  var sub_total = (qty * unit_price)+(product_weight * weight_cost);
-  $('.sub-total-js', parent).html(currencyFormat(sub_total));
-  return sub_total;
-}
-
-function calculateTotalDollar(currentObj, sub_total)
-{
-  var parent = currentObj.parent().parent();
-
-  var mm_tax = Number($('.mm-tax-js', parent).val());
+  var price = $('.uprice-js', parent).data('uprice');
   var us_tax = Number($('.us-tax-js', parent).val());
-  var commission = Number($('.commission-js', parent).val());
+  var shipping_cost = Number($('.us-shipping-cost-js', parent).val());
+  var rate = $('.first-exchange-rate-js', parent).data('ferate');
 
-  var total_dollar = sub_total + ((mm_tax + us_tax + commission)/100)*sub_total;
-  $('.total-dollar-js', parent).html(currencyFormat(total_dollar));
-  return total_dollar;
+  var total_dollar = (qty * price) + us_tax + shipping_cost;
+  var total_mmk = total_dollar * rate;
+
+  $('.first-payment-dollar-js', parent).html(currencyFormat(total_dollar));
+  $('.first-payment-mmk-js', parent).html(currencyFormat(total_mmk));
 }
 
-function calculateTotalMMK(currentObj, total_dollar)
+function changeSecondPayment(selectedObj)
 {
-  var parent = currentObj.parent().parent();
+  var parent = selectedObj.parent().parent();
+  var first_payment = $('.first-payment-dollar-js', parent).data('fpayment')
+  var commission = Number($('.percentage-js', parent).val());
+  var weight = Number($('.product-weight-js', parent).val());
+  var weight_cost = Number($('.weight-cost-js', parent).val());
+  var mm_tax = Number($('.mm-tax-js', parent).val());
+  var rate = $('.second-exchange-rate-js', parent).data('serate');
+  var total_dollar = (first_payment * commission/100) + (weight * weight_cost) + (first_payment * mm_tax/100);
+  var total_mmk = total_dollar * rate;
 
-  var rate = Number($('.exchange-rate-js', parent).data('erate'));
-
-  $('.total-mmk-js', parent).html(currencyFormat(total_dollar * rate));
+  $('.second-payment-dollar-js', parent).html(currencyFormat(total_dollar));
+  $('.second-payment-mmk-js', parent).html(currencyFormat(total_mmk));
 }
 
-function changeOrderInfoRequest(currentObj)
+function currencyFormat(num)
 {
-  var parent = currentObj.parent().parent();
-
-  var id = currentObj.data('id');
-  var us_tax = $('.us-tax-js', parent).val();
-  var mm_tax = $('.mm-tax-js', parent).val();
-  var commission = $('.commission-js', parent).val();
-  var weight_cost = $('.weight-js', parent).val();
-
-  $.ajax({
-    method:"POST",
-    url: PAGE_URL+'/order/change_order_info',
-    data: {id: id, us_tax: us_tax, mm_tax: mm_tax, commission: commission, weight_cost: weight_cost, order_status: 1}
-  }).done(function(e){
-    parent.hide();
-    if(!$('.reload-notice').is(':visible'))
-      $('.reload-notice').show();
-  });
-}
-
-function changeOrderStatus(currentObj, order_status)
-{
-  var parent = currentObj.parent().parent();
-
-  var id = currentObj.data('id');
-  console.log('id: '+ id + ', order_status: '+ order_status)
-  $.ajax({
-    method:"POST",
-    url: PAGE_URL+'/order/change_order_status',
-    data: {id: id, order_status: order_status}
-  }).done(function(e){
-    parent.hide();
-    if(!$('.reload-notice').is(':visible'))
-      $('.reload-notice').show();
-  });
-}
-
-function changeProductShippingStatus(currentObj, product_shipping_status)
-{
-  var parent = currentObj.parent().parent();
-
-  var id = currentObj.data('id');
-  console.log('id: '+ id + ', product_shipping_status: '+ product_shipping_status)
-  $.ajax({
-    method:"POST",
-    url: PAGE_URL+'/order/change_product_status',
-    data: {id: id, product_shipping_status: product_shipping_status}
-  })
-}
-
-function currencyFormat(num) {
   return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
+
+function changeOrderStatus(selectedObj)
+{
+  var status = $('option:selected', selectedObj).val();
+  var order_id = selectedObj.data('id');
+  switch(status)
+  {
+    case 'no0':
+      if(confirm("Do you want to change order status(Request)?\nAre you sure!"))
+        changeJustOrderStaus(order_id, '0');
+      else
+        selectedObj.val('default');
+    break;
+
+    case 'no1':
+      var has_info = $('option:selected', selectedObj).data('has_info');
+      if(confirm("Do you want to change order status(Pending)?\nAre you sure!"))
+        if(has_info)
+          postFirstPaymentInfo(selectedObj);
+        else
+          changeJustOrderStaus(order_id, '1');
+      else
+        selectedObj.val('default');
+    break;
+
+    case 'no2':
+      if(confirm("Do you want to change order status(Confirm)?\nAre you sure!"))
+        changeJustOrderStaus(order_id, '2');
+      else
+        selectedObj.val('default');
+    break;
+
+    case 'no3':
+      if(confirm("Do you want to change order status(Shipping to US Warehouse)?\nAre you sure!"))
+        changeJustOrderStaus(order_id, '3');
+      else
+        selectedObj.val('default');
+    break;
+
+    case 'no4':
+      var has_info = $('option:selected', selectedObj).data('has_info');
+      if(confirm("Do you want to change order status(Arrived at US Warehouse)?\nAre you sure!"))
+        if(has_info)
+          postSecondPaymentInfo(selectedObj);
+        else
+          changeJustOrderStaus(order_id, '4');
+      else
+        selectedObj.val('default');
+    break;
+
+    case 'no5':
+      if(confirm("Do you want to change order status(Shipping to Myanmar)?\nAre you sure!"))
+        changeJustOrderStaus(order_id, '5');
+      else
+        selectedObj.val('default');
+    break;
+
+    case 'no6':
+      if(confirm("Do you want to change order status(Arrived at Myanmar)?\nAre you sure!"))
+        changeJustOrderStaus(order_id, '6');
+      else
+        selectedObj.val('default');
+    break;
+
+    case 'no7':
+      var has_info = $('option:selected', selectedObj).data('has_info');
+      if(confirm("Do you want to change order status(Complete)?\nAre you sure!"))
+        if(has_info)
+          postThirdPaymentInfo(selectedObj);
+        else
+          changeJustOrderStaus(order_id, '7');
+      else
+        selectedObj.val('default');
+    break;
+
+    case 'no8':
+      if(confirm("Do you want to change order status(Cancel)?\nAre you sure!"))
+        changeJustOrderStaus(order_id, '8');
+      else
+        selectedObj.val('default');
+    break;
+
+  }
+}
+
+function changeJustOrderStaus(id, order_status)
+{
+  $.ajax({
+    method: 'POST',
+    url: PAGE_URL+'/order/change_order_status/',
+    data: {id: id, order_status: order_status}
+  });
+}
+
+function postFirstPaymentInfo(selectedObj)
+{
+  var parent = selectedObj.parent().parent();
+  var id = selectedObj.data('id');
+  var us_tax = $('.us-tax-js', parent).val();
+  var shipping_cost = $('.us-shipping-cost-js', parent).val();
+  $.ajax({
+    method: 'POST',
+    url: PAGE_URL+'/order/change_first_payment_info/',
+    data: {id: id, us_tax: us_tax, shipping_cost: shipping_cost}
+  });
+}
+
+function postSecondPaymentInfo(selectedObj)
+{
+  var parent = selectedObj.parent().parent();
+  var id = selectedObj.data('id');
+  var commission = $('.percentage-js', parent).val();
+  var weight = $('.product-weight-js', parent).val();
+  var weight_cost = $('.weight-cost-js', parent).val();
+  var mm_tax = $('.mm-tax-js', parent).val();
+  $.ajax({
+    method: 'POST',
+    url: PAGE_URL+'/order/change_second_payment_info/',
+    data: {id: id, commission: commission, product_weight: weight, weight_cost: weight_cost, mm_tax: mm_tax}
+  });
+}
+
+function postThirdPaymentInfo(selectedObj)
+{
+  var parent = selectedObj.parent().parent();
+  var id = selectedObj.data('id');
+  var delivery_fee = $('.deli-fee-js', parent).val();
+  $.ajax({
+    method: 'POST',
+    url: PAGE_URL+'/order/change_third_payment_info/',
+    data: {id: id, delivery_fee: delivery_fee},
+    succeess: function(e){
+      console.log(e);
+    }
+  }).done(function(e){
+    console.log(e);
+  });
+}
+////////////////////////////////////////////////////////////////////////
+
+// function changeOrderInfoRequest(currentObj)
+// {
+//   var parent = currentObj.parent().parent();
+//
+//   var id = currentObj.data('id');
+//   var us_tax = $('.us-tax-js', parent).val();
+//   var mm_tax = $('.mm-tax-js', parent).val();
+//   var commission = $('.commission-js', parent).val();
+//   var weight_cost = $('.weight-js', parent).val();
+//
+//   $.ajax({
+//     method:"POST",
+//     url: PAGE_URL+'/order/change_order_info',
+//     data: {id: id, us_tax: us_tax, mm_tax: mm_tax, commission: commission, weight_cost: weight_cost, order_status: 1}
+//   }).done(function(e){
+//     parent.hide();
+//     if(!$('.reload-notice').is(':visible'))
+//       $('.reload-notice').show();
+//   });
+// }
+
+// function changeOrderStatus(currentObj, order_status)
+// {
+//   var parent = currentObj.parent().parent();
+//
+//   var id = currentObj.data('id');
+//   console.log('id: '+ id + ', order_status: '+ order_status)
+//   $.ajax({
+//     method:"POST",
+//     url: PAGE_URL+'/order/change_order_status',
+//     data: {id: id, order_status: order_status}
+//   }).done(function(e){
+//     parent.hide();
+//     if(!$('.reload-notice').is(':visible'))
+//       $('.reload-notice').show();
+//   });
+// }
+//
+// function changeProductShippingStatus(currentObj, product_shipping_status)
+// {
+//   var parent = currentObj.parent().parent();
+//
+//   var id = currentObj.data('id');
+//   console.log('id: '+ id + ', product_shipping_status: '+ product_shipping_status)
+//   $.ajax({
+//     method:"POST",
+//     url: PAGE_URL+'/order/change_product_status',
+//     data: {id: id, product_shipping_status: product_shipping_status}
+//   })
+// }

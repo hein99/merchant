@@ -93,20 +93,54 @@ class CustomerOrder extends DataObject
     }
   }
 
-#update for us_tax, mm_tax, commission, weight_cost, order_status
-  public function updateInformation()
+
+  public function updateFirstPaymentInfo()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET us_tax = :us_tax, mm_tax = :mm_tax, commission = :commission, weight_cost = :weight_cost, order_status = :order_status WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET us_tax = :us_tax, shipping_cost = :shipping_cost, order_status = 1 WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
       $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
       $st->bindValue(':us_tax', $this->data['us_tax']);
-      $st->bindValue(':mm_tax', $this->data['mm_tax']);
+      $st->bindValue(':shipping_cost', $this->data['shipping_cost']);
+      $st->execute();
+      parent::disconnect($conn);
+    } catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+
+  public function updateSecondPaymentInfo()
+  {
+    $conn = parent::connect();
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET commission = :commission, product_weight = :product_weight, weight_cost = :weight_cost, mm_tax = :mm_tax, order_status = 4 WHERE id = :id';
+
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
       $st->bindValue(':commission', $this->data['commission']);
+      $st->bindValue(':product_weight', $this->data['product_weight']);
       $st->bindValue(':weight_cost', $this->data['weight_cost']);
-      $st->bindValue(':order_status', $this->data['order_status'], PDO::PARAM_INT);
+      $st->bindValue(':mm_tax', $this->data['mm_tax']);
+      $st->execute();
+      parent::disconnect($conn);
+    } catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+
+  public function updateThirdPaymentInfo()
+  {
+    $conn = parent::connect();
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET delivery_fee = :delivery_fee, order_status = 7 WHERE id = :id';
+
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
+      $st->bindValue(':delivery_fee', $this->data['delivery_fee']);
       $st->execute();
       parent::disconnect($conn);
     } catch(PDOException $e) {
@@ -119,7 +153,7 @@ class CustomerOrder extends DataObject
   public function updateOrderStatus()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET order_status = :order_status, product_shipping_status = 0, has_viewed_customer=0 WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET order_status = :order_status, has_viewed_admin=0, has_viewed_customer=0 WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
@@ -133,23 +167,6 @@ class CustomerOrder extends DataObject
     }
   }
 
-// #update for product_shipping_status
-//   public function updateProductShippingStatus()
-//   {
-//     $conn = parent::connect();
-//     $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET product_shipping_status = :product_shipping_status, has_viewed_customer=0 WHERE id = :id';
-// 
-//     try {
-//       $st = $conn->prepare($sql);
-//       $st->bindValue(':id', $this->data['id'], PDO::PARAM_INT);
-//       $st->bindValue(':product_shipping_status', $this->data['product_shipping_status'], PDO::PARAM_INT);
-//       $st->execute();
-//       parent::disconnect($conn);
-//     } catch(PDOException $e) {
-//       parent::disconnect($conn);
-//       die('Query failed: ' . $e->getMessage());
-//     }
-//   }
 
 }
  ?>
