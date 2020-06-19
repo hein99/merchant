@@ -9,12 +9,13 @@
       'messages' => '',
       'is_image' => '',
       'arrived_time' => '',
-      'status' => ''
+      'admin_has_viewed' => '',
+      'customer_has_viewed' => ''
     );
 
     public static function getAllNewMessagesCount($id){
       $conn = parent::connect();
-      $sql = 'SELECT COUNT(*) FROM ' . TBL_MESSAGE_RECORD . ' WHERE to_user_id = :id AND status = 0';
+      $sql = 'SELECT COUNT(*) FROM ' . TBL_MESSAGE_RECORD . ' WHERE to_user_id = :id AND admin_has_viewed = 0';
 
       try {
         $st = $conn->prepare($sql);
@@ -54,8 +55,8 @@
     public static function getNewMessage($from_user_id, $to_user_id)
     {
       $conn = parent::connect();
-      $sql = 'SELECT * FROM '.TBL_MESSAGE_RECORD.' WHERE (from_user_id = :from_user_id AND to_user_id = :to_user_id AND status = 0)
-              OR (from_user_id = :to_user_id AND to_user_id = :from_user_id AND status = 0)
+      $sql = 'SELECT * FROM '.TBL_MESSAGE_RECORD.' WHERE (from_user_id = :from_user_id AND to_user_id = :to_user_id AND admin_has_viewed = 0)
+              OR (from_user_id = :to_user_id AND to_user_id = :from_user_id AND admin_has_viewed = 0)
               ORDER BY arrived_time ASC';
       try {
         $st = $conn->prepare($sql);
@@ -77,8 +78,8 @@
     public function addMessage()
     {
       $conn = parent::connect();
-      $sql = 'INSERT INTO '.TBL_MESSAGE_RECORD.' (to_user_id, from_user_id, messages, is_image, arrived_time, status)
-              VALUES (:to_user_id, :from_user_id, :messages, :is_image, NOW(), 0)';
+      $sql = 'INSERT INTO '.TBL_MESSAGE_RECORD.' (to_user_id, from_user_id, messages, is_image, arrived_time, admin_has_viewed, customer_has_viewed)
+              VALUES (:to_user_id, :from_user_id, :messages, :is_image, NOW(), 0, 0)';
       try {
         $st = $conn->prepare($sql);
         $st->bindValue(':to_user_id', $this->data['to_user_id'], PDO::PARAM_INT);
@@ -97,7 +98,7 @@
     public static function countUnseenMessage($from_user_id, $to_user_id)
     {
       $conn = parent::connect();
-      $sql = 'SELECT COUNT(*) FROM '.TBL_MESSAGE_RECORD.' WHERE from_user_id = :from_user_id AND to_user_id = :to_user_id AND status = 0';
+      $sql = 'SELECT COUNT(*) FROM '.TBL_MESSAGE_RECORD.' WHERE from_user_id = :from_user_id AND to_user_id = :to_user_id AND admin_has_viewed = 0';
       try {
         $st = $conn->prepare($sql);
         $st->bindValue(':from_user_id', $from_user_id, PDO::PARAM_INT);
@@ -128,7 +129,7 @@
     public static function updateMessageStatus($from_user_id, $to_user_id)
     {
       $conn = parent::connect();
-      $sql = 'UPDATE '.TBL_MESSAGE_RECORD.' SET status = 1 WHERE (from_user_id = :from_user_id AND to_user_id = :to_user_id)
+      $sql = 'UPDATE '.TBL_MESSAGE_RECORD.' SET admin_has_viewed = 1 WHERE (from_user_id = :from_user_id AND to_user_id = :to_user_id)
               OR (from_user_id = :to_user_id AND to_user_id = :from_user_id)';
       try {
         $st = $conn->prepare($sql);
