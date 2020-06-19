@@ -90,10 +90,7 @@ function getActiveUsers()
       $return_active_users[]= $login_record->getValue('user_id');
     }
   }
-  // echo json_encode($return_active_users);
-
-  #fake response
-  echo json_encode(array(4, 6));
+  echo json_encode($return_active_users);
 }
 
 function gettypingUsers()
@@ -105,9 +102,6 @@ function gettypingUsers()
     $return_typing_users[]= $login_record->getValue('user_id');
   }
   echo json_encode($return_typing_users);
-
-  // #fake response
-  // echo json_encode(array(4, 6));
 }
 
 function getEachNewMessagesCount()
@@ -126,9 +120,6 @@ function getEachNewMessagesCount()
     }
   }
   echo json_encode($eachNewMessages);
-
-  #fake response
-  // echo json_encode(array(array('from_user_id' => 4, 'messages_count' => 5), array('from_user_id' => 6, 'messages_count' => 10)));
 }
 
 function getAllMessagesByCustomerId($id)
