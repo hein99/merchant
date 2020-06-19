@@ -90,10 +90,10 @@ function getActiveUsers()
       $return_active_users[]= $login_record->getValue('user_id');
     }
   }
-  // echo json_encode($return_active_users);
+  echo json_encode($return_active_users);
 
   #fake response
-  echo json_encode(array(4, 6));
+  // echo json_encode(array(4, 6));
 }
 
 function gettypingUsers()
