@@ -176,13 +176,14 @@ function getNewMessagesByCustomerId($id)
 
 function changeTypingById()
 {
-  $required_fields = array('user_id', 'is_type');
+  $required_fields = array('user_id', 'is_type', 'to_whom_id');
   $missing_fields = array();
   $error_messages = array();
 
   $login_record = new LoginRecord(array(
     'user_id' => $_SESSION['merchant_admin_account']->getValue('id'),
-    'is_type' => isset($_POST['is_type']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['is_type']) : ''
+    'is_type' => isset($_POST['is_type']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['is_type']) : '',
+    'to_whom_id' => isset($_POST['to_whom_id']) ? preg_replace('/[^.\ \-\_a-zA-Z0-9]/', '', $_POST['to_whom_id']) : ''
   ));
 
   foreach($required_fields as $required_field)

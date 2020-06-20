@@ -21,19 +21,23 @@ $(document).ready(function(){
 
 $(document).on('focus', '.chat_message', function(){
   var is_type = 'yes';
+  var to_whom_id = document.getElementById("to_user_id").value;
+  console.log(to_whom_id);
   $.ajax({
     url: PAGE_URL+'/conversation/change_typing_by_id',
     method: "POST",
-    data: {is_type:is_type}
+    data: {is_type:is_type, to_whom_id:to_whom_id}
   })
 });
 
 $(document).on('blur', '.chat_message', function(){
   var is_type = 'no';
+  var to_whom_id = document.getElementById("to_user_id").value;
+  console.log(to_whom_id);
   $.ajax({
     url: PAGE_URL+'/conversation/change_typing_by_id',
     method: "POST",
-    data: {is_type:is_type}
+    data: {is_type:is_type, to_whom_id:to_whom_id}
   })
 });
 
@@ -186,7 +190,7 @@ function makeChatBox(to_user_id, to_user_name)
   content += '<div class="wp-conversation-message-container">';
   content += '<label id="wp-send-photo" for="uploadFile"><img src="'+PAGE_FILE_URL+'/logos/photo.png" class="upload_image_logo"/></label><textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="chat_message"></textarea>';
   content += '<form id="uploadForm" action="" method="post" enctype="multipart/form-data"><img src="'+PAGE_FILE_URL+'/logos/image-preview.png" id="preview" class="img-thumbnail">';
-  content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'"><br>';
+  content += '<input type="hidden" name="to_user_id" placeholder="To User ID" value="'+to_user_id+'" id="to_user_id"><br>';
   content += '<input type="file" name="photo" id="uploadFile" accept="image/*" />';
   content += '<div id="send_photo_button_container"><input type="button" value="Send Photo" name="send_photo" id="btn_send" /><input type="button" value="Cancel" name="cancel_photo" id="cancel_send" /></div></form>';
   content += '<button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat">Send</button></div></div>';
