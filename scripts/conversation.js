@@ -1,3 +1,13 @@
+window.onbeforeunload = function(event) {
+  var is_type = 'no';
+  var to_whom_id = document.getElementById("to_user_id").value;
+  console.log(to_whom_id);
+  $.ajax({
+    url: PAGE_URL+'/conversation/change_typing_by_id',
+    method: "POST",
+    data: {is_type:is_type, to_whom_id:to_whom_id}
+  })
+};
 $(document).ready(function(){
   // User Lists
   getAllChatUsers();
