@@ -20,7 +20,6 @@ displayMainNavigation('order');
         <button type="button" name="button" data-no="7" class="order-btn-js"><?php echo ORDER_STATUS_7 ?></button>
         <button type="button" name="button" data-no="8" class="order-btn-js"><?php echo ORDER_STATUS_8 ?></button>
     </div>
-    <div class="reload-notice" style="display: none;">Please reload the page for update order list</div><!-- not display at initial -->
     <div id="extra"></div>
 </div>
 

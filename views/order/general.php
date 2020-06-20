@@ -136,13 +136,12 @@ function ordersJsonReturn($orders, $order_status)
     case 4:
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
-        $current_rate = ExchangeRate::getLatestExchangeRate();
 
         $first_payment_dollar = ($order['quantity']*$order['price']) + $order['us_tax'] + $order['shipping_cost'];
         $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
 
         $second_payment_dollar = ($first_payment_dollar*$order['commission']/100) + ($order['product_weight']*$order['weight_cost']) + ($first_payment_dollar*$order['mm_tax']/100) ;
-        $second_payment_mmk = $second_payment_dollar * $current_rate->getValue('mmk');
+        $second_payment_mmk = $second_payment_dollar * $order['second_exchange_rate'];
 
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
@@ -164,7 +163,7 @@ function ordersJsonReturn($orders, $order_status)
           'mm_tax' => $order['mm_tax'] . '&nbsp;%',
 
           'second_payment_dollar' => number_format($second_payment_dollar, 2) . '&nbsp;$',
-          'second_exchange_rate' => number_format($current_rate->getValue('mmk'), 2) . '&nbsp;MMK',
+          'second_exchange_rate' => number_format($order['second_exchange_rate'], 2) . '&nbsp;MMK',
           'second_payment_mmk' => number_format($second_payment_mmk, 2) . '&nbsp;MMK',
 
           'order_status' => '<select class="order-status-js" name="order_status" data-id="'.$order['id'].'">
@@ -180,13 +179,12 @@ function ordersJsonReturn($orders, $order_status)
     case 5:
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
-        $current_rate = ExchangeRate::getLatestExchangeRate();
 
         $first_payment_dollar = ($order['quantity']*$order['price']) + $order['us_tax'] + $order['shipping_cost'];
         $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
 
         $second_payment_dollar = ($first_payment_dollar*$order['commission']/100) + ($order['product_weight']*$order['weight_cost']) + ($first_payment_dollar*$order['mm_tax']/100) ;
-        $second_payment_mmk = $second_payment_dollar * $current_rate->getValue('mmk');
+        $second_payment_mmk = $second_payment_dollar * $order['second_exchange_rate'];
 
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
@@ -208,7 +206,7 @@ function ordersJsonReturn($orders, $order_status)
           'mm_tax' => $order['mm_tax'] . '&nbsp;%',
 
           'second_payment_dollar' => number_format($second_payment_dollar, 2) . '&nbsp;$',
-          'second_exchange_rate' => number_format($current_rate->getValue('mmk'), 2) . '&nbsp;MMK',
+          'second_exchange_rate' => number_format($order['second_exchange_rate'], 2) . '&nbsp;MMK',
           'second_payment_mmk' => number_format($second_payment_mmk, 2) . '&nbsp;MMK',
 
           'order_status' => '<select class="order-status-js" name="order_status" data-id="'.$order['id'].'">
@@ -224,13 +222,12 @@ function ordersJsonReturn($orders, $order_status)
     case 6:
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
-        $current_rate = ExchangeRate::getLatestExchangeRate();
 
         $first_payment_dollar = ($order['quantity']*$order['price']) + $order['us_tax'] + $order['shipping_cost'];
         $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
 
         $second_payment_dollar = ($first_payment_dollar*$order['commission']/100) + ($order['product_weight']*$order['weight_cost']) + ($first_payment_dollar*$order['mm_tax']/100) ;
-        $second_payment_mmk = $second_payment_dollar * $current_rate->getValue('mmk');
+        $second_payment_mmk = $second_payment_dollar * $order['second_exchange_rate'];
 
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
@@ -252,7 +249,7 @@ function ordersJsonReturn($orders, $order_status)
           'mm_tax' => $order['mm_tax'] . '&nbsp;%',
 
           'second_payment_dollar' => number_format($second_payment_dollar, 2) . '&nbsp;$',
-          'second_exchange_rate' => number_format($current_rate->getValue('mmk'), 2) . '&nbsp;MMK',
+          'second_exchange_rate' => number_format($order['second_exchange_rate'], 2) . '&nbsp;MMK',
           'second_payment_mmk' => number_format($second_payment_mmk, 2) . '&nbsp;MMK',
 
           'delivery_fee' => '<input type="text" value="'.$order['delivery_fee'].'" placeholder="0.00" class="deli-fee-js">',
@@ -270,13 +267,12 @@ function ordersJsonReturn($orders, $order_status)
     case 7:
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
-        $current_rate = ExchangeRate::getLatestExchangeRate();
 
         $first_payment_dollar = ($order['quantity']*$order['price']) + $order['us_tax'] + $order['shipping_cost'];
         $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
 
         $second_payment_dollar = ($first_payment_dollar*$order['commission']/100) + ($order['product_weight']*$order['weight_cost']) + ($first_payment_dollar*$order['mm_tax']/100) ;
-        $second_payment_mmk = $second_payment_dollar * $current_rate->getValue('mmk');
+        $second_payment_mmk = $second_payment_dollar * $order['second_exchange_rate'];
 
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
@@ -298,7 +294,7 @@ function ordersJsonReturn($orders, $order_status)
           'mm_tax' => $order['mm_tax'] . '&nbsp;%',
 
           'second_payment_dollar' => number_format($second_payment_dollar, 2) . '&nbsp;$',
-          'second_exchange_rate' => number_format($current_rate->getValue('mmk'), 2) . '&nbsp;MMK',
+          'second_exchange_rate' => number_format($order['second_exchange_rate'], 2) . '&nbsp;MMK',
           'second_payment_mmk' => number_format($second_payment_mmk, 2) . '&nbsp;MMK',
 
           'delivery_fee' => number_format($order['delivery_fee']) . '&nbsp;MMK',

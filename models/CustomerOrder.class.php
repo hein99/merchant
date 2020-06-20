@@ -79,13 +79,15 @@ class CustomerOrder extends DataObject
   }
 
 #update for has_viewed_admin
-  public static function updateView()
+  public static function updateView($order_status)
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET has_viewed_admin = 1';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET has_viewed_admin = 1 WHERE order_status = :order_status';
 
     try {
-      $conn->query($sql);
+      $st = $conn->prepare($sql);
+      $st->bindValue(':order_status', $order_status, PDO::PARAM_INT);
+      $st->execute();
       parent::disconnect($conn);
     } catch(PDOException $e) {
       parent::disconnect($conn);
@@ -115,7 +117,7 @@ class CustomerOrder extends DataObject
   public function updateSecondPaymentInfo()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET commission = :commission, product_weight = :product_weight, weight_cost = :weight_cost, mm_tax = :mm_tax, order_status = 4 WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET commission = :commission, product_weight = :product_weight, weight_cost = :weight_cost, mm_tax = :mm_tax, second_exchange_rate = :second_exchange_rate, order_status = 4 WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
@@ -124,6 +126,7 @@ class CustomerOrder extends DataObject
       $st->bindValue(':product_weight', $this->data['product_weight']);
       $st->bindValue(':weight_cost', $this->data['weight_cost']);
       $st->bindValue(':mm_tax', $this->data['mm_tax']);
+      $st->bindValue(':second_exchange_rate', $this->data['second_exchange_rate']);
       $st->execute();
       parent::disconnect($conn);
     } catch(PDOException $e) {

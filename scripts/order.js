@@ -419,7 +419,7 @@ function changeOrderStatus(selectedObj)
   {
     case 'no0':
       if(confirm("Do you want to change order status(Request)?\nAre you sure!"))
-        changeJustOrderStaus(order_id, '0');
+        changeJustOrderStaus(order_id, '0', selectedObj);
       else
         selectedObj.val('default');
     break;
@@ -430,21 +430,21 @@ function changeOrderStatus(selectedObj)
         if(has_info)
           postFirstPaymentInfo(selectedObj);
         else
-          changeJustOrderStaus(order_id, '1');
+          changeJustOrderStaus(order_id, '1', selectedObj);
       else
         selectedObj.val('default');
     break;
 
     case 'no2':
       if(confirm("Do you want to change order status(Confirm)?\nAre you sure!"))
-        changeJustOrderStaus(order_id, '2');
+        changeJustOrderStaus(order_id, '2', selectedObj);
       else
         selectedObj.val('default');
     break;
 
     case 'no3':
       if(confirm("Do you want to change order status(Shipping to US Warehouse)?\nAre you sure!"))
-        changeJustOrderStaus(order_id, '3');
+        changeJustOrderStaus(order_id, '3', selectedObj);
       else
         selectedObj.val('default');
     break;
@@ -455,21 +455,21 @@ function changeOrderStatus(selectedObj)
         if(has_info)
           postSecondPaymentInfo(selectedObj);
         else
-          changeJustOrderStaus(order_id, '4');
+          changeJustOrderStaus(order_id, '4', selectedObj);
       else
         selectedObj.val('default');
     break;
 
     case 'no5':
       if(confirm("Do you want to change order status(Shipping to Myanmar)?\nAre you sure!"))
-        changeJustOrderStaus(order_id, '5');
+        changeJustOrderStaus(order_id, '5', selectedObj);
       else
         selectedObj.val('default');
     break;
 
     case 'no6':
       if(confirm("Do you want to change order status(Arrived at Myanmar)?\nAre you sure!"))
-        changeJustOrderStaus(order_id, '6');
+        changeJustOrderStaus(order_id, '6', selectedObj);
       else
         selectedObj.val('default');
     break;
@@ -480,14 +480,14 @@ function changeOrderStatus(selectedObj)
         if(has_info)
           postThirdPaymentInfo(selectedObj);
         else
-          changeJustOrderStaus(order_id, '7');
+          changeJustOrderStaus(order_id, '7', selectedObj);
       else
         selectedObj.val('default');
     break;
 
     case 'no8':
       if(confirm("Do you want to change order status(Cancel)?\nAre you sure!"))
-        changeJustOrderStaus(order_id, '8');
+        changeJustOrderStaus(order_id, '8', selectedObj);
       else
         selectedObj.val('default');
     break;
@@ -495,12 +495,15 @@ function changeOrderStatus(selectedObj)
   }
 }
 
-function changeJustOrderStaus(id, order_status)
+function changeJustOrderStaus(id, order_status, selectedObj)
 {
+  var parent = selectedObj.parent().parent();
   $.ajax({
     method: 'POST',
     url: PAGE_URL+'/order/change_order_status/',
     data: {id: id, order_status: order_status}
+  }).done(function(e){
+    parent.hide();
   });
 }
 
@@ -510,11 +513,14 @@ function postFirstPaymentInfo(selectedObj)
   var id = selectedObj.data('id');
   var us_tax = $('.us-tax-js', parent).val();
   var shipping_cost = $('.us-shipping-cost-js', parent).val();
-  $.ajax({
-    method: 'POST',
-    url: PAGE_URL+'/order/change_first_payment_info/',
-    data: {id: id, us_tax: us_tax, shipping_cost: shipping_cost}
-  });
+  if(confirm('Please confirm the following values.\n  US Tax = ' + us_tax + ' $\n  Shippping cost = ' + shipping_cost + ' $'))
+    $.ajax({
+      method: 'POST',
+      url: PAGE_URL+'/order/change_first_payment_info/',
+      data: {id: id, us_tax: us_tax, shipping_cost: shipping_cost}
+    }).done(function(e){
+      parent.hide();
+    });
 }
 
 function postSecondPaymentInfo(selectedObj)
@@ -525,11 +531,15 @@ function postSecondPaymentInfo(selectedObj)
   var weight = $('.product-weight-js', parent).val();
   var weight_cost = $('.weight-cost-js', parent).val();
   var mm_tax = $('.mm-tax-js', parent).val();
-  $.ajax({
-    method: 'POST',
-    url: PAGE_URL+'/order/change_second_payment_info/',
-    data: {id: id, commission: commission, product_weight: weight, weight_cost: weight_cost, mm_tax: mm_tax}
-  });
+  var rate = $('.second-exchange-rate-js', parent).data('serate');
+  if(confirm('Please confirm the following values.\n  Commission = ' + commission + ' $\n  Product weight = ' + weight + ' $\n  Weight cost = ' + weight_cost + ' $\n  MM Tax = ' + mm_tax + ' $'))
+    $.ajax({
+      method: 'POST',
+      url: PAGE_URL+'/order/change_second_payment_info/',
+      data: {id: id, commission: commission, product_weight: weight, weight_cost: weight_cost, mm_tax: mm_tax, second_exchange_rate: rate}
+    }).done(function(e){
+      parent.hide();
+    });
 }
 
 function postThirdPaymentInfo(selectedObj)
@@ -540,63 +550,8 @@ function postThirdPaymentInfo(selectedObj)
   $.ajax({
     method: 'POST',
     url: PAGE_URL+'/order/change_third_payment_info/',
-    data: {id: id, delivery_fee: delivery_fee},
-    succeess: function(e){
-      console.log(e);
-    }
+    data: {id: id, delivery_fee: delivery_fee}
   }).done(function(e){
-    console.log(e);
+    parent.hide();
   });
 }
-////////////////////////////////////////////////////////////////////////
-
-// function changeOrderInfoRequest(currentObj)
-// {
-//   var parent = currentObj.parent().parent();
-//
-//   var id = currentObj.data('id');
-//   var us_tax = $('.us-tax-js', parent).val();
-//   var mm_tax = $('.mm-tax-js', parent).val();
-//   var commission = $('.commission-js', parent).val();
-//   var weight_cost = $('.weight-js', parent).val();
-//
-//   $.ajax({
-//     method:"POST",
-//     url: PAGE_URL+'/order/change_order_info',
-//     data: {id: id, us_tax: us_tax, mm_tax: mm_tax, commission: commission, weight_cost: weight_cost, order_status: 1}
-//   }).done(function(e){
-//     parent.hide();
-//     if(!$('.reload-notice').is(':visible'))
-//       $('.reload-notice').show();
-//   });
-// }
-
-// function changeOrderStatus(currentObj, order_status)
-// {
-//   var parent = currentObj.parent().parent();
-//
-//   var id = currentObj.data('id');
-//   console.log('id: '+ id + ', order_status: '+ order_status)
-//   $.ajax({
-//     method:"POST",
-//     url: PAGE_URL+'/order/change_order_status',
-//     data: {id: id, order_status: order_status}
-//   }).done(function(e){
-//     parent.hide();
-//     if(!$('.reload-notice').is(':visible'))
-//       $('.reload-notice').show();
-//   });
-// }
-//
-// function changeProductShippingStatus(currentObj, product_shipping_status)
-// {
-//   var parent = currentObj.parent().parent();
-//
-//   var id = currentObj.data('id');
-//   console.log('id: '+ id + ', product_shipping_status: '+ product_shipping_status)
-//   $.ajax({
-//     method:"POST",
-//     url: PAGE_URL+'/order/change_product_status',
-//     data: {id: id, product_shipping_status: product_shipping_status}
-//   })
-// }

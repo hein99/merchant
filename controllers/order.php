@@ -58,7 +58,7 @@ function getOrders()
   $order_status = isset($_GET['order_status']) ? $_GET['order_status'] : '' ;
   if ( $order_status >= 0 && $order_status <= 8) {
     $orders = CustomerOrder::getCustomerOrderArrayByOrderStatus($order_status);
-    CustomerOrder::updateView();
+    CustomerOrder::updateView($order_status);
   }
   else{
     $ERR_STATUS = ERR_URL;
@@ -105,7 +105,7 @@ function changeFirstPaymentInfo()
 
 function changeSecondPaymentInfo()
 {
-  $required_fields = array('id', 'commission', 'product_weight', 'weight_cost', 'mm_tax');
+  $required_fields = array('id', 'commission', 'product_weight', 'weight_cost', 'mm_tax', 'second_exchange_rate');
   $missing_fields = array();
   $error_messages = array();
 
@@ -114,6 +114,7 @@ function changeSecondPaymentInfo()
     'commission' => isset($_POST['commission']) ? preg_replace('/[^.\0-9]/', '', $_POST['commission']) : '',
     'product_weight' => isset($_POST['product_weight']) ? preg_replace('/[^.\0-9]/', '', $_POST['product_weight']) : '',
     'weight_cost' => isset($_POST['weight_cost']) ? preg_replace('/[^.\0-9]/', '', $_POST['weight_cost']) : '',
+    'second_exchange_rate' => isset($_POST['second_exchange_rate']) ? preg_replace('/[^.\0-9]/', '', $_POST['second_exchange_rate']) : '',
     'mm_tax' => isset($_POST['mm_tax']) ? preg_replace('/[^.\0-9]/', '', $_POST['mm_tax']) : ''
   ));
 

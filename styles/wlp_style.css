@@ -287,7 +287,7 @@
 	}
 
 	.wp-order-table table.dataTable tbody td input[type="text"]{
-		font-family: 'Lato', sans-serif; 
+		font-family: 'Lato', sans-serif;
 		width: 36px;
 		border: 1px dotted #999;
 		color: #555;
@@ -1292,7 +1292,7 @@
 		color: #2ec5ff;
 	}
 
-	.messages-count-js{
+	.messages-count-js, .new-order{
 		position: absolute;
 		right: 75%;
 		width: 24px;
@@ -1510,4 +1510,3 @@
 		opacity: 1;
 	}
 /*------------------------------------- END OF CONVERSATION ------------------------------------*/
-	
