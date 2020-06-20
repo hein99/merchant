@@ -71,7 +71,11 @@ $(document).on('click', 'form #sn-add-amount', function(){
         method: "POST",
         data:{customer_id:customer_id},
         success: function(data){
-          $('#balance').html(data.toFixed(2));
+          const formatter = new Intl.NumberFormat('en-US',{
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+          $('#balance').html(formatter.format(data));
           $.ajax({
             url: PAGE_URL+'/customer/get_history_table',
             method: "POST",
@@ -103,7 +107,11 @@ $(document).on('click', 'form #sn-sub-amount', function(){
         method: "POST",
         data:{customer_id:customer_id},
         success: function(data){
-          $('#balance').html(data.toFixed(2));
+          const formatter = new Intl.NumberFormat('en-US',{
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+          $('#balance').html(formatter.format(data));
           $.ajax({
             url: PAGE_URL+'/customer/get_history_table',
             method: "POST",
