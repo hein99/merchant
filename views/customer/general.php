@@ -63,7 +63,7 @@ function updateHistoryTable($customer_statements){
     $table_output .= $customer_statement->getValueEncoded('amount_status') ? 'plus' : 'minus';
     $table_output .= '"><span>';
     $table_output .= $customer_statement->getValueEncoded('amount_status') ? '+' : '-' ;
-    $table_output .= '</span>' . $customer_statement->getValueEncoded('amount') . '</td>';
+    $table_output .= '</span>' . $customer_statement->getValueEncoded('amount') . '&nbsp;Ks</td>';
     $table_output .= '</tr>';
   }
   return $table_output;
