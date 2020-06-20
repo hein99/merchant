@@ -126,7 +126,7 @@ displayMainNavigation('customer');
       <div class="wp-amount">
         <h2>Add an amount</h2>
         <input type="hidden" name="id" value="<?php echo $customer->getValueEncoded('id') ?>" id="customer_id">
-        <input type="number" name="amount" placeholder="0.00" id="amount">
+        <input type="number" name="amount" placeholder="0.00&nbsp;Ks" id="amount">
       </div>
 
       <div class="wp-about">
@@ -157,7 +157,7 @@ displayMainNavigation('customer');
           <tr>
             <td><?php echo $customer_statement->getValueEncoded('created_date'); ?></td>
             <td><?php echo $customer_statement->getValueEncoded('about'); ?></td>
-            <td class="<?php echo $customer_statement->getValue('amount_status') ? 'plus' : 'minus'?>"><span><?php echo $customer_statement->getValue('amount_status') ? '+' : '-'?></span><?php echo $customer_statement->getValueEncoded('amount'); ?></td>
+            <td class="<?php echo $customer_statement->getValue('amount_status') ? 'plus' : 'minus'?>"><span><?php echo $customer_statement->getValue('amount_status') ? '+' : '-'?></span><?php echo $customer_statement->getValueEncoded('amount'); ?>&nbsp;Ks</td>
           </tr>
         <?php endforeach; ?>
       </tbody>
