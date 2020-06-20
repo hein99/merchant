@@ -59,7 +59,7 @@ displayMainNavigation('customer');
       <div class="wp-customer-about">
         <div id="wp-balance">
           <i class="fas fa-wallet"></i>
-          <?php echo number_format($customer->getValueEncoded('balance'), 2) ?>&nbsp;Ks
+          <span id="balance"><?php echo number_format($customer->getValueEncoded('balance'), 2) ?></span>&nbsp;Ks
         </div>
         <div id="wp-phone">
           <i class="fas fa-phone-alt"></i>

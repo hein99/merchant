@@ -71,7 +71,7 @@ $(document).on('click', 'form #sn-add-amount', function(){
         method: "POST",
         data:{customer_id:customer_id},
         success: function(data){
-          $('#balance').html(data);
+          $('#balance').html(data.toFixed(2));
           $.ajax({
             url: PAGE_URL+'/customer/get_history_table',
             method: "POST",
@@ -103,7 +103,7 @@ $(document).on('click', 'form #sn-sub-amount', function(){
         method: "POST",
         data:{customer_id:customer_id},
         success: function(data){
-          $('#balance').html(data);
+          $('#balance').html(data.toFixed(2));
           $.ajax({
             url: PAGE_URL+'/customer/get_history_table',
             method: "POST",
