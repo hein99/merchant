@@ -136,7 +136,23 @@ function changeSecondPaymentInfo()
   }
   else
   {
-    $order->updateSecondPaymentInfo();
+    $before_update_order = CustomerOrder::getCustomerOrderById($order->getValue('id'));
+    $customer_id = $before_update_order->getValue('customer_id');
+    $customer = UsersAccount::getCustomerAccountById($customer_id);
+    $balance = $customer->getValue('balance');
+    $sub_amount = calculateMMK(calculateSecondPaymentDollar($before_update_order), $before_update_order->getValue('second_exchange_rate'));
+    $result = $balance - $sub_amount;
+    if( $result > 0.0 )
+    {
+      $customer_statement = new CustomerStatement(array(
+        'customer_id' => $customer_id,
+        'amount' => $sub_amount,
+        'about' => 'Second Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
+      ));
+      $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 0);
+      UsersAccount::updateCustomerBalance($customer_id, $result);
+      $order->updateSecondPaymentInfo();
+    }
   }
 }
 function changeThirdPaymentInfo()
@@ -168,7 +184,23 @@ function changeThirdPaymentInfo()
   }
   else
   {
-    $order->updateThirdPaymentInfo();
+    $before_update_order = CustomerOrder::getCustomerOrderById($order->getValue('id'));
+    $customer_id = $before_update_order->getValue('customer_id');
+    $customer = UsersAccount::getCustomerAccountById($customer_id);
+    $balance = $customer->getValue('balance');
+    $sub_amount = $order->getValue('delivery_fee');
+    $result = $balance - $sub_amount;
+    if( $result > 0.0 )
+    {
+      $customer_statement = new CustomerStatement(array(
+        'customer_id' => $customer_id,
+        'amount' => $sub_amount,
+        'about' => 'Third Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
+      ));
+      $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 0);
+      UsersAccount::updateCustomerBalance($customer_id, $result);
+      $order->updateThirdPaymentInfo();
+    }
   }
 }
 
@@ -244,15 +276,49 @@ function changeOrderStatus()
         $order->updateOrderStatus();
       }
     }
-    else if($order->getValue('order_status') == 8){
-
+    else if($order->getValue('order_status') == 3){
+      if($before_update_order->getValue('order_status') == 4)
+      {
+        $customer_id = $before_update_order->getValue('customer_id');
+        $customer = UsersAccount::getCustomerAccountById($customer_id);
+        $balance = $customer->getValue('balance');
+        $add_amount = calculateMMK(calculateSecondPaymentDollar($before_update_order), $before_update_order->getValue('second_exchange_rate'));
+        $result = $balance + $add_amount;
+          $customer_statement = new CustomerStatement(array(
+            'customer_id' => $customer_id,
+            'amount' => $add_amount,
+            'about' => 'Cancel Paid Second Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
+          ));
+          $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 1);
+          UsersAccount::updateCustomerBalance($customer_id, $result);
+      }
       $order->updateOrderStatus();
     }
+    else if($order->getValue('order_status') == 6){
+      if($before_update_order->getValue('order_status') == 7)
+      {
+        $customer_id = $before_update_order->getValue('customer_id');
+        $customer = UsersAccount::getCustomerAccountById($customer_id);
+        $balance = $customer->getValue('balance');
+        $add_amount = $before_update_order->getValue('delivery_fee');
+        $result = $balance + $add_amount;
+          $customer_statement = new CustomerStatement(array(
+            'customer_id' => $customer_id,
+            'amount' => $add_amount,
+            'about' => 'Cancel Paid Third Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
+          ));
+          $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 1);
+          UsersAccount::updateCustomerBalance($customer_id, $result);
+      }
+      $order->updateOrderStatus();
+    }
+
     else {
       $order->updateOrderStatus();
     }
   }
 }
+
 function calculateFirstPaymentDollar($order)
 {
   return calculateProductPrice($order) + $order->getValue('us_tax') + $order->getValue('shipping_cost');
