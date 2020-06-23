@@ -201,9 +201,104 @@ function changeOrderStatus()
   }
   else
   {
-    $order->updateOrderStatus();
-    header('location: ' . URL . '/customer/');
+    $before_update_order = CustomerOrder::getCustomerOrderById($order->getValue('id'));
+
+    if($order->getValue('order_status') == 1){
+      if($before_update_order->getValue('order_status') == 2)
+      {
+        $customer_id = $before_update_order->getValue('customer_id');
+        $customer = UsersAccount::getCustomerAccountById($customer_id);
+        $balance = $customer->getValue('balance');
+        $add_amount = calculateMMK(calculateFirstPaymentDollar($before_update_order), $before_update_order->getValue('first_exchange_rate'));
+        $result = $balance + $add_amount;
+          $customer_statement = new CustomerStatement(array(
+            'customer_id' => $customer_id,
+            'amount' => $add_amount,
+            'about' => 'Cancel Paid First Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
+          ));
+          $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 1);
+          UsersAccount::updateCustomerBalance($customer_id, $result);
+      }
+      $order->updateOrderStatus();
+    }
+    else if($order->getValue('order_status') == 2){
+      if($before_update_order->getValue('order_status') == 1){
+        $customer_id = $before_update_order->getValue('customer_id');
+        $customer = UsersAccount::getCustomerAccountById($customer_id);
+        $balance = $customer->getValue('balance');
+        $sub_amount = calculateMMK(calculateFirstPaymentDollar($before_update_order), $before_update_order->getValue('first_exchange_rate'));
+        $result = $balance - $sub_amount;
+        if( $result > 0.0 )
+        {
+          $customer_statement = new CustomerStatement(array(
+            'customer_id' => $customer_id,
+            'amount' => $sub_amount,
+            'about' => 'First Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
+          ));
+          $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 0);
+          UsersAccount::updateCustomerBalance($customer_id, $result);
+          $order->updateOrderStatus();
+        }
+      }
+      else if($before_update_order->getValue('order_status') == 3){
+        $order->updateOrderStatus();
+      }
+    }
+    else if($order->getValue('order_status') == 8){
+
+      $order->updateOrderStatus();
+    }
+    else {
+      $order->updateOrderStatus();
+    }
   }
 }
+function calculateFirstPaymentDollar($order)
+{
+  return calculateProductPrice($order) + $order->getValue('us_tax') + $order->getValue('shipping_cost');
+}
 
+function calculateProductPrice($order)
+{
+  return ($order->getValue('quantity')*$order->getValue('price'));
+}
+
+function calculateSecondPaymentDollar($order)
+{
+  $first_payment_dollar = calculateFirstPaymentDollar($order);
+  return calculateCommission($order) + calculateWeightCost($order) + calculateMMTax($order);
+}
+
+function calculateMMK($amount, $rate)
+{
+  return $amount * $rate;
+}
+
+function calculateCommission($order)
+{
+  $first_payment_dollar = calculateFirstPaymentDollar($order);
+  return ($first_payment_dollar*$order->getValue('commission')/100);
+}
+
+function calculateMMTax($order)
+{
+  $first_payment_dollar = calculateFirstPaymentDollar($order);
+  return ($first_payment_dollar*$order->getValue('mm_tax')/100);
+}
+
+function calculateWeightCost($order)
+{
+  return ($order->getValue('product_weight')*$order->getValue('weight_cost'));
+}
+
+function calculateTotalAmountMMK($order)
+{
+  $first_payment_dollar = calculateFirstPaymentDollar($order);
+  $first_payment_mmk = calculateMMK($first_payment_dollar, $order->getValue('first_exchange_rate'));
+
+  $second_payment_dollar = calculateSecondPaymentDollar($order);
+  $second_payment_mmk = calculateMMK($second_payment_dollar, $order->getValue('second_exchange_rate'));
+
+  return $first_payment_mmk + $second_payment_mmk + $order->getValue('delivery_fee');
+}
  ?>

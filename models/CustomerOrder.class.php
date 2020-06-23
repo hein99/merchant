@@ -78,6 +78,23 @@ class CustomerOrder extends DataObject
     }
   }
 
+  public static function getCustomerOrderById($id)
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM ' . TBL_CUSTOMER_ORDER . ' WHERE id = :id';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $id, PDO::PARAM_INT);
+      $st->execute();
+      $row =$st->fetch();
+      parent::disconnect($conn);
+      if($row) return new CustomerOrder($row);;
+    } catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+
 #update for has_viewed_admin
   public static function updateView($order_status)
   {
@@ -95,11 +112,10 @@ class CustomerOrder extends DataObject
     }
   }
 
-
   public function updateFirstPaymentInfo()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET us_tax = :us_tax, shipping_cost = :shipping_cost, order_status = 1 WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET us_tax = :us_tax, shipping_cost = :shipping_cost, order_status = 1, has_viewed_customer = 0, has_viewed_admin = 0 WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
@@ -117,7 +133,7 @@ class CustomerOrder extends DataObject
   public function updateSecondPaymentInfo()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET commission = :commission, product_weight = :product_weight, weight_cost = :weight_cost, mm_tax = :mm_tax, second_exchange_rate = :second_exchange_rate, order_status = 4 WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET commission = :commission, product_weight = :product_weight, weight_cost = :weight_cost, mm_tax = :mm_tax, second_exchange_rate = :second_exchange_rate, order_status = 4, has_viewed_customer = 0, has_viewed_admin = 0 WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
@@ -138,7 +154,7 @@ class CustomerOrder extends DataObject
   public function updateThirdPaymentInfo()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET delivery_fee = :delivery_fee, order_status = 7 WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET delivery_fee = :delivery_fee, order_status = 7, has_viewed_customer = 0, has_viewed_admin = 0 WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
