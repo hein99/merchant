@@ -426,7 +426,7 @@
 	}
 
 	.order-status-buttons{
-		max-width: 524px;
+		max-width: 654px;
 		height: 67px;
 		display: flex;
 		flex-wrap: wrap-reverse;
@@ -448,7 +448,7 @@
 	}
 
 	.order-status-buttons button{
-		font-size: 9px;
+		font-size: 12px;
 	}
 
 	.wp-customer-ac-de-buttons button:nth-child(5),
@@ -456,23 +456,23 @@
 	.wp-customer-ac-de-buttons button:nth-child(7),
 	.wp-customer-ac-de-buttons button:nth-child(8),
 	.wp-customer-ac-de-buttons button:nth-child(9){
-		width: 75px;
+		width: 95px;
 	}
 
 	.wp-customer-ac-de-buttons button:nth-child(1){
-		width: 143px;
+		width: 181px;
 	}
 
 	.wp-customer-ac-de-buttons button:nth-child(2){
-		width: 135px;
+		width: 169px;
 	}
 
 	.wp-customer-ac-de-buttons button:nth-child(3){
-		width: 121px;
+		width: 151px;
 	}
 
 	.wp-customer-ac-de-buttons button:nth-child(4){
-		width: 113px;
+		width: 141px;
 	}
 
 	.wp-customer-ac-de-buttons button:not(.active):hover{
