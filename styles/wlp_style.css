@@ -517,6 +517,7 @@
 
 	.wp-order-table .wp-membership-logo i{
 		position: absolute;
+		top: 12px;
 		left: 5px;
 		font-size: 22px !important;
 	}
