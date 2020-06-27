@@ -3,20 +3,21 @@ displayPageHeader('Order List | ' . WEB_NAME);
 displayMainNavigation('order');
  ?>
  <div class="wp-customer-page-container">
-<div class="wp-customer-page-header">
+<div class="wp-customer-page-header wp-order-page-header">
     <div class="wp-customer-count-container">
       <span>Orders</span>
       <div id="wp-customer-count"><i id="order-count-js"></i>&nbsp;Total</div>
     </div>
 
     <div class="wp-customer-ac-de-buttons order-status-buttons">
-        <button type="button" name="button" data-no="0" class="order-btn-js active"><?php echo ORDER_STATUS_0 ?></button>
-        <button type="button" name="button" data-no="1" class="order-btn-js"><?php echo ORDER_STATUS_1 ?></button>
-        <button type="button" name="button" data-no="2" class="order-btn-js"><?php echo ORDER_STATUS_2 ?></button>
+        
         <button type="button" name="button" data-no="3" class="order-btn-js"><?php echo ORDER_STATUS_3 ?></button>
         <button type="button" name="button" data-no="4" class="order-btn-js"><?php echo ORDER_STATUS_4 ?></button>
         <button type="button" name="button" data-no="5" class="order-btn-js"><?php echo ORDER_STATUS_5 ?></button>
         <button type="button" name="button" data-no="6" class="order-btn-js"><?php echo ORDER_STATUS_6 ?></button>
+        <button type="button" name="button" data-no="0" class="order-btn-js active"><?php echo ORDER_STATUS_0 ?></button>
+        <button type="button" name="button" data-no="1" class="order-btn-js"><?php echo ORDER_STATUS_1 ?></button>
+        <button type="button" name="button" data-no="2" class="order-btn-js"><?php echo ORDER_STATUS_2 ?></button>
         <button type="button" name="button" data-no="7" class="order-btn-js"><?php echo ORDER_STATUS_7 ?></button>
         <button type="button" name="button" data-no="8" class="order-btn-js"><?php echo ORDER_STATUS_8 ?></button>
     </div>
