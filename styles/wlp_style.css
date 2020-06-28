@@ -275,6 +275,10 @@
 		padding: 14px 5px !important;
 	}
 
+	.wp-order-table table.dataTable tbody tr{
+		position: relative;
+	}
+
 	.wp-order-table table.dataTable tbody td{
 		padding: 9px 25px !important;
 	}
@@ -305,6 +309,17 @@
 
 	.wp-order-table table.dataTable tbody td:nth-child(2){
 		padding-left: 28px !important;
+	}
+
+	.wp-order-table table.dataTable tbody td:nth-child(4){
+		position: absolute;
+		top: 0;
+		max-width: 157px;
+		max-height: calc(100% - 12px);
+		line-height: 1.4em;
+		padding: 8px 16px !important;
+		word-break: break-all;
+		overflow-y: auto;
 	}
 
 	.wp-customer-table table.dataTable tbody td:nth-child(3),
@@ -338,9 +353,12 @@
 
 	.dataTables_empty{
 		position: absolute !important;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+		top: 26vh;
+		left: 31vw;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	#extra{
@@ -374,6 +392,18 @@
 	.wp-customer-count-container{
 		display: flex;
 		align-items: center;
+	}
+
+	.new-order{
+		position: absolute;
+		left: 3%;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 14px;
+		height: 14px;
+		background-color: #2ec5ff;
+		border-radius: 50%;
+		pointer-events: none;
 	}
 
 	.wp-customer-count-container span:first-child{
@@ -517,8 +547,9 @@
 
 	.wp-order-table .wp-membership-logo i{
 		position: absolute;
-		top: 12px;
+		top: 50%;
 		left: 5px;
+		transform: translateY(-50%);
 		font-size: 22px !important;
 	}
 
@@ -1342,7 +1373,7 @@
 		color: #2ec5ff;
 	}
 
-	.messages-count-js, .new-order{
+	.messages-count-js{
 		position: absolute;
 		right: 75%;
 		width: 24px;
