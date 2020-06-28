@@ -314,6 +314,7 @@
 	.wp-order-table table.dataTable tbody td:nth-child(4){
 		position: absolute;
 		top: 0;
+		min-width: 157px;
 		max-width: 157px;
 		max-height: calc(100% - 12px);
 		line-height: 1.4em;
