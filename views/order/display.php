@@ -9,8 +9,7 @@ displayMainNavigation('order');
       <div id="wp-customer-count"><i id="order-count-js"></i>&nbsp;Total</div>
     </div>
 
-    <div class="wp-customer-ac-de-buttons order-status-buttons">
-        
+    <div class="wp-customer-ac-de-buttons order-status-buttons">    
         <button type="button" name="button" data-no="3" class="order-btn-js"><?php echo ORDER_STATUS_3 ?></button>
         <button type="button" name="button" data-no="4" class="order-btn-js"><?php echo ORDER_STATUS_4 ?></button>
         <button type="button" name="button" data-no="5" class="order-btn-js"><?php echo ORDER_STATUS_5 ?></button>
