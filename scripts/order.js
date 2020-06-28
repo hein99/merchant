@@ -27,7 +27,6 @@ $(document).ready(function(){
   } );
   $('#tb-request-js').show().wrap('<div class="order-table-wrapper"></div>');
   $('#tb-request-js_wrapper').show();
-
 });
 
 $(document).on('click', '.order-btn-js', function(){
