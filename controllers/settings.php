@@ -69,7 +69,7 @@ function changeAccount()
 function logout()
 {
   $_SESSION['merchant_admin_account'] = '';
-  header('location:' . URL . '/views/login.php');
+  header('location:' . FILE_URL . '/views/login.php');
 }
 
  ?>

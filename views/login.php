@@ -33,7 +33,7 @@ function displayLoginFrom($error_messages, $admin_account)
   }
   ?>
   </div>
-  <form class="login-body" action="<?php echo URL ?>/views/login.php" method="post">
+  <form class="login-body" action="<?php echo FILE_URL ?>/views/login.php" method="post">
     <input type="hidden" name="action" value="login">
     <div class="error-input">
       <input type="text" name="phone" placeholder="Phone" id="phone-js" value="<?php echo isset($admin_account) ? $admin_account->getValueEncoded('phone') : ''?>">
