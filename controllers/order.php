@@ -140,9 +140,23 @@ function changeSecondPaymentInfo()
     $customer_id = $before_update_order->getValue('customer_id');
     $customer = UsersAccount::getCustomerAccountById($customer_id);
     $balance = $customer->getValue('balance');
-    $sub_amount = calculateMMK(calculateSecondPaymentDollar($before_update_order), $before_update_order->getValue('second_exchange_rate'));
-    $result = $balance - $sub_amount;
-    if( $result > 0.0 )
+    $point = $customer->getValue('point');
+    $forcalc_order = new CustomerOrder(array(
+      'quantity' => $before_update_order->getValue('quantity'),
+      'price' => $before_update_order->getValue('price'),
+      'us_tax' => $before_update_order->getValue('us_tax'),
+      'shipping_cost' => $before_update_order->getValue('shipping_cost'),
+      'first_exchange_rate' => $before_update_order->getValue('first_exchange_rate'),
+      'commission' => $order->getValue('commission'),
+      'product_weight' => $order->getValue('product_weight'),
+      'weight_cost' => $order->getValue('weight_cost'),
+      'mm_tax' => $order->getValue('mm_tax'),
+      'second_exchange_rate' => $order->getValue('second_exchange_rate')
+    ));
+    $sub_amount = calculateMMK(calculateSecondPaymentDollar($forcalc_order), $forcalc_order->getValue('second_exchange_rate'));
+    $result_balance = $balance - $sub_amount;
+    $result_point = $point + (int)$sub_amount;
+    if( $result_balance > 0.0 )
     {
       $customer_statement = new CustomerStatement(array(
         'customer_id' => $customer_id,
@@ -150,7 +164,7 @@ function changeSecondPaymentInfo()
         'about' => 'Second Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
       ));
       $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 0);
-      UsersAccount::updateCustomerBalance($customer_id, $result);
+      UsersAccount::updateCustomerBalanceAndPoint($customer_id, $result_balance, $result_point);
       $order->updateSecondPaymentInfo();
     }
   }
@@ -188,9 +202,11 @@ function changeThirdPaymentInfo()
     $customer_id = $before_update_order->getValue('customer_id');
     $customer = UsersAccount::getCustomerAccountById($customer_id);
     $balance = $customer->getValue('balance');
+    $point = $customer->getValue('point');
     $sub_amount = $order->getValue('delivery_fee');
-    $result = $balance - $sub_amount;
-    if( $result > 0.0 )
+    $result_balance = $balance - $sub_amount;
+    $result_point = $point + (int)$sub_amount;
+    if( $result_balance > 0.0 )
     {
       $customer_statement = new CustomerStatement(array(
         'customer_id' => $customer_id,
@@ -198,7 +214,7 @@ function changeThirdPaymentInfo()
         'about' => 'Third Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
       ));
       $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 0);
-      UsersAccount::updateCustomerBalance($customer_id, $result);
+      UsersAccount::updateCustomerBalanceAndPoint($customer_id, $result_balance, $result_point);
       $order->updateThirdPaymentInfo();
     }
   }
@@ -241,15 +257,17 @@ function changeOrderStatus()
         $customer_id = $before_update_order->getValue('customer_id');
         $customer = UsersAccount::getCustomerAccountById($customer_id);
         $balance = $customer->getValue('balance');
+        $point = $customer->getValue('point');
         $add_amount = calculateMMK(calculateFirstPaymentDollar($before_update_order), $before_update_order->getValue('first_exchange_rate'));
-        $result = $balance + $add_amount;
+        $result_balance = $balance + $add_amount;
+        $result_point = $point - (int)$add_amount;
           $customer_statement = new CustomerStatement(array(
             'customer_id' => $customer_id,
             'amount' => $add_amount,
             'about' => 'Cancel Paid First Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
           ));
           $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 1);
-          UsersAccount::updateCustomerBalance($customer_id, $result);
+          UsersAccount::updateCustomerBalanceAndPoint($customer_id, $result_balance, $result_point);
       }
       $order->updateOrderStatus();
     }
@@ -258,9 +276,11 @@ function changeOrderStatus()
         $customer_id = $before_update_order->getValue('customer_id');
         $customer = UsersAccount::getCustomerAccountById($customer_id);
         $balance = $customer->getValue('balance');
+        $point = $customer->getValue('point');
         $sub_amount = calculateMMK(calculateFirstPaymentDollar($before_update_order), $before_update_order->getValue('first_exchange_rate'));
-        $result = $balance - $sub_amount;
-        if( $result > 0.0 )
+        $result_balance = $balance - $sub_amount;
+        $result_point = $point + (int)$sub_amount;
+        if( $result_balance > 0.0 )
         {
           $customer_statement = new CustomerStatement(array(
             'customer_id' => $customer_id,
@@ -268,7 +288,7 @@ function changeOrderStatus()
             'about' => 'First Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
           ));
           $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 0);
-          UsersAccount::updateCustomerBalance($customer_id, $result);
+          UsersAccount::updateCustomerBalanceAndPoint($customer_id, $result_balance, $result_point);
           $order->updateOrderStatus();
         }
       }
@@ -282,15 +302,17 @@ function changeOrderStatus()
         $customer_id = $before_update_order->getValue('customer_id');
         $customer = UsersAccount::getCustomerAccountById($customer_id);
         $balance = $customer->getValue('balance');
+        $point = $customer->getValue('point');
         $add_amount = calculateMMK(calculateSecondPaymentDollar($before_update_order), $before_update_order->getValue('second_exchange_rate'));
-        $result = $balance + $add_amount;
+        $result_balance = $balance + $add_amount;
+        $result_point = $point - (int)$add_amount;
           $customer_statement = new CustomerStatement(array(
             'customer_id' => $customer_id,
             'amount' => $add_amount,
             'about' => 'Cancel Paid Second Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
           ));
           $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 1);
-          UsersAccount::updateCustomerBalance($customer_id, $result);
+          UsersAccount::updateCustomerBalanceAndPoint($customer_id, $result_balance, $result_point);
       }
       $order->updateOrderStatus();
     }
@@ -300,15 +322,17 @@ function changeOrderStatus()
         $customer_id = $before_update_order->getValue('customer_id');
         $customer = UsersAccount::getCustomerAccountById($customer_id);
         $balance = $customer->getValue('balance');
+        $point = $customer->getValue('point');
         $add_amount = $before_update_order->getValue('delivery_fee');
-        $result = $balance + $add_amount;
+        $result_balance = $balance + $add_amount;
+        $result_point = $point - (int)$add_amount;
           $customer_statement = new CustomerStatement(array(
             'customer_id' => $customer_id,
             'amount' => $add_amount,
             'about' => 'Cancel Paid Third Payment of order no [ ' . str_pad( $order->getValue('id'), 7, 0, STR_PAD_LEFT ) . ' ]'
           ));
           $customer_statement->addCustomerStatement($customer_statement->getValue('amount'), 1);
-          UsersAccount::updateCustomerBalance($customer_id, $result);
+          UsersAccount::updateCustomerBalanceAndPoint($customer_id, $result_balance, $result_point);
       }
       $order->updateOrderStatus();
     }
