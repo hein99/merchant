@@ -167,7 +167,7 @@ displayMainNavigation('customer');
 </div>
  </section>
 <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
-<script src="<?php echo URL ?>/scripts/customer_detail.js"></script>
+<script src="<?php echo FILE_URL ?>/scripts/customer_detail.js"></script>
 <?php
 displayPageFooter();
 ?>
