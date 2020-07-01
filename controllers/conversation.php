@@ -133,7 +133,10 @@ function getAllMessagesByCustomerId($id)
     {
       $mss = '';
       if($message->getValue('is_image') == 'yes')
-        $mss = '<img src="'.FILE_URL.'/photos/conversation/'.$message->getValue('messages').'" alt="Photo Downloading" class="display-photo">';
+        if($message->getValue('from_user_id') == $_SESSION['merchant_admin_account']->getValue('id'))
+          $mss = '<img src="'.FILE_URL.'/photos/conversation/'.$message->getValue('messages').'" alt="Photo Downloading" class="display-photo">';
+        else
+          $mss = '<img src="'.OTHER_FILE_URL.'/photos/conversation/'.$message->getValue('messages').'" alt="Photo Downloading" class="display-photo">';
       else
         $mss = $message->getValue('messages');
 
@@ -159,7 +162,10 @@ function getNewMessagesByCustomerId($id)
     {
       $mss = '';
       if($message->getValue('is_image') == 'yes')
-        $mss = '<img src="'.FILE_URL.'/photos/conversation/'.$message->getValue('messages').'" alt="Photo Downloading" class="display-photo">';
+        if($message->getValue('from_user_id') == $_SESSION['merchant_admin_account']->getValue('id'))
+          $mss = '<img src="'.FILE_URL.'/photos/conversation/'.$message->getValue('messages').'" alt="Photo Downloading" class="display-photo">';
+        else
+          $mss = '<img src="'.OTHER_FILE_URL.'/photos/conversation/'.$message->getValue('messages').'" alt="Photo Downloading" class="display-photo">';
       else
         $mss = $message->getValue('messages');
 

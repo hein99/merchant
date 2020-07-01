@@ -5,6 +5,7 @@ define('WEB_NAME', 'Admin');
 #page Url
 define('URL', 'http://localhost/merchant');
 define('FILE_URL', 'http://localhost/merchant');
+define('OTHER_FILE_URL', 'http://localhost/merchant_customer');
 
 
 #DB Information
