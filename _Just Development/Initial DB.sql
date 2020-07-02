@@ -169,7 +169,7 @@ CREATE TABLE `password_request` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(15) NOT NULL,
+  `username` varchar(25) NOT NULL,
   `password` varchar(41) NOT NULL,
   `user_status` tinyint(1) NOT NULL,
   `phone` varchar(12) NOT NULL,
