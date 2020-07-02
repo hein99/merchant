@@ -275,6 +275,10 @@
 		padding: 14px 5px !important;
 	}
 
+	.customer-table-wrapper table.dataTable tbody tr{
+		position: all;
+	}
+
 	.wp-order-table table.dataTable tbody tr{
 		position: relative;
 	}
@@ -352,10 +356,17 @@
 		width: 100% !important;
 	}
 
-	.dataTables_empty{
+	.wp-customer-table .dataTables_empty{
+		position: absolute;
+		top: calc(50% + 24px);
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.wp-order-table .dataTables_empty{
 		position: absolute !important;
 		top: 26vh;
-		left: 31vw;
+		left: 38vw;
 		text-align: center;
 		display: flex;
 		justify-content: center;
