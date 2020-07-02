@@ -58,7 +58,7 @@ displayMainNavigation('dashboard');
               <input type="text" name="username" placeholder="Username">
             </div>
             <div class="error-input">
-              <input type="password" name="password1" placeholder="Password">
+              <input type="password" name="password1" placeholder="Password" id="password1-js">
             </div>
             <div class="error-input">
               <input type="password" name="password2" placeholder="Confirm Password">

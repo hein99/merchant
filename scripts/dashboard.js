@@ -74,7 +74,7 @@ $(document).ready(function(){
       password2: {
         required: true,
         minlength: 6,
-        equalTo: "#password1"
+        equalTo: "#password1-js"
       },
       phone: {
         required: true,
