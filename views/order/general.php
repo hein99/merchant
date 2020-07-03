@@ -12,7 +12,7 @@ function ordersJsonReturn($orders, $order_status)
 
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'cupon_code' => $order['cupon_code'],
@@ -39,7 +39,7 @@ function ordersJsonReturn($orders, $order_status)
         $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'cupon_code' => $order['cupon_code'],
@@ -67,7 +67,7 @@ function ordersJsonReturn($orders, $order_status)
         $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'cupon_code' => $order['cupon_code'],
@@ -102,7 +102,7 @@ function ordersJsonReturn($orders, $order_status)
 
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'cupon_code' => $order['cupon_code'],
@@ -145,7 +145,7 @@ function ordersJsonReturn($orders, $order_status)
 
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'cupon_code' => $order['cupon_code'],
@@ -188,7 +188,7 @@ function ordersJsonReturn($orders, $order_status)
 
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'cupon_code' => $order['cupon_code'],
@@ -231,7 +231,7 @@ function ordersJsonReturn($orders, $order_status)
 
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'cupon_code' => $order['cupon_code'],
@@ -276,7 +276,7 @@ function ordersJsonReturn($orders, $order_status)
 
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'cupon_code' => $order['cupon_code'],
@@ -315,7 +315,7 @@ function ordersJsonReturn($orders, $order_status)
         $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
         $new_customer = (object)array(
           'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'">'.$membership . $order['username'].'</a>',
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
           'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
           'remark' => $order['remark'],
           'cupon_code' => $order['cupon_code'],
