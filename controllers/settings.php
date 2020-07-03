@@ -33,7 +33,7 @@ function changeAccount()
 
     $new_account = new UsersAccount(array(
       'username' => isset($_POST['new_username']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['new_username']) : '',
-      'password' => ( isset($_POST['new_password1']) and isset($_POST['new_password2']) and $_POST['new_password1'] == $_POST['new_password2']) ? preg_replace('/[^ \-\_a-zA-Z0-9]/', '', $_POST['new_password1']) : ''
+      'password' => ( isset($_POST['new_password1']) and isset($_POST['new_password2']) and $_POST['new_password1'] == $_POST['new_password2']) ? $_POST['new_password1'] : ''
     ));
     foreach ($required_fields as $required_field)
     {
