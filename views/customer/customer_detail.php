@@ -47,7 +47,7 @@ displayMainNavigation('customer');
             <span>
               <i class="fas fa-award <?php echo $membership_icon; ?>"></i>
               <span id="membership-status"><?php echo $membership_name; ?></span>
-              <span id="slash">&nbsp;/&nbsp;</span><?php echo $customer->getValueEncoded('point') ?> points
+              <span id="slash">&nbsp;/&nbsp;</span><?php echo number_format($customer->getValueEncoded('point')/1000) ?> points
             </span>
         </div>
           <span id="wp-customer-activation">
