@@ -9,7 +9,7 @@ displayMainNavigation('order');
       <div id="wp-customer-count"><i id="order-count-js"></i>&nbsp;Total</div>
     </div>
 
-    <div class="wp-customer-ac-de-buttons order-status-buttons">    
+    <div class="wp-customer-ac-de-buttons order-status-buttons">
         <button type="button" name="button" data-no="3" class="order-btn-js"><?php echo ORDER_STATUS_3 ?></button>
         <button type="button" name="button" data-no="4" class="order-btn-js"><?php echo ORDER_STATUS_4 ?></button>
         <button type="button" name="button" data-no="5" class="order-btn-js"><?php echo ORDER_STATUS_5 ?></button>
@@ -33,9 +33,9 @@ displayMainNavigation('order');
          <th>Remark</th>
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
-         <th>Unit&nbsp;Price[$]</th>
-         <th>US&nbsp;Tax[$]</th>
-         <th>Shipping&nbsp;Cost[$]</th>
+         <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>
@@ -53,9 +53,9 @@ displayMainNavigation('order');
          <th>Remark</th>
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
-         <th>Unit&nbsp;Price[$]</th>
-         <th>US&nbsp;Tax[$]</th>
-         <th>Shipping&nbsp;Cost[$]</th>
+         <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>
@@ -73,9 +73,9 @@ displayMainNavigation('order');
          <th>Remark</th>
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
-         <th>Unit&nbsp;Price[$]</th>
-         <th>US&nbsp;Tax[$]</th>
-         <th>Shipping&nbsp;Cost[$]</th>
+         <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>
@@ -93,15 +93,15 @@ displayMainNavigation('order');
          <th>Remark</th>
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
-         <th>Unit&nbsp;Price[$]</th>
-         <th>US&nbsp;Tax[$]</th>
-         <th>Shipping&nbsp;Cost[$]</th>
+         <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>
          <th>Commission&nbsp;[%]</th>
          <th>Weight&nbsp;[lb]</th>
-         <th>Weight&nbsp;Cost[$]</th>
+         <th>Weight&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>MM&nbsp;Task[%]</th>
          <th>Second&nbsp;Payment&nbsp;Dollar</th>
          <th>Second&nbsp;Exchange&nbsp;Rate</th>
@@ -120,15 +120,15 @@ displayMainNavigation('order');
          <th>Remark</th>
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
-         <th>Unit&nbsp;Price[$]</th>
-         <th>US&nbsp;Tax[$]</th>
-         <th>Shipping&nbsp;Cost[$]</th>
+         <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>
          <th>Commission&nbsp;[%]</th>
          <th>Weight&nbsp;[lb]</th>
-         <th>Weight&nbsp;Cost[$]</th>
+         <th>Weight&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>MM&nbsp;Task[%]</th>
          <th>Second&nbsp;Payment&nbsp;Dollar</th>
          <th>Second&nbsp;Exchange&nbsp;Rate</th>
@@ -147,15 +147,15 @@ displayMainNavigation('order');
          <th>Remark</th>
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
-         <th>Unit&nbsp;Price[$]</th>
-         <th>US&nbsp;Tax[$]</th>
-         <th>Shipping&nbsp;Cost[$]</th>
+         <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>
          <th>Commission&nbsp;[%]</th>
          <th>Weight&nbsp;[lb]</th>
-         <th>Weight&nbsp;Cost[$]</th>
+         <th>Weight&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>MM&nbsp;Task[%]</th>
          <th>Second&nbsp;Payment&nbsp;Dollar</th>
          <th>Second&nbsp;Exchange&nbsp;Rate</th>
@@ -174,15 +174,15 @@ displayMainNavigation('order');
          <th>Remark</th>
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
-         <th>Unit&nbsp;Price[$]</th>
-         <th>US&nbsp;Tax[$]</th>
-         <th>Shipping&nbsp;Cost[$]</th>
+         <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>
          <th>Commission&nbsp;[%]</th>
          <th>Weight&nbsp;[lb]</th>
-         <th>Weight&nbsp;Cost[$]</th>
+         <th>Weight&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>MM&nbsp;Task[%]</th>
          <th>Second&nbsp;Payment&nbsp;Dollar</th>
          <th>Second&nbsp;Exchange&nbsp;Rate</th>
@@ -202,15 +202,15 @@ displayMainNavigation('order');
          <th>Remark</th>
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
-         <th>Unit&nbsp;Price[$]</th>
-         <th>US&nbsp;Tax[$]</th>
-         <th>Shipping&nbsp;Cost[$]</th>
+         <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>
          <th>Commission&nbsp;[%]</th>
          <th>Weight&nbsp;[lb]</th>
-         <th>Weight&nbsp;Cost[$]</th>
+         <th>Weight&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>MM&nbsp;Task[%]</th>
          <th>Second&nbsp;Payment&nbsp;Dollar</th>
          <th>Second&nbsp;Exchange&nbsp;Rate</th>
@@ -230,9 +230,9 @@ displayMainNavigation('order');
          <th>Remark</th>
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
-         <th>Unit&nbsp;Price[$]</th>
-         <th>US&nbsp;Tax[$]</th>
-         <th>Shipping&nbsp;Cost[$]</th>
+         <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>

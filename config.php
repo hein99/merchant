@@ -42,4 +42,7 @@ define('ORDER_STATUS_6', 'Arrived at Myanmar');
 define('ORDER_STATUS_7', 'Complete');
 define('ORDER_STATUS_8', 'Cancel');
 
+#Currency
+define('CURRENCY_SYMBOL', '&#36;');
+define('CURRENCY_ABBR', 'USD');
  ?>
