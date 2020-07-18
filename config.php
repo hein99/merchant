@@ -45,4 +45,5 @@ define('ORDER_STATUS_8', 'Cancel');
 #Currency
 define('CURRENCY_SYMBOL', '&#36;');
 define('CURRENCY_ABBR', 'USD');
+define('CURRENCY_LABEL', 'US');
  ?>

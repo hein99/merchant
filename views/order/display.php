@@ -34,7 +34,7 @@ displayMainNavigation('order');
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th><?php echo CURRENCY_LABEL ?>&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
@@ -54,7 +54,7 @@ displayMainNavigation('order');
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th><?php echo CURRENCY_LABEL ?>&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
@@ -74,7 +74,7 @@ displayMainNavigation('order');
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th><?php echo CURRENCY_LABEL ?>&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
@@ -94,7 +94,7 @@ displayMainNavigation('order');
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th><?php echo CURRENCY_LABEL ?>&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
@@ -121,7 +121,7 @@ displayMainNavigation('order');
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th><?php echo CURRENCY_LABEL ?>&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
@@ -148,7 +148,7 @@ displayMainNavigation('order');
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th><?php echo CURRENCY_LABEL ?>&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
@@ -175,7 +175,7 @@ displayMainNavigation('order');
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th><?php echo CURRENCY_LABEL ?>&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
@@ -203,7 +203,7 @@ displayMainNavigation('order');
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th><?php echo CURRENCY_LABEL ?>&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
@@ -231,7 +231,7 @@ displayMainNavigation('order');
          <th>Cupon&nbsp;Code</th>
          <th>Quantity</th>
          <th>Unit&nbsp;Price[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>US&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
+         <th><?php echo CURRENCY_LABEL ?>&nbsp;Tax[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>Shipping&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
