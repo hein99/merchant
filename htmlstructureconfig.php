@@ -6,6 +6,7 @@ function displayPageHeader($page_title, $dir_level=false)
     <head>
       <meta charset="utf-8">
       <title><?php echo $page_title ?></title>
+      <link rel="icon" href="<?php echo FILE_URL ?>/logos/tha_bag(89x107).png" type = "image/x-icon">
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/reset.css">
       <link href="https://fonts.googleapis.com/css2?family=Lato&family=Laila&family=Alegreya+Sans&display=swap" rel="stylesheet">
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.13.0/css/all.css'>
