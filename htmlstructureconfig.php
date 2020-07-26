@@ -29,7 +29,7 @@ function displayMainNavigation($active_page='')
   <header>
     <div class="ky-logo-name-container">
       <a href="<?php echo URL ?>/">
-        <img src="<?php echo FILE_URL ?>/logos/globe-solid.png"/><span>The Best Shop</span>
+        <img src="<?php echo FILE_URL ?>/logos/bird_carry_the_bag(378x161).png"/><span>The Best Shop</span>
       </a>
     </div>
     <div class="ky-user-container">
