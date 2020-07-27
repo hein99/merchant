@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   getTotalCustomersCount();
   getNewOrdersCount();
   getNewMessagesCount();
@@ -20,6 +19,7 @@ $(document).ready(function(){
       }
     })
   }
+
   function getNewOrdersCount()
   {
     $.ajax({
@@ -30,6 +30,7 @@ $(document).ready(function(){
       }
     })
   }
+
   function getNewMessagesCount()
   {
     $.ajax({
@@ -41,27 +42,27 @@ $(document).ready(function(){
     })
   }
 
-  $(document).on('click', '.edit-rate', function(){
-    if($('#mmk').prop('disabled') == true){
-      $('#mmk').removeAttr('disabled');
-    }
+  function changeExchangeRateAjax()
+  {
+    var mmk = $('#mmk-input-js').val();
+    $.ajax({
+      url: PAGE_URL+'/dashboard/created_exchange_rate',
+      method:"POST",
+      data: "mmk=" + mmk
+    })
+  }
 
-    $('#mmk').focus().select();
-    $(this).hide();
-    $('.done-edit').show();
-  });
+  function changeFloatTextareaAjax()
+  {
+    var text = $('#float-textarea-js').val();
+    $.ajax({
+      url: PAGE_URL+'/dashboard/edit_float_text',
+      method:"POST",
+      data: {text: text}
+    })
+  }
 
-  $(document).on('click', '.done-edit', function(){
-    if($('#mmk').prop('disabled') == false){
-      $('#mmk').prop('disabled', true);
-    }
-    $(this).hide();
-    $('.edit-rate').show();
-    changeExchangeRateAjax();
-  });
-
-
-  $('.ky-create-customer-form').validate({
+  $('#customer-create-form-js').validate({
     rules: {
       username: {
         required: true,
@@ -82,17 +83,33 @@ $(document).ready(function(){
       },
       address: {
         required: true
-      },
+      }
     }
   });
 
-  function changeExchangeRateAjax()
-  {
-    var mmk = $('#mmk').val();
-    $.ajax({
-      url: PAGE_URL+'/dashboard/created_exchange_rate',
-      method:"POST",
-      data: "mmk=" + mmk
-    })
-  }
+  $(document).on('click', '#edit-currency-rate-btn-js', function(){
+    $('#mmk-input-js').prop('disabled', false).focus().select();
+    $(this).hide();
+    $('#save-currency-rate-btn-js').show();
+  });
+  $(document).on('click', '#save-currency-rate-btn-js', function(){
+    $('#mmk-input-js').prop('disabled', true).blur();
+    $(this).hide();
+    $('#edit-currency-rate-btn-js').show();
+    changeExchangeRateAjax();
+  });
+
+  $(document).on('click', '#edit-float-text-btn-js', function(){
+    $('#float-textarea-js').prop('disabled', false).focus().select();
+    $(this).hide();
+    $('#save-float-text-btn-js').show();
+  });
+  $(document).on('click', '#save-float-text-btn-js', function(){
+    $('#float-textarea-js').prop('disabled', true).blur();
+    $(this).hide();
+    $('#edit-float-text-btn-js').show();
+    changeFloatTextareaAjax();
+  });
+
+
 });
