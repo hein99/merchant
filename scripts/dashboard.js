@@ -101,11 +101,13 @@ $(document).ready(function(){
 
   $(document).on('click', '#edit-float-text-btn-js', function(){
     $('#float-textarea-js').prop('disabled', false).focus().select();
+    $('#float-textarea-js').addClass("sn-edit-text")
     $(this).hide();
     $('#save-float-text-btn-js').show();
   });
   $(document).on('click', '#save-float-text-btn-js', function(){
     $('#float-textarea-js').prop('disabled', true).blur();
+    $('#float-textarea-js').removeClass("sn-edit-text");
     $(this).hide();
     $('#edit-float-text-btn-js').show();
     changeFloatTextareaAjax();

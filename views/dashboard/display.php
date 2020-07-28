@@ -2,34 +2,39 @@
 displayPageHeader('Dashboard | ' . WEB_NAME);
 displayMainNavigation('dashboard');
  ?>
-<main>
+<main class="sn-grid-warpper">
   <!-- ***** Customer create form -->
-  <article>
+  <article class="sn-form-wrapper">
     <h1>Add New Customer</h1>
     <form action="<?php echo URL ?>/customer/create/" method="post" id="customer-create-form-js">
-        <input type="text" name="username" placeholder="Username">
-
-        <input type="password" name="password1" placeholder="Password" id="password1-js">
-
-        <input type="password" name="password2" placeholder="Confirm Password">
-
-        <input type="number" name="phone" placeholder="Phone Number">
-
-        <textarea name="address" placeholder="Address"></textarea>
-
+        <div class="error-text">
+          <input type="text" name="username" placeholder="Username">
+        </div>
+        <div class="error-text">
+          <input type="password" name="password1" placeholder="Password" id="password1-js">
+        </div>
+        <div class="error-text">
+          <input type="password" name="password2" placeholder="Confirm Password">
+        </div>
+        <div class="error-text">
+          <input type="number" name="phone" placeholder="Phone Number">
+        </div>
+        <div class="textarea-error">
+          <textarea name="address" placeholder="Address"></textarea>
+        </div>
       <input type="submit" value="Create">
     </form>
   </article>
   <!-- End customer create form -->
 
   <!-- ***** Password request table -->
-  <article>
+  <article class="sn-pass-wrapper">
     <h1>Password Request</h1>
     <table>
       <thead>
         <tr>
-          <th>Phone no.</th>
-          <th>Time</th>
+          <th><span><i class="fas fa-phone-alt"></i></span></th>
+          <th><span><i class="fas fa-clock"></i></span></th>
         </tr>
       </thead>
       <tbody>
@@ -48,17 +53,17 @@ displayMainNavigation('dashboard');
   <!-- End password request table -->
 
   <!-- ***** Floating Text -->
-  <article>
+  <article class="sn-floattext-wrapper">
     <?php $text = FloatText::getText(); ?>
     <h1>Floating Text</h1>
     <textarea rows="8" cols="80" disabled="disabled" placeholder="Type here...." id="float-textarea-js"><?php echo $text->getValueEncoded('text') ?></textarea>
-    <button type="button" id="edit-float-text-btn-js">Edit</button>
-    <button type="button" id="save-float-text-btn-js">Save</button>
+    <button type="button" id="edit-float-text-btn-js"><span><i class="fas fa-pencil-alt"></i></span></button>
+    <button type="button" id="save-float-text-btn-js"><span><i class="fas fa-check"></i></span></button>
   </article>
   <!-- End floating Text -->
 
   <!-- ***** Banner Photo -->
-  <article>
+  <article class="sn-banner-wrapper">
     <h1>Banner Photos</h1>
     <!-- ***** photos list-->
     <?php $banner_photos = BannerPhotos::getAllPhotos();?>
@@ -89,7 +94,7 @@ displayMainNavigation('dashboard');
   <!-- End banner photo -->
 
   <!-- ***** Exchange Rate -->
-  <article>
+  <article class="sn-exchange-warpper">
     <h1>Exchange rate</h1>
     <?php $rate = ExchangeRate::getLatestExchangeRate(); ?>
     <span>1&nbsp;<?php echo CURRENCY_SYMBOL ?></span>
@@ -100,34 +105,37 @@ displayMainNavigation('dashboard');
   </article>
   <!-- End exchange rate -->
 
-  <ul>
-    <li>
-      <a href="<?php echo URL ?>/customer/display/">
-        <span id="customers_count"></span>
-        <span>Customers</span>
-      </a>
-    </li>
+  <article class="sn-widget-wrapper">
+    <ul>
+      <li>
+        <a href="<?php echo URL ?>/customer/display/">
+          <span id="customers_count"></span>
+          <span>Customers</span>
+        </a>
+      </li>
 
-    <li>
-      <a href="<?php echo URL ?>/order/display/">
-        <span id="orders_count"></span>
-        <span>New Orders</span>
-      </a>
-    </li>
+      <li>
+        <a href="<?php echo URL ?>/order/display/">
+          <span id="orders_count"></span>
+          <span>New Orders</span>
+        </a>
+      </li>
 
-    <li>
-      <a href="<?php echo URL ?>/conversation/display/">
-        <span id="messages_count"></span>
-        <span>New Messages</span>
-      </a>
-    </li>
+      <li>
+        <a href="<?php echo URL ?>/conversation/display/">
+          <span id="messages_count"></span>
+          <span>New Messages</span>
+        </a>
+      </li>
 
-    <li>
-      <a href="<?php echo URL ?>/membership/display/">
-        <span>Memberships</span>
-      </a>
-    </li>
-  </ul>
+      <li>
+        <a href="<?php echo URL ?>/membership/display/">
+          <span>Memberships</span>
+        </a>
+      </li>
+    </ul>
+  </article>
+
 
 </main>
 <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
