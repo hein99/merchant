@@ -11,6 +11,7 @@ function displayPageHeader($page_title, $dir_level=false)
       <link href="https://fonts.googleapis.com/css2?family=Lato&family=Laila&family=Alegreya+Sans&display=swap" rel="stylesheet">
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.13.0/css/all.css'>
       <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
+      <link rel="stylesheet" href="https://swiperjs.com/package/swiper-bundle.min.css">
       <link rel="stylesheet" href="<?php echo FILE_URL ?>/styles/<?php echo $dir_level ? 'login.css' : 'config.css'?>">
       <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>

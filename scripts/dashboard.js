@@ -89,11 +89,13 @@ $(document).ready(function(){
 
   $(document).on('click', '#edit-currency-rate-btn-js', function(){
     $('#mmk-input-js').prop('disabled', false).focus().select();
+    $('#mmk-input-js').addClass("sn-edit-currency");
     $(this).hide();
     $('#save-currency-rate-btn-js').show();
   });
   $(document).on('click', '#save-currency-rate-btn-js', function(){
     $('#mmk-input-js').prop('disabled', true).blur();
+    $('#mmk-input-js').removeClass("sn-edit-currency");
     $(this).hide();
     $('#edit-currency-rate-btn-js').show();
     changeExchangeRateAjax();
@@ -101,7 +103,7 @@ $(document).ready(function(){
 
   $(document).on('click', '#edit-float-text-btn-js', function(){
     $('#float-textarea-js').prop('disabled', false).focus().select();
-    $('#float-textarea-js').addClass("sn-edit-text")
+    $('#float-textarea-js').addClass("sn-edit-text");
     $(this).hide();
     $('#save-float-text-btn-js').show();
   });
@@ -113,5 +115,53 @@ $(document).ready(function(){
     changeFloatTextareaAjax();
   });
 
+  $(".swiper-slide").hover(function(){
+      var showEdit = jQuery(this).find('.sn-show-edit');
+      $(showEdit).show();
+    }, function(){
+      var showEdit = jQuery(this).find('.sn-show-edit');
+      $(showEdit).hide();
+  });
+  $(".sn-show-edit").hover(function(){
+      $(this).hide();
+      var list = jQuery(this).parent().children('.sn-edit-list');
+      $(list).show();
+    }, function(){
+      $(this).show();
+      var list = jQuery(this).parent().children('.sn-edit-list');
+      $(list).hide();
+  });
+  $(".sn-edit-list").hover(function(){
+      var showEdit = jQuery(this).parent().children('.sn-show-edit');
+      $(showEdit).hide();
+      var list = jQuery(this).parent().children('.sn-edit-list');
+      $(list).show();
+    }, function(){
+      var showEdit = jQuery(this).parent().children('.sn-show-edit');
+      $(showEdit).show();
+      var list = jQuery(this).parent().children('.sn-edit-list');
+      $(list).hide();
+  });
 
+  // $(document).on('click', '#save-float-text-btn-js', function(){
+  //   $('#float-textarea-js').prop('disabled', true).blur();
+  //   $('#float-textarea-js').removeClass("sn-edit-text");
+  //   $(this).hide();
+  //   $('#edit-float-text-btn-js').show();
+  //   changeFloatTextareaAjax();
+  // });
+
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 2,
+    slidesPerColumn: 2,
+    spaceBetween: 30,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 });
