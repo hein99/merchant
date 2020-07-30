@@ -91,11 +91,19 @@ displayMainNavigation('dashboard');
     <!-- ***** photo create form-->
     <div class="sn-add-image-form">
       <h1>Add Photo</h1>
-      <form action="<?php echo URL ?>/dashboard/create_photo" method="post" enctype="multipart/form-data">
-        <input type="file" name="photo">
-        <input type="url" name="link" placeholder="https://www.example.com">
-        <input type="submit" value="Add">
+      <form id="uploadImageForm" action="<?php echo URL ?>/dashboard/create_photo" method="post" enctype="multipart/form-data">
+        <div class="sn-preview-wrapper">
+          <img src="<?php echo FILE_URL ?>/logos/image-preview.png" id="preview" class="img-thumbnail">
+        </div>
+        <input type="file" name="photo" id="uploadImageFile">
+        <button type="button" name="button" id="choose-photo-js">Choose a photo</button>
+        <div class="sn-photo-link">
+          <span><i class="fas fa-link"></i></span>
+          <input type="url" name="link" placeholder="https://www.example.com">
+        </div>
+        <input type="submit" value="Add to Banner" class="add-banner-photo">
       </form>
+      <button type="button" id="sn-image-upload-close-js"><span><i class="fas fa-times"></i></span></button>
     </div>
     <!-- end photo create form -->
     <button type="button" id="sn-image-upload-js"><span><i class="fas fa-plus"></i></span></button>

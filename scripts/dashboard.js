@@ -143,13 +143,24 @@ $(document).ready(function(){
       $(list).hide();
   });
 
-  // $(document).on('click', '#save-float-text-btn-js', function(){
-  //   $('#float-textarea-js').prop('disabled', true).blur();
-  //   $('#float-textarea-js').removeClass("sn-edit-text");
-  //   $(this).hide();
-  //   $('#edit-float-text-btn-js').show();
-  //   changeFloatTextareaAjax();
-  // });
+  $(document).on('click', '#sn-image-upload-js', function(){
+    $('.sn-add-image-form').show();
+  });
+  $(document).on('click', '#sn-image-upload-close-js', function(){
+    $('.sn-add-image-form').hide();
+  });
+
+  $(document).on('change', '#uploadImageFile', function(e){
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById("preview").src = e.target.result;
+    };
+    reader.readAsDataURL(this.files[0]);
+  });
+
+  $(document).on('click', '#choose-photo-js', function(){
+    $('#uploadImageFile').trigger('click');
+  });
 
   var swiper = new Swiper('.swiper-container', {
     slidesPerView: 2,
