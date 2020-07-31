@@ -238,8 +238,8 @@
   text-align: center;
   font-size: 18px;
   background: #fff;
-  height: 110px !important;
-  /* height: calc((100% - 60px) / 2); */
+  /* height: 110px !important; */
+  height: calc((100% - 60px) / 2);
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -271,7 +271,7 @@
 }
 .sn-banner-wrapper span{
   cursor: pointer;
-  top: 0px;
+  top: calc((100% - 110px) / 2);
   right: 8px;
   background: #0000004f;
   border-radius: 4px;
@@ -531,6 +531,90 @@
   grid-template-rows: 16vh 16vh 16vh 16vh;
   grid-gap: 7px;
 }
+.sn-widget-wrapper ul li a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+.sn-widget-icon{
+  width: 44%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sn-widget-icon span{
+  width: 60%;
+  height: 70%;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+}
+.sn-customer-icon span{
+  background-color: #2EC5FF;
+  box-shadow: 0 0 0 0 #2EC5FF;
+}
+.sn-order-icon span{
+  background-color: #57bc91;
+  box-shadow: 0 0 0 0 #57bc91;
+}
+.sn-conversation-icon span{
+  background-color: #21d2b6;
+  box-shadow: 0 0 0 0 #21d2b6;
+}
+.sn-widget-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #e5e5e5;
+  overflow: hidden;
+}
+.sn-widget-container .memberships{
+  display: flex;
+  flex-direction: column;
+}
+.sn-widget-container:hover .sn-customer-icon span{
+  background-color: white;
+  color: #2EC5FF;
+  box-shadow: 0 0 0 200px #2EC5FF;
+}
+.sn-widget-container:hover .sn-order-icon span{
+  background-color: white;
+  color: #57bc91;
+  box-shadow: 0 0 0 200px #57bc91;
+}
+.sn-widget-container:hover .sn-conversation-icon span{
+  background-color: white;
+  color: #21d2b6;
+  box-shadow: 0 0 0 200px #21d2b6;
+}
+.sn-membership-text{
+  z-index: 1;
+}
+.sn-widget-container:hover .sn-membership-text{
+  color: #fff;
+}
+.sn-widget-container:hover .sn-info-container span:last-child{
+  color: #efefef;
+}
+.sn-widget-container:hover #customers_count,
+.sn-widget-container:hover #orders_count,
+.sn-widget-container:hover #messages_count{
+  color: #fff;
+}
 .sn-customer-widget{
   grid-column: 1 / 2;
   grid-row: 1 / 2;
@@ -546,4 +630,111 @@
 .sn-membership-widget{
   grid-column: 1 / 2;
   grid-row: 4 / 4;
+}
+.sn-membership-icons-container{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+.sn-membership-icons-container span{
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+}
+.memberships:hover .sn-membership-icons-container span{
+  background-color: white;
+}
+.sn-membership-icons-container span:nth-child(1){
+  background-color: #C0BFDF;
+}
+.sn-membership-icons-container span:nth-child(2){
+  background-color: #FDD600;
+}
+.sn-membership-icons-container span:nth-child(3){
+  background-color: #B9BBBC;
+}
+.sn-membership-icons-container span:nth-child(4){
+  background-color: #2EC5FF;
+}
+#membership-hover{
+  box-shadow: 0 0 0 0 #C0BFDF;
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+}
+.memberships:hover #membership-hover{
+  box-shadow: 0 0 0 200px #C0BFDF;
+}
+.sn-membership-icons-container span i{
+  color: white;
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+}
+.memberships:hover .sn-membership-icons-container span:nth-child(1) i{
+  color: #C0BFDF;
+}
+.memberships:hover .sn-membership-icons-container span:nth-child(2) i{
+  color: #FDD600;
+}
+.memberships:hover .sn-membership-icons-container span:nth-child(3) i{
+  color: #B9BBBC;
+}
+.memberships:hover .sn-membership-icons-container span:nth-child(4) i{
+  color: #2EC5FF;
+}
+.sn-info-container span{
+  display: block;
+  margin: 3px 0;
+}
+.sn-info-container span:first-child{
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+}
+
+.sn-info-container span:last-child{
+  font-size: 0.8em;
+  color: #777;
+  letter-spacing: 0.5px;
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+}
+.memberships{
+  display: flex;
+  flex-direction: column;
+}
+.memberships .sn-membership-text {
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    color: #777;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-top: 10%;
+    transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
 }

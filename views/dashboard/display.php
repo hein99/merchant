@@ -128,43 +128,57 @@ displayMainNavigation('dashboard');
     <ul>
       <li class="sn-customer-widget">
         <a href="<?php echo URL ?>/customer/display/">
-          <div class="">
-            <span><i class="fas fa-users"></i></span>
+          <div class="sn-widget-container">
+            <div class="sn-widget-icon sn-customer-icon">
+              <span><i class="fas fa-users"></i></span>
+            </div>
+            <div class="sn-info-container sn-customer-info">
+              <span id="customers_count"></span>
+              <span>Customers</span>
+            </div>
           </div>
-          <span id="customers_count"></span>
-          <span>Customers</span>
         </a>
       </li>
 
       <li class="sn-order-widget">
         <a href="<?php echo URL ?>/order/display/">
-          <div class="">
-            <span><i class="fas fa-shapes"></i></span>
+          <div class="sn-widget-container">
+            <div class="sn-widget-icon sn-order-icon">
+              <span><i class="fas fa-shapes"></i></span>
+            </div>
+            <div class="sn-info-container sn-order-info">
+              <span id="orders_count"></span>
+              <span>New Orders</span>
+            </div>
           </div>
-          <span id="orders_count"></span>
-          <span>New Orders</span>
         </a>
       </li>
 
       <li class="sn-message-widget">
         <a href="<?php echo URL ?>/conversation/display/">
-          <div class="">
-            <span><i class="fas fa-envelope"></i></span>
+          <div class="sn-widget-container">
+            <div class="sn-widget-icon sn-conversation-icon">
+              <span><i class="fas fa-envelope"></i></span>
+            </div>
+            <div class="sn-info-container sn-conversation-info">
+              <span id="messages_count"></span>
+              <span>New Messages</span>
+            </div>
           </div>
-          <span id="messages_count"></span>
-          <span>New Messages</span>
         </a>
       </li>
 
       <li class="sn-membership-widget">
         <a href="<?php echo URL ?>/membership/display/">
-          <div class="">
-            <span id=""><i class="fas fa-award"></i></span>
-            <span><i class="fas fa-award"></i></span>
-            <span><i class="fas fa-award"></i></span>
-            <span><i class="fas fa-gem"></i></span>
+          <div class="sn-widget-container memberships">
+            <div class="sn-membership-text">Memberships</div>
+            <div class="sn-membership-icons-container">
+              <span id="membership-hover"><i class="fas fa-award"></i></span>
+              <span><i class="fas fa-award"></i></span>
+              <span><i class="fas fa-award"></i></span>
+              <span><i class="fas fa-gem"></i></span>
+            </div>
           </div>
-          <span>Memberships</span>
         </a>
       </li>
     </ul>
