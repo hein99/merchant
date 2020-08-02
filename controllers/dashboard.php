@@ -26,6 +26,10 @@ switch($action)
     editPhotoLink();
   break;
 
+  case 'edit_photo_order':
+    editPhotoOrder();
+  break;
+
   case 'delete_photo':
     deletePhoto();
   break;
@@ -133,6 +137,39 @@ function editPhotoLink()
   else
   {
     $photo->UpdateLinkById();
+    header('location: ' . URL . '/dashboard/');
+  }
+}
+
+function editPhotoOrder()
+{
+  $required_fields = array('id', 'order_no');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $photo = new BannerPhotos(array(
+    'id' => isset($_POST['id']) ? preg_replace('/[^0-9]/', '', $_POST['id']) : '',
+    'order_no' => isset($_POST['order_no']) ? preg_replace('/[^0-9]/', '', $_POST['order_no']) : ''
+  ));
+
+  foreach($required_fields as $required_field)
+  {
+    if(!$photo->getValue($required_field) )
+      $missing_fields[] = $required_field;
+  }
+
+  if(!$photo->getValue('id'))
+  {
+    $error_messages[] = 'Failed request. Not include related Id.';
+  }
+
+  if($error_messages)
+  {
+    echo 'Failed' ;
+  }
+  else
+  {
+    $photo->UpdateOrderById();
     header('location: ' . URL . '/dashboard/');
   }
 }

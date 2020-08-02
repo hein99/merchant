@@ -75,7 +75,6 @@ $(document).ready(function(){
 
   function deletePhotoRequestAjax(id, toRemoveObj)
   {
-    console.log('Before: ' + id)
     $.ajax({
       url: PAGE_URL+'/dashboard/delete_photo',
       method:"POST",
@@ -86,6 +85,43 @@ $(document).ready(function(){
           toRemoveObj.remove();
         }
       }
+    });
+  }
+
+  function createSortPhotos()
+  {
+    var title = $('<h1>').html('Sort Photos');
+
+    var order_list = $('<ol>').sortable();
+
+    $('.swiper-slide').each(function(){
+      var id = $(this).data('id');
+      var img = $('img', $(this)).clone();
+      var new_list = $('<li>', {'data-id': id}).append(img).append('<i class="fas fa-sort"></i>');
+      order_list.append(new_list);
+    });
+
+    var save_btn = $('<button>', {class: 'hk-save-btn'}).html('Save').click(function(){
+      $('.hk-sort-photos-wrap>ol li').each(function(){
+        var order_number = $('.hk-sort-photos-wrap>ol li').index(this);
+        var id = $(this).data('id');
+        order_number += 1;
+        changePhotoOrderRequestAjax(id, order_number);
+      });
+      $('.hk-sort-photos-wrap').remove();
+    });
+    var close_btn = $('<button>', {class: 'hk-close-btn'}).html('<i class="fas fa-times"></i>').click(function(){
+      $('.hk-sort-photos-wrap').remove();
+    });
+    $('<article>', {class: "hk-sort-photos-wrap"}).append(title).append(order_list).append(save_btn).append(close_btn).appendTo('.sn-grid-warpper');
+  }
+
+  function changePhotoOrderRequestAjax(id, order_number)
+  {
+    $.ajax({
+      url: PAGE_URL+'/dashboard/edit_photo_order',
+      method:"POST",
+      data: {id: id, order_no: order_number}
     });
   }
 
@@ -141,6 +177,11 @@ $(document).ready(function(){
     $('#edit-float-text-btn-js').show();
     changeFloatTextareaAjax();
   });
+
+  $(document).on('click', '.sort-photos-btn-js', function(){
+    createSortPhotos();
+  });
+
 
   $(".swiper-slide").hover(function(){
       var showEdit = jQuery(this).find('.sn-show-edit');

@@ -71,7 +71,7 @@ displayMainNavigation('dashboard');
       <div class="swiper-wrapper">
         <?php if($banner_photos): ?>
           <?php foreach($banner_photos as $banner_photo):?>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-id="<?php echo $banner_photo->getValueEncoded('id') ?>">
               <img src="<?php echo FILE_URL ?>/photos/banner/id_<?php echo $banner_photo->getValue('id') . '_' . $banner_photo->getValueEncoded('photo_name')?>" alt="<?php echo $banner_photo->getValueEncoded('photo_name') ?>">
               <span class="sn-show-edit"><i class="fas fa-ellipsis-v"></i></span>
               <ul class="sn-edit-list">
@@ -128,8 +128,9 @@ displayMainNavigation('dashboard');
       <button type="button" id="edit-image-link-close-js"><span><i class="fas fa-times"></i></span></button>
     </div>
     <!-- end update photo link form -->
-
+    <?php if($banner_photos): ?>
     <button type="button" class="sort-photos-btn-js"><i class="fas fa-sort-amount-down"></i>Sort Photos</button>
+    <?php endif; ?>
     <button type="button" id="sn-image-upload-js"><span><i class="fas fa-plus"></i></span></button>
   </article>
   <!-- End banner photo -->
@@ -211,6 +212,12 @@ displayMainNavigation('dashboard');
 
 </main>
 <script src="https://swiperjs.com/package/swiper-bundle.min.js"></script>
+
+<script src="<?php echo FILE_URL ?>/scripts/sortable/jquery.ui.core.js"></script>
+<script src="<?php echo FILE_URL ?>/scripts/sortable/jquery.ui.widget.js"></script>
+<script src="<?php echo FILE_URL ?>/scripts/sortable/jquery.ui.mouse.js"></script>
+<script src="<?php echo FILE_URL ?>/scripts/sortable/jquery.ui.sortable.js"></script>
+
 <script src="<?php echo FILE_URL ?>/scripts/jquery.validate.min.js" charset="utf-8"></script>
 <script src="<?php echo FILE_URL ?>/scripts/dashboard.js"></script>
 

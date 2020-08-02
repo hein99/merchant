@@ -12,7 +12,7 @@ class BannerPhotos extends DataObject
   public static function getAllPhotos()
   {
     $conn = parent::connect();
-    $sql = 'SELECT * FROM ' . TBL_BANNER_PHOTOS;
+    $sql = 'SELECT * FROM ' . TBL_BANNER_PHOTOS . ' ORDER BY order_no';
     try {
       $st = $conn->query($sql);
       $photos = array();
