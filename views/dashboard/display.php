@@ -125,7 +125,7 @@ displayMainNavigation('dashboard');
         </div>
         <input type="submit" value="Save" class="add-banner-photo">
       </form>
-      <button type="button" id="edit-image-link-close-js"><span><i class="fas fa-times"></i></span></button>
+      <button class="button button--sacnite button--round-l" id="edit-image-link-close-js"><i class="fas fa-times"></i></button>
     </div>
     <!-- end update photo link form -->
 

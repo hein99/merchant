@@ -301,6 +301,7 @@
 .sn-edit-list li{
   padding: 5px 2px;
   border-bottom: 1px solid #ffffff40;
+  cursor: pointer;
 }
 .sn-edit-list li:last-child{
   border-bottom: 0

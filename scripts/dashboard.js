@@ -110,7 +110,7 @@ $(document).ready(function(){
       });
       $('.hk-sort-photos-wrap').remove();
     });
-    var close_btn = $('<button>', {class: 'hk-close-btn'}).html('<i class="fas fa-times"></i>').click(function(){
+    var close_btn = $('<button>', {class: 'button button--sacnite button--round-l hk-close-btn'}).html('<i class="fas fa-times"></i>').click(function(){
       $('.hk-sort-photos-wrap').remove();
     });
     $('<article>', {class: "hk-sort-photos-wrap"}).append(title).append(order_list).append(save_btn).append(close_btn).appendTo('.sn-grid-warpper');
