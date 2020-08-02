@@ -785,7 +785,7 @@
   transform: scale3d(1, 1, 1);
 }
 .button--sacnite.button--inverted:hover::before {
-  box-shadow: inset 0 0 0 2px #b4b4b4;
+  box-shadow: inset 0 0 0 2px #2EC5FF;
 }
 .button {
   min-width: 50px;
@@ -809,6 +809,7 @@
 	padding: 0px;
 	overflow: hidden;
 	width: 80px;
+  border-bottom: 1px solid #bfbfbf;
 }
 
 .button--itzel::before {
@@ -818,7 +819,7 @@
 	left: 0;
 	width: 68px;
 	height: 100%;
-	border: 1px solid #bfbfbf;
+	border: 1px solid #2EC5FF;
 	border-radius: inherit;
 	-webkit-clip-path: polygon(0% 0%, 0% 100%, 35% 100%, 35% 60%, 65% 60%, 65% 100%, 100% 100%, 100% 0%);
 	clip-path: url(../index.html#clipBox);
@@ -827,12 +828,12 @@
 }
 
 .button--itzel.button--border-thin::before {
-	border: 1px solid #bfbfbf;
+	border: 1px solid #2EC5FF;
 	transform: translate3d(0, 100%, 0) translate3d(0, -1px, 0);
 }
 
 .button--itzel.button--border-thick::before {
-	border: 1px solid #bfbfbf;
+	border: 1px solid #2EC5FF;
 	transform: translate3d(0, 100%, 0) translate3d(0, -3px, 0);
 }
 
@@ -848,14 +849,13 @@
 	left: 50%;
 	padding: 3px;
 	font-size: 13px;
-  color: #2d3435ad;
+  color: #2EC5FF;
 	transform: translate3d(-50%, 0, 0);
 }
 
-.button--itzel > i{
-  /* opacity: 0;
-  position: absolute;
-  top: 30%; */
+.button--itzel:hover{
+  border-bottom: 1px solid #2EC5FF;
+  box-shadow: 0px 0px 1px 0px #2EC5FF;
 }
 
 .button--itzel > span {
