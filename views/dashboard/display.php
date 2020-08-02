@@ -69,17 +69,21 @@ displayMainNavigation('dashboard');
     <?php $banner_photos = BannerPhotos::getAllPhotos();?>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <?php foreach($banner_photos as $banner_photo):?>
-          <div class="swiper-slide">
-            <img src="<?php echo FILE_URL ?>/photos/banner/id_<?php echo $banner_photo->getValue('id') . '_' . $banner_photo->getValueEncoded('photo_name')?>" alt="<?php echo $banner_photo->getValueEncoded('photo_name') ?>">
-            <span class="sn-show-edit"><i class="fas fa-ellipsis-v"></i></span>
-            <ul class="sn-edit-list">
-              <li><a href="<?php echo $banner_photo->getValueEncoded('link') ?>" target="_blank">Test Link</a></li>
-              <li class="edit-link-js" data-id="<?php echo $banner_photo->getValueEncoded('id') ?>">Edit Link</li>
-              <li class="delete-photo-js" data-id="<?php echo $banner_photo->getValueEncoded('id') ?>">Delete</li>
-            </ul>
-          </div>
-        <?php endforeach; ?>
+        <?php if($banner_photos): ?>
+          <?php foreach($banner_photos as $banner_photo):?>
+            <div class="swiper-slide">
+              <img src="<?php echo FILE_URL ?>/photos/banner/id_<?php echo $banner_photo->getValue('id') . '_' . $banner_photo->getValueEncoded('photo_name')?>" alt="<?php echo $banner_photo->getValueEncoded('photo_name') ?>">
+              <span class="sn-show-edit"><i class="fas fa-ellipsis-v"></i></span>
+              <ul class="sn-edit-list">
+                <li><a href="<?php echo $banner_photo->getValueEncoded('link') ?>" target="_blank">Test Link</a></li>
+                <li class="edit-link-js" data-id="<?php echo $banner_photo->getValueEncoded('id') ?>">Edit Link</li>
+                <li class="delete-photo-js" data-id="<?php echo $banner_photo->getValueEncoded('id') ?>">Delete</li>
+              </ul>
+            </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p>Empty<br>Add Photos</p>
+        <?php endif; ?>
       </div>
       <div class="swiper-pagination"></div>
     </div>
