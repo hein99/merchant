@@ -71,12 +71,12 @@ displayMainNavigation('dashboard');
       <div class="swiper-wrapper">
         <?php foreach($banner_photos as $banner_photo):?>
           <div class="swiper-slide">
-            <img src="<?php echo FILE_URL ?>/photos/banner/id_<?php echo $banner_photo->getValue('id') . '_' . $banner_photo->getValueEncoded('photo_name')?>" alt="<?php $banner_photo->getValueEncoded('photo_name') ?>">
+            <img src="<?php echo FILE_URL ?>/photos/banner/id_<?php echo $banner_photo->getValue('id') . '_' . $banner_photo->getValueEncoded('photo_name')?>" alt="<?php echo $banner_photo->getValueEncoded('photo_name') ?>">
             <span class="sn-show-edit"><i class="fas fa-ellipsis-v"></i></span>
             <ul class="sn-edit-list">
               <li><a href="<?php echo $banner_photo->getValueEncoded('link') ?>" target="_blank">Test Link</a></li>
-              <li>Edit Link</li>
-              <li>Delete</li>
+              <li class="edit-link-js" data-id="<?php echo $banner_photo->getValueEncoded('id') ?>">Edit Link</li>
+              <li class="delete-photo-js" data-id="<?php echo $banner_photo->getValueEncoded('id') ?>">Delete</li>
             </ul>
           </div>
         <?php endforeach; ?>
@@ -106,6 +106,26 @@ displayMainNavigation('dashboard');
       <button type="button" id="sn-image-upload-close-js"><span><i class="fas fa-times"></i></span></button>
     </div>
     <!-- end photo create form -->
+
+    <!-- ***** Update photo link form -->
+    <div id="edit-image-link-form-js">
+      <h1>Edit Photo's Link</h1>
+      <form action="<?php echo URL ?>/dashboard/edit_photo_link" method="post">
+        <input type="hidden" name="id">
+        <div class="sn-preview-wrapper">
+        <img src="" id="edit-img-js">
+        </div>
+        <div class="sn-photo-link">
+          <span><i class="fas fa-link"></i></span>
+          <input type="url" name="link" placeholder="https://www.example.com">
+        </div>
+        <input type="submit" value="Save" class="add-banner-photo">
+      </form>
+      <button type="button" id="edit-image-link-close-js"><span><i class="fas fa-times"></i></span></button>
+    </div>
+    <!-- end update photo link form -->
+
+    <button type="button" class="sort-photos-btn-js"><i class="fas fa-sort-amount-down"></i>Sort Photos</button>
     <button type="button" id="sn-image-upload-js"><span><i class="fas fa-plus"></i></span></button>
   </article>
   <!-- End banner photo -->

@@ -1,0 +1,15 @@
+.sort-photos-btn-js{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+  border: 1px solid #000a148c;
+  font-size: 0.75em;
+  margin: 5px 6px;
+  border-radius: 3px;
+  color: #2d3435cc;
+}
+
+.sort-photos-btn-js i{
+  margin-right: 3px;
+}

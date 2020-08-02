@@ -27,6 +27,23 @@ class BannerPhotos extends DataObject
     }
   }
 
+  public static function getPhotoById($id)
+  {
+    $conn = parent::connect();
+    $sql = 'SELECT * FROM ' . TBL_BANNER_PHOTOS . ' WHERE id=:id';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $id, PDO::PARAM_INT);
+      $st->execute();
+      $row = $st->fetch();
+      parent::disconnect($conn);
+      if($row) return new BannerPhotos($row);
+    }catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: '.$e->getMessage());
+    }
+  }
+
   public function insertPhoto()
   {
     $conn = parent::connect();
@@ -50,8 +67,8 @@ class BannerPhotos extends DataObject
     $sql = 'UPDATE ' . TBL_BANNER_PHOTOS . ' SET link = :link WHERE id = :id';
     try {
       $st = $conn->prepare($sql);
-      $st->bindValue(':link', $this->data['link']);
       $st->bindValue(':id', $this->data['id']);
+      $st->bindValue(':link', $this->data['link']);
       $st->execute();
       parent::disconnect($conn);
     }catch(PDOException $e) {
@@ -68,6 +85,21 @@ class BannerPhotos extends DataObject
       $st = $conn->prepare($sql);
       $st->bindValue(':order_no', $this->data['order_no']);
       $st->bindValue(':id', $this->data['id']);
+      $st->execute();
+      parent::disconnect($conn);
+    }catch(PDOException $e) {
+      parent::disconnect($conn);
+      die('Query failed: ' . $e->getMessage());
+    }
+  }
+
+  public static function DeleteById($id)
+  {
+    $conn = parent::connect();
+    $sql = 'DELETE FROM ' . TBL_BANNER_PHOTOS . ' WHERE id = :id';
+    try {
+      $st = $conn->prepare($sql);
+      $st->bindValue(':id', $id, PDO::PARAM_INT);
       $st->execute();
       parent::disconnect($conn);
     }catch(PDOException $e) {

@@ -356,7 +356,7 @@
 .swiper-pagination-bullet{
   opacity: 1 !important;
 }
-#sn-image-upload-js, #sn-image-upload-close-js{
+#sn-image-upload-js, #sn-image-upload-close-js, #edit-image-link-close-js{
   position: absolute;
   top: 2px;
   right: 1px;
@@ -373,7 +373,7 @@
   letter-spacing: 0.5px;
   border-radius: 5px; */
 }
-#sn-image-upload-js span, #sn-image-upload-close-js span{
+#sn-image-upload-js span, #sn-image-upload-close-js span, #edit-image-link-close-js span{
   border: 1px solid #e0e0e0;
   border-radius: 50%;
   background: #fff;
@@ -386,12 +386,12 @@
   color: #858585;
   padding: 8px 7px;
 }
-#sn-image-upload-close-js i{
+#sn-image-upload-close-js i, #edit-image-link-close-js i{
   font-size: 13px;
   color: #858585;
   padding: 8px;
 }
-.sn-add-image-form{
+.sn-add-image-form, #edit-image-link-form-js{
   display: none;
   position: absolute;
   top: 0;
@@ -443,7 +443,7 @@
 .sn-preview-wrapper{
   height: 120px;
 }
-#preview{
+#preview, #edit-img-js{
   margin: 13px auto 4px auto;
   display: block;
   width: 120px;

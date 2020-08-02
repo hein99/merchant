@@ -62,6 +62,33 @@ $(document).ready(function(){
     })
   }
 
+  function displayPhotoEditForm(id, selectedObj)
+  {
+    var img_src = $('img', selectedObj).attr('src');
+    var img_alt = $('img', selectedObj).attr('alt');
+    $('#edit-image-link-form-js').show();
+    $('#edit-img-js').attr('src', img_src);
+    $('#edit-img-js').attr('alt', img_alt);
+    $('input[type=hidden]').val(id);
+    $('input[type=url]').focus();
+  }
+
+  function deletePhotoRequestAjax(id, toRemoveObj)
+  {
+    console.log('Before: ' + id)
+    $.ajax({
+      url: PAGE_URL+'/dashboard/delete_photo',
+      method:"POST",
+      data: {id: id},
+      success:function(data){
+        if(data == 'success')
+        {
+          toRemoveObj.remove();
+        }
+      }
+    });
+  }
+
   $('#customer-create-form-js').validate({
     rules: {
       username: {
@@ -148,6 +175,19 @@ $(document).ready(function(){
   });
   $(document).on('click', '#sn-image-upload-close-js', function(){
     $('.sn-add-image-form').hide();
+  });
+
+  $(document).on('click', '.edit-link-js', function(){
+    displayPhotoEditForm($(this).data('id'), $(this).parent().parent());
+  });
+  $(document).on('click', '#edit-image-link-close-js', function(){
+    $('#edit-image-link-form-js').hide();
+  });
+  $(document).on('click', '.delete-photo-js', function(){
+    if(confirm('Are you sure?'))
+    {
+      deletePhotoRequestAjax($(this).data('id'), $(this).parent().parent());
+    }
   });
 
   $(document).on('change', '#uploadImageFile', function(e){

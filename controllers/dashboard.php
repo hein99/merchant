@@ -22,6 +22,14 @@ switch($action)
     createPhoto();
   break;
 
+  case 'edit_photo_link':
+    editPhotoLink();
+  break;
+
+  case 'delete_photo':
+    deletePhoto();
+  break;
+
   default:
     $ERR_STATUS = ERR_ACTION;
     require('./views/error_display.php');
@@ -93,5 +101,62 @@ function createPhoto()
     move_uploaded_file($tmp, './photos/banner/' . $photo_name);
   }
   header('location: ' . URL . '/dashboard/');
+}
+
+function editPhotoLink()
+{
+  $required_fields = array('id', 'link');
+  $missing_fields = array();
+  $error_messages = array();
+
+  $photo = new BannerPhotos(array(
+    'id' => isset($_POST['id']) ? preg_replace('/[^0-9]/', '', $_POST['id']) : '',
+    'link' => isset($_POST['link']) ? $_POST['link'] : ''
+  ));
+
+  foreach($required_fields as $required_field)
+  {
+    if(!$photo->getValue($required_field) )
+      $missing_fields[] = $required_field;
+  }
+
+  if(!$photo->getValue('id'))
+  {
+    $error_messages[] = 'Failed request. Not include related Id.';
+  }
+
+  if($error_messages)
+  {
+    $ERR_STATUS = ERR_FORM;
+    require('./views/error_display.php');
+  }
+  else
+  {
+    $photo->UpdateLinkById();
+    header('location: ' . URL . '/dashboard/');
+  }
+}
+
+function deletePhoto()
+{
+  $id = isset($_POST['id']) ? $_POST['id'] : '';
+  if($id)
+  {
+    $photo = BannerPhotos::getPhotoById($id);
+    if($photo)
+    {
+      $photo_name = 'id_' . $id . '_' . $photo->getValueEncoded('photo_name');
+      $dir = './photos/banner/';
+      $dirHandle = opendir($dir);
+      while($file = readdir($dirHandle))
+      {
+        if($file === $photo_name)
+          unlink($dir."/".$file);
+      }
+      closedir($dirHandle);
+      BannerPhotos::DeleteById($id);
+      echo 'success';
+    }
+  }
 }
  ?>
