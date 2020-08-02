@@ -1,15 +1,16 @@
 .sort-photos-btn-js{
   position: absolute;
   top: 0;
-  left: 0;
+  left: 0px;
+  width: 70px;
   background: none;
-  border: 1px solid #000a148c;
+  border-bottom: 1px solid #bfbfbf;
   font-size: 0.75em;
   margin: 5px 6px;
-  border-radius: 3px;
+  border-radius: 0px;
   color: #2d3435cc;
 }
 
 .sort-photos-btn-js i{
-  margin-right: 3px;
+  /* margin-right: 3px; */
 }
