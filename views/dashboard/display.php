@@ -57,8 +57,8 @@ displayMainNavigation('dashboard');
     <?php $text = FloatText::getText(); ?>
     <h1>Floating Text</h1>
     <textarea rows="8" cols="80" disabled="disabled" placeholder="Type here...." id="float-textarea-js"><?php echo $text->getValueEncoded('text') ?></textarea>
-    <button type="button" id="edit-float-text-btn-js"><span><i class="fas fa-pencil-alt"></i></span></button>
-    <button type="button" id="save-float-text-btn-js"><span><i class="fas fa-check"></i></span></button>
+    <button class="button button--sacnite button--round-l" id="edit-float-text-btn-js"><i class="fas fa-pencil-alt"></i></button>
+    <button class="button button--sacnite button--round-l" id="save-float-text-btn-js"><i class="fas fa-check"></i></button>
   </article>
   <!-- End floating Text -->
 
@@ -107,7 +107,7 @@ displayMainNavigation('dashboard');
         </div>
         <input type="submit" value="Add to Banner" class="add-banner-photo">
       </form>
-      <button type="button" id="sn-image-upload-close-js"><span><i class="fas fa-times"></i></span></button>
+      <button class="button button--sacnite button--round-l" id="sn-image-upload-close-js"><i class="fas fa-times"></i></button>
     </div>
     <!-- end photo create form -->
 
@@ -128,10 +128,12 @@ displayMainNavigation('dashboard');
       <button type="button" id="edit-image-link-close-js"><span><i class="fas fa-times"></i></span></button>
     </div>
     <!-- end update photo link form -->
+
+    <!-- <button type="button" class="sort-photos-btn-js"><i class="fas fa-sort-amount-down"></i>Sort Photos</button> -->
     <?php if($banner_photos): ?>
-    <button type="button" class="sort-photos-btn-js"><i class="fas fa-sort-amount-down"></i>Sort Photos</button>
+    <button class="button button--itzel button--text-thick sort-photos-btn-js"><i class="fas fa-sort-amount-down"></i><span>Sort Photos</span></button>
     <?php endif; ?>
-    <button type="button" id="sn-image-upload-js"><span><i class="fas fa-plus"></i></span></button>
+    <button class="button button--sacnite button--round-l" id="sn-image-upload-js"><i class="fas fa-plus"></i></button>
   </article>
   <!-- End banner photo -->
 
@@ -144,8 +146,8 @@ displayMainNavigation('dashboard');
       <span class="sn-exchange-icon"><i class="fas fa-exchange-alt"></i></span>
       <span><input type="number" value="<?php echo $rate->getValueEncoded('mmk') ?>" disabled="disabled" id="mmk-input-js"><span>MMK</span></span>
     </div>
-    <button type="button" id="edit-currency-rate-btn-js"><span><i class="fas fa-pencil-alt"></i></span></button>
-    <button type="button" id="save-currency-rate-btn-js"><span><i class="fas fa-check"></i></span></button>
+    <button class="button button--sacnite button--round-l" id="edit-currency-rate-btn-js"><i class="fas fa-pencil-alt"></i></button>
+    <button class="button button--sacnite button--round-l" id="save-currency-rate-btn-js"><i class="fas fa-check"></i></button>
   </article>
   <!-- End exchange rate -->
 
