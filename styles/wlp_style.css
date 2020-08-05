@@ -322,6 +322,7 @@
 .wp-order-table table.dataTable tbody td:nth-child(4) span{
 	display: inline-block;
 	width: 100%;
+	min-height: 2em;
 	max-height: 3em;
 	line-height: 1.4;
 	overflow-y: auto;

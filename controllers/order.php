@@ -296,8 +296,8 @@ function changeOrderStatus()
         $order->updateOrderStatus();
       }
     }
-    else if($order->getValue('order_status') == 3){
-      if($before_update_order->getValue('order_status') == 4)
+    else if($order->getValue('order_status') == 5){
+      if($before_update_order->getValue('order_status') == 6)
       {
         $customer_id = $before_update_order->getValue('customer_id');
         $customer = UsersAccount::getCustomerAccountById($customer_id);

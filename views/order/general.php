@@ -91,6 +91,62 @@ function ordersJsonReturn($orders, $order_status)
     case 3:
       foreach ($orders as $order) {
         $membership = chooseMembership($order['membership_id']);
+        $first_payment_dollar = ($order['quantity']*$order['price']) + $order['us_tax'] + $order['shipping_cost'];
+        $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
+        $new_customer = (object)array(
+          'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
+          'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
+          'remark' => '<span>' . $order['remark'] . '</span>',
+          'cupon_code' => $order['cupon_code'],
+          'quantity' => $order['quantity'],
+          'unit_price' => number_format($order['price'], 2) . '&nbsp;' . CURRENCY_SYMBOL,
+          'us_tax' => $order['us_tax'] . '&nbsp;' . CURRENCY_SYMBOL,
+          'shipping_cost' => $order['shipping_cost'] . '&nbsp;' . CURRENCY_SYMBOL,
+          'first_payment_dollar' => number_format($first_payment_dollar, 2) . '&nbsp;' . CURRENCY_SYMBOL,
+          'first_exchange_rate' => number_format($order['first_exchange_rate'], 2) . '&nbsp;MMK',
+          'first_payment_mmk' => number_format($first_payment_mmk, 2) . '&nbsp;MMK',
+          'order_status' => '<select class="order-status-js" name="order_status" data-id="'.$order['id'].'">
+          <option value="no2">'.ORDER_STATUS_2.'</option>
+            <option value="default" selected disabled>'.ORDER_STATUS_3.'</option>
+            <option value="no4">'.ORDER_STATUS_4.'</option>
+            <option value="no8">'.ORDER_STATUS_8.'</option>
+          </select>'
+        );
+        $new_orders[] = $new_customer;
+      }
+      break;
+    case 4:
+      foreach ($orders as $order) {
+        $membership = chooseMembership($order['membership_id']);
+        $first_payment_dollar = ($order['quantity']*$order['price']) + $order['us_tax'] + $order['shipping_cost'];
+        $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
+        $new_customer = (object)array(
+          'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
+          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
+          'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
+          'remark' => '<span>' . $order['remark'] . '</span>',
+          'cupon_code' => $order['cupon_code'],
+          'quantity' => $order['quantity'],
+          'unit_price' => number_format($order['price'], 2) . '&nbsp;' . CURRENCY_SYMBOL,
+          'us_tax' => $order['us_tax'] . '&nbsp;' . CURRENCY_SYMBOL,
+          'shipping_cost' => $order['shipping_cost'] . '&nbsp;' . CURRENCY_SYMBOL,
+          'first_payment_dollar' => number_format($first_payment_dollar, 2) . '&nbsp;' . CURRENCY_SYMBOL,
+          'first_exchange_rate' => number_format($order['first_exchange_rate'], 2) . '&nbsp;MMK',
+          'first_payment_mmk' => number_format($first_payment_mmk, 2) . '&nbsp;MMK',
+          'order_status' => '<select class="order-status-js" name="order_status" data-id="'.$order['id'].'">
+          <option value="no3">'.ORDER_STATUS_3.'</option>
+            <option value="default" selected disabled>'.ORDER_STATUS_4.'</option>
+            <option value="no5">'.ORDER_STATUS_5.'</option>
+            <option value="no8">'.ORDER_STATUS_8.'</option>
+          </select>'
+        );
+        $new_orders[] = $new_customer;
+      }
+      break;
+    case 5:
+      foreach ($orders as $order) {
+        $membership = chooseMembership($order['membership_id']);
         $commission = Membership::getMembershipByID($order['membership_id']); // get commission percentage from Membership table
         $current_rate = ExchangeRate::getLatestExchangeRate();
 
@@ -124,95 +180,9 @@ function ordersJsonReturn($orders, $order_status)
           'second_payment_mmk' => '<span class="second-payment-mmk-js">'.number_format($second_payment_mmk, 2).'</span>&nbsp;MMK',
 
           'order_status' => '<select class="order-status-js" name="order_status" data-id="'.$order['id'].'">
-          <option value="no2">'.ORDER_STATUS_2.'</option>
-            <option value="default" selected disabled>'.ORDER_STATUS_3.'</option>
-            <option value="no4" data-has_info="4">'.ORDER_STATUS_4.'</option>
-            <option value="no8">'.ORDER_STATUS_8.'</option>
-          </select>'
-        );
-        $new_orders[] = $new_customer;
-      }
-      break;
-    case 4:
-      foreach ($orders as $order) {
-        $membership = chooseMembership($order['membership_id']);
-
-        $first_payment_dollar = ($order['quantity']*$order['price']) + $order['us_tax'] + $order['shipping_cost'];
-        $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
-
-        $second_payment_dollar = ($first_payment_dollar*$order['commission']/100) + ($order['product_weight']*$order['weight_cost']) + ($first_payment_dollar*$order['mm_tax']/100) ;
-        $second_payment_mmk = $second_payment_dollar * $order['second_exchange_rate'];
-
-        $new_customer = (object)array(
-          'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
-          'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
-          'remark' => '<span>' . $order['remark'] . '</span>',
-          'cupon_code' => $order['cupon_code'],
-          'quantity' => $order['quantity'],
-          'unit_price' => number_format($order['price'], 2) . '&nbsp;' . CURRENCY_SYMBOL,
-          'us_tax' => $order['us_tax'] . '&nbsp;' . CURRENCY_SYMBOL,
-          'shipping_cost' => $order['shipping_cost'] . '&nbsp;' . CURRENCY_SYMBOL,
-          'first_payment_dollar' => number_format($first_payment_dollar, 2) . '&nbsp;' . CURRENCY_SYMBOL,
-          'first_exchange_rate' => number_format($order['first_exchange_rate'], 2) . '&nbsp;MMK',
-          'first_payment_mmk' => number_format($first_payment_mmk, 2) . '&nbsp;MMK',
-
-          'commission' => $order['commission'] . '&nbsp;%',
-          'weight' => $order['product_weight'] . '&nbsp;lb',
-          'weight_cost' => $order['weight_cost'] . '&nbsp;' . CURRENCY_SYMBOL,
-          'mm_tax' => $order['mm_tax'] . '&nbsp;%',
-
-          'second_payment_dollar' => number_format($second_payment_dollar, 2) . '&nbsp;' . CURRENCY_SYMBOL,
-          'second_exchange_rate' => number_format($order['second_exchange_rate'], 2) . '&nbsp;MMK',
-          'second_payment_mmk' => number_format($second_payment_mmk, 2) . '&nbsp;MMK',
-
-          'order_status' => '<select class="order-status-js" name="order_status" data-id="'.$order['id'].'">
-          <option value="no3">'.ORDER_STATUS_3.'</option>
-            <option value="default" selected disabled>'.ORDER_STATUS_4.'</option>
-            <option value="no5">'.ORDER_STATUS_5.'</option>
-            <option value="no8">'.ORDER_STATUS_8.'</option>
-          </select>'
-        );
-        $new_orders[] = $new_customer;
-      }
-      break;
-    case 5:
-      foreach ($orders as $order) {
-        $membership = chooseMembership($order['membership_id']);
-
-        $first_payment_dollar = ($order['quantity']*$order['price']) + $order['us_tax'] + $order['shipping_cost'];
-        $first_payment_mmk = $first_payment_dollar * $order['first_exchange_rate'];
-
-        $second_payment_dollar = ($first_payment_dollar*$order['commission']/100) + ($order['product_weight']*$order['weight_cost']) + ($first_payment_dollar*$order['mm_tax']/100) ;
-        $second_payment_mmk = $second_payment_dollar * $order['second_exchange_rate'];
-
-        $new_customer = (object)array(
-          'order_id' => isNewOrder($order['has_viewed_admin']) . str_pad( $order['id'], 7, 0, STR_PAD_LEFT ),
-          'customer_name' => '<a href="'.URL.'/customer/detail/'.$order['customer_id'].'" target="_blank">'.$membership . $order['username'].'</a>',
-          'product_link' => '<a href="'.$order['product_link'].'" class="product-link" target="_blank">Check&nbsp;Product&nbsp;Link</a>',
-          'remark' => '<span>' . $order['remark'] . '</span>',
-          'cupon_code' => $order['cupon_code'],
-          'quantity' => $order['quantity'],
-          'unit_price' => number_format($order['price'], 2) . '&nbsp;' . CURRENCY_SYMBOL,
-          'us_tax' => $order['us_tax'] . '&nbsp;' . CURRENCY_SYMBOL,
-          'shipping_cost' => $order['shipping_cost'] . '&nbsp;' . CURRENCY_SYMBOL,
-          'first_payment_dollar' => number_format($first_payment_dollar, 2) . '&nbsp;' . CURRENCY_SYMBOL,
-          'first_exchange_rate' => number_format($order['first_exchange_rate'], 2) . '&nbsp;MMK',
-          'first_payment_mmk' => number_format($first_payment_mmk, 2) . '&nbsp;MMK',
-
-          'commission' => $order['commission'] . '&nbsp;%',
-          'weight' => $order['product_weight'] . '&nbsp;lb',
-          'weight_cost' => $order['weight_cost'] . '&nbsp;' . CURRENCY_SYMBOL,
-          'mm_tax' => $order['mm_tax'] . '&nbsp;%',
-
-          'second_payment_dollar' => number_format($second_payment_dollar, 2) . '&nbsp;' . CURRENCY_SYMBOL,
-          'second_exchange_rate' => number_format($order['second_exchange_rate'], 2) . '&nbsp;MMK',
-          'second_payment_mmk' => number_format($second_payment_mmk, 2) . '&nbsp;MMK',
-
-          'order_status' => '<select class="order-status-js" name="order_status" data-id="'.$order['id'].'">
           <option value="no4">'.ORDER_STATUS_4.'</option>
             <option value="default" selected disabled>'.ORDER_STATUS_5.'</option>
-            <option value="no6">'.ORDER_STATUS_6.'</option>
+            <option value="no6" data-has_info="6">'.ORDER_STATUS_6.'</option>
             <option value="no8">'.ORDER_STATUS_8.'</option>
           </select>'
         );

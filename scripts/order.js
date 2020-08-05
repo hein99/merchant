@@ -121,13 +121,6 @@ $(document).on('click', '.order-btn-js', function(){
               { "data": "first_payment_dollar" },
               { "data": "first_exchange_rate" },
               { "data": "first_payment_mmk" },
-              { "data": "commission" },
-              { "data": "weight" },
-              { "data": "weight_cost" },
-              { "data": "mm_tax" },
-              { "data": "second_payment_dollar" },
-              { "data": "second_exchange_rate" },
-              { "data": "second_payment_mmk" },
               { "data": "order_status" }
             ]
         } );
@@ -159,13 +152,6 @@ $(document).on('click', '.order-btn-js', function(){
               { "data": "first_payment_dollar" },
               { "data": "first_exchange_rate" },
               { "data": "first_payment_mmk" },
-              { "data": "commission" },
-              { "data": "weight" },
-              { "data": "weight_cost" },
-              { "data": "mm_tax" },
-              { "data": "second_payment_dollar" },
-              { "data": "second_exchange_rate" },
-              { "data": "second_payment_mmk" },
               { "data": "order_status" }
             ]
         } );
@@ -449,12 +435,8 @@ function changeOrderStatus(selectedObj)
     break;
 
     case 'no4':
-      var has_info = $('option:selected', selectedObj).data('has_info');
       if(confirm("Do you want to change order status(Arrived at US Warehouse)?\nAre you sure!"))
-        if(has_info)
-          postSecondPaymentInfo(selectedObj);
-        else
-          changeJustOrderStaus(order_id, '4', selectedObj);
+        changeJustOrderStaus(order_id, '4', selectedObj);
       else
         selectedObj.val('default');
     break;
@@ -467,8 +449,12 @@ function changeOrderStatus(selectedObj)
     break;
 
     case 'no6':
+      var has_info = $('option:selected', selectedObj).data('has_info');
       if(confirm("Do you want to change order status(Arrived at Myanmar)?\nAre you sure!"))
-        changeJustOrderStaus(order_id, '6', selectedObj);
+        if(has_info)
+          postSecondPaymentInfo(selectedObj);
+        else
+          changeJustOrderStaus(order_id, '6', selectedObj);
       else
         selectedObj.val('default');
     break;
@@ -503,6 +489,7 @@ function changeJustOrderStaus(id, order_status, selectedObj)
     data: {id: id, order_status: order_status}
   }).done(function(e){
     parent.hide();
+    console.log(e);
   });
 }
 
@@ -519,7 +506,10 @@ function postFirstPaymentInfo(selectedObj)
       data: {id: id, us_tax: us_tax, shipping_cost: shipping_cost}
     }).done(function(e){
       parent.hide();
+      console.log(e);
     });
+  else
+    selectedObj.val('default');
 }
 
 function postSecondPaymentInfo(selectedObj)
@@ -538,7 +528,10 @@ function postSecondPaymentInfo(selectedObj)
       data: {id: id, commission: commission, product_weight: weight, weight_cost: weight_cost, mm_tax: mm_tax, second_exchange_rate: rate}
     }).done(function(e){
       parent.hide();
+      console.log(e);
     });
+  else
+    selectedObj.val('default');
 }
 
 function postThirdPaymentInfo(selectedObj)

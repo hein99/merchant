@@ -99,13 +99,6 @@ displayMainNavigation('order');
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>
-         <th>Commission&nbsp;[%]</th>
-         <th>Weight&nbsp;[lb]</th>
-         <th>Weight&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>MM&nbsp;Task[%]</th>
-         <th>Second&nbsp;Payment&nbsp;Dollar</th>
-         <th>Second&nbsp;Exchange&nbsp;Rate</th>
-         <th>Second&nbsp;Payment&nbsp;MMK</th>
          <th>Order&nbsp;Status</th>
        </tr>
      </thead>
@@ -126,13 +119,6 @@ displayMainNavigation('order');
          <th>First&nbsp;Payment&nbsp;Dollar</th>
          <th>First&nbsp;Exchange&nbsp;Rate</th>
          <th>First&nbsp;Payment&nbsp;MMK</th>
-         <th>Commission&nbsp;[%]</th>
-         <th>Weight&nbsp;[lb]</th>
-         <th>Weight&nbsp;Cost[<?php echo CURRENCY_SYMBOL ?>]</th>
-         <th>MM&nbsp;Task[%]</th>
-         <th>Second&nbsp;Payment&nbsp;Dollar</th>
-         <th>Second&nbsp;Exchange&nbsp;Rate</th>
-         <th>Second&nbsp;Payment&nbsp;MMK</th>
          <th>Order&nbsp;Status</th>
        </tr>
      </thead>

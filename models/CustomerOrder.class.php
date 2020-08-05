@@ -133,7 +133,7 @@ class CustomerOrder extends DataObject
   public function updateSecondPaymentInfo()
   {
     $conn = parent::connect();
-    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET commission = :commission, product_weight = :product_weight, weight_cost = :weight_cost, mm_tax = :mm_tax, second_exchange_rate = :second_exchange_rate, order_status = 4, has_viewed_customer = 0, has_viewed_admin = 0 WHERE id = :id';
+    $sql = 'UPDATE '. TBL_CUSTOMER_ORDER .' SET commission = :commission, product_weight = :product_weight, weight_cost = :weight_cost, mm_tax = :mm_tax, second_exchange_rate = :second_exchange_rate, order_status = 6, has_viewed_customer = 0, has_viewed_admin = 0 WHERE id = :id';
 
     try {
       $st = $conn->prepare($sql);
