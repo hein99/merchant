@@ -190,15 +190,11 @@ $(document).ready(function(){
       var showEdit = jQuery(this).find('.sn-show-edit');
       $(showEdit).hide();
   });
-  $(".sn-show-edit").hover(function(){
+  $(".sn-show-edit").click(function(){
       $(this).hide();
       var list = jQuery(this).parent().children('.sn-edit-list');
       $(list).show();
-    }, function(){
-      $(this).show();
-      var list = jQuery(this).parent().children('.sn-edit-list');
-      $(list).hide();
-  });
+    });
   $(".sn-edit-list").hover(function(){
       var showEdit = jQuery(this).parent().children('.sn-show-edit');
       $(showEdit).hide();

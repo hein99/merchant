@@ -274,7 +274,7 @@
   top: calc((100% - 110px) / 2);
   right: 8px;
   background: #0000004f;
-  border-radius: 4px;
+  border-radius: 2px;
   border: 1px solid #ffffff14;
   box-shadow: 0px 0px 2px 1px #ffffff29;
 }
@@ -289,17 +289,18 @@
   background: #000000c2;
   font-size: 12px;
   color: #ffffffa8;
-  border-radius: 5px;
+  border-radius: 2px;
   box-shadow: 0px -1px 2px 1px #ffffff42;
   position: absolute;
   top: calc((100% - 110px) / 2);
   right: 8px;
+  width: 60%;
 }
 .sn-show-edit{
   display: none;
 }
 .sn-edit-list li{
-  padding: 5px 2px;
+  padding: 7px 2px;
   border-bottom: 1px solid #ffffff40;
   cursor: pointer;
 }
